@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<mz:configuration format-version="1.0">
+    <mz:data>
+        <dr.Configuration:dr.Configuration Folder="Default" Key="DZ11644912622078" Name="ExternalPropFiles_Backup" Owner="D_WAILUN" Type="Workflow" encrypted="false" ver="6.0">
+            <STRING:Access_Groups_-----.read_-----.write_-----.execute>
+                <value value="Z_DR_Developer"/>
+                <value value="Z_DR_Developer"/>
+                <value value="Z_DR_Developer"/>
+            </STRING:Access_Groups_-----.read_-----.write_-----.execute>
+            <dr.ConfigAuxData:Auxiliary_Data ver="2.0">
+                <Entries keyType="STRING" type="java.util.LinkedHashMap" valueType="STRING">
+                    <Autostart value="false"/>
+                    <Count value="5"/>
+                    <Standalone value="false"/>
+                    <Type value="Task"/>
+                </Entries>
+            </dr.ConfigAuxData:Auxiliary_Data>
+            <mz:workflow-template>
+                <dr.WorkflowTaskData:Data Template_Valid="true" Workflow_ID_Counter="5" ver="7.0">
+                    <Nodes>
+                        <dr.WfNode:value Classname="com.digitalroute.wfc.task.script.ScriptTaskInsp" ID="${identity@dr.WfNode#Script..ID}" Name="Script" XYposition="${layout@dr.WfNode#Script..XYposition}" ver="2.0">
+                            <dr.WfNodeConfig:Configuration>
+                                <dr.WfNodeConfig:value Classname="com.digitalroute.wfc.task.script.ScriptTaskInsp" Type="1" ver="1.0">
+                                    <dr.ScriptTaskData:Data ver="1.0">
+                                        <dr.ScriptTaskData.scriptName:Script_Name active="true" fit="INSTANCE" ver="1.0">
+                                            <Value value=""/>
+                                        </dr.ScriptTaskData.scriptName:Script_Name>
+                                        <dr.ScriptTaskData.parameters:Parameters active="true" fit="FINAL" ver="1.0">
+                                            <Value value=""/>
+                                        </dr.ScriptTaskData.parameters:Parameters>
+                                    </dr.ScriptTaskData:Data>
+                                </dr.WfNodeConfig:value>
+                            </dr.WfNodeConfig:Configuration>
+                        </dr.WfNode:value>
+                    </Nodes>
+                    <Routes/>
+                    <Service/>
+                    <Logged_error_MIM/>
+                    <dr.WorkflowExecutionConfig:Execution_Config ver="8.0">
+                        <dr.WorkflowExecutionConfig.executionSettings:Execution_Settings extref_key="" ver="1.0">
+                            <dr.ExecutionSettings:Value ver="3.0">
+                                <enabled value="true"/>
+                                <ecList type="java.util.LinkedList">
+                                    <dr.PicoInstanceEntity:value ver="1.0">
+                                        <Name value="ec2"/>
+                                        <Type value="2"/>
+                                    </dr.PicoInstanceEntity:value>
+                                </ecList>
+                                <dr.WorkflowDistType:dist value="ROUND_ROBIN"/>
+                                <groupList type="java.util.LinkedList"/>
+                                <dr.AutoStartSettings:autostart ver="1.0">
+                                    <enabled value="false"/>
+                                    <instances value="0"/>
+                                    <null:abort_behaviour/>
+                                </dr.AutoStartSettings:autostart>
+                            </dr.ExecutionSettings:Value>
+                        </dr.WorkflowExecutionConfig.executionSettings:Execution_Settings>
+                        <dr.WorkflowExecutionConfig.throughputMIM:Throughput_MIM extref_key="" ver="1.0">
+                            <Value/>
+                        </dr.WorkflowExecutionConfig.throughputMIM:Throughput_MIM>
+                        <dr.WorkflowExecutionConfig.debugType:Debug_Type extref_key="" ver="1.0">
+                            <dr.DebugType:Value value="EVENT"/>
+                        </dr.WorkflowExecutionConfig.debugType:Debug_Type>
+                        <dr.WorkflowExecutionConfig.noOfFilesToKeep:Number_of_Files_to_Keep extref_key="" ver="1.0">
+                            <Value value="0"/>
+                        </dr.WorkflowExecutionConfig.noOfFilesToKeep:Number_of_Files_to_Keep>
+                        <dr.WorkflowExecutionConfig.txnHandler:Transaction_Handler extref_key="" ver="1.0">
+                            <Value value="Default Handler"/>
+                        </dr.WorkflowExecutionConfig.txnHandler:Transaction_Handler>
+                    </dr.WorkflowExecutionConfig:Execution_Config>
+                    <dr.DynamicConfigStorableDefinition:dyn ver="1.0">
+                        <fields/>
+                    </dr.DynamicConfigStorableDefinition:dyn>
+                    <null:External_Reference_Profile/>
+                    <External_Reference_Values type="java.util.Hashtable"/>
+                    <External_Reference_Lists type="java.util.Hashtable"/>
+                    <External_Reference_Maps type="java.util.Hashtable"/>
+                </dr.WorkflowTaskData:Data>
+            </mz:workflow-template>
+            <mz:wf-parameters>
+                <mz:param-def label="Execution - Execution Settings" name="Execution Settings" nodeId="2147483647" nodeName="Workflow" type="DEFAULT"/>
+                <mz:param-def label="Script - Script Name" name="Script Name" nodeId="-1833504834" nodeName="Script" type="INSTANCE"/>
+            </mz:wf-parameters>
+            <mz:wf-instances>
+                <mz:wf-instance instanceId="1" name="backupExtRefProp" state="VALID" validationError="">
+                    <mz:param name="Workflow/Execution Settings" storable-id="dr.WorkflowExecutionConfig.executionSettings"/>
+                    <mz:param name="Script/Script Name" storable-id="dr.ScriptTaskData.scriptName">
+                        <dr.ScriptTaskData.scriptName:dr.ScriptTaskData.scriptName extref_key="" ver="1.0">
+                            <Value value="/app/DZ1/SAPCMDZ1/backupPropFiles.sh"/>
+                        </dr.ScriptTaskData.scriptName:dr.ScriptTaskData.scriptName>
+                    </mz:param>
+                </mz:wf-instance>
+                <mz:wf-instance instanceId="2" name="workflow_2" state="VALID" validationError="">
+                    <mz:param name="Workflow/Execution Settings" storable-id="dr.WorkflowExecutionConfig.executionSettings"/>
+                    <mz:param name="Script/Script Name" storable-id="dr.ScriptTaskData.scriptName">
+                        <dr.ScriptTaskData.scriptName:dr.ScriptTaskData.scriptName extref_key="" ver="1.0">
+                            <Value value="mkdir /app/DZ1/SAPCMDZ1/backup/_backup_prop_files"/>
+                        </dr.ScriptTaskData.scriptName:dr.ScriptTaskData.scriptName>
+                    </mz:param>
+                </mz:wf-instance>
+                <mz:wf-instance instanceId="3" name="workflow_3" state="VALID" validationError="">
+                    <mz:param name="Workflow/Execution Settings" storable-id="dr.WorkflowExecutionConfig.executionSettings"/>
+                    <mz:param name="Script/Script Name" storable-id="dr.ScriptTaskData.scriptName">
+                        <dr.ScriptTaskData.scriptName:dr.ScriptTaskData.scriptName extref_key="" ver="1.0">
+                            <Value value="cp  /app/DZ1/SAPCMDZ1/backup/restoration.pl   /app/DZ1/SAPCMDZ1/"/>
+                        </dr.ScriptTaskData.scriptName:dr.ScriptTaskData.scriptName>
+                    </mz:param>
+                </mz:wf-instance>
+                <mz:wf-instance instanceId="4" name="workflow_4" state="VALID" validationError="">
+                    <mz:param name="Workflow/Execution Settings" storable-id="dr.WorkflowExecutionConfig.executionSettings"/>
+                    <mz:param name="Script/Script Name" storable-id="dr.ScriptTaskData.scriptName">
+                        <dr.ScriptTaskData.scriptName:dr.ScriptTaskData.scriptName extref_key="" ver="1.0">
+                            <Value value="touch  /app/DZ1/SAPCMDZ1/INTF/database/route_service_SVC0246.csv"/>
+                        </dr.ScriptTaskData.scriptName:dr.ScriptTaskData.scriptName>
+                    </mz:param>
+                </mz:wf-instance>
+                <mz:wf-instance instanceId="5" name="workflow_5" state="VALID" validationError="">
+                    <mz:param name="Workflow/Execution Settings" storable-id="dr.WorkflowExecutionConfig.executionSettings"/>
+                    <mz:param name="Script/Script Name" storable-id="dr.ScriptTaskData.scriptName">
+                        <dr.ScriptTaskData.scriptName:dr.ScriptTaskData.scriptName extref_key="" ver="1.0">
+                            <Value value="chmod 775  /app/DZ1/SAPCMDZ1/INTF/database/route_service_SVC0246.csv"/>
+                        </dr.ScriptTaskData.scriptName:dr.ScriptTaskData.scriptName>
+                    </mz:param>
+                </mz:wf-instance>
+            </mz:wf-instances>
+            <documentation value=""/>
+            <parameters value=""/>
+            <Current_Comment/>
+        </dr.Configuration:dr.Configuration>
+    </mz:data>
+    <mz:referenced-data>
+        <layout>
+            <dr.WfNode>
+                <dr.WfRoute--.StorablePoint:Script..XYposition X_position="510" Y_position="210" ver="1.0"/>
+            </dr.WfNode>
+        </layout>
+        <identity>
+            <dr.WfNode>
+                <Script..ID value="-1833504834"/>
+            </dr.WfNode>
+        </identity>
+    </mz:referenced-data>
+</mz:configuration>

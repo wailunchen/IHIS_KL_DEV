@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<mz:schema xmlns:mz="http://www.w3.org/2001/XMLSchema">
+    <mz:include schemaLocation="mz_simpleTypes.xsd"/>
+    <mz:element name="config_data">
+        <mz:complexType>
+            <mz:sequence>
+                <mz:element name="dr.Configuration" type="storable"/>
+            </mz:sequence>
+        </mz:complexType>
+    </mz:element>
+    <mz:complexType name="dr.Configuration">
+        <mz:complexContent>
+            <mz:extension base="storable">
+                <mz:sequence>
+                    <mz:element name="Access_Groups_-----.read_-----.write_-----.execute">
+                        <mz:complexType>
+                            <mz:complexContent>
+                                <mz:extension base="array">
+                                    <mz:sequence maxOccurs="unbounded">
+                                        <mz:element name="value" type="string"/>
+                                    </mz:sequence>
+                                </mz:extension>
+                            </mz:complexContent>
+                        </mz:complexType>
+                    </mz:element>
+                    <mz:element name="Auxiliary_Data" type="storable"/>
+                    <mz:element name="Data" type="storable"/>
+                    <mz:element name="documentation" type="string"/>
+                    <mz:element name="parameters" type="string"/>
+                    <mz:element name="Current_Comment" type="string"/>
+                </mz:sequence>
+                <mz:attribute name="Key" type="string"/>
+                <mz:attribute name="Name" type="string"/>
+                <mz:attribute name="Type" type="string"/>
+                <mz:attribute name="Folder" type="string"/>
+                <mz:attribute name="Owner" type="string"/>
+                <mz:attribute name="encrypted" type="boolean"/>
+            </mz:extension>
+        </mz:complexContent>
+    </mz:complexType>
+    <mz:complexType name="dr.DRDBProfileExtRef">
+        <mz:complexContent>
+            <mz:extension base="storable">
+                <mz:sequence>
+                    <mz:element name="Type" type="int"/>
+                    <mz:element name="Port" type="int"/>
+                    <mz:element name="Username" type="string"/>
+                    <mz:element name="Password" type="password"/>
+                    <mz:element name="URL" type="string"/>
+                    <mz:element name="Database_name" type="string"/>
+                    <mz:element name="Host" type="string"/>
+                    <mz:element name="Connection_string" type="boolean"/>
+                    <mz:element name="ONS" type="string"/>
+                    <mz:element name="DB_Type_Class_Name" type="string"/>
+                    <mz:element name="DB_Connection_Properties" type="string"/>
+                    <mz:element name="Generic_Connection" type="boolean"/>
+                    <mz:element name="Profile" type="storable"/>
+                    <mz:element name="Access_Key_ID" type="password"/>
+                    <mz:element name="Secret_Access_Key" type="password"/>
+                    <mz:element name="Staging_Directory" type="string"/>
+                    <mz:element name="Advanced_Properties" type="string"/>
+                    <mz:element name="Enable_TLS_Truststore" type="boolean"/>
+                    <mz:element name="TLS_Truststore" type="string"/>
+                    <mz:element name="TLS_Truststore_Password" type="password"/>
+                    <mz:element name="This_Version" type="float"/>
+                    <mz:element name="ExtRef_Version" type="float"/>
+                    <mz:element name="ExtRef_Profile" type="string"/>
+                    <mz:element name="ExtRef_Map" type="map"/>
+                </mz:sequence>
+            </mz:extension>
+        </mz:complexContent>
+    </mz:complexType>
+</mz:schema>

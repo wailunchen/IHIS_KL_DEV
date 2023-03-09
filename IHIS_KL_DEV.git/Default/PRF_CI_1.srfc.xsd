@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<mz:schema xmlns:mz="http://www.w3.org/2001/XMLSchema">
+    <mz:include schemaLocation="mz_simpleTypes.xsd"/>
+    <mz:element name="config_data">
+        <mz:complexType>
+            <mz:sequence>
+                <mz:element name="dr.Configuration" type="storable"/>
+            </mz:sequence>
+        </mz:complexType>
+    </mz:element>
+    <mz:complexType name="dr.Configuration">
+        <mz:complexContent>
+            <mz:extension base="storable">
+                <mz:sequence>
+                    <mz:element name="Access_Groups_-----.read_-----.write_-----.execute">
+                        <mz:complexType>
+                            <mz:complexContent>
+                                <mz:extension base="array">
+                                    <mz:sequence maxOccurs="unbounded">
+                                        <mz:element name="value" type="string"/>
+                                    </mz:sequence>
+                                </mz:extension>
+                            </mz:complexContent>
+                        </mz:complexType>
+                    </mz:element>
+                    <mz:element name="Auxiliary_Data" type="storable"/>
+                    <mz:element name="Data" type="storable"/>
+                    <mz:element name="documentation" type="string"/>
+                    <mz:element name="parameters" type="string"/>
+                    <mz:element name="Current_Comment" type="string"/>
+                </mz:sequence>
+                <mz:attribute name="Key" type="string"/>
+                <mz:attribute name="Name" type="string"/>
+                <mz:attribute name="Type" type="string"/>
+                <mz:attribute name="Folder" type="string"/>
+                <mz:attribute name="Owner" type="string"/>
+                <mz:attribute name="encrypted" type="boolean"/>
+            </mz:extension>
+        </mz:complexContent>
+    </mz:complexType>
+    <mz:complexType name="com.digitalroute.mz.rfc.profile.RfcProfileData">
+        <mz:complexContent>
+            <mz:extension base="storable">
+                <mz:sequence>
+                    <mz:element name="HOST" type="string"/>
+                    <mz:element name="USERNAME" type="string"/>
+                    <mz:element name="CLIENT" type="string"/>
+                    <mz:element name="DEST" type="string"/>
+                    <mz:element name="PASSWORD" type="password"/>
+                    <mz:element name="SYSTEM" type="int"/>
+                    <mz:element name="RFCDATA">
+                        <mz:complexType>
+                            <mz:complexContent>
+                                <mz:extension base="list">
+                                    <mz:sequence maxOccurs="unbounded">
+                                        <mz:element name="value" type="storable"/>
+                                    </mz:sequence>
+                                </mz:extension>
+                            </mz:complexContent>
+                        </mz:complexType>
+                    </mz:element>
+                    <mz:element name="FUNCTIONS">
+                        <mz:complexType>
+                            <mz:complexContent>
+                                <mz:extension base="array">
+                                    <mz:sequence maxOccurs="unbounded">
+                                        <mz:element name="value" type="string"/>
+                                    </mz:sequence>
+                                </mz:extension>
+                            </mz:complexContent>
+                        </mz:complexType>
+                    </mz:element>
+                    <mz:element name="CONFIGHASH" type="string"/>
+                    <mz:element name="ENABLE---.LOADBALANCE" type="boolean"/>
+                    <mz:element name="SYSTEMID" type="string"/>
+                    <mz:element name="MESSAGESERVERHOST" type="string"/>
+                    <mz:element name="MESSAGESERVERPORT" type="int"/>
+                    <mz:element name="GROUPNAME" type="string"/>
+                    <mz:element name="ENABLE---.SNC---.MODE" type="boolean"/>
+                    <mz:element name="SNC---.LIB---.PATH" type="string"/>
+                    <mz:element name="SNC---.LVL---.PROTECTION" type="int"/>
+                    <mz:element name="SNC---.NAME" type="string"/>
+                    <mz:element name="SNC---.PARTNER---.NAME" type="string"/>
+                    <mz:element name="ENABLE---.SNC---.SSO" type="boolean"/>
+                    <mz:element name="ExtRef_Version" type="float"/>
+                    <mz:element name="ExtRef_Profile" type="string"/>
+                    <mz:element name="ExtRef_Map" type="map"/>
+                </mz:sequence>
+            </mz:extension>
+        </mz:complexContent>
+    </mz:complexType>
+    <mz:complexType name="com.digitalroute.mz.rfc.profile.RfcDataStructure">
+        <mz:complexContent>
+            <mz:extension base="storable">
+                <mz:sequence>
+                    <mz:element name="Name" type="string"/>
+                    <mz:element name="RfcFieldInfo">
+                        <mz:complexType>
+                            <mz:complexContent>
+                                <mz:extension base="list">
+                                    <mz:sequence maxOccurs="unbounded">
+                                        <mz:element name="value" type="storable"/>
+                                    </mz:sequence>
+                                </mz:extension>
+                            </mz:complexContent>
+                        </mz:complexType>
+                    </mz:element>
+                    <mz:element name="isTable" type="boolean"/>
+                    <mz:element name="childField">
+                        <mz:complexType>
+                            <mz:complexContent>
+                                <mz:extension base="list">
+                                    <mz:sequence maxOccurs="unbounded">
+                                        <mz:element name="value" type="storable"/>
+                                    </mz:sequence>
+                                </mz:extension>
+                            </mz:complexContent>
+                        </mz:complexType>
+                    </mz:element>
+                    <mz:element name="isParent" type="boolean"/>
+                    <mz:element name="udrName" type="string"/>
+                </mz:sequence>
+            </mz:extension>
+        </mz:complexContent>
+    </mz:complexType>
+    <mz:complexType name="com.digitalroute.mz.rfc.profile.RfcFieldInfo">
+        <mz:complexContent>
+            <mz:extension base="storable">
+                <mz:sequence>
+                    <mz:element name="NAME" type="string"/>
+                    <mz:element name="TYPE" type="storable"/>
+                </mz:sequence>
+            </mz:extension>
+        </mz:complexContent>
+    </mz:complexType>
+    <mz:complexType name="dr.DRUDRType">
+        <mz:complexContent>
+            <mz:extension base="storable">
+                <mz:sequence>
+                    <mz:element name="IsPrimitive" type="boolean"/>
+                    <mz:element name="PrimitiveType" type="byte"/>
+                    <mz:element name="TypeName" type="string"/>
+                </mz:sequence>
+            </mz:extension>
+        </mz:complexContent>
+    </mz:complexType>
+</mz:schema>

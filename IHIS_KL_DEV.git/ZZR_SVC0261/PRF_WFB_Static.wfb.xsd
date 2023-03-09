@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<mz:schema xmlns:mz="http://www.w3.org/2001/XMLSchema">
+    <mz:include schemaLocation="mz_simpleTypes.xsd"/>
+    <mz:element name="config_data">
+        <mz:complexType>
+            <mz:sequence>
+                <mz:element name="dr.Configuration" type="storable"/>
+            </mz:sequence>
+        </mz:complexType>
+    </mz:element>
+    <mz:complexType name="dr.Configuration">
+        <mz:complexContent>
+            <mz:extension base="storable">
+                <mz:sequence>
+                    <mz:element name="Access_Groups_-----.read_-----.write_-----.execute">
+                        <mz:complexType>
+                            <mz:complexContent>
+                                <mz:extension base="array">
+                                    <mz:sequence maxOccurs="unbounded">
+                                        <mz:element name="value" type="string"/>
+                                    </mz:sequence>
+                                </mz:extension>
+                            </mz:complexContent>
+                        </mz:complexType>
+                    </mz:element>
+                    <mz:element name="Auxiliary_Data" type="storable"/>
+                    <mz:element name="Data" type="storable"/>
+                    <mz:element name="documentation" type="string"/>
+                    <mz:element name="parameters" type="string"/>
+                    <mz:element name="Current_Comment" type="string"/>
+                </mz:sequence>
+                <mz:attribute name="Key" type="string"/>
+                <mz:attribute name="Name" type="string"/>
+                <mz:attribute name="Type" type="string"/>
+                <mz:attribute name="Folder" type="string"/>
+                <mz:attribute name="Owner" type="string"/>
+                <mz:attribute name="encrypted" type="boolean"/>
+            </mz:extension>
+        </mz:complexContent>
+    </mz:complexType>
+    <mz:complexType name="dr.WorkflowBridgeProfileSettings">
+        <mz:complexContent>
+            <mz:extension base="storable">
+                <mz:sequence>
+                    <mz:element name="Reply_state" type="boolean"/>
+                    <mz:element name="Transport_UDRs">
+                        <mz:complexType>
+                            <mz:complexContent>
+                                <mz:extension base="array">
+                                    <mz:sequence maxOccurs="unbounded"/>
+                                </mz:extension>
+                            </mz:complexContent>
+                        </mz:complexType>
+                    </mz:element>
+                    <mz:element name="Response_timeout" type="int"/>
+                    <mz:element name="Bulk_size" type="int"/>
+                    <mz:element name="Bulk_timeout" type="int"/>
+                    <mz:element name="Force_serialization" type="boolean"/>
+                    <mz:element name="Number_of_Collectors" type="int"/>
+                    <mz:element name="properties" type="string"/>
+                    <mz:element name="ExtRef_Version" type="float"/>
+                    <mz:element name="ExtRef_Profile" type="string"/>
+                    <mz:element name="ExtRef_Map" type="map"/>
+                    <mz:element name="Transport" type="enum"/>
+                    <mz:element name="TransportStr" type="string"/>
+                    <mz:element name="Load_Balancing_Strategy" type="string"/>
+                    <mz:element name="Load_Balancing_Settings" type="map"/>
+                </mz:sequence>
+            </mz:extension>
+        </mz:complexContent>
+    </mz:complexType>
+</mz:schema>

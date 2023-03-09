@@ -1,0 +1,2257 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<mz:configuration format-version="1.0">
+    <mz:data>
+        <dr.Configuration:dr.Configuration Folder="Default" Key="DZ11608012627224" Name="SAP_RFC_Profile_to_DS1" Owner="mzadmin" Type="SAP RFC Profile" encrypted="false" ver="6.0">
+            <STRING:Access_Groups_-----.read_-----.write_-----.execute>
+                <value value="All"/>
+                <value value="Administrator"/>
+                <value value="All"/>
+            </STRING:Access_Groups_-----.read_-----.write_-----.execute>
+            <null:Auxiliary_Data/>
+            <com.digitalroute.mz.rfc.profile.RfcProfileData:Data ver="1.3">
+                <HOST value="HISNBTVDAPP01.devhealthgrp.com.sg"/>
+                <USERNAME value="ta_admin4"/>
+                <CLIENT value="100"/>
+                <DEST/>
+                <PASSWORD value="DR_8.1_KEY-1-CEFF7D4B71DB330F752B8912A43601A3"/>
+                <SYSTEM value="3"/>
+                <RFCDATA>
+                    <com.digitalroute.mz.rfc.profile.RfcDataStructure:value ver="1.0">
+                        <Name value="BAPI_BUPA_CENTRAL_GETDETAIL"/>
+                        <RfcFieldInfo>
+                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                <NAME value="context"/>
+                                <dr.DRUDRType:TYPE ver="1.0">
+                                    <IsPrimitive value="true"/>
+                                    <PrimitiveType value="101"/>
+                                </dr.DRUDRType:TYPE>
+                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                        </RfcFieldInfo>
+                        <isTable value="false"/>
+                        <childField>
+                            <com.digitalroute.mz.rfc.profile.RfcDataStructure:value ver="1.0">
+                                <Name value="importParams"/>
+                                <RfcFieldInfo>
+                                    <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                        <NAME value="BUSINESSPARTNER"/>
+                                        <dr.DRUDRType:TYPE ver="1.0">
+                                            <IsPrimitive value="true"/>
+                                            <PrimitiveType value="9"/>
+                                        </dr.DRUDRType:TYPE>
+                                    </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                    <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                        <NAME value="IV_REQ_MASK"/>
+                                        <dr.DRUDRType:TYPE ver="1.0">
+                                            <IsPrimitive value="true"/>
+                                            <PrimitiveType value="9"/>
+                                        </dr.DRUDRType:TYPE>
+                                    </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                    <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                        <NAME value="VALID_DATE"/>
+                                        <dr.DRUDRType:TYPE ver="1.0">
+                                            <IsPrimitive value="true"/>
+                                            <PrimitiveType value="11"/>
+                                        </dr.DRUDRType:TYPE>
+                                    </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                </RfcFieldInfo>
+                                <isTable value="false"/>
+                                <childField/>
+                                <isParent value="false"/>
+                                <udrName value="importParams_BAPI_BUPA_CENTRAL_GETDETAIL"/>
+                            </com.digitalroute.mz.rfc.profile.RfcDataStructure:value>
+                            <com.digitalroute.mz.rfc.profile.RfcDataStructure:value ver="1.0">
+                                <Name value="exportParams"/>
+                                <RfcFieldInfo/>
+                                <isTable value="false"/>
+                                <childField>
+                                    <com.digitalroute.mz.rfc.profile.RfcDataStructure:value ver="1.0">
+                                        <Name value="CENTRALDATA"/>
+                                        <RfcFieldInfo>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="SEARCHTERM1"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="SEARCHTERM2"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="PARTNERTYPE"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="AUTHORIZATIONGROUP"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="PARTNERLANGUAGE"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="PARTNERLANGUAGEISO"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="DATAORIGINTYPE"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="CENTRALARCHIVINGFLAG"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="CENTRALBLOCK"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="TITLE_KEY"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="CONTACTALLOWANCE"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="PARTNEREXTERNAL"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="TITLELETTER"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="NOTRELEASED"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="COMM_TYPE"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="PRINT_MODE"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                        </RfcFieldInfo>
+                                        <isTable value="false"/>
+                                        <childField/>
+                                        <isParent value="false"/>
+                                        <udrName value="BAPIBUS1006_CENTRAL"/>
+                                    </com.digitalroute.mz.rfc.profile.RfcDataStructure:value>
+                                    <com.digitalroute.mz.rfc.profile.RfcDataStructure:value ver="1.0">
+                                        <Name value="CENTRALDATAGROUP"/>
+                                        <RfcFieldInfo>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="NAMEGROUP1"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="NAMEGROUP2"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="GROUPTYPE"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                        </RfcFieldInfo>
+                                        <isTable value="false"/>
+                                        <childField/>
+                                        <isParent value="false"/>
+                                        <udrName value="BAPIBUS1006_CENTRAL_GROUP"/>
+                                    </com.digitalroute.mz.rfc.profile.RfcDataStructure:value>
+                                    <com.digitalroute.mz.rfc.profile.RfcDataStructure:value ver="1.0">
+                                        <Name value="CENTRALDATAORGANIZATION"/>
+                                        <RfcFieldInfo>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="NAME1"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="NAME2"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="NAME3"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="NAME4"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="LEGALFORM"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="INDUSTRYSECTOR"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="FOUNDATIONDATE"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="11"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="LIQUIDATIONDATE"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="11"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="LOC_NO_1"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="4"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="LOC_NO_2"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="4"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="CHK_DIGIT"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="4"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="LEGALORG"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                        </RfcFieldInfo>
+                                        <isTable value="false"/>
+                                        <childField/>
+                                        <isParent value="false"/>
+                                        <udrName value="BAPIBUS1006_CENTRAL_ORGAN"/>
+                                    </com.digitalroute.mz.rfc.profile.RfcDataStructure:value>
+                                    <com.digitalroute.mz.rfc.profile.RfcDataStructure:value ver="1.0">
+                                        <Name value="CENTRALDATAPERSON"/>
+                                        <RfcFieldInfo>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="FIRSTNAME"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="LASTNAME"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="BIRTHNAME"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="MIDDLENAME"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="SECONDNAME"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="TITLE_ACA1"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="TITLE_ACA2"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="TITLE_SPPL"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="PREFIX1"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="PREFIX2"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="NICKNAME"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="INITIALS"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="NAMEFORMAT"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="NAMCOUNTRY"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="NAMCOUNTRYISO"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="SEX"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="BIRTHPLACE"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="BIRTHDATE"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="11"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="DEATHDATE"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="11"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="MARITALSTATUS"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="CORRESPONDLANGUAGE"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="CORRESPONDLANGUAGEISO"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="FULLNAME"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="EMPLOYER"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="OCCUPATION"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="NATIONALITY"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="NATIONALITYISO"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="COUNTRYORIGIN"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="BIRTHDT_STATUS"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                        </RfcFieldInfo>
+                                        <isTable value="false"/>
+                                        <childField/>
+                                        <isParent value="false"/>
+                                        <udrName value="BAPIBUS1006_CENTRAL_PERSON"/>
+                                    </com.digitalroute.mz.rfc.profile.RfcDataStructure:value>
+                                    <com.digitalroute.mz.rfc.profile.RfcDataStructure:value ver="1.0">
+                                        <Name value="CENTRALDATAVALIDITY"/>
+                                        <RfcFieldInfo>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="VALID_FROM"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="11"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="VALID_TO"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="11"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                        </RfcFieldInfo>
+                                        <isTable value="false"/>
+                                        <childField/>
+                                        <isParent value="false"/>
+                                        <udrName value="BAPIBUS1006_CENTRAL_VALIDITY"/>
+                                    </com.digitalroute.mz.rfc.profile.RfcDataStructure:value>
+                                </childField>
+                                <isParent value="false"/>
+                                <udrName value="exportParams_BAPI_BUPA_CENTRAL_GETDETAIL"/>
+                            </com.digitalroute.mz.rfc.profile.RfcDataStructure:value>
+                            <com.digitalroute.mz.rfc.profile.RfcDataStructure:value ver="1.0">
+                                <Name value="tableParams"/>
+                                <RfcFieldInfo/>
+                                <isTable value="false"/>
+                                <childField>
+                                    <com.digitalroute.mz.rfc.profile.RfcDataStructure:value ver="1.0">
+                                        <Name value="COMMUNICATIONNOTESNONADDRESS"/>
+                                        <RfcFieldInfo>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="COMM_TYPE"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="LANGU"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="LANGU_ISO"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="COMM_NOTES"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="CONSNUMBER"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="4"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="ERRORFLAG"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                        </RfcFieldInfo>
+                                        <isTable value="true"/>
+                                        <childField/>
+                                        <isParent value="false"/>
+                                        <udrName value="BAPICOMREM"/>
+                                    </com.digitalroute.mz.rfc.profile.RfcDataStructure:value>
+                                    <com.digitalroute.mz.rfc.profile.RfcDataStructure:value ver="1.0">
+                                        <Name value="COMMUNICATIONUSAGENONADDRESS"/>
+                                        <RfcFieldInfo>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="COMM_TYPE"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="CONSNUMBER"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="4"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="COMM_USAGE"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="VALID_TO"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="VALID_FROM"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="DEF_USAGE"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="ERRORFLAG"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                        </RfcFieldInfo>
+                                        <isTable value="true"/>
+                                        <childField/>
+                                        <isParent value="false"/>
+                                        <udrName value="BAPIADUSE"/>
+                                    </com.digitalroute.mz.rfc.profile.RfcDataStructure:value>
+                                    <com.digitalroute.mz.rfc.profile.RfcDataStructure:value ver="1.0">
+                                        <Name value="E_MAILDATANONADDRESS"/>
+                                        <RfcFieldInfo>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="STD_NO"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="E_MAIL"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="EMAIL_SRCH"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="STD_RECIP"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="R_3_USER"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="ENCODE"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="TNEF"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="HOME_FLAG"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="CONSNUMBER"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="4"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="ERRORFLAG"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="FLG_NOUSE"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="VALID_FROM"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="VALID_TO"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                        </RfcFieldInfo>
+                                        <isTable value="true"/>
+                                        <childField/>
+                                        <isParent value="false"/>
+                                        <udrName value="BAPIADSMTP"/>
+                                    </com.digitalroute.mz.rfc.profile.RfcDataStructure:value>
+                                    <com.digitalroute.mz.rfc.profile.RfcDataStructure:value ver="1.0">
+                                        <Name value="FAXDATANONADDRESS"/>
+                                        <RfcFieldInfo>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="COUNTRY"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="COUNTRYISO"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="STD_NO"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="FAX"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="EXTENSION"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="FAX_NO"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="SENDER_NO"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="FAX_GROUP"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="STD_RECIP"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="R_3_USER"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="HOME_FLAG"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="CONSNUMBER"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="4"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="ERRORFLAG"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="FLG_NOUSE"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="VALID_FROM"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="VALID_TO"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                        </RfcFieldInfo>
+                                        <isTable value="true"/>
+                                        <childField/>
+                                        <isParent value="false"/>
+                                        <udrName value="BAPIADFAX"/>
+                                    </com.digitalroute.mz.rfc.profile.RfcDataStructure:value>
+                                    <com.digitalroute.mz.rfc.profile.RfcDataStructure:value ver="1.0">
+                                        <Name value="PAGADDRESSDATANONADDRESS"/>
+                                        <RfcFieldInfo>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="COUNTRY"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="COUNTRYISO"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="STD_NO"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="PAGER_TYPE"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="PAGER"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="PAGER_NO"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="CALLER_NO"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="STD_RECIP"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="R_3_USER"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="HOME_FLAG"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="CONSNUMBER"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="4"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="ERRORFLAG"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="FLG_NOUSE"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="VALID_FROM"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="VALID_TO"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                        </RfcFieldInfo>
+                                        <isTable value="true"/>
+                                        <childField/>
+                                        <isParent value="false"/>
+                                        <udrName value="BAPIADPAG"/>
+                                    </com.digitalroute.mz.rfc.profile.RfcDataStructure:value>
+                                    <com.digitalroute.mz.rfc.profile.RfcDataStructure:value ver="1.0">
+                                        <Name value="PRTADDRESSDATANONADDRESS"/>
+                                        <RfcFieldInfo>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="STD_NO"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="PRINT_DEST"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="STD_RECIP"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="HOME_FLAG"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="CONSNUMBER"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="4"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="ERRORFLAG"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="FLG_NOUSE"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="VALID_FROM"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="VALID_TO"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                        </RfcFieldInfo>
+                                        <isTable value="true"/>
+                                        <childField/>
+                                        <isParent value="false"/>
+                                        <udrName value="BAPIADPRT"/>
+                                    </com.digitalroute.mz.rfc.profile.RfcDataStructure:value>
+                                    <com.digitalroute.mz.rfc.profile.RfcDataStructure:value ver="1.0">
+                                        <Name value="RETURN"/>
+                                        <RfcFieldInfo>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="TYPE"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="ID"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="NUMBER"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="4"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="MESSAGE"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="LOG_NO"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="LOG_MSG_NO"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="4"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="MESSAGE_V1"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="MESSAGE_V2"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="MESSAGE_V3"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="MESSAGE_V4"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="PARAMETER"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="ROW"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="2"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="FIELD"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="SYSTEM"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                        </RfcFieldInfo>
+                                        <isTable value="true"/>
+                                        <childField/>
+                                        <isParent value="false"/>
+                                        <udrName value="BAPIRET2"/>
+                                    </com.digitalroute.mz.rfc.profile.RfcDataStructure:value>
+                                    <com.digitalroute.mz.rfc.profile.RfcDataStructure:value ver="1.0">
+                                        <Name value="RFCADDRESSDATANONADDRESS"/>
+                                        <RfcFieldInfo>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="STD_NO"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="LOG_DEST"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="STD_RECIP"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="R_3_USER"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="HOME_FLAG"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="CONSNUMBER"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="4"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="ERRORFLAG"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="FLG_NOUSE"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="VALID_FROM"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="VALID_TO"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                        </RfcFieldInfo>
+                                        <isTable value="true"/>
+                                        <childField/>
+                                        <isParent value="false"/>
+                                        <udrName value="BAPIADRFC"/>
+                                    </com.digitalroute.mz.rfc.profile.RfcDataStructure:value>
+                                    <com.digitalroute.mz.rfc.profile.RfcDataStructure:value ver="1.0">
+                                        <Name value="RMLADDRESSDATANONADDRESS"/>
+                                        <RfcFieldInfo>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="STD_NO"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="SYMB_DEST"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="REC_TYPE"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="R_MAIL_CLT"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="R_MAIL"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="STD_RECIP"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="R_3_USER"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="HOME_FLAG"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="CONSNUMBER"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="4"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="ERRORFLAG"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="FLG_NOUSE"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="VALID_FROM"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="VALID_TO"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                        </RfcFieldInfo>
+                                        <isTable value="true"/>
+                                        <childField/>
+                                        <isParent value="false"/>
+                                        <udrName value="BAPIADRML"/>
+                                    </com.digitalroute.mz.rfc.profile.RfcDataStructure:value>
+                                    <com.digitalroute.mz.rfc.profile.RfcDataStructure:value ver="1.0">
+                                        <Name value="SSFADDRESSDATANONADDRESS"/>
+                                        <RfcFieldInfo>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="STD_NO"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="DUMMY"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="STD_RECIP"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="HOME_FLAG"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="CONSNUMBER"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="4"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="RFCDEST"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="SSFIDSHORT"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="SSF_NS"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="SSF_PROF"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="SSFIDPART1"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="SSFIDPART2"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="SSFIDPART3"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="SSFIDPART4"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="SSFIDPART5"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="SSFIDPART6"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="SSFIDPART7"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="SSFIDPART8"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="SSFIDPART9"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="ERRORFLAG"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="FLG_NOUSE"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="VALID_FROM"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="VALID_TO"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                        </RfcFieldInfo>
+                                        <isTable value="true"/>
+                                        <childField/>
+                                        <isParent value="false"/>
+                                        <udrName value="BAPIADSSF"/>
+                                    </com.digitalroute.mz.rfc.profile.RfcDataStructure:value>
+                                    <com.digitalroute.mz.rfc.profile.RfcDataStructure:value ver="1.0">
+                                        <Name value="TELEFONDATANONADDRESS"/>
+                                        <RfcFieldInfo>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="COUNTRY"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="COUNTRYISO"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="STD_NO"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="TELEPHONE"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="EXTENSION"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="TEL_NO"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="CALLER_NO"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="STD_RECIP"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="R_3_USER"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="HOME_FLAG"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="CONSNUMBER"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="4"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="ERRORFLAG"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="FLG_NOUSE"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="VALID_FROM"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="VALID_TO"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                        </RfcFieldInfo>
+                                        <isTable value="true"/>
+                                        <childField/>
+                                        <isParent value="false"/>
+                                        <udrName value="BAPIADTEL"/>
+                                    </com.digitalroute.mz.rfc.profile.RfcDataStructure:value>
+                                    <com.digitalroute.mz.rfc.profile.RfcDataStructure:value ver="1.0">
+                                        <Name value="TELETEXDATANONADDRESS"/>
+                                        <RfcFieldInfo>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="COUNTRY"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="COUNTRYISO"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="STD_NO"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="TELETEX"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="STD_RECIP"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="R_3_USER"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="HOME_FLAG"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="CONSNUMBER"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="4"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="ERRORFLAG"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="FLG_NOUSE"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="VALID_FROM"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="VALID_TO"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                        </RfcFieldInfo>
+                                        <isTable value="true"/>
+                                        <childField/>
+                                        <isParent value="false"/>
+                                        <udrName value="BAPIADTTX"/>
+                                    </com.digitalroute.mz.rfc.profile.RfcDataStructure:value>
+                                    <com.digitalroute.mz.rfc.profile.RfcDataStructure:value ver="1.0">
+                                        <Name value="TELEXDATANONADDRESS"/>
+                                        <RfcFieldInfo>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="COUNTRY"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="COUNTRYISO"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="STD_NO"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="TELEX_NO"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="STD_RECIP"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="R_3_USER"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="HOME_FLAG"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="CONSNUMBER"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="4"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="ERRORFLAG"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="FLG_NOUSE"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="VALID_FROM"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="VALID_TO"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                        </RfcFieldInfo>
+                                        <isTable value="true"/>
+                                        <childField/>
+                                        <isParent value="false"/>
+                                        <udrName value="BAPIADTLX"/>
+                                    </com.digitalroute.mz.rfc.profile.RfcDataStructure:value>
+                                    <com.digitalroute.mz.rfc.profile.RfcDataStructure:value ver="1.0">
+                                        <Name value="URIADDRESSDATANONADDRESS"/>
+                                        <RfcFieldInfo>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="STD_NO"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="URI_TYPE"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="URI"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="STD_RECIP"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="HOME_FLAG"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="CONSNUMBER"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="4"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="URI_PART1"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="URI_PART2"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="URI_PART3"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="URI_PART4"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="URI_PART5"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="URI_PART6"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="URI_PART7"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="URI_PART8"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="URI_PART9"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="ERRORFLAG"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="FLG_NOUSE"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="VALID_FROM"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="VALID_TO"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                        </RfcFieldInfo>
+                                        <isTable value="true"/>
+                                        <childField/>
+                                        <isParent value="false"/>
+                                        <udrName value="BAPIADURI"/>
+                                    </com.digitalroute.mz.rfc.profile.RfcDataStructure:value>
+                                    <com.digitalroute.mz.rfc.profile.RfcDataStructure:value ver="1.0">
+                                        <Name value="X400ADDRESSDATANONADDRESS"/>
+                                        <RfcFieldInfo>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="STD_NO"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="COUNTRY"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="COUNTRYISO"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="ADM_DOM"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="PRIV_DOM"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="ORGANIZATN"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="ORG_UNIT_1"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="ORG_UNIT_2"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="ORG_UNIT_3"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="ORG_UNIT_4"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="LASTNAME"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="FIRSTNAME"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="INITIALS"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="GENERATION"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="X_121_ADDR"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="TERM_ID"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="TERM_TYPE"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="UANID"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="DDA_TYPE1"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="DDA_VALUE1"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="DDA_TYPE2"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="DDA_VALUE2"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="DDA_TYPE3"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="DDA_VALUE3"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="DDA_TYPE4"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="DDA_VALUE4"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="STD_RECIP"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="R_3_USER"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="TXT_ENCODE"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="TNEF"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="HOME_FLAG"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="CONSNUMBER"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="4"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="ERRORFLAG"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="FLG_NOUSE"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="VALID_FROM"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                            <com.digitalroute.mz.rfc.profile.RfcFieldInfo:value ver="1.0">
+                                                <NAME value="VALID_TO"/>
+                                                <dr.DRUDRType:TYPE ver="1.0">
+                                                    <IsPrimitive value="true"/>
+                                                    <PrimitiveType value="9"/>
+                                                </dr.DRUDRType:TYPE>
+                                            </com.digitalroute.mz.rfc.profile.RfcFieldInfo:value>
+                                        </RfcFieldInfo>
+                                        <isTable value="true"/>
+                                        <childField/>
+                                        <isParent value="false"/>
+                                        <udrName value="BAPIADX400"/>
+                                    </com.digitalroute.mz.rfc.profile.RfcDataStructure:value>
+                                </childField>
+                                <isParent value="false"/>
+                                <udrName value="tableParams_BAPI_BUPA_CENTRAL_GETDETAIL"/>
+                            </com.digitalroute.mz.rfc.profile.RfcDataStructure:value>
+                        </childField>
+                        <isParent value="true"/>
+                        <udrName/>
+                    </com.digitalroute.mz.rfc.profile.RfcDataStructure:value>
+                </RFCDATA>
+                <STRING:FUNCTIONS>
+                    <value value="BAPI_BUPA_CENTRAL_GETDETAIL"/>
+                </STRING:FUNCTIONS>
+                <CONFIGHASH value="-2092858206"/>
+                <ENABLE---.LOADBALANCE value="false"/>
+                <SYSTEMID value=""/>
+                <MESSAGESERVERHOST value=""/>
+                <MESSAGESERVERPORT value="0"/>
+                <GROUPNAME value=""/>
+                <ENABLE---.SNC---.MODE value="false"/>
+                <SNC---.LIB---.PATH/>
+                <SNC---.LVL---.PROTECTION value="0"/>
+                <SNC---.NAME/>
+                <SNC---.PARTNER---.NAME/>
+                <ENABLE---.SNC---.SSO value="false"/>
+                <ExtRef_Version value="1.0"/>
+                <ExtRef_Profile/>
+                <ExtRef_Map/>
+            </com.digitalroute.mz.rfc.profile.RfcProfileData:Data>
+            <documentation value=""/>
+            <parameters value=""/>
+            <Current_Comment/>
+        </dr.Configuration:dr.Configuration>
+    </mz:data>
+    <mz:referenced-data/>
+</mz:configuration>

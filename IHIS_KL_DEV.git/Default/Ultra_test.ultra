@@ -1,0 +1,2717 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<mz:configuration format-version="1.0">
+    <mz:data>
+        <dr.Configuration:dr.Configuration Folder="Default" Key="DZ11645182274330" Name="Ultra_test" Owner="D_WAILUN" Type="Ultra Format" encrypted="false" ver="6.0">
+            <STRING:Access_Groups_-----.read_-----.write_-----.execute>
+                <value value="Z_DR_Developer"/>
+                <value value="Z_DR_Developer"/>
+                <value value="Z_DR_Developer"/>
+            </STRING:Access_Groups_-----.read_-----.write_-----.execute>
+            <null:Auxiliary_Data/>
+            <dr.UltraFormatConfig:Data ver="1.0">
+                <Definition><![CDATA[xml_schema
+{
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="request">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element type="xs:string" name="invoice_type"/>
+        <xs:element type="xs:string" name="response_ind"/>
+        <xs:element type="xs:string" name="filename"/>
+        <xs:element name="inpatient">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="invoiceheader">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="invoicedatetime"/>
+                    <xs:element type="xs:string" name="invoicereferenceno"/>
+                    <xs:element type="xs:string" name="invoicelabel"/>
+                    <xs:element type="xs:string" name="invoicestatus"/>
+                    <xs:element type="xs:string" name="invoicetype"/>
+                    <xs:element type="xs:string" name="sourcesystemid"/>
+                    <xs:element type="xs:string" name="clustercode"/>
+                    <xs:element name="issuedonbehalfof">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:string" name="institutioncode"/>
+                          <xs:element type="xs:string" name="gstregno"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element type="xs:string" name="requesteddatetime"/>
+                    <xs:element type="xs:string" name="isprovisional"/>
+                    <xs:element type="xs:string" name="islatest"/>
+                    <xs:element type="xs:string" name="ismaskingrequired"/>
+                    <xs:element type="xs:string" name="nefrindicator"/>
+                    <xs:element type="xs:string" name="hhblock"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="patientdetails">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="person">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:string" name="fullname"/>
+                          <xs:element type="xs:string" name="altname"/>
+                          <xs:element name="identificationno">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element type="xs:string" name="typecode"/>
+                                <xs:element type="xs:string" name="value"/>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="address">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element type="xs:string" name="line1"/>
+                                <xs:element type="xs:string" name="line2"/>
+                                <xs:element type="xs:string" name="line3"/>
+                                <xs:element type="xs:string" name="line4"/>
+                                <xs:element type="xs:string" name="isunderline"/>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element type="xs:string" name="careofaddressee"/>
+                          <xs:element type="xs:string" name="deceasedindicator"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element type="xs:string" name="claimingindicator"/>
+                    <xs:element type="xs:string" name="hrn"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="thirdpartyinformation">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="name"/>
+                    <xs:element name="address">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:string" name="line1"/>
+                          <xs:element type="xs:string" name="line2"/>
+                          <xs:element type="xs:string" name="line3"/>
+                          <xs:element type="xs:string" name="line4"/>
+                          <xs:element type="xs:string" name="isunderline"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element type="xs:string" name="customercode"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="charges">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="chargesbycases">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="chargesbycase">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="chargesbycase_itm" maxOccurs="unbounded" minOccurs="0">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element type="xs:string" name="caseno"/>
+                                      <xs:element name="chargeheader">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element type="xs:string" name="institutioncode"/>
+                                            <xs:element type="xs:string" name="defaultinstitutioncode"/>
+                                            <xs:element type="xs:string" name="admissiondate"/>
+                                            <xs:element type="xs:string" name="dischargedate"/>
+                                            <xs:element type="xs:string" name="visitdate"/>
+                                            <xs:element name="location">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element type="xs:string" name="typecode"/>
+                                                  <xs:element type="xs:string" name="value"/>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element name="specialty">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element type="xs:string" name="typecode"/>
+                                                  <xs:element type="xs:string" name="value"/>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element name="classtype">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element type="xs:string" name="typecode"/>
+                                                  <xs:element type="xs:string" name="value"/>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element type="xs:float" name="totalbeforegovtsub"/>
+                                            <xs:element type="xs:float" name="govtsubsidy"/>
+                                            <xs:element name="othersubsidies">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="othersubsidies_itm" maxOccurs="unbounded" minOccurs="0">
+                                                    <xs:complexType>
+                                                      <xs:sequence>
+                                                        <xs:element name="othersubsidy">
+                                                          <xs:complexType>
+                                                            <xs:sequence>
+                                                              <xs:element type="xs:string" name="type"/>
+                                                              <xs:element type="xs:float" name="amount"/>
+                                                            </xs:sequence>
+                                                          </xs:complexType>
+                                                        </xs:element>
+                                                      </xs:sequence>
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element type="xs:float" name="discount"/>
+                                            <xs:element type="xs:float" name="specialdiscount"/>
+                                            <xs:element type="xs:float" name="discountsummary"/>
+                                            <xs:element type="xs:float" name="waiversummary"/>
+                                            <xs:element type="xs:float" name="gstadjustments"/>
+                                            <xs:element type="xs:float" name="gstamount"/>
+                                            <xs:element type="xs:float" name="gstpercent"/>
+                                            <xs:element name="gstlist">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="gstlist_itm" maxOccurs="unbounded" minOccurs="0">
+                                                    <xs:complexType>
+                                                      <xs:sequence>
+                                                        <xs:element name="gst">
+                                                          <xs:complexType>
+                                                            <xs:sequence>
+                                                              <xs:element type="xs:float" name="gstamount"/>
+                                                              <xs:element type="xs:float" name="gstpercent"/>
+                                                            </xs:sequence>
+                                                          </xs:complexType>
+                                                        </xs:element>
+                                                      </xs:sequence>
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element type="xs:float" name="gstabsorbed"/>
+                                            <xs:element name="transferredincharges">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="transferredincharges_itm" maxOccurs="unbounded" minOccurs="0">
+                                                    <xs:complexType>
+                                                      <xs:sequence>
+                                                        <xs:element name="transferredincharge">
+                                                          <xs:complexType>
+                                                            <xs:sequence>
+                                                              <xs:element type="xs:string" name="transferredinchargename"/>
+                                                              <xs:element type="xs:string" name="caseno"/>
+                                                              <xs:element type="xs:float" name="amount"/>
+                                                            </xs:sequence>
+                                                          </xs:complexType>
+                                                        </xs:element>
+                                                      </xs:sequence>
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element type="xs:float" name="transferredinchargestotalamt"/>
+                                            <xs:element name="transferredoutcharges">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="transferredoutcharges_itm" maxOccurs="unbounded" minOccurs="0">
+                                                    <xs:complexType>
+                                                      <xs:sequence>
+                                                        <xs:element name="transferredoutcharge">
+                                                          <xs:complexType>
+                                                            <xs:sequence>
+                                                              <xs:element type="xs:string" name="transferredoutchargename"/>
+                                                              <xs:element type="xs:string" name="caseno"/>
+                                                              <xs:element type="xs:float" name="amount"/>
+                                                            </xs:sequence>
+                                                          </xs:complexType>
+                                                        </xs:element>
+                                                      </xs:sequence>
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element type="xs:float" name="transferredoutchargestotalamt"/>
+                                            <xs:element type="xs:float" name="totalaftergovtsub"/>
+                                            <xs:element type="xs:float" name="totalamountexcludinggst"/>
+                                            <xs:element type="xs:string" name="hrn"/>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element name="chargedetails">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="chargecategory">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="chargecategory_itm" maxOccurs="unbounded" minOccurs="0">
+                                                    <xs:complexType>
+                                                      <xs:sequence>
+                                                        <xs:element name="chargessubcategories">
+                                                          <xs:complexType>
+                                                            <xs:sequence>
+                                                              <xs:element name="chargessubcategories_itm" maxOccurs="unbounded" minOccurs="0">
+                                                                <xs:complexType>
+                                                                  <xs:sequence>
+                                                                    <xs:element name="chargesubcategory">
+                                                                      <xs:complexType>
+                                                                        <xs:sequence>
+                                                                          <xs:element name="chargesubcategory_itm" maxOccurs="unbounded" minOccurs="0">
+                                                                            <xs:complexType>
+                                                                              <xs:sequence>
+                                                                                <xs:element name="chargeitems">
+                                                                                  <xs:complexType>
+                                                                                    <xs:sequence>
+                                                                                      <xs:element name="chargeitem">
+                                                                                        <xs:complexType>
+                                                                                          <xs:sequence>
+                                                                                            <xs:element name="chargeitem_itm" maxOccurs="unbounded" minOccurs="0">
+                                                                                              <xs:complexType>
+                                                                                                <xs:sequence>
+                                                                                                  <xs:element type="xs:string" name="description"/>
+                                                                                                  <xs:element type="xs:float" name="qty"/>
+                                                                                                  <xs:element type="xs:string" name="uom"/>
+                                                                                                  <xs:element type="xs:string" name="remarks"/>
+                                                                                                  <xs:element type="xs:float" name="beforegovtsubsidy"/>
+                                                                                                  <xs:element type="xs:float" name="aftergovtsubsidy"/>
+                                                                                                  <xs:element name="chargesindicators">
+                                                                                                    <xs:complexType>
+                                                                                                      <xs:sequence>
+                                                                                                        <xs:element name="chargesindicator">
+                                                                                                          <xs:complexType>
+                                                                                                            <xs:sequence>
+                                                                                                              <xs:element type="xs:string" name="typecode"/>
+                                                                                                              <xs:element type="xs:string" name="value"/>
+                                                                                                            </xs:sequence>
+                                                                                                          </xs:complexType>
+                                                                                                        </xs:element>
+                                                                                                      </xs:sequence>
+                                                                                                    </xs:complexType>
+                                                                                                  </xs:element>
+                                                                                                </xs:sequence>
+                                                                                              </xs:complexType>
+                                                                                            </xs:element>
+                                                                                          </xs:sequence>
+                                                                                        </xs:complexType>
+                                                                                      </xs:element>
+                                                                                    </xs:sequence>
+                                                                                  </xs:complexType>
+                                                                                </xs:element>
+                                                                                <xs:element type="xs:string" name="description"/>
+                                                                              </xs:sequence>
+                                                                            </xs:complexType>
+                                                                          </xs:element>
+                                                                        </xs:sequence>
+                                                                      </xs:complexType>
+                                                                    </xs:element>
+                                                                  </xs:sequence>
+                                                                </xs:complexType>
+                                                              </xs:element>
+                                                            </xs:sequence>
+                                                          </xs:complexType>
+                                                        </xs:element>
+                                                        <xs:element type="xs:string" name="description"/>
+                                                      </xs:sequence>
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="payment">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="paymentsummary">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="paymentschemes">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="paymentschemes_itm" maxOccurs="unbounded" minOccurs="0">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="paymentscheme">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element type="xs:string" name="schemecategory"/>
+                                            <xs:element type="xs:float" name="amount"/>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element type="xs:float" name="amountpayable"/>
+                          <xs:element type="xs:float" name="netpaymentmade"/>
+                          <xs:element type="xs:float" name="adjustments"/>
+                          <xs:element type="xs:float" name="finalamountpayable"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="paymentbycases">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="paymentbycase">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="paymentbycase_itm" maxOccurs="unbounded" minOccurs="0">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element type="xs:string" name="caseno"/>
+                                      <xs:element name="paymentdetails">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="paymentitem">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="paymentitem_itm" maxOccurs="unbounded" minOccurs="0">
+                                                    <xs:complexType>
+                                                      <xs:sequence>
+                                                        <xs:element type="xs:string" name="schemecategory"/>
+                                                        <xs:element type="xs:string" name="schemename"/>
+                                                        <xs:element type="xs:string" name="schemerefno"/>
+                                                        <xs:element type="xs:float" name="amount"/>
+                                                        <xs:element type="xs:string" name="ipcode"/>
+                                                      </xs:sequence>
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="payors">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="payorheader">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="memomessages">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="memomessages_itm" maxOccurs="unbounded" minOccurs="0">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element type="xs:string" name="message"/>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element type="xs:float" name="finalamountpayable"/>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="payordetails">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="payor">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="payor_itm" maxOccurs="unbounded" minOccurs="0">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element type="xs:string" name="name"/>
+                                            <xs:element type="xs:string" name="receiptdate"/>
+                                            <xs:element type="xs:string" name="paymentmode"/>
+                                            <xs:element type="xs:float" name="amount"/>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="outpatient">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="invoiceheader">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="invoicedatetime"/>
+                    <xs:element type="xs:string" name="invoicereferenceno"/>
+                    <xs:element type="xs:string" name="invoicelabel"/>
+                    <xs:element type="xs:string" name="invoicestatus"/>
+                    <xs:element type="xs:string" name="invoicetype"/>
+                    <xs:element type="xs:string" name="sourcesystemid"/>
+                    <xs:element type="xs:string" name="clustercode"/>
+                    <xs:element name="issuedonbehalfof">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:string" name="institutioncode"/>
+                          <xs:element type="xs:string" name="gstregno"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element type="xs:string" name="requesteddatetime"/>
+                    <xs:element type="xs:string" name="isprovisional"/>
+                    <xs:element type="xs:string" name="islatest"/>
+                    <xs:element type="xs:string" name="ismaskingrequired"/>
+                    <xs:element type="xs:string" name="nefrindicator"/>
+                    <xs:element type="xs:string" name="hhblock"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="patientdetails">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="person">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:string" name="fullname"/>
+                          <xs:element type="xs:string" name="altname"/>
+                          <xs:element name="identificationno">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element type="xs:string" name="typecode"/>
+                                <xs:element type="xs:string" name="value"/>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="address">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element type="xs:string" name="line1"/>
+                                <xs:element type="xs:string" name="line2"/>
+                                <xs:element type="xs:string" name="line3"/>
+                                <xs:element type="xs:string" name="line4"/>
+                                <xs:element type="xs:string" name="isunderline"/>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element type="xs:string" name="careofaddressee"/>
+                          <xs:element type="xs:string" name="deceasedindicator"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element type="xs:string" name="claimingindicator"/>
+                    <xs:element type="xs:string" name="hrn"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="thirdpartyinformation">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="name"/>
+                    <xs:element name="address">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:string" name="line1"/>
+                          <xs:element type="xs:string" name="line2"/>
+                          <xs:element type="xs:string" name="line3"/>
+                          <xs:element type="xs:string" name="line4"/>
+                          <xs:element type="xs:string" name="isunderline"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element type="xs:string" name="customercode"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="charges">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="chargesbycases">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="chargesbycase">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="chargesbycase_itm" maxOccurs="unbounded" minOccurs="0">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element type="xs:string" name="caseno"/>
+                                      <xs:element name="chargeheader">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element type="xs:string" name="institutioncode"/>
+                                            <xs:element type="xs:string" name="defaultinstitutioncode"/>
+                                            <xs:element type="xs:string" name="admissiondate"/>
+                                            <xs:element type="xs:string" name="dischargedate"/>
+                                            <xs:element type="xs:string" name="visitdate"/>
+                                            <xs:element name="location">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element type="xs:string" name="typecode"/>
+                                                  <xs:element type="xs:string" name="value"/>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element name="specialty">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element type="xs:string" name="typecode"/>
+                                                  <xs:element type="xs:string" name="value"/>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element name="classtype">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element type="xs:string" name="typecode"/>
+                                                  <xs:element type="xs:string" name="value"/>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element type="xs:float" name="totalbeforegovtsub"/>
+                                            <xs:element type="xs:float" name="govtsubsidy"/>
+                                            <xs:element name="othersubsidies">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="othersubsidies_itm" maxOccurs="unbounded" minOccurs="0">
+                                                    <xs:complexType>
+                                                      <xs:sequence>
+                                                        <xs:element name="othersubsidy">
+                                                          <xs:complexType>
+                                                            <xs:sequence>
+                                                              <xs:element type="xs:string" name="type"/>
+                                                              <xs:element type="xs:float" name="amount"/>
+                                                            </xs:sequence>
+                                                          </xs:complexType>
+                                                        </xs:element>
+                                                      </xs:sequence>
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element type="xs:float" name="discount"/>
+                                            <xs:element type="xs:float" name="specialdiscount"/>
+                                            <xs:element type="xs:float" name="discountsummary"/>
+                                            <xs:element type="xs:float" name="waiversummary"/>
+                                            <xs:element type="xs:float" name="gstadjustments"/>
+                                            <xs:element type="xs:float" name="gstamount"/>
+                                            <xs:element type="xs:float" name="gstpercent"/>
+                                            <xs:element name="gstlist">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="gstlist_itm" maxOccurs="unbounded" minOccurs="0">
+                                                    <xs:complexType>
+                                                      <xs:sequence>
+                                                        <xs:element name="gst">
+                                                          <xs:complexType>
+                                                            <xs:sequence>
+                                                              <xs:element type="xs:float" name="gstamount"/>
+                                                              <xs:element type="xs:float" name="gstpercent"/>
+                                                            </xs:sequence>
+                                                          </xs:complexType>
+                                                        </xs:element>
+                                                      </xs:sequence>
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element type="xs:float" name="gstabsorbed"/>
+                                            <xs:element name="transferredincharges">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="transferredincharges_itm" maxOccurs="unbounded" minOccurs="0">
+                                                    <xs:complexType>
+                                                      <xs:sequence>
+                                                        <xs:element name="transferredincharge">
+                                                          <xs:complexType>
+                                                            <xs:sequence>
+                                                              <xs:element type="xs:string" name="transferredinchargename"/>
+                                                              <xs:element type="xs:string" name="caseno"/>
+                                                              <xs:element type="xs:float" name="amount"/>
+                                                            </xs:sequence>
+                                                          </xs:complexType>
+                                                        </xs:element>
+                                                      </xs:sequence>
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element type="xs:float" name="transferredinchargestotalamt"/>
+                                            <xs:element name="transferredoutcharges">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="transferredoutcharges_itm" maxOccurs="unbounded" minOccurs="0">
+                                                    <xs:complexType>
+                                                      <xs:sequence>
+                                                        <xs:element name="transferredoutcharge">
+                                                          <xs:complexType>
+                                                            <xs:sequence>
+                                                              <xs:element type="xs:string" name="transferredoutchargename"/>
+                                                              <xs:element type="xs:string" name="caseno"/>
+                                                              <xs:element type="xs:float" name="amount"/>
+                                                            </xs:sequence>
+                                                          </xs:complexType>
+                                                        </xs:element>
+                                                      </xs:sequence>
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element type="xs:float" name="transferredoutchargestotalamt"/>
+                                            <xs:element type="xs:float" name="totalaftergovtsub"/>
+                                            <xs:element type="xs:float" name="totalamountexcludinggst"/>
+                                            <xs:element type="xs:string" name="hrn"/>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element name="chargedetails">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="chargecategory">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="chargecategory_itm" maxOccurs="unbounded" minOccurs="0">
+                                                    <xs:complexType>
+                                                      <xs:sequence>
+                                                        <xs:element name="chargessubcategories">
+                                                          <xs:complexType>
+                                                            <xs:sequence>
+                                                              <xs:element name="chargessubcategories_itm" maxOccurs="unbounded" minOccurs="0">
+                                                                <xs:complexType>
+                                                                  <xs:sequence>
+                                                                    <xs:element name="chargesubcategory">
+                                                                      <xs:complexType>
+                                                                        <xs:sequence>
+                                                                          <xs:element name="chargesubcategory_itm" maxOccurs="unbounded" minOccurs="0">
+                                                                            <xs:complexType>
+                                                                              <xs:sequence>
+                                                                                <xs:element name="chargeitems">
+                                                                                  <xs:complexType>
+                                                                                    <xs:sequence>
+                                                                                      <xs:element name="chargeitem">
+                                                                                        <xs:complexType>
+                                                                                          <xs:sequence>
+                                                                                            <xs:element name="chargeitem_itm" maxOccurs="unbounded" minOccurs="0">
+                                                                                              <xs:complexType>
+                                                                                                <xs:sequence>
+                                                                                                  <xs:element type="xs:string" name="description"/>
+                                                                                                  <xs:element type="xs:float" name="qty"/>
+                                                                                                  <xs:element type="xs:string" name="uom"/>
+                                                                                                  <xs:element type="xs:string" name="remarks"/>
+                                                                                                  <xs:element type="xs:float" name="beforegovtsubsidy"/>
+                                                                                                  <xs:element type="xs:float" name="aftergovtsubsidy"/>
+                                                                                                  <xs:element name="chargesindicators">
+                                                                                                    <xs:complexType>
+                                                                                                      <xs:sequence>
+                                                                                                        <xs:element name="chargesindicator">
+                                                                                                          <xs:complexType>
+                                                                                                            <xs:sequence>
+                                                                                                              <xs:element type="xs:string" name="typecode"/>
+                                                                                                              <xs:element type="xs:string" name="value"/>
+                                                                                                            </xs:sequence>
+                                                                                                          </xs:complexType>
+                                                                                                        </xs:element>
+                                                                                                      </xs:sequence>
+                                                                                                    </xs:complexType>
+                                                                                                  </xs:element>
+                                                                                                </xs:sequence>
+                                                                                              </xs:complexType>
+                                                                                            </xs:element>
+                                                                                          </xs:sequence>
+                                                                                        </xs:complexType>
+                                                                                      </xs:element>
+                                                                                    </xs:sequence>
+                                                                                  </xs:complexType>
+                                                                                </xs:element>
+                                                                                <xs:element type="xs:string" name="description"/>
+                                                                              </xs:sequence>
+                                                                            </xs:complexType>
+                                                                          </xs:element>
+                                                                        </xs:sequence>
+                                                                      </xs:complexType>
+                                                                    </xs:element>
+                                                                  </xs:sequence>
+                                                                </xs:complexType>
+                                                              </xs:element>
+                                                            </xs:sequence>
+                                                          </xs:complexType>
+                                                        </xs:element>
+                                                        <xs:element type="xs:string" name="description"/>
+                                                      </xs:sequence>
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="payment">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="paymentsummary">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="paymentschemes">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="paymentschemes_itm" maxOccurs="unbounded" minOccurs="0">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="paymentscheme">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element type="xs:string" name="schemecategory"/>
+                                            <xs:element type="xs:float" name="amount"/>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element type="xs:float" name="amountpayable"/>
+                          <xs:element type="xs:float" name="netpaymentmade"/>
+                          <xs:element type="xs:float" name="adjustments"/>
+                          <xs:element type="xs:float" name="finalamountpayable"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="paymentbycases">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="paymentbycase">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="paymentbycase_itm" maxOccurs="unbounded" minOccurs="0">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element type="xs:string" name="caseno"/>
+                                      <xs:element name="paymentdetails">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="paymentitem">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="paymentitem_itm" maxOccurs="unbounded" minOccurs="0">
+                                                    <xs:complexType>
+                                                      <xs:sequence>
+                                                        <xs:element type="xs:string" name="schemecategory"/>
+                                                        <xs:element type="xs:string" name="schemename"/>
+                                                        <xs:element type="xs:string" name="schemerefno"/>
+                                                        <xs:element type="xs:float" name="amount"/>
+                                                        <xs:element type="xs:string" name="ipcode"/>
+                                                      </xs:sequence>
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="payors">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="payordetails">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="payor">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="payor_itm" maxOccurs="unbounded" minOccurs="0">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element type="xs:string" name="name"/>
+                                            <xs:element type="xs:string" name="receiptdate"/>
+                                            <xs:element type="xs:string" name="paymentmode"/>
+                                            <xs:element type="xs:float" name="amount"/>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ininpatient">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="invoiceheader">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="invoicedatetime"/>
+                    <xs:element type="xs:string" name="invoicereferenceno"/>
+                    <xs:element type="xs:string" name="invoicelabel"/>
+                    <xs:element type="xs:string" name="invoicestatus"/>
+                    <xs:element type="xs:string" name="invoicetype"/>
+                    <xs:element type="xs:string" name="sourcesystemid"/>
+                    <xs:element type="xs:string" name="clustercode"/>
+                    <xs:element name="issuedonbehalfof">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:string" name="institutioncode"/>
+                          <xs:element type="xs:string" name="gstregno"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element type="xs:string" name="requesteddatetime"/>
+                    <xs:element type="xs:string" name="isprovisional"/>
+                    <xs:element type="xs:string" name="islatest"/>
+                    <xs:element type="xs:string" name="ismaskingrequired"/>
+                    <xs:element type="xs:string" name="nefrindicator"/>
+                    <xs:element type="xs:string" name="hhblock"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="patientdetails">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="person">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:string" name="fullname"/>
+                          <xs:element type="xs:string" name="altname"/>
+                          <xs:element name="identificationno">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element type="xs:string" name="typecode"/>
+                                <xs:element type="xs:string" name="value"/>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="address">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element type="xs:string" name="line1"/>
+                                <xs:element type="xs:string" name="line2"/>
+                                <xs:element type="xs:string" name="line3"/>
+                                <xs:element type="xs:string" name="line4"/>
+                                <xs:element type="xs:string" name="isunderline"/>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element type="xs:string" name="careofaddressee"/>
+                          <xs:element type="xs:string" name="deceasedindicator"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element type="xs:string" name="claimingindicator"/>
+                    <xs:element type="xs:string" name="hrn"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="thirdpartyinformation">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="name"/>
+                    <xs:element name="address">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:string" name="line1"/>
+                          <xs:element type="xs:string" name="line2"/>
+                          <xs:element type="xs:string" name="line3"/>
+                          <xs:element type="xs:string" name="line4"/>
+                          <xs:element type="xs:string" name="isunderline"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element type="xs:string" name="customercode"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="charges">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="chargessummary">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:float" name="totalbeforegovtsub"/>
+                          <xs:element type="xs:float" name="govtsubsidy"/>
+                          <xs:element name="othersubsidies">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="othersubsidies_itm" maxOccurs="unbounded" minOccurs="0">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="othersubsidy">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element type="xs:string" name="type"/>
+                                            <xs:element type="xs:float" name="amount"/>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element type="xs:float" name="discount"/>
+                          <xs:element type="xs:float" name="specialdiscount"/>
+                          <xs:element type="xs:float" name="discountsummary"/>
+                          <xs:element type="xs:float" name="waiversummary"/>
+                          <xs:element type="xs:float" name="gstadjustments"/>
+                          <xs:element type="xs:float" name="gstamount"/>
+                          <xs:element type="xs:float" name="gstpercent"/>
+                          <xs:element name="gstlist">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="gstlist_itm" maxOccurs="unbounded" minOccurs="0">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="gst">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element type="xs:float" name="gstamount"/>
+                                            <xs:element type="xs:float" name="gstpercent"/>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element type="xs:float" name="gstabsorbed"/>
+                          <xs:element name="transferredincharges">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="transferredincharges_itm" maxOccurs="unbounded" minOccurs="0">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="transferredincharge">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element type="xs:string" name="transferredinchargename"/>
+                                            <xs:element type="xs:string" name="caseno"/>
+                                            <xs:element type="xs:float" name="amount"/>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element type="xs:float" name="transferredinchargestotalamt"/>
+                          <xs:element name="transferredoutcharges">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="transferredoutcharges_itm" maxOccurs="unbounded" minOccurs="0">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="transferredoutcharge">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element type="xs:string" name="transferredoutchargename"/>
+                                            <xs:element type="xs:string" name="caseno"/>
+                                            <xs:element type="xs:float" name="amount"/>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element type="xs:float" name="transferredoutchargestotalamt"/>
+                          <xs:element type="xs:float" name="totalaftergovtsub"/>
+                          <xs:element type="xs:float" name="totalamountexcludinggst"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="chargessummarybyinstitutuions">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="chargessummarybyinstitutuion">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="chargessummarybyinstitutuion_itm" maxOccurs="unbounded" minOccurs="0">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element type="xs:string" name="institutioncode"/>
+                                      <xs:element type="xs:float" name="totalbeforegovtsub"/>
+                                      <xs:element type="xs:float" name="govtsubsidy"/>
+                                      <xs:element name="othersubsidies">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="othersubsidies_itm" maxOccurs="unbounded" minOccurs="0">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="othersubsidy">
+                                                    <xs:complexType>
+                                                      <xs:sequence>
+                                                        <xs:element type="xs:string" name="type"/>
+                                                        <xs:element type="xs:float" name="amount"/>
+                                                      </xs:sequence>
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element type="xs:float" name="discount"/>
+                                      <xs:element type="xs:float" name="specialdiscount"/>
+                                      <xs:element type="xs:float" name="discountsummary"/>
+                                      <xs:element type="xs:float" name="waiversummary"/>
+                                      <xs:element type="xs:float" name="gstadjustments"/>
+                                      <xs:element type="xs:float" name="gstamount"/>
+                                      <xs:element type="xs:float" name="gstpercent"/>
+                                      <xs:element name="gstlist">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="gstlist_itm" maxOccurs="unbounded" minOccurs="0">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="gst">
+                                                    <xs:complexType>
+                                                      <xs:sequence>
+                                                        <xs:element type="xs:float" name="gstamount"/>
+                                                        <xs:element type="xs:float" name="gstpercent"/>
+                                                      </xs:sequence>
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element type="xs:float" name="gstabsorbed"/>
+                                      <xs:element name="transferredincharges">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="transferredincharges_itm" maxOccurs="unbounded" minOccurs="0">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="transferredincharge">
+                                                    <xs:complexType>
+                                                      <xs:sequence>
+                                                        <xs:element type="xs:string" name="transferredinchargename"/>
+                                                        <xs:element type="xs:string" name="caseno"/>
+                                                        <xs:element type="xs:float" name="amount"/>
+                                                      </xs:sequence>
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element type="xs:float" name="transferredinchargestotalamt"/>
+                                      <xs:element name="transferredoutcharges">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="transferredoutcharges_itm" maxOccurs="unbounded" minOccurs="0">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="transferredoutcharge">
+                                                    <xs:complexType>
+                                                      <xs:sequence>
+                                                        <xs:element type="xs:string" name="transferredoutchargename"/>
+                                                        <xs:element type="xs:string" name="caseno"/>
+                                                        <xs:element type="xs:float" name="amount"/>
+                                                      </xs:sequence>
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element type="xs:float" name="transferredoutchargestotalamt"/>
+                                      <xs:element type="xs:float" name="totalaftergovtsub"/>
+                                      <xs:element type="xs:float" name="totalamountexcludinggst"/>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="chargesbycases">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="chargesbycase">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="chargesbycase_itm" maxOccurs="unbounded" minOccurs="0">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element type="xs:string" name="caseno"/>
+                                      <xs:element name="chargeheader">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element type="xs:string" name="institutioncode"/>
+                                            <xs:element type="xs:string" name="defaultinstitutioncode"/>
+                                            <xs:element type="xs:string" name="admissiondate"/>
+                                            <xs:element type="xs:string" name="dischargedate"/>
+                                            <xs:element type="xs:string" name="visitdate"/>
+                                            <xs:element name="location">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element type="xs:string" name="typecode"/>
+                                                  <xs:element type="xs:string" name="value"/>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element name="specialty">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element type="xs:string" name="typecode"/>
+                                                  <xs:element type="xs:string" name="value"/>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element name="classtype">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element type="xs:string" name="typecode"/>
+                                                  <xs:element type="xs:string" name="value"/>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element type="xs:float" name="totalbeforegovtsub"/>
+                                            <xs:element type="xs:float" name="govtsubsidy"/>
+                                            <xs:element name="othersubsidies">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="othersubsidies_itm" maxOccurs="unbounded" minOccurs="0">
+                                                    <xs:complexType>
+                                                      <xs:sequence>
+                                                        <xs:element name="othersubsidy">
+                                                          <xs:complexType>
+                                                            <xs:sequence>
+                                                              <xs:element type="xs:string" name="type"/>
+                                                              <xs:element type="xs:float" name="amount"/>
+                                                            </xs:sequence>
+                                                          </xs:complexType>
+                                                        </xs:element>
+                                                      </xs:sequence>
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element type="xs:float" name="discount"/>
+                                            <xs:element type="xs:float" name="specialdiscount"/>
+                                            <xs:element type="xs:float" name="discountsummary"/>
+                                            <xs:element type="xs:float" name="waiversummary"/>
+                                            <xs:element type="xs:float" name="gstadjustments"/>
+                                            <xs:element type="xs:float" name="gstamount"/>
+                                            <xs:element type="xs:float" name="gstpercent"/>
+                                            <xs:element name="gstlist">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="gstlist_itm" maxOccurs="unbounded" minOccurs="0">
+                                                    <xs:complexType>
+                                                      <xs:sequence>
+                                                        <xs:element name="gst">
+                                                          <xs:complexType>
+                                                            <xs:sequence>
+                                                              <xs:element type="xs:float" name="gstamount"/>
+                                                              <xs:element type="xs:float" name="gstpercent"/>
+                                                            </xs:sequence>
+                                                          </xs:complexType>
+                                                        </xs:element>
+                                                      </xs:sequence>
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element type="xs:float" name="gstabsorbed"/>
+                                            <xs:element name="transferredincharges">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="transferredincharges_itm" maxOccurs="unbounded" minOccurs="0">
+                                                    <xs:complexType>
+                                                      <xs:sequence>
+                                                        <xs:element name="transferredincharge">
+                                                          <xs:complexType>
+                                                            <xs:sequence>
+                                                              <xs:element type="xs:string" name="transferredinchargename"/>
+                                                              <xs:element type="xs:string" name="caseno"/>
+                                                              <xs:element type="xs:float" name="amount"/>
+                                                            </xs:sequence>
+                                                          </xs:complexType>
+                                                        </xs:element>
+                                                      </xs:sequence>
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element type="xs:float" name="transferredinchargestotalamt"/>
+                                            <xs:element name="transferredoutcharges">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="transferredoutcharges_itm" maxOccurs="unbounded" minOccurs="0">
+                                                    <xs:complexType>
+                                                      <xs:sequence>
+                                                        <xs:element name="transferredoutcharge">
+                                                          <xs:complexType>
+                                                            <xs:sequence>
+                                                              <xs:element type="xs:string" name="transferredoutchargename"/>
+                                                              <xs:element type="xs:string" name="caseno"/>
+                                                              <xs:element type="xs:float" name="amount"/>
+                                                            </xs:sequence>
+                                                          </xs:complexType>
+                                                        </xs:element>
+                                                      </xs:sequence>
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element type="xs:float" name="transferredoutchargestotalamt"/>
+                                            <xs:element type="xs:float" name="totalaftergovtsub"/>
+                                            <xs:element type="xs:float" name="totalamountexcludinggst"/>
+                                            <xs:element type="xs:string" name="hrn"/>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element name="chargedetails">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="chargecategory">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="chargecategory_itm" maxOccurs="unbounded" minOccurs="0">
+                                                    <xs:complexType>
+                                                      <xs:sequence>
+                                                        <xs:element name="chargessubcategories">
+                                                          <xs:complexType>
+                                                            <xs:sequence>
+                                                              <xs:element name="chargessubcategories_itm" maxOccurs="unbounded" minOccurs="0">
+                                                                <xs:complexType>
+                                                                  <xs:sequence>
+                                                                    <xs:element name="chargesubcategory">
+                                                                      <xs:complexType>
+                                                                        <xs:sequence>
+                                                                          <xs:element name="chargesubcategory_itm" maxOccurs="unbounded" minOccurs="0">
+                                                                            <xs:complexType>
+                                                                              <xs:sequence>
+                                                                                <xs:element name="chargeitems">
+                                                                                  <xs:complexType>
+                                                                                    <xs:sequence>
+                                                                                      <xs:element name="chargeitem">
+                                                                                        <xs:complexType>
+                                                                                          <xs:sequence>
+                                                                                            <xs:element name="chargeitem_itm" maxOccurs="unbounded" minOccurs="0">
+                                                                                              <xs:complexType>
+                                                                                                <xs:sequence>
+                                                                                                  <xs:element type="xs:string" name="description"/>
+                                                                                                  <xs:element type="xs:float" name="qty"/>
+                                                                                                  <xs:element type="xs:string" name="uom"/>
+                                                                                                  <xs:element type="xs:string" name="remarks"/>
+                                                                                                  <xs:element type="xs:float" name="beforegovtsubsidy"/>
+                                                                                                  <xs:element type="xs:float" name="aftergovtsubsidy"/>
+                                                                                                  <xs:element name="chargesindicators">
+                                                                                                    <xs:complexType>
+                                                                                                      <xs:sequence>
+                                                                                                        <xs:element name="chargesindicator">
+                                                                                                          <xs:complexType>
+                                                                                                            <xs:sequence>
+                                                                                                              <xs:element type="xs:string" name="typecode"/>
+                                                                                                              <xs:element type="xs:string" name="value"/>
+                                                                                                            </xs:sequence>
+                                                                                                          </xs:complexType>
+                                                                                                        </xs:element>
+                                                                                                      </xs:sequence>
+                                                                                                    </xs:complexType>
+                                                                                                  </xs:element>
+                                                                                                </xs:sequence>
+                                                                                              </xs:complexType>
+                                                                                            </xs:element>
+                                                                                          </xs:sequence>
+                                                                                        </xs:complexType>
+                                                                                      </xs:element>
+                                                                                    </xs:sequence>
+                                                                                  </xs:complexType>
+                                                                                </xs:element>
+                                                                                <xs:element type="xs:string" name="description"/>
+                                                                              </xs:sequence>
+                                                                            </xs:complexType>
+                                                                          </xs:element>
+                                                                        </xs:sequence>
+                                                                      </xs:complexType>
+                                                                    </xs:element>
+                                                                  </xs:sequence>
+                                                                </xs:complexType>
+                                                              </xs:element>
+                                                            </xs:sequence>
+                                                          </xs:complexType>
+                                                        </xs:element>
+                                                        <xs:element type="xs:string" name="description"/>
+                                                      </xs:sequence>
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="payment">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="paymentsummary">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="paymentschemes">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="paymentschemes_itm" maxOccurs="unbounded" minOccurs="0">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="paymentscheme">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element type="xs:string" name="schemecategory"/>
+                                            <xs:element type="xs:float" name="amount"/>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element type="xs:float" name="amountpayable"/>
+                          <xs:element type="xs:float" name="netpaymentmade"/>
+                          <xs:element type="xs:float" name="adjustments"/>
+                          <xs:element type="xs:float" name="finalamountpayable"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="paymentsummarybyinstitutions">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="paymentsummarybyinstitution">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="paymentsummarybyinstitution_itm" maxOccurs="unbounded" minOccurs="0">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element type="xs:string" name="institutioncode"/>
+                                      <xs:element name="paymentschemes">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="paymentschemes_itm" maxOccurs="unbounded" minOccurs="0">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="paymentscheme">
+                                                    <xs:complexType>
+                                                      <xs:sequence>
+                                                        <xs:element type="xs:string" name="schemecategory"/>
+                                                        <xs:element type="xs:float" name="amount"/>
+                                                      </xs:sequence>
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element type="xs:float" name="amountpayable"/>
+                                      <xs:element type="xs:float" name="netpaymentmade"/>
+                                      <xs:element type="xs:float" name="adjustments"/>
+                                      <xs:element type="xs:float" name="finalamountpayable"/>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="paymentbycases">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="paymentbycase">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="paymentbycase_itm" maxOccurs="unbounded" minOccurs="0">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element type="xs:string" name="caseno"/>
+                                      <xs:element name="paymentdetails">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="paymentitem">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="paymentitem_itm" maxOccurs="unbounded" minOccurs="0">
+                                                    <xs:complexType>
+                                                      <xs:sequence>
+                                                        <xs:element type="xs:string" name="schemecategory"/>
+                                                        <xs:element type="xs:string" name="schemename"/>
+                                                        <xs:element type="xs:string" name="schemerefno"/>
+                                                        <xs:element type="xs:float" name="amount"/>
+                                                        <xs:element type="xs:string" name="ipcode"/>
+                                                      </xs:sequence>
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="payors">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="payorheader">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="memomessages">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="memomessages_itm" maxOccurs="unbounded" minOccurs="0">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element type="xs:string" name="message"/>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element type="xs:float" name="finalamountpayable"/>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="payordetails">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="payor">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="payor_itm" maxOccurs="unbounded" minOccurs="0">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element type="xs:string" name="name"/>
+                                            <xs:element type="xs:string" name="receiptdate"/>
+                                            <xs:element type="xs:string" name="paymentmode"/>
+                                            <xs:element type="xs:float" name="amount"/>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="outoutpatient">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="invoiceheader">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="invoicedatetime"/>
+                    <xs:element type="xs:string" name="invoicereferenceno"/>
+                    <xs:element type="xs:string" name="invoicelabel"/>
+                    <xs:element type="xs:string" name="invoicestatus"/>
+                    <xs:element type="xs:string" name="invoicetype"/>
+                    <xs:element type="xs:string" name="sourcesystemid"/>
+                    <xs:element type="xs:string" name="clustercode"/>
+                    <xs:element name="issuedonbehalfof">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:string" name="institutioncode"/>
+                          <xs:element type="xs:string" name="gstregno"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element type="xs:string" name="requesteddatetime"/>
+                    <xs:element type="xs:string" name="isprovisional"/>
+                    <xs:element type="xs:string" name="islatest"/>
+                    <xs:element type="xs:string" name="ismaskingrequired"/>
+                    <xs:element type="xs:string" name="nefrindicator"/>
+                    <xs:element type="xs:string" name="hhblock"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="patientdetails">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="person">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:string" name="fullname"/>
+                          <xs:element type="xs:string" name="altname"/>
+                          <xs:element name="identificationno">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element type="xs:string" name="typecode"/>
+                                <xs:element type="xs:string" name="value"/>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="address">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element type="xs:string" name="line1"/>
+                                <xs:element type="xs:string" name="line2"/>
+                                <xs:element type="xs:string" name="line3"/>
+                                <xs:element type="xs:string" name="line4"/>
+                                <xs:element type="xs:string" name="isunderline"/>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element type="xs:string" name="careofaddressee"/>
+                          <xs:element type="xs:string" name="deceasedindicator"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element type="xs:string" name="claimingindicator"/>
+                    <xs:element type="xs:string" name="hrn"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="thirdpartyinformation">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="name"/>
+                    <xs:element name="address">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:string" name="line1"/>
+                          <xs:element type="xs:string" name="line2"/>
+                          <xs:element type="xs:string" name="line3"/>
+                          <xs:element type="xs:string" name="line4"/>
+                          <xs:element type="xs:string" name="isunderline"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element type="xs:string" name="customercode"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="charges">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="chargessummary">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:float" name="totalbeforegovtsub"/>
+                          <xs:element type="xs:float" name="govtsubsidy"/>
+                          <xs:element name="othersubsidies">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="othersubsidies_itm" maxOccurs="unbounded" minOccurs="0">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="othersubsidy">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element type="xs:string" name="type"/>
+                                            <xs:element type="xs:float" name="amount"/>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element type="xs:float" name="discount"/>
+                          <xs:element type="xs:float" name="specialdiscount"/>
+                          <xs:element type="xs:float" name="discountsummary"/>
+                          <xs:element type="xs:float" name="waiversummary"/>
+                          <xs:element type="xs:float" name="gstadjustments"/>
+                          <xs:element type="xs:float" name="gstamount"/>
+                          <xs:element type="xs:float" name="gstpercent"/>
+                          <xs:element name="gstlist">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="gstlist_itm" maxOccurs="unbounded" minOccurs="0">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="gst">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element type="xs:float" name="gstamount"/>
+                                            <xs:element type="xs:float" name="gstpercent"/>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element type="xs:float" name="gstabsorbed"/>
+                          <xs:element name="transferredincharges">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="transferredincharges_itm" maxOccurs="unbounded" minOccurs="0">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="transferredincharge">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element type="xs:string" name="transferredinchargename"/>
+                                            <xs:element type="xs:string" name="caseno"/>
+                                            <xs:element type="xs:float" name="amount"/>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element type="xs:float" name="transferredinchargestotalamt"/>
+                          <xs:element name="transferredoutcharges">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="transferredoutcharges_itm" maxOccurs="unbounded" minOccurs="0">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="transferredoutcharge">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element type="xs:string" name="transferredoutchargename"/>
+                                            <xs:element type="xs:string" name="caseno"/>
+                                            <xs:element type="xs:float" name="amount"/>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element type="xs:float" name="transferredoutchargestotalamt"/>
+                          <xs:element type="xs:float" name="totalaftergovtsub"/>
+                          <xs:element type="xs:float" name="totalamountexcludinggst"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="chargesbycases">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="chargesbycase">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="chargesbycase_itm" maxOccurs="unbounded" minOccurs="0">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element type="xs:string" name="caseno"/>
+                                      <xs:element name="chargeheader">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element type="xs:string" name="institutioncode"/>
+                                            <xs:element type="xs:string" name="defaultinstitutioncode"/>
+                                            <xs:element type="xs:string" name="admissiondate"/>
+                                            <xs:element type="xs:string" name="dischargedate"/>
+                                            <xs:element type="xs:string" name="visitdate"/>
+                                            <xs:element name="location">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element type="xs:string" name="typecode"/>
+                                                  <xs:element type="xs:string" name="value"/>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element name="specialty">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element type="xs:string" name="typecode"/>
+                                                  <xs:element type="xs:string" name="value"/>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element name="classtype">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element type="xs:string" name="typecode"/>
+                                                  <xs:element type="xs:string" name="value"/>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element type="xs:float" name="totalbeforegovtsub"/>
+                                            <xs:element type="xs:float" name="govtsubsidy"/>
+                                            <xs:element name="othersubsidies">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="othersubsidies_itm" maxOccurs="unbounded" minOccurs="0">
+                                                    <xs:complexType>
+                                                      <xs:sequence>
+                                                        <xs:element name="othersubsidy">
+                                                          <xs:complexType>
+                                                            <xs:sequence>
+                                                              <xs:element type="xs:string" name="type"/>
+                                                              <xs:element type="xs:float" name="amount"/>
+                                                            </xs:sequence>
+                                                          </xs:complexType>
+                                                        </xs:element>
+                                                      </xs:sequence>
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element type="xs:float" name="discount"/>
+                                            <xs:element type="xs:float" name="specialdiscount"/>
+                                            <xs:element type="xs:float" name="discountsummary"/>
+                                            <xs:element type="xs:float" name="waiversummary"/>
+                                            <xs:element type="xs:float" name="gstadjustments"/>
+                                            <xs:element type="xs:float" name="gstamount"/>
+                                            <xs:element type="xs:float" name="gstpercent"/>
+                                            <xs:element name="gstlist">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="gstlist_itm" maxOccurs="unbounded" minOccurs="0">
+                                                    <xs:complexType>
+                                                      <xs:sequence>
+                                                        <xs:element name="gst">
+                                                          <xs:complexType>
+                                                            <xs:sequence>
+                                                              <xs:element type="xs:float" name="gstamount"/>
+                                                              <xs:element type="xs:float" name="gstpercent"/>
+                                                            </xs:sequence>
+                                                          </xs:complexType>
+                                                        </xs:element>
+                                                      </xs:sequence>
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element type="xs:float" name="gstabsorbed"/>
+                                            <xs:element name="transferredincharges">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="transferredincharges_itm" maxOccurs="unbounded" minOccurs="0">
+                                                    <xs:complexType>
+                                                      <xs:sequence>
+                                                        <xs:element name="transferredincharge">
+                                                          <xs:complexType>
+                                                            <xs:sequence>
+                                                              <xs:element type="xs:string" name="transferredinchargename"/>
+                                                              <xs:element type="xs:string" name="caseno"/>
+                                                              <xs:element type="xs:float" name="amount"/>
+                                                            </xs:sequence>
+                                                          </xs:complexType>
+                                                        </xs:element>
+                                                      </xs:sequence>
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element type="xs:float" name="transferredinchargestotalamt"/>
+                                            <xs:element name="transferredoutcharges">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="transferredoutcharges_itm" maxOccurs="unbounded" minOccurs="0">
+                                                    <xs:complexType>
+                                                      <xs:sequence>
+                                                        <xs:element name="transferredoutcharge">
+                                                          <xs:complexType>
+                                                            <xs:sequence>
+                                                              <xs:element type="xs:string" name="transferredoutchargename"/>
+                                                              <xs:element type="xs:string" name="caseno"/>
+                                                              <xs:element type="xs:float" name="amount"/>
+                                                            </xs:sequence>
+                                                          </xs:complexType>
+                                                        </xs:element>
+                                                      </xs:sequence>
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element type="xs:float" name="transferredoutchargestotalamt"/>
+                                            <xs:element type="xs:float" name="totalaftergovtsub"/>
+                                            <xs:element type="xs:float" name="totalamountexcludinggst"/>
+                                            <xs:element type="xs:string" name="hrn"/>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element name="chargedetails">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="chargecategory">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="chargecategory_itm" maxOccurs="unbounded" minOccurs="0">
+                                                    <xs:complexType>
+                                                      <xs:sequence>
+                                                        <xs:element name="chargessubcategories">
+                                                          <xs:complexType>
+                                                            <xs:sequence>
+                                                              <xs:element name="chargessubcategories_itm" maxOccurs="unbounded" minOccurs="0">
+                                                                <xs:complexType>
+                                                                  <xs:sequence>
+                                                                    <xs:element name="chargesubcategory">
+                                                                      <xs:complexType>
+                                                                        <xs:sequence>
+                                                                          <xs:element name="chargesubcategory_itm" maxOccurs="unbounded" minOccurs="0">
+                                                                            <xs:complexType>
+                                                                              <xs:sequence>
+                                                                                <xs:element name="chargeitems">
+                                                                                  <xs:complexType>
+                                                                                    <xs:sequence>
+                                                                                      <xs:element name="chargeitem">
+                                                                                        <xs:complexType>
+                                                                                          <xs:sequence>
+                                                                                            <xs:element name="chargeitem_itm" maxOccurs="unbounded" minOccurs="0">
+                                                                                              <xs:complexType>
+                                                                                                <xs:sequence>
+                                                                                                  <xs:element type="xs:string" name="description"/>
+                                                                                                  <xs:element type="xs:float" name="qty"/>
+                                                                                                  <xs:element type="xs:string" name="uom"/>
+                                                                                                  <xs:element type="xs:string" name="remarks"/>
+                                                                                                  <xs:element type="xs:float" name="beforegovtsubsidy"/>
+                                                                                                  <xs:element type="xs:float" name="aftergovtsubsidy"/>
+                                                                                                  <xs:element name="chargesindicators">
+                                                                                                    <xs:complexType>
+                                                                                                      <xs:sequence>
+                                                                                                        <xs:element name="chargesindicator">
+                                                                                                          <xs:complexType>
+                                                                                                            <xs:sequence>
+                                                                                                              <xs:element type="xs:string" name="typecode"/>
+                                                                                                              <xs:element type="xs:string" name="value"/>
+                                                                                                            </xs:sequence>
+                                                                                                          </xs:complexType>
+                                                                                                        </xs:element>
+                                                                                                      </xs:sequence>
+                                                                                                    </xs:complexType>
+                                                                                                  </xs:element>
+                                                                                                </xs:sequence>
+                                                                                              </xs:complexType>
+                                                                                            </xs:element>
+                                                                                          </xs:sequence>
+                                                                                        </xs:complexType>
+                                                                                      </xs:element>
+                                                                                    </xs:sequence>
+                                                                                  </xs:complexType>
+                                                                                </xs:element>
+                                                                                <xs:element type="xs:string" name="description"/>
+                                                                              </xs:sequence>
+                                                                            </xs:complexType>
+                                                                          </xs:element>
+                                                                        </xs:sequence>
+                                                                      </xs:complexType>
+                                                                    </xs:element>
+                                                                  </xs:sequence>
+                                                                </xs:complexType>
+                                                              </xs:element>
+                                                            </xs:sequence>
+                                                          </xs:complexType>
+                                                        </xs:element>
+                                                        <xs:element type="xs:string" name="description"/>
+                                                      </xs:sequence>
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="payment">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="paymentsummary">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="paymentschemes">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="paymentschemes_itm" maxOccurs="unbounded" minOccurs="0">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="paymentscheme">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element type="xs:string" name="schemecategory"/>
+                                            <xs:element type="xs:float" name="amount"/>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element type="xs:float" name="amountpayable"/>
+                          <xs:element type="xs:float" name="netpaymentmade"/>
+                          <xs:element type="xs:float" name="adjustments"/>
+                          <xs:element type="xs:float" name="finalamountpayable"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="paymentbycases">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="paymentbycase">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="paymentbycase_itm" maxOccurs="unbounded" minOccurs="0">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element type="xs:string" name="caseno"/>
+                                      <xs:element name="paymentdetails">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="paymentitem">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="paymentitem_itm" maxOccurs="unbounded" minOccurs="0">
+                                                    <xs:complexType>
+                                                      <xs:sequence>
+                                                        <xs:element type="xs:string" name="schemecategory"/>
+                                                        <xs:element type="xs:string" name="schemename"/>
+                                                        <xs:element type="xs:string" name="schemerefno"/>
+                                                        <xs:element type="xs:float" name="amount"/>
+                                                        <xs:element type="xs:string" name="ipcode"/>
+                                                      </xs:sequence>
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+};
+
+
+
+
+
+in_map inMap_Inpatient: external(inpatient), internal(Inpatient) { automatic; };
+in_map inMap_Outpatient: external(outpatient), internal(Outpatient) { automatic; };
+in_map inMap_InInpatient: external(ininpatient), internal(InInpatient) { automatic; };
+in_map inMap_OutOutpatient: external(outoutpatient), internal(OutOutpatient) { automatic; };
+
+in_map inMap_request: external (request), internal(Request_I020) { 
+    //i:inpatient and e:inpatient using in_map inMap_controlHeader;
+    //i:outpatient and e:patient using in_map inMap_patient;
+    //i:financialForm and e:financialform using in_map inMap_financialForm;
+    automatic; 
+};
+    
+decoder Request_CM_Decoder: in_map(inMap_request);
+
+internal Request_I020 {
+    string invoice_type;
+    string response_ind;
+	string filename;
+    Inpatient inpatient;
+    Outpatient outpatient;
+    InInpatient ininpatient;
+    OutOutpatient outoutpatient;
+};
+
+// Top elements
+internal Inpatient {
+    InvoiceHeader invoiceheader;
+    PatientDetails patientdetails;
+	ThirdPartyInformation thirdpartyinformation;
+    Charges charges;
+    Payment payment;
+};
+
+internal Outpatient {
+    InvoiceHeader invoiceheader;
+    PatientDetails patientdetails;
+	ThirdPartyInformation thirdpartyinformation;
+    //Charges_Outpatient charges;    
+	Charges Charges;
+	Payment_Outpatient payment;
+};
+
+internal InInpatient {
+    InvoiceHeader invoiceheader;
+    PatientDetails patientdetails;
+	ThirdPartyInformation thirdpartyinformation;
+    Charges_InInpatient charges;
+    Payment_InInpatient payment;
+};
+
+internal OutOutpatient {
+    InvoiceHeader invoiceheader;
+    PatientDetails patientdetails;
+	//ThirdPartyInformation thirdpartyinformation;
+    Charges_OutOutpatient charges;
+    Payment_OutOutpatient payment;
+};
+
+
+//Sub-elements: Charges_OutOutpatient
+internal Charges_OutOutpatient {
+    //ChargesSummary chargessummary;
+    ChargesbyCases chargesbycases;
+};
+
+internal ChargesbyCases_OutOutpatient {
+    ChargesbyCase_OutOutpatient chargesbycase;
+};
+internal ChargesbyCase_OutOutpatient {
+    list<ChargesbyCaseItm_OutOutpatient> chargesbycase_itm;
+};
+internal ChargesbyCaseItm_OutOutpatient {
+    ChargeHeader_OutOutpatient chargeheader;
+    ChargeDetails chargedetails;
+    string caseno;
+};
+internal ChargeHeader_OutOutpatient {
+    string institutioncode;
+    string visitdate;
+    string admissiondate;
+    string dischargedate;
+    Location location;
+    Specialty specialty;
+    Classtype classtype;
+    bigdec totalbeforegovtsub;
+    bigdec govtsubsidy;
+    bigdec discount;
+    bigdec gstamount;
+    bigdec gstpercent;
+    bigdec gstabsorbed;
+    bigdec totalaftergovtsub;
+    bigdec totalamtexcludinggst;
+};
+internal Specialty {
+    string typecode;
+    string value;
+};
+internal Classtype {
+    string typecode;
+    string value;
+};
+
+internal ChargesSummary_OutOutpatient {
+    bigdec totalbeforegovtsub;
+    bigdec govtsubsidy;
+    OtherSubsidies othersubsidies;
+	
+	bigdec discount;
+	bigdec specialdiscount;
+	bigdec discountsummary;
+	bigdec waiversummary;
+	bigdec gstadjustments;
+	
+    bigdec gstamount;
+    bigdec gstpercent;
+	GstList gstlist;
+    bigdec gstabsorbed;
+	TransferredInCharges transferredincharges;
+    bigdec transferredinchargestotalamt;
+	TransferredOutCharges transferredoutcharges;
+	bigdec transferredoutchargestotalamt;
+    bigdec totalaftergovtsub;
+    bigdec totalamtexcludinggst;
+};
+
+//Sub-elements: Payment_OutOutpatient
+internal Payment_OutOutpatient {
+    PaymentSummary paymentsummary;
+    PaymentbyCases paymentbycases;
+};
+internal PaymentSummary_OutOutpatient {
+    Payment_Scheme payment_scheme;
+    bigdec amount_payable;
+    bigdec finalamount_payable;
+};
+internal Payment_Scheme {
+    list<Payment_SchemeItm> payment_scheme_itm;
+};
+internal Payment_SchemeItm {
+    PaymentScheme paymentscheme;
+};
+
+//Sub-elements: Payment_InInpatient
+internal Payment_InInpatient {
+    PaymentSummary paymentsummary;
+    PaymentSummarybyInstitutions paymentsummarybyinstitutions;
+    PaymentbyCases paymentbycases;
+    Payors_InInpatient payors;
+};
+
+internal PaymentSummarybyInstitutions {
+    PaymentSummarybyInstitution paymentsummarybyinstitution;
+};
+internal PaymentSummarybyInstitution {
+    list<PaymentSummarybyInstitutionItm> paymentsummarybyinstitution_itm;
+};
+internal PaymentSummarybyInstitutionItm {
+    string institutioncode;
+    PaymentSchemes paymentschemes;
+    bigdec amountpayable;
+    bigdec netpaymentmade;
+    bigdec adjustments;
+    bigdec finalamountpayable;
+};
+
+internal Payors_InInpatient {
+    PayorHeader payorheader;
+    PayorDetails payordetails;
+};
+internal PayorHeader_InInpatient {
+    bigdec finalamountpayable;
+};
+
+//Sub-elements: Charges_InInpatient
+internal Charges_InInpatient {
+    ChargesSummary chargessummary;
+    ChargesSummarybyInstitutuions chargessummarybyinstitutuions;
+    ChargesbyCases chargesbycases;
+};
+internal ChargesSummary {
+    bigdec totalbeforegovtsub;
+    bigdec govtsubsidy;
+	
+	OtherSubsidies othersubsidies;
+	
+	bigdec discount;
+	bigdec specialdiscount;
+	bigdec discountsummary;
+	bigdec waiversummary;
+	bigdec gstadjustments;
+	
+    bigdec gstamount;
+    bigdec gstpercent;
+	
+	GstList gstlist;
+    bigdec gstabsorbed;
+	
+	TransferredInCharges transferredincharges;
+	
+    bigdec transferredinchargestotalamt;
+	
+	TransferredOutCharges transferredoutcharges;
+	bigdec transferredoutchargestotalamt;
+    bigdec totalaftergovtsub;
+    bigdec totalamtexcludinggst;
+};
+
+internal ChargesSummarybyInstitutuions {
+    ChargesSummarybyInstitutuion chargessummarybyinstitutuion;
+};
+internal ChargesSummarybyInstitutuion {
+    list<ChargesSummarybyInstitutuionItm> chargessummarybyinstitutuion_itm;
+};
+internal ChargesSummarybyInstitutuionItm {
+    string institutioncode;
+    bigdec totalbeforegovtsub;
+    bigdec govtsubsidy;
+	
+	OtherSubsidies othersubsidies;
+	bigdec discount;
+	bigdec specialdiscount;
+	bigdec discountsummary;
+	bigdec waiversummary;
+	bigdec gstadjustments;
+	
+	
+    bigdec gstamount;
+    bigdec gstpercent;
+	
+	GstList gstlist;
+    bigdec gstabsorbed;
+	
+    TransferredInCharges transferredincharges;
+    bigdec transferredinchargestotalamt;
+	TransferredOutCharges transferredoutcharges;
+	bigdec transferredoutchargestotalamt;
+    bigdec totalaftergovtsub;
+    bigdec totalamtexcludinggst;
+};
+
+
+
+//Sub-elements: Payment_Outpatient
+internal Payment_Outpatient {
+    PaymentSummary paymentsummary;
+    PaymentbyCases paymentbycases;
+    Payors_Outpatient payors;
+};
+
+internal Payors_Outpatient {
+    Payordetails_Outpatient payor_details;
+};
+internal Payordetails_Outpatient {
+    Payor payor;
+};
+
+
+//Sub-elements: Charges_Outpatient
+internal Charges_Outpatient {
+    ChargesbyCases_Outpatient chargesbycases;
+};
+internal ChargesbyCases_Outpatient {
+    ChargesbyCase_Outpatient chargesbycase;
+};
+internal ChargesbyCase_Outpatient {
+    list<ChargesbyCaseItm_Outpatient> chargesbycase_itm;
+};
+internal ChargesbyCaseItm_Outpatient {
+    ChargeHeader_Outpatient chargeheader;
+    ChargeDetails chargedetails;
+    string caseno;
+};
+
+internal ChargeHeader_Outpatient {
+    string institutioncode;
+    string visitdate;
+    Location location;
+    bigdec totalbeforegovtsub;
+    bigdec govtsubsidy;    
+    OtherSubsidies othersubsidies;    
+    bigdec discount;
+    bigdec gstamount;
+    bigdec gstpercent;
+    bigdec gstabsorbed;
+    bigdec transferredinchargestotalamt;
+    bigdec totalaftergovtsub;
+    bigdec totalamtexcludinggst;
+};
+internal OtherSubsidies {
+    list<OtherSubsidiesItm> othersubsidies_itm;
+};
+internal OtherSubsidiesItm {
+    OtherSubsidy othersubsidy;
+};
+internal OtherSubsidy {
+    string type;
+    bigdec amount;
+};
+
+
+//Sub-elements: InvoiceHeader
+internal InvoiceHeader {
+    string invoicedatetime;
+    string invoicereferenceno;
+    string invoicelabel;
+    string invoicestatus;
+    string invoicetype;
+    string sourcesystemid;
+    string clustercode;
+	IssuedOnBehalfOf issuedonbehalfof;
+    string requesteddatetime;
+	string isprovisional;
+	
+    string islatest;
+    string ismaskingrequired;
+    
+    string nefrindicator;
+    string hhblock;
+};
+
+internal IssuedOnBehalfOf {
+	string institutioncode;
+	string gstregno;
+};
+
+//Sub-elements: PatientDetails
+internal PatientDetails {
+    Person person;
+	string hrn;
+    string claimingindicator;
+};
+internal Person {
+    string fullname;
+	string altname;
+    IdentificationNo identificationno;
+    Address address;
+	string careofaddressee;
+    string deceasedindicator;
+};
+internal IdentificationNo {
+    string typecode;
+    string value;
+};
+internal Address {
+    string line1;
+    string line2;
+    string line3;
+    string line4;
+    string isunderline;
+};
+
+internal ThirdPartyInformation {
+	string name;
+	Address address;
+	string customercode;
+};
+
+
+
+//Sub-elements: Charges
+internal Charges {
+    ChargesbyCases chargesbycases;
+};
+internal ChargesbyCases {
+    ChargesbyCase chargesbycase;
+};
+internal ChargesbyCase {
+    list<ChargesbyCaseItm> chargesbycase_itm;
+};
+internal ChargesbyCaseItm {
+	string caseno;
+    ChargeHeader chargeheader;
+    ChargeDetails chargedetails;
+};
+
+internal ChargeHeader {
+    string institutioncode;
+	string defaultinstitutioncode;
+    string admissiondate;
+    string dischargedate;
+	string visitdate;	
+    Location location;
+	Specialty specialty;
+	Classtype classtype;	
+    bigdec totalbefore_govtsub;	
+    bigdec govtsubsidy;	
+	OtherSubsidies othersubsidies;	
+    bigdec discount;
+	bigdec specialdiscount;
+	bigdec discountsummary;
+	bigdec waiversummary;
+	bigdec gstadjustments;	
+    bigdec gstamount;
+    bigdec gstpercent;	
+	GstList gstlist;		
+    bigdec gstabsorbed;
+    TransferredInCharges transferredincharges;	
+    bigdec transferredinchargestotalamt;	
+	TransferredOutCharges transferredoutcharges;	
+	bigdec transferredoutchargestotalamt;
+    bigdec totalaftergovtsub;
+    bigdec totalamtexcludinggst;
+	string hrn;
+};
+internal Location {
+    string typecode;
+    string value;
+};
+
+
+internal TransferredOutCharges {
+	list<TransferredOutChargesItm> transferredoutcharges_itm;
+};
+internal TransferredOutChargesItm {
+	TransferredOutCharge transferredoutcharge;
+};
+internal TransferredOutCharge {
+	string transferredoutchargename;
+	string caseno;
+	bigdec amount;
+};
+
+internal TransferredInCharges {
+    list<TransferredInChargesItm> transferredincharges_itm;
+};
+internal TransferredInChargesItm {
+    TransferredInCharge transferredincharge;
+};
+internal TransferredInCharge {
+    string transferredinchargename;
+    string caseno;
+    bigdec amount;
+};
+internal GstList {
+	list<GstListItm> gstlist_itm;
+};
+internal GstListItm {
+	Gst gst;
+};
+internal Gst {
+	bigdec gstamount;
+	bigdec gstpercent;
+};
+
+internal ChargeDetails {
+    ChargeCategory chargecategory;
+};
+internal ChargeCategory {
+    list<ChargeCategoryItm> chargecategory_itm;
+};
+internal ChargeCategoryItm {
+    ChargesSubCategories chargessubcategories;
+    string description;
+};
+internal ChargesSubCategories {
+    list<ChargesSubCategoriesItm> chargessubcategories_itm;
+};
+internal ChargesSubCategoriesItm {
+    ChargeSubCategory chargesubcategory;
+};
+internal ChargeSubCategory {
+    list<ChargeSubCategoryItm> chargesubcategory_itm;
+};
+internal ChargeSubCategoryItm {
+    ChargeItems chargeitems;
+	string description;
+};
+internal ChargeItems {
+	ChargeItem chargeitem;    
+};
+internal ChargeItem {
+	list<ChargeItemItm> chargeitem_itm;
+};
+
+internal ChargeItemItm {
+    string description;
+    bigdec qty;
+    string uom;
+	string remarks;
+    bigdec beforegovtsubsidy;
+    bigdec aftergovtsubsidy;
+    ChargesIndicators chargesindicators;
+    
+};
+internal ChargesIndicators {
+    ChargesIndicator chargesindicator;
+};
+internal ChargesIndicator {
+    string typecode;
+    string value;
+};
+
+//Sub-elements: Payment
+internal Payment {
+    PaymentSummary paymentsummary;
+    PaymentbyCases paymentbycases;
+    Payors payors;
+};
+internal PaymentSummary {
+    PaymentSchemes paymentschemes;
+    bigdec amountpayable;
+    bigdec netpaymentmade;
+    bigdec adjustments;
+    bigdec finalamountpayable;
+};
+internal PaymentSchemes {
+    list<PaymentSchemesItm> paymentschemes_itm;
+};
+internal PaymentSchemesItm {
+    PaymentScheme paymentscheme;
+};
+internal PaymentScheme {
+    string schemecategory;
+    bigdec amount;
+};
+
+internal PaymentbyCases {
+    PaymentbyCase paymentbycase;
+};
+internal PaymentbyCase {
+    list<PaymentbyCaseItm> paymentbycase_itm;
+};
+internal PaymentbyCaseItm {
+	string caseno;
+    PaymentDetails paymentdetails;    
+};
+internal PaymentDetails {
+    PaymentItem paymentitem;
+};
+internal PaymentItem {
+    list<PaymentItemItm> paymentitem_itm;
+};
+internal PaymentItemItm {
+    string schemecategory;    
+    string schemename;
+    string schemerefno;
+	bigdec amount;
+	string ipcode;
+};
+
+internal Payors {
+    PayorHeader payorheader;
+    PayorDetails payordetails;
+};
+internal PayorHeader {
+    MemoMessages memomessages;
+	bigdec finalamountpayable;
+};
+internal MemoMessages {
+    list<MemoMessagesItm> memomessages_itm;
+};
+internal MemoMessagesItm {
+    string message;
+};
+internal PayorDetails {
+    Payor payor;
+};
+
+internal Payor {
+	list<PayorItm> payor_itm;
+};
+internal PayorItm {
+    string name;
+    string receiptdate;
+    string paymentmode;
+    bigdec amount;
+};
+]]></Definition>
+                <IsValid value="true"/>
+            </dr.UltraFormatConfig:Data>
+            <documentation value=""/>
+            <parameters value=""/>
+            <Current_Comment/>
+        </dr.Configuration:dr.Configuration>
+    </mz:data>
+    <mz:referenced-data/>
+</mz:configuration>

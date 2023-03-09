@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<mz:configuration format-version="1.0">
+    <mz:data>
+        <dr.Configuration:dr.Configuration Folder="Default" Key="DZ11640594685042" Name="UFL_SVC0106_Request" Owner="M_BHASKER" Type="Ultra Format" encrypted="false" ver="6.0">
+            <STRING:Access_Groups_-----.read_-----.write_-----.execute>
+                <value value="Z_ACN_DevLead"/>
+                <value value="Z_ACN_DevLead"/>
+                <value value="Z_ACN_DevLead"/>
+            </STRING:Access_Groups_-----.read_-----.write_-----.execute>
+            <null:Auxiliary_Data/>
+            <dr.UltraFormatConfig:Data ver="1.0">
+                <Definition><![CDATA[xml_schema
+{
+  <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="request">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="request_itm" maxOccurs="unbounded" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:string" name="institution_id"/>
+              <xs:element type="xs:string" name="patient_mrn"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+};
+
+//Decoder
+external WhiteSpace: identified_by(
+value == 0x20 || value == 0xA || value == 0xD ) {
+    int value: static_size(1);
+};
+in_map WS_map: external(WhiteSpace), discard_output {automatic;};
+in_map in_Request: external(request_itm), internal(Request) { automatic; };
+in_map in_RequestPayload: external(request), internal(Request_Payload) { 
+    e:request_itm and i:requestDataList using in_map in_Request;
+};
+
+decoder PayloadRequest_Decoder: in_map(WS_map), in_map(in_RequestPayload);
+
+//Encoder
+internal Request_Payload {
+   list<Request> requestDataList;
+};
+
+internal Request {
+    string institution_id;
+    string patient_mrn;
+};
+
+
+out_map out_Request: external(request_itm), internal(Request) { automatic; };
+
+out_map out_RequestPayload: internal(Request_Payload), external(request) {
+    i:requestDataList and e:request_itm using out_map out_Request;
+};
+
+encoder PayloadRequest_Encoder : out_map ( out_RequestPayload );
+//encoder Request_Encoder : out_map ( out_Request );]]></Definition>
+                <IsValid value="true"/>
+            </dr.UltraFormatConfig:Data>
+            <documentation value=""/>
+            <parameters value=""/>
+            <Current_Comment/>
+        </dr.Configuration:dr.Configuration>
+    </mz:data>
+    <mz:referenced-data/>
+</mz:configuration>

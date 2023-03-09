@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<mz:configuration format-version="1.0">
+    <mz:data>
+        <dr.Configuration:dr.Configuration Folder="Default" Key="MZ1539100318703" Name="WFG_StartRT" Owner="mzadmin" Type="Workflow Group" encrypted="false" ver="6.0">
+            <STRING:Access_Groups_-----.read_-----.write_-----.execute>
+                <value value="Administrator"/>
+                <value value="Administrator"/>
+                <value value="Administrator"/>
+            </STRING:Access_Groups_-----.read_-----.write_-----.execute>
+            <dr.ConfigAuxData:Auxiliary_Data ver="2.0">
+                <Entries keyType="STRING" type="java.util.LinkedHashMap" valueType="STRING">
+                    <Type value="Realtime"/>
+                </Entries>
+            </dr.ConfigAuxData:Auxiliary_Data>
+            <dr.GroupData:Data ver="3.0">
+                <member_list>
+                    <dr.MemberData:value ver="1.0">
+                        <dr.MemberData--.MemberType:type value="RTWFINSTANCE"/>
+                        <dr.DRConfiguration:config Folder="HL7_Management" Key="MZ1537865087264" Name="WFL_HL7_SOM" Type="Workflow" ver="1.0"/>
+                        <dr.DRWfIdentity:wf---.instance---.id System_name="" Template_name="HL7_Management.WFL_HL7_SOM" Version="0" Workflow_name="workflow_1" dynamic="0" ver="1.0">
+                            <dr.DRWfKey:Workflow_key INSTANCE---.ID="1" TEMPLATE---.KEY="MZ1537865087264" ver="1.0"/>
+                        </dr.DRWfIdentity:wf---.instance---.id>
+                        <prereq_list/>
+                        <dr.ValidType:valid_type value="NOTVALIDATED"/>
+                    </dr.MemberData:value>
+                    <dr.MemberData:value ver="1.0">
+                        <dr.MemberData--.MemberType:type value="RTWFINSTANCE"/>
+                        <dr.DRConfiguration:config Folder="CIT_Management" Key="MZ1538459202984" Name="WFL_CIT_CHARGING" Type="Workflow" ver="1.0"/>
+                        <dr.DRWfIdentity:wf---.instance---.id System_name="" Template_name="CIT_Management.WFL_CIT_CHARGING" Version="0" Workflow_name="workflow_1" dynamic="0" ver="1.0">
+                            <dr.DRWfKey:Workflow_key INSTANCE---.ID="1" TEMPLATE---.KEY="MZ1538459202984" ver="1.0"/>
+                        </dr.DRWfIdentity:wf---.instance---.id>
+                        <prereq_list/>
+                        <dr.ValidType:valid_type value="NOTVALIDATED"/>
+                    </dr.MemberData:value>
+                    <dr.MemberData:value ver="1.0">
+                        <dr.MemberData--.MemberType:type value="RTWFINSTANCE"/>
+                        <dr.DRConfiguration:config Folder="Payors_Claims_Management" Key="MZ1538463505723" Name="WFL_Proc_PayorClaim" Type="Workflow" ver="1.0"/>
+                        <dr.DRWfIdentity:wf---.instance---.id System_name="" Template_name="Payors_Claims_Management.WFL_Proc_PayorClaim" Version="0" Workflow_name="workflow_1" dynamic="0" ver="1.0">
+                            <dr.DRWfKey:Workflow_key INSTANCE---.ID="1" TEMPLATE---.KEY="MZ1538463505723" ver="1.0"/>
+                        </dr.DRWfIdentity:wf---.instance---.id>
+                        <prereq_list/>
+                        <dr.ValidType:valid_type value="NOTVALIDATED"/>
+                    </dr.MemberData:value>
+                    <dr.MemberData:value ver="1.0">
+                        <dr.MemberData--.MemberType:type value="RTWFINSTANCE"/>
+                        <dr.DRConfiguration:config Folder="Payors_Claims_Management" Key="MZ1538641230005" Name="WFL_Process_Claims" Type="Workflow" ver="1.0"/>
+                        <dr.DRWfIdentity:wf---.instance---.id System_name="" Template_name="Payors_Claims_Management.WFL_Process_Claims" Version="0" Workflow_name="workflow_1" dynamic="0" ver="1.0">
+                            <dr.DRWfKey:Workflow_key INSTANCE---.ID="1" TEMPLATE---.KEY="MZ1538641230005" ver="1.0"/>
+                        </dr.DRWfIdentity:wf---.instance---.id>
+                        <prereq_list/>
+                        <dr.ValidType:valid_type value="NOTVALIDATED"/>
+                    </dr.MemberData:value>
+                </member_list>
+                <dr.ExecutionPlan:group_sched ver="1.0">
+                    <dr.DayPlan:dayplans.run/>
+                    <dr.DayPlan:dayplans-----.notrun/>
+                    <null:Triggers/>
+                </dr.ExecutionPlan:group_sched>
+                <max_running value="0"/>
+                <delay value="3000"/>
+                <dr.WorkflowType:primary_type value="REALTIME"/>
+                <dr.ExecutionSettings:exeSetting ver="3.0">
+                    <enabled value="false"/>
+                </dr.ExecutionSettings:exeSetting>
+                <null:AbortOnMemberAbort/>
+                <continuous_exec value="false"/>
+            </dr.GroupData:Data>
+            <documentation value=""/>
+            <parameters value=""/>
+            <Current_Comment/>
+        </dr.Configuration:dr.Configuration>
+    </mz:data>
+    <mz:referenced-data/>
+</mz:configuration>

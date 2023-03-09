@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<mz:configuration format-version="1.0">
+    <mz:data>
+        <dr.Configuration:dr.Configuration Folder="Default" Key="DZ11644570088402" Name="UFL_Payload_Request_I104" Owner="D_WAILUN" Type="Ultra Format" encrypted="false" ver="6.0">
+            <STRING:Access_Groups_-----.read_-----.write_-----.execute>
+                <value value="Z_DR_Developer"/>
+                <value value="Z_DR_Developer"/>
+                <value value="Z_DR_Developer"/>
+            </STRING:Access_Groups_-----.read_-----.write_-----.execute>
+            <null:Auxiliary_Data/>
+            <dr.UltraFormatConfig:Data ver="1.0">
+                <Definition><![CDATA[xml_schema
+{
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="request">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element type="xs:string" name="file_type"/>
+        <xs:element type="xs:string" name="version_number"/>
+        <xs:element type="xs:string" name="file_hsp_code"/>
+        <xs:element type="xs:byte" name="file_date"/>
+        <xs:element type="xs:byte" name="record_count"/>
+        <xs:element type="xs:string" name="input_filename"/>
+        <xs:element type="xs:float" name="total_hsp_recovery_amount"/>
+        <xs:element type="xs:float" name="total_goverment_copayment"/>
+        <xs:element type="xs:string" name="file_error_code"/>
+        <xs:element type="xs:string" name="record_type"/>
+        <xs:element type="xs:string" name="hsp_code"/>
+        <xs:element type="xs:string" name="hsp_unique_identifier"/>
+        <xs:element type="xs:string" name="mcps_unique_identifier"/>
+        <xs:element type="xs:string" name="status_code"/>
+        <xs:element type="xs:string" name="hsp_bill_no"/>
+        <xs:element type="xs:byte" name="hsp_bill_date"/>
+        <xs:element type="xs:string" name="date_treatment"/>
+        <xs:element type="xs:string" name="type_of_bill"/>
+        <xs:element type="xs:string" name="sub_system_id"/>
+        <xs:element type="xs:string" name="idno_of_patient"/>
+        <xs:element type="xs:string" name="patient_registration"/>
+        <xs:element type="xs:string" name="patient_name"/>
+        <xs:element type="xs:string" name="idno_of_officer"/>
+        <xs:element type="xs:string" name="approval_code"/>
+        <xs:element type="xs:string" name="eligible_ward"/>
+        <xs:element type="xs:string" name="eligible_ward_dependent"/>
+        <xs:element type="xs:string" name="department_code"/>
+        <xs:element type="xs:string" name="authorising_office"/>
+        <xs:element type="xs:float" name="hsp_recovery_amount"/>
+        <xs:element type="xs:float" name="government_copayment"/>
+        <xs:element type="xs:string" name="payment_agency_code"/>
+        <xs:element type="xs:string" name="payment_agency_description"/>
+        <xs:element type="xs:string" name="recovery_agency_code"/>
+        <xs:element type="xs:string" name="recovery_agency_description"/>
+        <xs:element type="xs:string" name="fcg_indicator"/>
+        <xs:element type="xs:string" name="medical_scheme_officer"/>
+        <xs:element type="xs:string" name="medical_scheme_dual_benefit"/>
+        <xs:element type="xs:byte" name="ward_occurrences"/>
+        <xs:element type="xs:float" name="government_copayment_officer"/>
+        <xs:element type="xs:float" name="patient_copayment_officer"/>
+        <xs:element type="xs:float" name="government_copayment_benefit"/>
+        <xs:element type="xs:float" name="patient_copayment_benefit"/>
+        <xs:element type="xs:byte" name="hsp_occurrences"/>
+        <xs:element type="xs:float" name="hsp_government_copay_officer"/>
+        <xs:element type="xs:float" name="hsp_patient_copayment_officer"/>
+        <xs:element type="xs:float" name="hsp_government_copay_benefit"/>
+        <xs:element type="xs:float" name="hsp_patient_copayment_benefit"/>
+        <xs:element type="xs:byte" name="error_occurrences"/>
+        <xs:element type="xs:byte" name="field_number"/>
+        <xs:element type="xs:byte" name="error_code"/>
+        <xs:element type="xs:string" name="error_reason"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+};
+
+//Decoder
+external WhiteSpace: identified_by(
+value == 0x20 || value == 0xA || value == 0xD ) {
+    int value: static_size(1);
+};
+
+in_map WS_map: external(WhiteSpace), discard_output {automatic;};
+
+internal Request_Payload {
+	string file_type;
+	string version_number;
+	string file_hsp_code;
+	string file_date;
+	string record_count;
+	string input_filename;
+	bigdec total_hsp_recovery_amount;
+	bigdec total_goverment_copayment;
+	string file_error_code;
+	string record_type;
+	string hsp_code;
+	string hsp_unique_identifier;
+	string mcps_unique_identifier;
+	string status_code;
+	string hsp_bill_no;
+	string hsp_bill_date;
+	string date_treatment;
+	string type_of_bill;
+	string sub_system_id;
+	string idno_of_patient;
+	string patient_registration;
+	string patient_name;
+	string idno_of_officer;
+	string approval_code;
+	string eligible_ward;
+	string eligible_ward_dependent;
+	string department_code;
+	string authorising_office;
+	bigdec hsp_recovery_amount;
+	bigdec government_copayment;
+	string payment_agency_code;
+	string payment_agency_description;
+	string recovery_agency_code;
+	string recovery_agency_description;
+	string fcg_indicator;
+	string medical_scheme_officer;
+	string medical_scheme_dual_benefit;
+	string ward_occurrences;
+	bigdec government_copayment_officer;
+	bigdec patient_copayment_officer;
+	bigdec government_copayment_benefit;
+	bigdec patient_copayment_benefit;
+	string hsp_occurrences;
+	bigdec hsp_government_copay_officer;
+	bigdec hsp_patient_copayment_officer;
+	bigdec hsp_government_copay_benefit;
+	bigdec hsp_patient_copayment_benefit;
+	string error_occurrences;
+	string field_number;
+	string error_code;
+	string error_reason;
+};
+
+out_map out_RequestPayload: external(request), internal(Request_Payload) { automatic; };
+
+encoder PayloadRequest_Encoder : out_map ( out_RequestPayload );
+
+in_map in_RequestPayload: external(request), internal(Request_Payload) { automatic; };
+
+decoder PayloadRequest_Decoder: in_map(WS_map), in_map(in_RequestPayload);
+]]></Definition>
+                <IsValid value="true"/>
+            </dr.UltraFormatConfig:Data>
+            <documentation value=""/>
+            <parameters value=""/>
+            <Current_Comment/>
+        </dr.Configuration:dr.Configuration>
+    </mz:data>
+    <mz:referenced-data/>
+</mz:configuration>

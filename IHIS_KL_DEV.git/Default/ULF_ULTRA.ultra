@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<mz:configuration format-version="1.0">
+    <mz:data>
+        <dr.Configuration:dr.Configuration Folder="Default" Key="MZ1558498013579" Name="ULF_ULTRA" Owner="mzadmin" Type="Ultra Format" encrypted="false" ver="6.0">
+            <STRING:Access_Groups_-----.read_-----.write_-----.execute>
+                <value value="Administrator"/>
+                <value value="Administrator"/>
+                <value value="Administrator"/>
+            </STRING:Access_Groups_-----.read_-----.write_-----.execute>
+            <null:Auxiliary_Data/>
+            <dr.UltraFormatConfig:Data ver="1.0">
+                <Definition><![CDATA[internal myInternal {
+    string a;
+};
+
+internal LnpTableRec_Intl {
+    string sSvcKind     ;
+    string sApplyType   ;
+    string sBefChngTelLocal ;
+    string sAftChngTelLocal ;
+    string sTelNoAllocComp ;
+    string sAllocTelNo;
+    string sRcvTelNo ;
+    string sStartDate;
+    string sStartTime ;
+    string sEndDate ;
+    string sEndTime;
+    string sFileId ;
+    string sProcDate ;
+    string sChTelNo ;
+};
+
+internal transactionUDR {
+    string a;
+    string b;
+};
+
+internal jsonUDR {
+    string json;
+    string yaml;  
+};]]></Definition>
+                <IsValid value="true"/>
+            </dr.UltraFormatConfig:Data>
+            <documentation value=""/>
+            <parameters value=""/>
+            <Current_Comment/>
+        </dr.Configuration:dr.Configuration>
+    </mz:data>
+    <mz:referenced-data/>
+</mz:configuration>

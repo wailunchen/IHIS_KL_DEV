@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<mz:configuration format-version="1.0">
+    <mz:data>
+        <dr.Configuration:dr.Configuration Folder="Default" Key="DZ11608002802930" Name="DB" Owner="A_SHIVALI" Type="Database Profile" encrypted="false" ver="6.0">
+            <STRING:Access_Groups_-----.read_-----.write_-----.execute>
+                <value value="Configuration"/>
+                <value value="Configuration"/>
+                <value value="Configuration"/>
+            </STRING:Access_Groups_-----.read_-----.write_-----.execute>
+            <null:Auxiliary_Data/>
+            <dr.DRDBProfileExtRef:Data ver="1.8">
+                <Type value="7"/>
+                <Port value="30044"/>
+                <Username value="STG_MIG"/>
+                <Password value="DR_8.1_KEY-1-4CBA57B795E3A17771C7EAF03914407C"/>
+                <URL/>
+                <Database_name value="SAP HANA database"/>
+                <Host value="hisnbtpddbs01.devhealthgrp.com.sg"/>
+                <Connection_string value="false"/>
+                <ONS/>
+                <DB_Type_Class_Name value="com.digitalroute.wfc.db.saphana.SapHanaDatabaseDriver"/>
+                <DB_Connection_Properties/>
+                <Generic_Connection value="false"/>
+                <null:Profile/>
+                <Access_Key_ID value="DR_8.1_KEY-1-017BB0B8FB061C1876D43DD75468AA40"/>
+                <Secret_Access_Key value="DR_8.1_KEY-1-017BB0B8FB061C1876D43DD75468AA40"/>
+                <Staging_Directory/>
+                <Advanced_Properties value=""/>
+                <Enable_TLS_Truststore value="false"/>
+                <TLS_Truststore/>
+                <TLS_Truststore_Password/>
+                <This_Version value="1.0"/>
+                <ExtRef_Version value="1.0"/>
+                <ExtRef_Profile value=""/>
+                <ExtRef_Map/>
+            </dr.DRDBProfileExtRef:Data>
+            <documentation value=""/>
+            <parameters value=""/>
+            <Current_Comment/>
+        </dr.Configuration:dr.Configuration>
+    </mz:data>
+    <mz:referenced-data/>
+</mz:configuration>

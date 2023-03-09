@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<mz:configuration format-version="1.0">
+    <mz:data>
+        <dr.Configuration:dr.Configuration Folder="Default" Key="DZ11640329030362" Name="SFTP_COLL" Owner="D_RODNEY" Type="Workflow" encrypted="false" ver="6.0" wf-parameters="">
+            <STRING:Access_Groups_-----.read_-----.write_-----.execute>
+                <value value="Z_DR_Developer"/>
+                <value value="Z_DR_Developer"/>
+                <value value="Z_DR_Developer"/>
+            </STRING:Access_Groups_-----.read_-----.write_-----.execute>
+            <dr.ConfigAuxData:Auxiliary_Data ver="2.0">
+                <Entries keyType="STRING" type="java.util.LinkedHashMap" valueType="STRING">
+                    <Autostart value="false"/>
+                    <Count value="1"/>
+                    <Standalone value="false"/>
+                    <Type value="Batch"/>
+                </Entries>
+            </dr.ConfigAuxData:Auxiliary_Data>
+            <mz:workflow-template>
+                <dr.WorkflowBatchData:Data Cancel_batch_count="0" Cancel_batch_type="0" Log_On_CB="false" Template_Valid="true" Workflow_ID_Counter="1" ver="7.0">
+                    <Nodes>
+                        <dr.WfNode:value Classname="com.digitalroute.wfc.sftpadv.SFTPAdvInputInsp" ID="${identity@dr.WfNode#SFTP_in..ID}" Name="SFTP_in" XYposition="${layout@dr.WfNode#SFTP_in..XYposition}" ver="2.0">
+                            <dr.WfNodeConfig:Configuration>
+                                <dr.WfNodeConfig:value Classname="com.digitalroute.wfc.sftpadv.SFTPAdvInputInsp" Type="1" ver="1.0">
+                                    <dr.SFTPAdvInputData:Data ver="6.0">
+                                        <dr.SFTPAdvInputData.connectionStrategyInspClass:ConnectionStrategyInspClassName active="true" fit="FINAL" ver="1.0">
+                                            <Value value="com.digitalroute.wfc.sftp.base.serverinfoprovider.singlehost.SingleHostInsp"/>
+                                        </dr.SFTPAdvInputData.connectionStrategyInspClass:ConnectionStrategyInspClassName>
+                                        <dr.SFTPAdvInputData.connectionStrategyConfig:ConnectionStrategyConfig active="true" fit="FINAL" ver="1.0">
+                                            <dr.SingleHostData:Value ver="14.0">
+                                                <dr.SingleHostData.host:Primary_Host active="true" fit="FINAL" ver="1.0">
+                                                    <Value value="10.247.32.75"/>
+                                                </dr.SingleHostData.host:Primary_Host>
+                                                <dr.SingleHostData.fsType:File_system_type active="true" fit="FINAL" ver="1.0">
+                                                    <dr.FileSystemType:Value value="FS_TYPE_UNIX"/>
+                                                </dr.SingleHostData.fsType:File_system_type>
+                                                <dr.SingleHostData.authType:Authentication_type active="true" fit="FINAL" ver="1.0">
+                                                    <dr.AuthType:Value value="PRIVATE_KEY"/>
+                                                </dr.SingleHostData.authType:Authentication_type>
+                                                <dr.SingleHostData.username:Username active="true" fit="FINAL" ver="1.0">
+                                                    <Value value="sftpnbtsapdev1"/>
+                                                </dr.SingleHostData.username:Username>
+                                                <dr.SingleHostData.password:Password active="false" fit="FINAL" ver="1.0">
+                                                    <Value value="DR_8.1_KEY-1-017BB0B8FB061C1876D43DD75468AA40"/>
+                                                </dr.SingleHostData.password:Password>
+                                                <dr.SingleHostData.privateKey:Private_key active="true" fit="FINAL" ver="1.0">
+                                                    <Value><![CDATA[---- BEGIN SSH2 ENCRYPTED PRIVATE KEY ----
+Subject: dz1adm
+Comment: "2048-bit rsa, dz1adm@hisnbtvdapp05.devhealthgrp.com.sg, Wed \
+Nov 17 2021 17:57:24 +0800"
+P2/56wAAA+wAAAA1aWYtbW9kbntzaWdue3JzYS1wa2NzMS1zaGExfSxlbmNyeXB0e3JzYS
+1wa2NzMS1ub25lfX0AAAAEbm9uZQAAA58AAAObAAAAEQEAAQAAB/0dzItxfC23z8GfvzSW
+hU1kMyArUKCjMimZJFuDMvERKz0bKMMMBhcu+PpDxqvlMBDgDTv8R1rPpq6d+6H+gWd5DV
+0xQVxJl5ceemnLQKOoEVUW2bLFnOlK0UuVF/XjLLZcJQdfXteJysSqA3J+eHW3moM3LhY3
+nOYnMxF+bSWQJ/dBv9VE616bpIju7h6opou9IAL7FxR2RQAsn85xRBHqqLke5ZeJSgsYxP
+CqVyFNjP5881DsuhOAoEN+6HXzUkX3iXEmY6q76F4nQJ77239HZUVAP9cFITLX10HkebZw
+oWBbZXfHbMOIQL5Uxq1pNrUlQcJFruYYF/hs0ScqoFQNAAAIAK+JeuL8qBzAKxBMfl2gQK
+WvcyRFWgX6YXpsvP7fFwwZUUrt/8+c2pNKwQzH2+qxEKCo5U73o0rCjrOZsjSoEOZlu9XE
+GAtpBf7oYuPhR39ZhllpqmjCFsA3vWrcQNKmMSWBCqbChrF8F89/PyBop5uWuWLY5z7gyA
+HG4bIIfZLbtpzJsIGpYaRA94E0ZhI4cPEjD2YndknclAbPZHCN9enS/gXgY9RJAL3ii/dq
+NFMQctOYE2wsMf422cpmyJ6oul78UN/klIkYbIF4JuYel7i4Z9JCsTxoXaq1LgU8aW56EL
+YJ+sPSLN4QYi22Ltr93pVMShQXYvI6j7wu+FQ4iccAAAP+I65EEjcIpw7L+QUf/HP5sscv
+WgP83DP7mBajMzmbbVaW/bBGlxuT/iFAqaPF/Dsxo9RTzNEHgegzWnVs/6PBynyzN/LOG4
+4pG9gaeK7MNP/7XoEOv3niQ4QGKVlql3ERbdC9SaxEp3WFpBIVgitsy3pauL1nXMIUMDw8
+jZ2H/E4AAAQAx41DZqLpxrwA0KjORqkkAEVEfwJ7/X4jrXRwfIJxaxTVwImOm+mWcsZSmK
+HJWjd/eLs6bZAwFaQwn1eL8RTpvdUj7bF3qdWNfuyKdYu29wtNHNhxwdQhogV6b1jmRQNd
+49RIOm6BHmeVjR07nGSX/KzEGCEcBpc4XEk4rXKwFRUAAAQA4TEp1Uh6Je9BAFmcii7e7r
+SwI3TqIJ/I/2Ko1hKSJKxE+sPIxKngO4C2uWZciAmicNcxpMzDd0KjzKPYNeV7iXURs5gp
+WyOTt2+ccyg1XsdWxqHYl2Tdom/U/QOTxuuIwsCmMUr2B3Swr4u4o0kTn80Dli7T1Zivmv
+0FgKwjUms=
+---- END SSH2 ENCRYPTED PRIVATE KEY ----]]></Value>
+                                                </dr.SingleHostData.privateKey:Private_key>
+                                                <dr.SingleHostData.privateKeyPassword:Private_key_password active="true" fit="FINAL" ver="1.0">
+                                                    <Value value="DR_8.1_KEY-1-017BB0B8FB061C1876D43DD75468AA40"/>
+                                                </dr.SingleHostData.privateKeyPassword:Private_key_password>
+                                                <dr.SingleHostData.enableRetries:Enable_retries active="true" fit="FINAL" ver="1.0">
+                                                    <Value value="false"/>
+                                                </dr.SingleHostData.enableRetries:Enable_retries>
+                                                <dr.SingleHostData.retryInterval:Retry_intervals active="false" fit="FINAL" ver="1.0">
+                                                    <Value value="0"/>
+                                                </dr.SingleHostData.retryInterval:Retry_intervals>
+                                                <dr.SingleHostData.maxRetries:Max_retries active="false" fit="FINAL" ver="1.0">
+                                                    <Value value="0"/>
+                                                </dr.SingleHostData.maxRetries:Max_retries>
+                                                <dr.SingleHostData.enableRestarts:Enable_restarts active="true" fit="FINAL" ver="1.0">
+                                                    <Value value="false"/>
+                                                </dr.SingleHostData.enableRestarts:Enable_restarts>
+                                                <dr.SingleHostData.retryRestartsInterval:Retry_restarts_intervals active="false" fit="FINAL" ver="1.0">
+                                                    <Value value="0"/>
+                                                </dr.SingleHostData.retryRestartsInterval:Retry_restarts_intervals>
+                                                <dr.SingleHostData.maxRestarts:Max_restarts active="false" fit="FINAL" ver="1.0">
+                                                    <Value value="0"/>
+                                                </dr.SingleHostData.maxRestarts:Max_restarts>
+                                                <dr.SingleHostData.port:Port active="true" fit="FINAL" ver="1.0">
+                                                    <Value value="22"/>
+                                                </dr.SingleHostData.port:Port>
+                                                <dr.SingleHostData.timeOut:Timeout active="true" fit="FINAL" ver="1.0">
+                                                    <Value value="300"/>
+                                                </dr.SingleHostData.timeOut:Timeout>
+                                                <dr.SingleHostData.hostCheck:Accept_New_Host_Keys active="true" fit="FINAL" ver="1.0">
+                                                    <Value value="false"/>
+                                                </dr.SingleHostData.hostCheck:Accept_New_Host_Keys>
+                                                <dr.SingleHostData.additionalHosts:Backup_Hosts active="true" fit="FINAL" ver="1.0">
+                                                    <Value/>
+                                                </dr.SingleHostData.additionalHosts:Backup_Hosts>
+                                                <dr.SingleHostData.enableAdvSecurityOption:Enable_Advance_Security_Option active="true" fit="FINAL" ver="1.0">
+                                                    <Value value="false"/>
+                                                </dr.SingleHostData.enableAdvSecurityOption:Enable_Advance_Security_Option>
+                                                <dr.SingleHostData.cipherMode:CipherMode active="true" fit="FINAL" ver="1.0">
+                                                    <dr.CipherModeType:Value value="DEFAULT"/>
+                                                </dr.SingleHostData.cipherMode:CipherMode>
+                                                <dr.SingleHostData.hmacType:HMacType active="true" fit="FINAL" ver="1.0">
+                                                    <dr.HMacType:Value value="DEFAULT"/>
+                                                </dr.SingleHostData.hmacType:HMacType>
+                                                <dr.SingleHostData.enableKeyReExchange:Enable_Key_Re-----.Exchange active="true" fit="FINAL" ver="1.0">
+                                                    <Value value="true"/>
+                                                </dr.SingleHostData.enableKeyReExchange:Enable_Key_Re-----.Exchange>
+                                            </dr.SingleHostData:Value>
+                                        </dr.SFTPAdvInputData.connectionStrategyConfig:ConnectionStrategyConfig>
+                                        <dr.SFTPAdvInputData.routeFileRef:Route_File_Reference_UDR active="true" fit="FINAL" ver="1.0">
+                                            <Value value="false"/>
+                                        </dr.SFTPAdvInputData.routeFileRef:Route_File_Reference_UDR>
+                                        <dr.SFTPAdvInputData.collectionStrategyName:CollectionStrategyName active="true" fit="FINAL" ver="1.0">
+                                            <Value/>
+                                        </dr.SFTPAdvInputData.collectionStrategyName:CollectionStrategyName>
+                                        <dr.SFTPAdvInputData.strategyCombinationClass:StrategyCombinationClass active="true" fit="FINAL" ver="1.0">
+                                            <Value value="com.digitalroute.misc.advcoll.impl.DefaultCollectionStrategy"/>
+                                        </dr.SFTPAdvInputData.strategyCombinationClass:StrategyCombinationClass>
+                                        <dr.SFTPAdvInputData.strategyClasses:StrategyClasses active="true" fit="FINAL" ver="1.0">
+                                            <STRING:Value>
+                                                <value value="com.digitalroute.misc.advcoll.impl.DefaultFileInfo"/>
+                                                <value value="com.digitalroute.misc.advcoll.impl.DefaultSourceFileHandling"/>
+                                            </STRING:Value>
+                                        </dr.SFTPAdvInputData.strategyClasses:StrategyClasses>
+                                        <dr.SFTPAdvInputData.strategyConfigs:StrategyConfigs active="true" fit="FINAL" ver="1.0">
+                                            <com.digitalroute.devkit.hidden.DRGeneratedFromContract:Value>
+                                                <dr.DefaultFileInfoConfig:value ver="8.0">
+                                                    <dr.DefaultFileInfoConfig.baseDir:BaseDir active="true" fit="FINAL" ver="1.0">
+                                                        <Value value="/DEV/NBT/DEV1/INF"/>
+                                                    </dr.DefaultFileInfoConfig.baseDir:BaseDir>
+                                                    <dr.DefaultFileInfoConfig.subfolders:Subfolders active="true" fit="FINAL" ver="1.0">
+                                                        <Value value="false"/>
+                                                    </dr.DefaultFileInfoConfig.subfolders:Subfolders>
+                                                    <dr.DefaultFileInfoConfig.fileRegExp:RegExp active="true" fit="FINAL" ver="1.0">
+                                                        <Value value=".*"/>
+                                                    </dr.DefaultFileInfoConfig.fileRegExp:RegExp>
+                                                    <dr.DefaultFileInfoConfig.compType:CompressionType active="true" fit="FINAL" ver="1.0">
+                                                        <dr.CompressionType:Value value="NONE"/>
+                                                    </dr.DefaultFileInfoConfig.compType:CompressionType>
+                                                </dr.DefaultFileInfoConfig:value>
+                                                <dr.DefaultSourceFileHandlingConfigExt:value ver="5.1">
+                                                    <dr.DefaultSourceFileHandlingConfig.moveBeforeRetrieval:Move_before active="true" fit="FINAL" ver="1.0">
+                                                        <Value value="false"/>
+                                                    </dr.DefaultSourceFileHandlingConfig.moveBeforeRetrieval:Move_before>
+                                                    <dr.DefaultSourceFileHandlingConfig.moveSuffix:Move_Suffix active="true" fit="FINAL" ver="1.0">
+                                                        <Value value=""/>
+                                                    </dr.DefaultSourceFileHandlingConfig.moveSuffix:Move_Suffix>
+                                                    <dr.DefaultSourceFileHandlingConfig.idleTime:Max_idle_time active="true" fit="FINAL" ver="1.0">
+                                                        <Value value="0"/>
+                                                    </dr.DefaultSourceFileHandlingConfig.idleTime:Max_idle_time>
+                                                    <dr.DefaultSourceFileHandlingConfig.rbType:Retrieval_behaviour active="true" fit="FINAL" ver="1.0">
+                                                        <dr.RetrievalType:Value value="REMOVE"/>
+                                                    </dr.DefaultSourceFileHandlingConfig.rbType:Retrieval_behaviour>
+                                                    <dr.DefaultSourceFileHandlingConfig.rbDirectory:Move_to_directory active="false" fit="FINAL" ver="1.0">
+                                                        <Value value=""/>
+                                                    </dr.DefaultSourceFileHandlingConfig.rbDirectory:Move_to_directory>
+                                                    <dr.DefaultSourceFileHandlingConfig.rbRenamePrefix:Filename_prefix active="false" fit="FINAL" ver="1.0">
+                                                        <Value value=""/>
+                                                    </dr.DefaultSourceFileHandlingConfig.rbRenamePrefix:Filename_prefix>
+                                                    <dr.DefaultSourceFileHandlingConfig.rbRenameSuffix:Filename_suffix active="false" fit="FINAL" ver="1.0">
+                                                        <Value value=""/>
+                                                    </dr.DefaultSourceFileHandlingConfig.rbRenameSuffix:Filename_suffix>
+                                                    <dr.DefaultSourceFileHandlingConfig.rbSearch:Filename_search active="false" fit="FINAL" ver="1.0">
+                                                        <Value value=""/>
+                                                    </dr.DefaultSourceFileHandlingConfig.rbSearch:Filename_search>
+                                                    <dr.DefaultSourceFileHandlingConfig.rbReplace:Filename_replace_value active="false" fit="FINAL" ver="1.0">
+                                                        <Value value=""/>
+                                                    </dr.DefaultSourceFileHandlingConfig.rbReplace:Filename_replace_value>
+                                                    <dr.DefaultSourceFileHandlingConfig.rbKeepInterval:Keep_interval active="false" fit="FINAL" ver="1.0">
+                                                        <Value value="-1"/>
+                                                    </dr.DefaultSourceFileHandlingConfig.rbKeepInterval:Keep_interval>
+                                                </dr.DefaultSourceFileHandlingConfigExt:value>
+                                            </com.digitalroute.devkit.hidden.DRGeneratedFromContract:Value>
+                                        </dr.SFTPAdvInputData.strategyConfigs:StrategyConfigs>
+                                    </dr.SFTPAdvInputData:Data>
+                                </dr.WfNodeConfig:value>
+                                <dr.WfNodeConfig:value Classname="com.digitalroute.devkit.wf.DRFNSServiceInsp" Type="0" ver="1.0">
+                                    <dr.DRFNSServiceConfigExtension:Data ver="1.1">
+                                        <dr.DRFNSServiceConfig.enabled:Is_enabled active="true" fit="FINAL" ver="1.0">
+                                            <Value value="false"/>
+                                        </dr.DRFNSServiceConfig.enabled:Is_enabled>
+                                        <dr.DRFNSServiceConfig.startPos:Start_position active="false" fit="FINAL" ver="1.0">
+                                            <Value value="-1"/>
+                                        </dr.DRFNSServiceConfig.startPos:Start_position>
+                                        <dr.DRFNSServiceConfig.seqNoLen:Sequence_no_length active="false" fit="FINAL" ver="1.0">
+                                            <Value value="-1"/>
+                                        </dr.DRFNSServiceConfig.seqNoLen:Sequence_no_length>
+                                        <dr.DRFNSServiceConfig.wrapOnSeqNo:Wrap_on_sequence_no active="false" fit="FINAL" ver="1.0">
+                                            <Value value="-1"/>
+                                        </dr.DRFNSServiceConfig.wrapOnSeqNo:Wrap_on_sequence_no>
+                                        <dr.DRFNSServiceConfig.wrapToSeqNo:Wrap_to_sequence_no active="false" fit="FINAL" ver="1.0">
+                                            <Value value="0"/>
+                                        </dr.DRFNSServiceConfig.wrapToSeqNo:Wrap_to_sequence_no>
+                                        <dr.DRFNSServiceConfigExtension--.NextSeqNoExt:Next_sequence_no active="false" fit="INSTANCE" ver="1.0">
+                                            <Value value="-1"/>
+                                        </dr.DRFNSServiceConfigExtension--.NextSeqNoExt:Next_sequence_no>
+                                        <Seq_No_Check value="0"/>
+                                        <dr.DRFNSServiceConfig.shallWarnOnOutOfSequence:Shall_warn_on_out_of_sequence active="false" fit="FINAL" ver="1.0">
+                                            <Value value="false"/>
+                                        </dr.DRFNSServiceConfig.shallWarnOnOutOfSequence:Shall_warn_on_out_of_sequence>
+                                    </dr.DRFNSServiceConfigExtension:Data>
+                                </dr.WfNodeConfig:value>
+                                <dr.WfNodeConfig:value Classname="com.digitalroute.devkit.wf.DRFileInfoSortOrderServiceInsp" Type="0" ver="1.0">
+                                    <dr.DRFileInfoSortOrderServiceConfig:Data ver="1.0">
+                                        <dr.DRFileInfoSortOrderServiceConfig.enabled:Is_enabled active="true" fit="FINAL" ver="1.0">
+                                            <Value value="false"/>
+                                        </dr.DRFileInfoSortOrderServiceConfig.enabled:Is_enabled>
+                                        <dr.DRFileInfoSortOrderServiceConfig.orderType:Order_type active="false" fit="FINAL" ver="1.0">
+                                            <dr.DRFileOrderType:Value value="FILENAME_VALUE"/>
+                                        </dr.DRFileInfoSortOrderServiceConfig.orderType:Order_type>
+                                        <dr.DRFileInfoSortOrderServiceConfig.patternType:Pattern_type active="false" fit="FINAL" ver="1.0">
+                                            <dr.DRFilenamePatternSelection:Value value="POSITION"/>
+                                        </dr.DRFileInfoSortOrderServiceConfig.patternType:Pattern_type>
+                                        <dr.DRFileInfoSortOrderServiceConfig.startPos:Start_position active="false" fit="FINAL" ver="1.0">
+                                            <Value value="0"/>
+                                        </dr.DRFileInfoSortOrderServiceConfig.startPos:Start_position>
+                                        <dr.DRFileInfoSortOrderServiceConfig.length:Length active="false" fit="FINAL" ver="1.0">
+                                            <Value value="0"/>
+                                        </dr.DRFileInfoSortOrderServiceConfig.length:Length>
+                                        <dr.DRFileInfoSortOrderServiceConfig.regExp:Regular_expression active="false" fit="FINAL" ver="1.0">
+                                            <Value/>
+                                        </dr.DRFileInfoSortOrderServiceConfig.regExp:Regular_expression>
+                                        <dr.DRFileInfoSortOrderServiceConfig.sortType:Sort_type active="false" fit="FINAL" ver="1.0">
+                                            <dr.DRFilenameSortType:Value value="ALPHANUMERIC"/>
+                                        </dr.DRFileInfoSortOrderServiceConfig.sortType:Sort_type>
+                                        <dr.DRFileInfoSortOrderServiceConfig.ignoreCase:Ignore_case active="false" fit="FINAL" ver="1.0">
+                                            <Value value="false"/>
+                                        </dr.DRFileInfoSortOrderServiceConfig.ignoreCase:Ignore_case>
+                                        <dr.DRFileInfoSortOrderServiceConfig.sortOrder:Sort_order active="false" fit="FINAL" ver="1.0">
+                                            <dr.DRSortOrder:Value value="ASCENDING"/>
+                                        </dr.DRFileInfoSortOrderServiceConfig.sortOrder:Sort_order>
+                                    </dr.DRFileInfoSortOrderServiceConfig:Data>
+                                </dr.WfNodeConfig:value>
+                            </dr.WfNodeConfig:Configuration>
+                        </dr.WfNode:value>
+                        <dr.WfNode:value Classname="com.digitalroute.wfc.diskoutput.DiskOutputInsp" ID="${identity@dr.WfNode#CM_Disk..ID}" Name="CM_Disk" XYposition="${layout@dr.WfNode#CM_Disk..XYposition}" ver="2.0">
+                            <dr.WfNodeConfig:Configuration>
+                                <dr.WfNodeConfig:value Classname="com.digitalroute.wfc.diskoutput.DiskOutputInsp" Type="1" ver="1.0">
+                                    <dr.DiskOutputData:Data ver="11.0">
+                                        <dr.DiskOutputData.directory:Distribution_directory active="true" fit="FINAL" ver="1.0">
+                                            <Value value="/app/DZ1/SAPCMDZ1/INTF/TEMP_PROP/sftp"/>
+                                        </dr.DiskOutputData.directory:Distribution_directory>
+                                        <dr.DiskOutputData.compType:Compression active="true" fit="FINAL" ver="1.0">
+                                            <dr.CompressionType:Value value="NONE"/>
+                                        </dr.DiskOutputData.compType:Compression>
+                                        <dr.DiskOutputData.command:Command active="true" fit="FINAL" ver="1.0">
+                                            <Value value=""/>
+                                        </dr.DiskOutputData.command:Command>
+                                        <dr.DiskOutputData.arguments:Arguments active="true" fit="FINAL" ver="1.0">
+                                            <Value value=""/>
+                                        </dr.DiskOutputData.arguments:Arguments>
+                                        <dr.DiskOutputData.createEmpty:Create_empty_files active="true" fit="FINAL" ver="1.0">
+                                            <Value value="false"/>
+                                        </dr.DiskOutputData.createEmpty:Create_empty_files>
+                                        <dr.DiskOutputData.createNonExistingBaseDir:Create_Non-----.Existing_Base_Directory active="true" fit="FINAL" ver="1.0">
+                                            <Value value="false"/>
+                                        </dr.DiskOutputData.createNonExistingBaseDir:Create_Non-----.Existing_Base_Directory>
+                                        <dr.DiskOutputData.inputType:Input_type active="true" fit="FINAL" ver="1.0">
+                                            <dr.InputType:Value value="ByteArray"/>
+                                        </dr.DiskOutputData.inputType:Input_type>
+                                    </dr.DiskOutputData:Data>
+                                </dr.WfNodeConfig:value>
+                                <dr.WfNodeConfig:value Classname="com.digitalroute.devkit.wf.DRFNTServiceInsp" Type="0" ver="1.0">
+                                    <dr.DRFNTServiceConfig:Data ver="10.0">
+                                        <dr.DRFNTServiceConfig.entries:FNT_Entries active="true" fit="FINAL" ver="1.0">
+                                            <dr.DRFNTServiceEntry:Value>
+                                                <dr.DRFNTServiceEntry:value Alignment="1" Delimiter="false" Mim_entry="SFTP_in.Source Filename" Size="-1" ver="3.0"/>
+                                            </dr.DRFNTServiceEntry:Value>
+                                        </dr.DRFNTServiceConfig.entries:FNT_Entries>
+                                        <dr.DRFNTServiceConfig.createNonExistDirectories:FNT---.CREATE---.DIRS active="true" fit="FINAL" ver="1.0">
+                                            <Value value="true"/>
+                                        </dr.DRFNTServiceConfig.createNonExistDirectories:FNT---.CREATE---.DIRS>
+                                        <dr.DRFNTServiceConfig.---.FNTListEnabled:FNT_list_enabled active="false" fit="FINAL" ver="1.0">
+                                            <Value value="true"/>
+                                        </dr.DRFNTServiceConfig.---.FNTListEnabled:FNT_list_enabled>
+                                    </dr.DRFNTServiceConfig:Data>
+                                </dr.WfNodeConfig:value>
+                            </dr.WfNodeConfig:Configuration>
+                        </dr.WfNode:value>
+                    </Nodes>
+                    <Routes>
+                        <dr.WfRoute:value Destination_ID="${identity@dr.WfRoute#r_1..Destination ID}" ID="${identity@dr.WfRoute#r_1..ID}" Name="r_1" Realtime_mode="0" Route_type="1" Source_ID="${identity@dr.WfRoute#r_1..Source ID}" Stroke_points="${layout@dr.WfRoute#r_1..Stroke points}" ver="2.0"/>
+                    </Routes>
+                    <Service/>
+                    <Logged_error_MIM/>
+                    <dr.WorkflowExecutionConfig:Execution_Config ver="8.0">
+                        <dr.WorkflowExecutionConfig.executionSettings:Execution_Settings extref_key="" ver="1.0">
+                            <dr.ExecutionSettings:Value ver="3.0">
+                                <enabled value="true"/>
+                                <ecList type="java.util.LinkedList">
+                                    <dr.PicoInstanceEntity:value ver="1.0">
+                                        <Name value="ec1"/>
+                                        <Type value="2"/>
+                                    </dr.PicoInstanceEntity:value>
+                                </ecList>
+                                <dr.WorkflowDistType:dist value="ROUND_ROBIN"/>
+                                <groupList type="java.util.LinkedList"/>
+                                <dr.AutoStartSettings:autostart ver="1.0">
+                                    <enabled value="false"/>
+                                    <instances value="0"/>
+                                    <null:abort_behaviour/>
+                                </dr.AutoStartSettings:autostart>
+                            </dr.ExecutionSettings:Value>
+                        </dr.WorkflowExecutionConfig.executionSettings:Execution_Settings>
+                        <dr.WorkflowExecutionConfig.throughputMIM:Throughput_MIM extref_key="" ver="1.0">
+                            <Value/>
+                        </dr.WorkflowExecutionConfig.throughputMIM:Throughput_MIM>
+                        <dr.WorkflowExecutionConfig.debugType:Debug_Type extref_key="" ver="1.0">
+                            <dr.DebugType:Value value="EVENT"/>
+                        </dr.WorkflowExecutionConfig.debugType:Debug_Type>
+                        <dr.WorkflowExecutionConfig.noOfFilesToKeep:Number_of_Files_to_Keep extref_key="" ver="1.0">
+                            <Value value="0"/>
+                        </dr.WorkflowExecutionConfig.noOfFilesToKeep:Number_of_Files_to_Keep>
+                        <dr.WorkflowExecutionConfig.txnHandler:Transaction_Handler extref_key="" ver="1.0">
+                            <Value value="Default Handler"/>
+                        </dr.WorkflowExecutionConfig.txnHandler:Transaction_Handler>
+                    </dr.WorkflowExecutionConfig:Execution_Config>
+                    <dr.DynamicConfigStorableDefinition:dyn ver="1.0">
+                        <fields/>
+                    </dr.DynamicConfigStorableDefinition:dyn>
+                    <null:External_Reference_Profile/>
+                    <External_Reference_Values type="java.util.Hashtable"/>
+                    <External_Reference_Lists type="java.util.Hashtable"/>
+                    <External_Reference_Maps type="java.util.Hashtable"/>
+                    <null:Error_UDR_type_name/>
+                    <null:Error_map/>
+                    <null:Audit_Profile/>
+                </dr.WorkflowBatchData:Data>
+            </mz:workflow-template>
+            <mz:wf-instances>
+                <mz:wf-instance instanceId="1" name="workflow_1" state="VALID" validationError=""/>
+            </mz:wf-instances>
+            <documentation value=""/>
+            <parameters value=""/>
+            <Current_Comment/>
+        </dr.Configuration:dr.Configuration>
+    </mz:data>
+    <mz:referenced-data>
+        <layout>
+            <dr.WfNode>
+                <dr.WfRoute--.StorablePoint:SFTP---.in..XYposition X_position="140" Y_position="170" ver="1.0"/>
+                <dr.WfRoute--.StorablePoint:CM---.Disk..XYposition X_position="290" Y_position="170" ver="1.0"/>
+            </dr.WfNode>
+            <dr.WfRoute>
+                <r---.1..Stroke_points>
+                    <dr.WfRoute--.StorablePoint:value X_position="167" Y_position="153" ver="1.0"/>
+                    <dr.WfRoute--.StorablePoint:value X_position="201" Y_position="139" ver="1.0"/>
+                    <dr.WfRoute--.StorablePoint:value X_position="233" Y_position="140" ver="1.0"/>
+                    <dr.WfRoute--.StorablePoint:value X_position="264" Y_position="154" ver="1.0"/>
+                </r---.1..Stroke_points>
+            </dr.WfRoute>
+        </layout>
+        <identity>
+            <dr.WfNode>
+                <SFTP---.in..ID value="1645944632"/>
+                <CM---.Disk..ID value="1298438762"/>
+            </dr.WfNode>
+            <dr.WfRoute>
+                <r---.1..ID value="-2"/>
+                <r---.1..Source_ID value="1645944632"/>
+                <r---.1..Destination_ID value="1298438762"/>
+            </dr.WfRoute>
+        </identity>
+    </mz:referenced-data>
+</mz:configuration>
