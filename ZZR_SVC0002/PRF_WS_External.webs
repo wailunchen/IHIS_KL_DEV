@@ -1,0 +1,545 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<mz:configuration format-version="1.0">
+    <mz:data>
+        <dr.Configuration:dr.Configuration Folder="ZZR_SVC0002" Key="DZ11650526616715" Name="PRF_WS_External" Owner="A_SHIDI" Type="WS Profile" encrypted="false" ver="6.0">
+            <STRING:Access_Groups_-----.read_-----.write_-----.execute>
+                <value value="All"/>
+                <value value="All"/>
+                <value value="All"/>
+            </STRING:Access_Groups_-----.read_-----.write_-----.execute>
+            <null:Auxiliary_Data/>
+            <dr.WSProfileConfig:Data ver="17.0">
+                <wsdl---.file value="C:\PROJECTS\SAP-IHIS\svc0002\wsdl\testing_removeSoap12"/>
+                <unique---.name value="com.digitalroute.ws.ws1650526579389"/>
+                <helper---.class value="ws.DZ11650526616715.PRF_WS_External.WSHelperImpl"/>
+                <transport value="HTTPS"/>
+                <wsdlFileName value="nefr_BT.wsdl"/>
+                <wsdlFileContent><![CDATA[<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:ns1="http://www.nefr.com/nefr/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://www.nefr.com/nefr/">\u000d
+	<wsp:Policy xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" wsu:Id="servicePolicy">\u000d
+		<wsp:ExactlyOne>\u000d
+			<wsp:All>\u000d
+				<wsam:Addressing xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" wsp:Optional="true">\u000d
+					<wsp:Policy>\u000d
+						<wsam:AnonymousResponses/>\u000d
+					</wsp:Policy>\u000d
+				</wsam:Addressing>\u000d
+			</wsp:All>\u000d
+		</wsp:ExactlyOne>\u000d
+	</wsp:Policy>\u000d
+	<wsdl:types>\u000d
+		<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsp200409="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsp200607="http://www.w3.org/2006/07/ws-policy" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:ns0="http://www.nefr.com/nefr/" xmlns:soap11="http://schemas.xmlsoap.org/wsdl/soap/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://www.nefr.com/nefr/">\u000d
+			<xsd:include schemaLocation="NeFR_BT.xsd"/>\u000d
+			<xsd:element name="CheckConsentFault">\u000d
+				<xsd:complexType>\u000d
+					<xsd:sequence>\u000d
+						<xsd:element name="payload" type="xs:string"/>\u000d
+					</xsd:sequence>\u000d
+				</xsd:complexType>\u000d
+			</xsd:element>\u000d
+			<xsd:element name="ARCalculatorFault">\u000d
+				<xsd:complexType>\u000d
+					<xsd:sequence>\u000d
+						<xsd:element name="payload" type="xs:string"/>\u000d
+					</xsd:sequence>\u000d
+				</xsd:complexType>\u000d
+			</xsd:element>\u000d
+		</xsd:schema>\u000d
+	</wsdl:types>\u000d
+\u000d
+	<wsdl:message name="CheckConsentRequest">\u000d
+		<wsdl:part name="parameters" element="ns1:CheckConsent"/>\u000d
+	</wsdl:message>\u000d
+	<wsdl:message name="CheckConsentResponse">\u000d
+		<wsdl:part name="parameters" element="ns1:CheckConsentResponse"/>\u000d
+	</wsdl:message>\u000d
+	<wsdl:message name="CheckConsentFault">\u000d
+		<wsdl:part name="parameters" element="ns1:CheckConsentFault"/>\u000d
+	</wsdl:message>\u000d
+	<wsdl:message name="ARCalculatorRequest">\u000d
+		<wsdl:part name="parameters" element="ns1:ARCalculator"/>\u000d
+	</wsdl:message>\u000d
+	<wsdl:message name="ARCalculatorResponse">\u000d
+		<wsdl:part name="parameters" element="ns1:ARCalculatorResponse"/>\u000d
+	</wsdl:message>\u000d
+	<wsdl:message name="ARCalculatorFault">\u000d
+		<wsdl:part name="parameters" element="ns1:ARCalculatorFault"/>\u000d
+	</wsdl:message>\u000d
+	\u000d
+	<wsdl:portType xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" name="nefrPortType" wsp:PolicyURIs="#servicePolicy">\u000d
+		<wsdl:operation name="CheckConsent">\u000d
+			<wsdl:input message="ns1:CheckConsentRequest" wsaw:Action="http://www.nefr.com/nefr/CheckConsent"/>\u000d
+			<wsdl:output message="ns1:CheckConsentResponse" wsaw:Action="http://www.nefr.com/nefr/nefrSoap/CheckConsentResponse"/>\u000d
+			<wsdl:fault message="ns1:CheckConsentFault" name="CheckConsentFault" wsaw:Action="http://www.nefr.com/nefr//nefrPortType/CheckConsentFault"/>\u000d
+		</wsdl:operation>\u000d
+		<wsdl:operation name="ARCalculator">\u000d
+			<wsdl:input message="ns1:ARCalculatorRequest" wsaw:Action="http://www.nefr.com/nefr/ARCalculator"/>\u000d
+			<wsdl:output message="ns1:ARCalculatorResponse" wsaw:Action="http://www.nefr.com/nefr/nefrSoap/ARCalculatorResponse"/>\u000d
+			<wsdl:fault message="ns1:ARCalculatorFault" name="ARCalculatorFault" wsaw:Action="http://www.nefr.com/nefr//nefrPortType/ARCalculatorFault"/>\u000d
+		</wsdl:operation>\u000d
+	</wsdl:portType>\u000d
+	\u000d
+	<wsdl:binding name="nefrSoap11Binding" type="ns1:nefrPortType">\u000d
+		<soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>\u000d
+		<wsaw:UsingAddressing wsdl:required="false"/>\u000d
+		<wsdl:operation name="CheckConsent">\u000d
+			<soap:operation soapAction="http://www.nefr.com/nefr/CheckConsent" style="document"/>\u000d
+			<wsdl:input>\u000d
+				<soap:body use="literal"/>\u000d
+			</wsdl:input>\u000d
+			<wsdl:output>\u000d
+				<soap:body use="literal"/>\u000d
+			</wsdl:output>\u000d
+			<wsdl:fault name="CheckConsentFault">\u000d
+				<soap:fault use="literal" name="CheckConsentFault"/>\u000d
+			</wsdl:fault>\u000d
+		</wsdl:operation>\u000d
+		<wsdl:operation name="ARCalculator">\u000d
+			<soap:operation soapAction="http://www.nefr.com/nefr/ARCalculator" style="document"/>\u000d
+			<wsdl:input>\u000d
+				<soap:body use="literal"/>\u000d
+			</wsdl:input>\u000d
+			<wsdl:output>\u000d
+				<soap:body use="literal"/>\u000d
+			</wsdl:output>\u000d
+			<wsdl:fault name="ARCalculatorFault">\u000d
+				<soap:fault use="literal" name="ARCalculatorFault"/>\u000d
+			</wsdl:fault>\u000d
+		</wsdl:operation>\u000d
+	</wsdl:binding>\u000d
+	\u000d
+	<wsdl:service name="nefr">\u000d
+		<wsdl:port name="nefrHttpSoap11Endpoint" binding="ns1:nefrSoap11Binding">\u000d
+			<soap:address location="http://hisnbtvdapp05.devhealthgrp.com.sg:9298/webservice/getGlobalConsent"/>\u000d
+		</wsdl:port>\u000d
+	</wsdl:service>\u000d
+</wsdl:definitions>]]></wsdlFileContent>
+                <includeFiles type="java.util.LinkedList">
+                    <dr.WSDLIncludeFileStoreable:value ver="2.1">
+                        <filePathSequence value="NeFR_BT.xsd"/>
+                        <fileContent><![CDATA[<?xml version="1.0" encoding="UTF-8"?>\u000d
+<s:schema xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.nefr.com/nefr/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" elementFormDefault="qualified" targetNamespace="http://www.nefr.com/nefr/">\u000d
+	<s:element name="CheckConsent">\u000d
+		<s:complexType>\u000d
+			<s:sequence>\u000d
+				<s:element minOccurs="1" maxOccurs="1" name="Institution" type="s:string"/>\u000d
+				<s:element minOccurs="1" maxOccurs="1" name="SystemID" type="s:string"/>\u000d
+				<s:element minOccurs="1" maxOccurs="1" name="UserID" type="s:string"/>\u000d
+				<s:element minOccurs="1" maxOccurs="1" name="UniqueTransactionID" type="s:string"/>\u000d
+				<s:element minOccurs="1" maxOccurs="1" name="IDNumber" type="s:string"/>\u000d
+			</s:sequence>\u000d
+		</s:complexType>\u000d
+	</s:element>\u000d
+	<s:element name="CheckConsentResponse">\u000d
+		<s:complexType>\u000d
+			<s:sequence>\u000d
+				<s:element minOccurs="0" maxOccurs="1" name="ConsentLevel" type="s:string"/>\u000d
+				<s:element minOccurs="0" maxOccurs="1" name="ReasonForNoConsent" type="s:string"/>\u000d
+				<s:element minOccurs="0" maxOccurs="1" name="StartDate" type="s:date"/>\u000d
+				<s:element minOccurs="0" maxOccurs="1" name="EndDate" type="s:date"/>\u000d
+				<s:element minOccurs="0" maxOccurs="1" name="InstitutionLastChange" type="s:string"/>\u000d
+				<s:element minOccurs="0" maxOccurs="1" name="IDNumber" type="s:string"/>\u000d
+				<s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string"/>\u000d
+				<s:element minOccurs="0" maxOccurs="1" name="OBF_IDNumber" type="s:string"/>\u000d
+				<s:element minOccurs="0" maxOccurs="1" name="OBF_Name" type="s:string"/>\u000d
+				<s:element minOccurs="1" maxOccurs="1" name="Status">\u000d
+					<s:complexType>\u000d
+						<s:sequence>\u000d
+							<s:element minOccurs="1" maxOccurs="1" name="UniqueTransactionID" type="s:string"/>\u000d
+							<s:element minOccurs="1" maxOccurs="1" name="StatusCode" type="s:string"/>\u000d
+							<s:element minOccurs="1" maxOccurs="1" name="StatusDescription" type="s:string"/>\u000d
+						</s:sequence>\u000d
+					</s:complexType>\u000d
+				</s:element>\u000d
+			</s:sequence>\u000d
+		</s:complexType>\u000d
+	</s:element>\u000d
+\u000d
+	<s:element name="ARCalculator">\u000d
+		<s:complexType>\u000d
+			<s:sequence>\u000d
+				<s:element minOccurs="1" maxOccurs="1" name="Institution" type="s:string"/>\u000d
+				<s:element minOccurs="1" maxOccurs="1" name="SystemID" type="s:string"/>\u000d
+				<s:element minOccurs="1" maxOccurs="1" name="UserID" type="s:string"/>\u000d
+				<s:element minOccurs="1" maxOccurs="1" name="UniqueTransactionID" type="s:string"/>\u000d
+				<s:element minOccurs="1" maxOccurs="1" name="QueryDate" type="s:dateTime"/>\u000d
+				<s:element minOccurs="1" maxOccurs="1" name="Familymembers" type="s:string"/>\u000d
+				<s:element minOccurs="0" maxOccurs="1" name="InstitutionalBillID" type="s:string"/>\u000d
+				<s:element minOccurs="1" maxOccurs="1" name="Nationality" type="s:string"/>\u000d
+				<s:element minOccurs="1" maxOccurs="1" name="ServiceType" type="s:string"/>\u000d
+				<s:element minOccurs="0" maxOccurs="1" name="PsychiatricIndicator" type="s:boolean"/>\u000d
+				<s:element minOccurs="1" maxOccurs="1" name="AdmissionDate" type="s:dateTime"/>\u000d
+				<s:element minOccurs="1" maxOccurs="1" name="DischargeWardClass" type="s:string"/>\u000d
+				<s:element minOccurs="1" maxOccurs="1" name="TotalCharges" type="s:decimal"/>\u000d
+				<s:element minOccurs="0" maxOccurs="1" name="LengthOfStayNormalWard" type="s:decimal"/>\u000d
+				<s:element minOccurs="1" maxOccurs="1" name="ActualWardCharges" type="s:decimal"/>\u000d
+				<s:element minOccurs="0" maxOccurs="1" name="LengthOfStayICU" type="s:decimal"/>\u000d
+				<s:element minOccurs="0" maxOccurs="1" name="LengthOfStayPsyWard" type="s:decimal"/>\u000d
+				<s:element minOccurs="0" maxOccurs="1" name="Implants" type="s:decimal"/>\u000d
+				<s:element minOccurs="0" maxOccurs="1" name="AntenatalClaimAmount" type="s:decimal"/>\u000d
+				<s:element minOccurs="1" maxOccurs="1" name="Surgery" type="s:string"/>\u000d
+				<s:element minOccurs="0" maxOccurs="1" name="OutpatientCharges" type="s:string"/>\u000d
+				<s:element minOccurs="0" maxOccurs="1" name="InsCashRiderPayout" type="s:decimal"/>\u000d
+				<s:element minOccurs="1" maxOccurs="1" name="PatInfoForMT" type="s:string"/>\u000d
+				<!-- Added List of Stay parameter, following latest NEFR interface specs on 25 Jan 2022 by Vanessa -->\u000d
+				<s:element minOccurs="0" maxOccurs="1" name="ListOfStays" type="s:string"/>\u000d
+			</s:sequence>\u000d
+		</s:complexType>\u000d
+	</s:element>\u000d
+	<s:element name="ARCalculatorResponse">\u000d
+		<s:complexType>\u000d
+			<s:sequence>\u000d
+				<s:element minOccurs="0" maxOccurs="1" name="AtRiskResult" type="s:string"/>\u000d
+				<s:element minOccurs="0" maxOccurs="1" name="InsufficientMediSaveBalance" type="s:boolean"/>\u000d
+				<s:element minOccurs="0" maxOccurs="1" name="MediSaveWithdrawalLimitReached" type="s:boolean"/>\u000d
+				<s:element minOccurs="0" maxOccurs="1" name="Exclusion" type="s:boolean"/>\u000d
+				<s:element minOccurs="0" maxOccurs="1" name="Insurer" type="s:string"/>\u000d
+				<s:element minOccurs="0" maxOccurs="1" name="PlanType" type="s:string"/>\u000d
+				<s:element minOccurs="0" maxOccurs="1" name="StatusOfMediShieldLifeCover" type="s:string"/>\u000d
+				<s:element minOccurs="0" maxOccurs="1" name="AnnualInsuranceClaimLimitReached" type="s:boolean"/>\u000d
+				<s:element minOccurs="0" maxOccurs="1" name="LifetimeInsuranceClaimLimitReached" type="s:boolean"/>\u000d
+				<s:element minOccurs="0" maxOccurs="1" name="RecommendedMSVPayout" type="s:decimal"/>\u000d
+				<s:element minOccurs="0" maxOccurs="1" name="EstimatedMSHPayout" type="s:decimal"/>\u000d
+				<s:element minOccurs="0" maxOccurs="1" name="PolicyRenewalDate" type="s:date"/>\u000d
+				<s:element minOccurs="0" maxOccurs="1" name="EstimatedIPPayout" type="s:decimal"/>\u000d
+				<s:element minOccurs="0" maxOccurs="1" name="OOP" type="s:decimal"/>\u000d
+				<s:element minOccurs="0" maxOccurs="1" name="TypeOfElderShield" type="s:string"/>\u000d
+				<s:element minOccurs="0" maxOccurs="1" name="ElderShieldBasicSupplementInsurer" type="s:string"/>\u000d
+				<s:element minOccurs="0" maxOccurs="1" name="ElderShieldSupplementIndicator" type="s:boolean"/>\u000d
+				<s:element minOccurs="0" maxOccurs="1" name="HHAnualOOPHealthcareExpenses" type="s:decimal"/>\u000d
+				<s:element minOccurs="0" maxOccurs="1" name="NumberOfHHMembers" type="s:int"/>\u000d
+				<s:element minOccurs="0" maxOccurs="1" name="AtRiskResultForGeneralExclusion" type="s:string"/>\u000d
+				<s:element minOccurs="0" maxOccurs="1" name="OOPForGeneralExclusion" type="s:decimal"/>\u000d
+				<s:element minOccurs="0" maxOccurs="1" name="OtherAssistanceSchemes">\u000d
+					<s:complexType>\u000d
+						<s:sequence>\u000d
+							<s:element minOccurs="1" maxOccurs="10" name="OtherAssistanceScheme">\u000d
+								<s:complexType>\u000d
+									<s:sequence>\u000d
+										<s:element minOccurs="1" maxOccurs="1" name="Scheme" type="s:string"/>\u000d
+										<s:element minOccurs="0" maxOccurs="1" name="SchemeAdministrator" type="s:string"/>\u000d
+										<s:element minOccurs="1" maxOccurs="1" name="StartDate" type="s:date"/>\u000d
+										<s:element minOccurs="0" maxOccurs="1" name="EndDate" type="s:date"/>\u000d
+										<s:element minOccurs="0" maxOccurs="1" name="CardNumber" type="s:string"/>\u000d
+									</s:sequence>\u000d
+								</s:complexType>\u000d
+							</s:element>\u000d
+						</s:sequence>\u000d
+					</s:complexType>\u000d
+				</s:element>\u000d
+				<s:element minOccurs="0" maxOccurs="1" name="MSVMSHBalances">\u000d
+					<s:complexType>\u000d
+						<s:sequence>\u000d
+							<s:element minOccurs="1" maxOccurs="30" name="MSVMSHBalance">\u000d
+								<s:complexType>\u000d
+									<s:sequence>\u000d
+										<s:element minOccurs="1" maxOccurs="1" name="EnquiryType" type="s:string"/>\u000d
+										<s:element minOccurs="0" maxOccurs="1" name="UtilisedAmount" type="s:decimal"/>\u000d
+										<s:element minOccurs="0" maxOccurs="1" name="UnutilisedAmount" type="s:decimal"/>\u000d
+										<s:element minOccurs="0" maxOccurs="1" name="AppealStatus" type="s:string"/>\u000d
+									</s:sequence>\u000d
+								</s:complexType>\u000d
+							</s:element>\u000d
+						</s:sequence>\u000d
+					</s:complexType>\u000d
+				</s:element>\u000d
+				<s:element minOccurs="0" maxOccurs="1" name="SubsidyDeviations">\u000d
+					<s:complexType>\u000d
+						<s:sequence>\u000d
+							<s:element minOccurs="1" maxOccurs="20" name=" SubsidyDeviation">\u000d
+								<s:complexType>\u000d
+									<s:sequence>\u000d
+										<s:element minOccurs="1" maxOccurs="1" name="Setting" type="s:string"/>\u000d
+										<s:element minOccurs="1" maxOccurs="1" name="Institution" type="s:string"/>\u000d
+										<s:element minOccurs="1" maxOccurs="1" name="DeviationCriteria" type="s:string"/>\u000d
+										<s:element minOccurs="1" maxOccurs="1" name="StartDate" type="s:date"/>\u000d
+										<s:element minOccurs="1" maxOccurs="1" name="EndDate" type="s:date"/>\u000d
+									</s:sequence>\u000d
+								</s:complexType>\u000d
+							</s:element>\u000d
+						</s:sequence>\u000d
+					</s:complexType>\u000d
+				</s:element>\u000d
+				<s:element minOccurs="0" maxOccurs="1" name="PatientFamilyMembers">\u000d
+					<s:complexType>\u000d
+						<s:sequence>\u000d
+							<s:element minOccurs="1" maxOccurs="25" name="PatientFamilyMember">\u000d
+								<s:complexType>\u000d
+									<s:sequence>\u000d
+										<s:element minOccurs="1" maxOccurs="1" name="IdentificationNumber" type="s:string"/>\u000d
+										<s:element minOccurs="1" maxOccurs="1" name="IdentificationType" type="s:string"/>\u000d
+										<s:element minOccurs="1" maxOccurs="1" name="Name" type="s:string"/>\u000d
+										<s:element minOccurs="0" maxOccurs="1" name="DateOfBirth" type="s:date"/>\u000d
+										<s:element minOccurs="1" maxOccurs="1" name="RelationshipToPatient" type="s:string"/>\u000d
+										<s:element minOccurs="0" maxOccurs="1" name="MediSaveBalance" type="s:decimal"/>\u000d
+										<s:element minOccurs="0" maxOccurs="1" name="RecommendedMediSaveBalanceUsable" type="s:decimal"/>\u000d
+										<s:element minOccurs="0" maxOccurs="1" name="EstimatedMedisavePayoutforCurrentBill" type="s:decimal"/>\u000d
+										<s:element minOccurs="0" maxOccurs="1" name="ReasonForNoConsent" type="s:string"/>\u000d
+									</s:sequence>\u000d
+								</s:complexType>\u000d
+							</s:element>\u000d
+						</s:sequence>\u000d
+					</s:complexType>\u000d
+				</s:element>\u000d
+				<s:element minOccurs="1" maxOccurs="1" name="Status">\u000d
+					<s:complexType>\u000d
+						<s:sequence>\u000d
+							<s:element minOccurs="1" maxOccurs="1" name="UniqueTransactionID" type="s:string"/>\u000d
+							<s:element minOccurs="1" maxOccurs="1" name="StatusCode" type="s:string"/>\u000d
+							<s:element minOccurs="1" maxOccurs="1" name="StatusDescription" type="s:string"/>\u000d
+						</s:sequence>\u000d
+					</s:complexType>\u000d
+				</s:element>\u000d
+			</s:sequence>\u000d
+		</s:complexType>\u000d
+	</s:element>\u000d
+</s:schema>]]></fileContent>
+                    </dr.WSDLIncludeFileStoreable:value>
+                </includeFiles>
+                <typeNamespaceToPrefixMap keyType="STRING" valueType="STRING">
+                    <entry key="http://www.nefr.com/nefr/" value="ns1"/>
+                </typeNamespaceToPrefixMap>
+                <singleWSDLFile value="true"/>
+                <concatenationFilePathList type="java.util.LinkedList"/>
+                <inputAndOutputTypeName value="ws.DZ11650526616715.PRF_WS_External.udr.AbstractNefrPortTypeWSCycle"/>
+                <Security_Enabled value="false"/>
+                <null:Security_Settings/>
+                <Binding_name value="nefrSoap11Binding"/>
+                <Port_type value="nefrPortType"/>
+                <Service_Port_name value="nefrHttpSoap11Endpoint"/>
+                <TLS_keystore_file_content><![CDATA[
+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
+,X89IKZ9F-P>UGI*_
+`
+]]></TLS_keystore_file_content>
+                <TLS_keystore_password value="DR_8.1_KEY-1-0F55A8FE1BEC18DCD0A73603494A3D76017BB0B8FB061C1876D43DD75468AA40"/>
+                <TLS_keystore_file value="OutboundKeyStore_keypair.jks"/>
+                <Simple_Mode_Enabled value="false"/>
+                <Process_Implicit_SOAP_Headers value="false"/>
+                <Disable_Wrapper_Style value="true"/>
+                <Enable_Username_Token value="false"/>
+                <Username_Token_Username value=""/>
+                <Username_Token_Password value="DR_8.1_KEY-1-017BB0B8FB061C1876D43DD75468AA40"/>
+                <Enable_WS_Addressing value="false"/>
+                <Disable_Underscore_Binding_Mode value="false"/>
+                <properties><![CDATA[# Advanced XML binding options can be customized here. If the properties are commented out, default values are used.
+
+#Enable JAXB Simple Binding Mode
+# When true, XSD Schemas of loaded WSDL files are compiled into Java code using the experimental "Simple and better binding mode". This is necessary for some complex types, for instance when duplicate element names are used within the same complex type.
+enable_JAXB_simple_binding false
+
+#Disable JAXWS Wrapper style Mode
+# When true, the cycle UDR will contain request and response parameters that wrap all the arguments in request and response UDRs.
+disable_JAXWS_wrapper_mode true
+
+#Enable Processing Of Implicit Soap Header
+# When true, any SOAP headers defined in the binding section of WSDL files are compiled into Java code. This is necessary in order to manipulate the SOAP headers in outgoing Web Service requests. 
+enable_processing_of_implicit_SOAP_header false
+
+#Disable Underscore Binding Mode
+# When false, underscore binding mode is true, JAXB will not strip underscore from the element names when converting a WSDL file to Java.
+disable_under_score_binding false
+
+#Populate originaldata field
+# When true the OriginalData field in the WSCycleUDR will be populated with the content of the SOAP request
+populate_originaldata_field false
+
+#Max enum members
+# Sets the value for the typesafeEnumMaxMembers jaxb global variable which controls the maximum number of allowed enum members
+max_enum_members 256
+
+#Schema level bindings
+# Sets the jaxb schema level bindings per xsd file. The format is [filename.xsd]:package=[packageSuffix],[transformationType]-prefix=prefix,suffix=suffix;
+schema_level_bindings 
+
+#Global bindings
+# Sets the jaxb global bindings per xsd file. The format is property=value;
+global_bindings localScoping=nested
+
+#Enable fault stack trace in response
+# When true stack trace information will be available in error responses
+fault_stack_trace_enabled false
+
+#Allow HEAD
+# When true HTTP method HEAD is allowed
+allow_head false
+
+#Jetty Accept Queue Size
+# Size of the Jetty ServerConnector request queue, set to 0 to disable queue
+jetty_accept_queue_size 0
+
+#Enable Big Decimal
+# Enable the use of BigDecimal as internal type for decimal
+enable_big_decimal false
+
+]]></properties>
+                <Populate_OriginalData_Field value="false"/>
+                <Max_Enum_Members value="256"/>
+                <Schema_Bindings value=""/>
+                <Enable_JAAS value="false"/>
+                <JAAS_Module value=""/>
+                <JAAS_Properties value=""/>
+                <RM_Store value="In Memory"/>
+                <Enforce_RM value="false"/>
+                <Enable_Big_Decimal value="false"/>
+                <Schema_Validation value="false"/>
+            </dr.WSProfileConfig:Data>
+            <documentation value=""/>
+            <parameters value=""/>
+            <Current_Comment/>
+        </dr.Configuration:dr.Configuration>
+    </mz:data>
+    <mz:referenced-data/>
+</mz:configuration>

@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<mz:configuration format-version="1.0">
+    <mz:data>
+        <dr.Configuration:dr.Configuration Folder="ZZR_SVC0002" Key="DZ11651225663191" Name="WFL_Forwarding_Stub" Owner="D_LIM" Type="Workflow" encrypted="false" ver="6.0">
+            <STRING:Access_Groups_-----.read_-----.write_-----.execute>
+                <value value="All"/>
+                <value value="All"/>
+                <value value="All"/>
+            </STRING:Access_Groups_-----.read_-----.write_-----.execute>
+            <dr.ConfigAuxData:Auxiliary_Data ver="2.0">
+                <Entries keyType="STRING" type="java.util.LinkedHashMap" valueType="STRING">
+                    <Autostart value="false"/>
+                    <Count value="1"/>
+                    <Standalone value="true"/>
+                    <Type value="Realtime"/>
+                </Entries>
+            </dr.ConfigAuxData:Auxiliary_Data>
+            <mz:workflow-template>
+                <dr.WorkflowRealtimeData:Data Flow_Counters_Interval="0" Template_Valid="true" Workflow_ID_Counter="1" ver="7.0">
+                    <Nodes>
+                        <dr.WfNode:value Classname="com.digitalroute.wfc.ws.WSCollInsp" ID="${identity@dr.WfNode#Web_Service_Provider..ID}" Name="Web_Service_Provider" XYposition="${layout@dr.WfNode#Web_Service_Provider..XYposition}" ver="2.0">
+                            <dr.WfNodeConfig:Configuration>
+                                <dr.WfNodeConfig:value Classname="com.digitalroute.wfc.ws.WSCollInsp" Type="1" ver="1.0">
+                                    <dr.WSCollData:Data ver="9.0">
+                                        <dr.WSCollData.httpAddress:http---.address active="true" fit="DEFAULT" ver="1.0">
+                                            <Value value="http://www.ihisbt.com:8081/webservice/getGlobalConsent"/>
+                                        </dr.WSCollData.httpAddress:http---.address>
+                                        <dr.WSCollData.profile:profile active="true" fit="FINAL" ver="1.0">
+                                            <dr.DRConfiguration:Value Folder="ZZR_SVC0002" Key="DZ11650526616715" Name="PRF_WS_External" Type="WS Profile" ver="1.0"/>
+                                        </dr.WSCollData.profile:profile>
+                                        <dr.WSCollData.transport:transport active="false" fit="FINAL" ver="1.0">
+                                            <Value value=""/>
+                                        </dr.WSCollData.transport:transport>
+                                        <dr.WSCollData.workflowResponseTimeout:workflowResponseTimeout active="true" fit="FINAL" ver="1.0">
+                                            <Value value="10000"/>
+                                        </dr.WSCollData.workflowResponseTimeout:workflowResponseTimeout>
+                                        <dr.WSCollData.idleTimeout:idleTimeout active="true" fit="FINAL" ver="1.0">
+                                            <Value value="0"/>
+                                        </dr.WSCollData.idleTimeout:idleTimeout>
+                                        <dr.WSCollData.enableBasicAuthentication:enableBasicAuthentication active="true" fit="FINAL" ver="1.0">
+                                            <Value value="false"/>
+                                        </dr.WSCollData.enableBasicAuthentication:enableBasicAuthentication>
+                                        <dr.WSCollData.httpUsername:httpUsername active="false" fit="FINAL" ver="1.0">
+                                            <Value value=""/>
+                                        </dr.WSCollData.httpUsername:httpUsername>
+                                        <dr.WSCollData.httpPassword:httpPassword active="false" fit="FINAL" ver="1.0">
+                                            <Value value="DR_8.1_KEY-1-017BB0B8FB061C1876D43DD75468AA40"/>
+                                        </dr.WSCollData.httpPassword:httpPassword>
+                                        <dr.WSCollData.enableValidation:enableValidation active="false" fit="FINAL" ver="1.0">
+                                            <Value value="false"/>
+                                        </dr.WSCollData.enableValidation:enableValidation>
+                                        <dr.WSCollData.enableRouteRawXML:enableRouteRawXML active="true" fit="FINAL" ver="1.0">
+                                            <Value value="false"/>
+                                        </dr.WSCollData.enableRouteRawXML:enableRouteRawXML>
+                                        <dr.WSCollData.routeRawXMLTo:routeRawXMLTo active="true" fit="FINAL" ver="1.0">
+                                            <Value/>
+                                        </dr.WSCollData.routeRawXMLTo:routeRawXMLTo>
+                                    </dr.WSCollData:Data>
+                                </dr.WfNodeConfig:value>
+                            </dr.WfNodeConfig:Configuration>
+                        </dr.WfNode:value>
+                        <dr.WfNode:value Classname="com.digitalroute.wfc.analysis.AnalysisRealtimeInsp" ID="${identity@dr.WfNode#Analysis..ID}" Name="Analysis" XYposition="${layout@dr.WfNode#Analysis..XYposition}" ver="2.0">
+                            <dr.WfNodeConfig:Configuration>
+                                <dr.WfNodeConfig:value Classname="com.digitalroute.wfc.analysis.AnalysisRealtimeInsp" Type="1" ver="1.0">
+                                    <dr.StuffyMapperData:Data ver="1.0">
+                                        <dr.StuffyMapperData.sourceCode:Source_code active="true" fit="FINAL" ver="1.0">
+                                            <Value><![CDATA[import ultra.ZZR_SVC0002.UFL_CM_OUTBOUND_Response_Stub;
+import ultra.ws.ZZR_SVC0002.PRF_WS_External.cycles;
+import ultra.ws.ZZR_SVC0002.PRF_WS_External.ns1;
+
+import ultra.SAP_RFC.ZZC_RFC.PRF_RFC_S4_CAZZ_STUB.subUdr;
+
+import apl.ZZC_CA_APL.APL_Common_Constants;
+
+string description;
+string idS;
+string reqField;
+
+initialize {
+      debug("Workflow starts ....");
+      idS = (string) dynamicFieldGet("responseSetup", "IDs");  
+      reqField = (string) dynamicFieldGet("responseSetup", "RequestField");  
+}
+
+consume {
+    if(instanceOf(input, WSCycle_checkConsent)) {
+        debug("new request");
+        WSCycle_checkConsent wsc = (WSCycle_checkConsent) input;
+        debug("wsc: " + wsc);
+        
+        ZFM_CAZZ_GET_STUB_UDR extUdr = udrCreate(ZFM_CAZZ_GET_STUB_UDR);
+        importParams_ZFM_CAZZ_GET_STUB imParams = udrCreate(importParams_ZFM_CAZZ_GET_STUB);
+        imParams.IV_IDS = idS;
+        imParams.IV_REQFIELDVALUE =(string)udrGetValue(wsc.param, reqField);
+        
+        extUdr.importParams = imParams;
+        extUdr.context = wsc;
+        debug("extUdr: " + extUdr);
+        
+        udrRoute(extUdr, "request");
+    } else if(instanceOf(input, ZFM_CAZZ_GET_STUB_UDR)) {
+        debug("S4 response");
+        ZFM_CAZZ_GET_STUB_UDR extUdr = (ZFM_CAZZ_GET_STUB_UDR) input;
+        debug("extUdr: " + extUdr);
+        
+        WSCycle_checkConsent respUdr = (WSCycle_checkConsent) extUdr.context;
+        debug("respUdr: " + respUdr);
+        convertRfcToWs(respUdr, extUdr.exportParams.EV_INFORMATION);
+        debug("RESPONSE TO WS: " + respUdr);
+        
+        udrRoute(respUdr, "response");
+    } else if(instanceOf(input, RfcErrorUDR)) {
+        debug("Error response");
+        RfcErrorUDR reu = (RfcErrorUDR) input;
+        debug("RfcErrorUDR:" + reu);
+        ZFM_CAZZ_GET_STUB_UDR errUdr = (ZFM_CAZZ_GET_STUB_UDR) reu.inputUDR;
+        WSCycle_checkConsent respUdr = (WSCycle_checkConsent) errUdr.context;
+        
+        debug("errUdr: " + errUdr);
+        
+        //Create WSC response
+        respUdr.response = udrCreate(CheckConsentResponse);
+        //respUdr.response.ConsentLevel = respUdr.param.ConsentLevel;
+        //respUdr.response.ReasonForNoConsent = respmsg.ReasonForNoConsent;
+        //strToDate(respUdr.response.StartDate, respmsg.StartDate, DATETIME_FORMAT_YYYYMMDD);
+        //strToDate(respUdr.response.EndDate, respmsg.EndDate, DATETIME_FORMAT_YYYYMMDD);
+        respUdr.response.InstitutionLastChange = respUdr.param.Institution;
+        respUdr.response.IDNumber = respUdr.param.IDNumber;
+        respUdr.response.Name = respUdr.param.UserID;
+        //respUdr.response.OBF_IDNumber = respmsg.OBF_IDNumber;
+        //respUdr.response.OBF_Name = respmsg.OBF_Name;
+        
+        //respUdr.response.Status.StatusCode =respmsg.Status.StatusCode;
+        //respUdr.response.Status.StatusDescription =respmsg.Status.StatusDescription;
+        //respUdr.response.Status.UniqueTransactionID = respmsg.Status.UniqueTransactionID;
+        
+        debug("RESPONSE TO WS: " + respUdr);
+        udrRoute(respUdr, "response");
+    }
+}
+
+boolean convertRfcToWs(WSCycle_checkConsent respUdr, string respstr) {
+    boolean isConverted = true;
+    list<drudr> myList = listCreate(drudr);
+    //string respstr = baToStr(respba);
+    debug("respstr: " +respstr);
+    bytearray respba;
+    strToBA(respba, respstr);
+    
+    debug("Start decoding...");
+    debug(udrDecode("ZZR_SVC0002.UFL_CM_OUTBOUND_Response_Stub.SVC0002_Response_Decoder",myList, respba, true));
+    if (udrDecode("ZZR_SVC0002.UFL_CM_OUTBOUND_Response_Stub.SVC0002_Response_Decoder",myList, respba, true) == null) {
+        debug("myList: " + myList);
+        for (drudr respRfc:myList) {
+            if (instanceOf(respRfc, Response_Stub)) {
+                Response_Stub respmsg = (Response_Stub) respRfc;
+                debug("respmsg: " + respmsg);
+                //Create WSC response
+                respUdr.response = udrCreate(CheckConsentResponse);
+                
+                respUdr.response.ConsentLevel = respmsg.ConsentLevel;
+                respUdr.response.ReasonForNoConsent = respmsg.ReasonForNoConsent;
+                strToDate(respUdr.response.StartDate, respmsg.StartDate, DATETIME_FORMAT_YYYY_MM_DD);
+                strToDate(respUdr.response.EndDate, respmsg.EndDate, DATETIME_FORMAT_YYYY_MM_DD);
+                respUdr.response.InstitutionLastChange = respmsg.InstitutionLastChange;
+                respUdr.response.IDNumber = respmsg.IDNumber;
+                respUdr.response.Name = respmsg.Name;
+                respUdr.response.OBF_IDNumber = respmsg.OBF_IDNumber;
+                respUdr.response.OBF_Name = respmsg.OBF_Name;
+                
+                respUdr.response.Status = udrCreate(CheckConsentResponse$Status);
+                respUdr.response.Status.StatusCode =respmsg.Status.StatusCode;
+                respUdr.response.Status.StatusDescription =respmsg.Status.StatusDescription;
+                respUdr.response.Status.UniqueTransactionID = respmsg.Status.UniqueTransactionID;
+                
+            }
+        }
+    } else {
+        isConverted=false;
+    }
+
+    return isConverted;
+}]]></Value>
+                                        </dr.StuffyMapperData.sourceCode:Source_code>
+                                        <dr.StuffyMapperData.udrTypes:UDR_types active="true" fit="FINAL" ver="1.0">
+                                            <dr.DRTypeInfo:Value>
+                                                <dr.DRTypeInfo:value TypeName="ws.ZZR_SVC0002.PRF_WS_External.cycles.AbstractNefrPortTypeWSCycle" ver="1.0"/>
+                                                <dr.DRTypeInfo:value TypeName="RfcErrorUDR" ver="1.0"/>
+                                                <dr.DRTypeInfo:value TypeName="SAP_RFC.ZZC_RFC.PRF_RFC_S4_CAZZ_STUB.ZFM_CAZZ_GET_STUB_UDR" ver="1.0"/>
+                                            </dr.DRTypeInfo:Value>
+                                        </dr.StuffyMapperData.udrTypes:UDR_types>
+                                    </dr.StuffyMapperData:Data>
+                                </dr.WfNodeConfig:value>
+                            </dr.WfNodeConfig:Configuration>
+                        </dr.WfNode:value>
+                        <dr.WfNode:value Classname="com.digitalroute.rfc.agent.SAPJCoRFCAgentInsp" ID="${identity@dr.WfNode#SAP_RFC_Stub..ID}" Name="SAP_RFC_Stub" XYposition="${layout@dr.WfNode#SAP_RFC_Stub..XYposition}" ver="2.0">
+                            <dr.WfNodeConfig:Configuration>
+                                <dr.WfNodeConfig:value Classname="com.digitalroute.rfc.agent.SAPJCoRFCAgentInsp" Type="1" ver="1.0">
+                                    <rfc.agent.contract:Data ver="6.1">
+                                        <rfc.agent.contract.rfcProfile:RFC_Profile_Key active="true" fit="FINAL" ver="1.0">
+                                            <dr.DRConfiguration:Value Folder="ZZC_RFC" Key="DZ11643892236031" Name="PRF_RFC_S4_CAZZ_STUB" Type="SAP RFC Profile" ver="1.0"/>
+                                        </rfc.agent.contract.rfcProfile:RFC_Profile_Key>
+                                        <rfc.agent.contract.enableConnectionPool:enableSecuredConnection active="true" fit="FINAL" ver="1.0">
+                                            <Value value="false"/>
+                                        </rfc.agent.contract.enableConnectionPool:enableSecuredConnection>
+                                        <rfc.agent.contract.jCoPoolCapacity:maxIdleConnections active="true" fit="FINAL" ver="1.0">
+                                            <Value value="2"/>
+                                        </rfc.agent.contract.jCoPoolCapacity:maxIdleConnections>
+                                        <rfc.agent.contract.jCoPeakLimit:maxActiveConnections active="true" fit="FINAL" ver="1.0">
+                                            <Value value="10"/>
+                                        </rfc.agent.contract.jCoPeakLimit:maxActiveConnections>
+                                        <rfc.agent.contract.queueSize:queueSize active="true" fit="FINAL" ver="1.0">
+                                            <Value value="1000"/>
+                                        </rfc.agent.contract.queueSize:queueSize>
+                                        <rfc.agent.contract.executorSize:executorSize active="true" fit="FINAL" ver="1.0">
+                                            <Value value="5"/>
+                                        </rfc.agent.contract.executorSize:executorSize>
+                                        <rfc.agent.contract.cacheSize:cacheSize active="true" fit="FINAL" ver="1.0">
+                                            <Value value="1000"/>
+                                        </rfc.agent.contract.cacheSize:cacheSize>
+                                        <rfc.agent.contract.cacheExpiry:cacheExpiry active="true" fit="FINAL" ver="1.0">
+                                            <Value value="120"/>
+                                        </rfc.agent.contract.cacheExpiry:cacheExpiry>
+                                        <rfc.agent.contract.enableImmediateStop:enableImmediateStop active="true" fit="FINAL" ver="1.0">
+                                            <Value value="false"/>
+                                        </rfc.agent.contract.enableImmediateStop:enableImmediateStop>
+                                    </rfc.agent.contract:Data>
+                                </dr.WfNodeConfig:value>
+                            </dr.WfNodeConfig:Configuration>
+                        </dr.WfNode:value>
+                    </Nodes>
+                    <Routes>
+                        <dr.WfRoute:value Destination_ID="${identity@dr.WfRoute#request..Destination ID}" ID="${identity@dr.WfRoute#request..ID}" Name="request" Realtime_mode="0" Route_type="1" Source_ID="${identity@dr.WfRoute#request..Source ID}" Stroke_points="${layout@dr.WfRoute#request..Stroke points}" ver="2.0"/>
+                        <dr.WfRoute:value Destination_ID="${identity@dr.WfRoute#request1..Destination ID}" ID="${identity@dr.WfRoute#request1..ID}" Name="request" Realtime_mode="0" Route_type="1" Source_ID="${identity@dr.WfRoute#request1..Source ID}" Stroke_points="${layout@dr.WfRoute#request1..Stroke points}" ver="2.0"/>
+                        <dr.WfRoute:value Destination_ID="${identity@dr.WfRoute#response..Destination ID}" ID="${identity@dr.WfRoute#response..ID}" Name="response" Realtime_mode="0" Route_type="1" Source_ID="${identity@dr.WfRoute#response..Source ID}" Stroke_points="${layout@dr.WfRoute#response..Stroke points}" ver="2.0"/>
+                        <dr.WfRoute:value Destination_ID="${identity@dr.WfRoute#response1..Destination ID}" ID="${identity@dr.WfRoute#response1..ID}" Name="response" Realtime_mode="0" Route_type="1" Source_ID="${identity@dr.WfRoute#response1..Source ID}" Stroke_points="${layout@dr.WfRoute#response1..Stroke points}" ver="2.0"/>
+                    </Routes>
+                    <Service/>
+                    <Logged_error_MIM/>
+                    <dr.WorkflowExecutionConfig:Execution_Config ver="8.0">
+                        <dr.WorkflowExecutionConfig.executionSettings:Execution_Settings extref_key="" ver="1.0">
+                            <dr.ExecutionSettings:Value ver="3.0">
+                                <enabled value="true"/>
+                                <ecList type="java.util.LinkedList">
+                                    <dr.PicoInstanceEntity:value ver="1.0">
+                                        <Name value="ecsa1"/>
+                                        <Type value="3"/>
+                                    </dr.PicoInstanceEntity:value>
+                                </ecList>
+                                <dr.WorkflowDistType:dist value="ROUND_ROBIN"/>
+                                <groupList type="java.util.LinkedList"/>
+                                <dr.AutoStartSettings:autostart ver="1.0">
+                                    <enabled value="false"/>
+                                    <instances value="0"/>
+                                    <null:abort_behaviour/>
+                                </dr.AutoStartSettings:autostart>
+                            </dr.ExecutionSettings:Value>
+                        </dr.WorkflowExecutionConfig.executionSettings:Execution_Settings>
+                        <dr.WorkflowExecutionConfig.throughputMIM:Throughput_MIM extref_key="" ver="1.0">
+                            <Value/>
+                        </dr.WorkflowExecutionConfig.throughputMIM:Throughput_MIM>
+                        <dr.WorkflowExecutionConfig.debugType:Debug_Type extref_key="" ver="1.0">
+                            <dr.DebugType:Value value="EVENT"/>
+                        </dr.WorkflowExecutionConfig.debugType:Debug_Type>
+                        <dr.WorkflowExecutionConfig.noOfFilesToKeep:Number_of_Files_to_Keep extref_key="" ver="1.0">
+                            <Value value="0"/>
+                        </dr.WorkflowExecutionConfig.noOfFilesToKeep:Number_of_Files_to_Keep>
+                        <dr.WorkflowExecutionConfig.txnHandler:Transaction_Handler extref_key="" ver="1.0">
+                            <Value/>
+                        </dr.WorkflowExecutionConfig.txnHandler:Transaction_Handler>
+                    </dr.WorkflowExecutionConfig:Execution_Config>
+                    <dr.DynamicConfigStorableDefinition:dyn ver="1.0">
+                        <fields>
+                            <dr.FieldDescriptorStorable:value ver="1.0">
+                                <name value="IDs"/>
+                                <title value="IDs"/>
+                                <section value="responseSetup"/>
+                                <description value=""/>
+                                <dynStorableKey value="IDs"/>
+                                <type value="String"/>
+                                <defaultValue value=""/>
+                            </dr.FieldDescriptorStorable:value>
+                            <dr.FieldDescriptorStorable:value ver="1.0">
+                                <name value="RequestField"/>
+                                <title value="RequestField"/>
+                                <section value="responseSetup"/>
+                                <description value=""/>
+                                <dynStorableKey value="RequestField"/>
+                                <type value="String"/>
+                                <defaultValue value=""/>
+                            </dr.FieldDescriptorStorable:value>
+                        </fields>
+                    </dr.DynamicConfigStorableDefinition:dyn>
+                    <dr.DRConfiguration:External_Reference_Profile Folder="ZZR_SVC0002" Key="DZ11635930281158" Name="PRF_EXR" Type="External Reference Profile" ver="1.0"/>
+                    <External_Reference_Values type="java.util.Hashtable"/>
+                    <External_Reference_Lists type="java.util.Hashtable"/>
+                    <External_Reference_Maps type="java.util.Hashtable"/>
+                    <null:Timer_Trigger/>
+                    <dr.WorkflowExecutionRealtimeConfig:Thread_data ver="8.0">
+                        <dr.WorkflowExecutionRealtimeConfig.threads:Threads extref_key="" ver="1.0">
+                            <Value value="8"/>
+                        </dr.WorkflowExecutionRealtimeConfig.threads:Threads>
+                        <dr.WorkflowExecutionRealtimeConfig.queueSize:Queue_Size extref_key="" ver="1.0">
+                            <Value value="1000"/>
+                        </dr.WorkflowExecutionRealtimeConfig.queueSize:Queue_Size>
+                        <dr.WorkflowExecutionRealtimeConfig.standalone:Stand-----.alone extref_key="" ver="1.0">
+                            <Value value="true"/>
+                        </dr.WorkflowExecutionRealtimeConfig.standalone:Stand-----.alone>
+                        <dr.WorkflowExecutionRealtimeConfig.queueStrategy:Queue_strategies extref_key="" ver="1.0">
+                            <Value value="Blocking queue"/>
+                        </dr.WorkflowExecutionRealtimeConfig.queueStrategy:Queue_strategies>
+                        <dr.WorkflowExecutionRealtimeConfig.queueWorkerStrategy:Queue_worker_strategies extref_key="" ver="1.0">
+                            <Value value="RoundRobin"/>
+                        </dr.WorkflowExecutionRealtimeConfig.queueWorkerStrategy:Queue_worker_strategies>
+                        <dr.WorkflowExecutionRealtimeConfig.countInterval:Processed_UDRs_count_interval extref_key="" ver="1.0">
+                            <Value value="1"/>
+                        </dr.WorkflowExecutionRealtimeConfig.countInterval:Processed_UDRs_count_interval>
+                    </dr.WorkflowExecutionRealtimeConfig:Thread_data>
+                    <dr.WorkflowPersistentConfig:Persistent ver="7.0">
+                        <dr.WorkflowPersistentConfig.PersistentInspector:Persistent_Inspector extref_key="" ver="1.0">
+                            <Value/>
+                        </dr.WorkflowPersistentConfig.PersistentInspector:Persistent_Inspector>
+                        <dr.WorkflowPersistentConfig.PersistentTimeoutHandler:Persistent_Timeout_Handler extref_key="" ver="1.0">
+                            <Value/>
+                        </dr.WorkflowPersistentConfig.PersistentTimeoutHandler:Persistent_Timeout_Handler>
+                        <dr.WorkflowPersistentConfig.PersistentStorageConfig:Persistent_Storage_Config extref_key="" ver="1.0">
+                            <Value/>
+                        </dr.WorkflowPersistentConfig.PersistentStorageConfig:Persistent_Storage_Config>
+                    </dr.WorkflowPersistentConfig:Persistent>
+                </dr.WorkflowRealtimeData:Data>
+            </mz:workflow-template>
+            <mz:wf-parameters>
+                <mz:param-def label="responseSetup - IDs" name="IDs" nodeId="-934215532" nodeName="responseSetup" type="DEFAULT"/>
+                <mz:param-def label="responseSetup - RequestField" name="RequestField" nodeId="-934215532" nodeName="responseSetup" type="DEFAULT"/>
+                <mz:param-def label="Webservices - HTTP Address" name="http_address" nodeId="-1217972649" nodeName="Web_Service_Provider" type="DEFAULT"/>
+            </mz:wf-parameters>
+            <mz:wf-instances>
+                <mz:wf-instance instanceId="1" name="default_response" state="VALID" validationError="">
+                    <mz:param name="responseSetup/IDs" storable-id="dr.DynField">
+                        <dr.DynField:dr.DynField extref_key="" ver="1.0">
+                            <Value value="SVC_0002"/>
+                        </dr.DynField:dr.DynField>
+                    </mz:param>
+                    <mz:param name="responseSetup/RequestField" storable-id="dr.DynField">
+                        <dr.DynField:dr.DynField extref_key="" ver="1.0">
+                            <Value value="IDNumber"/>
+                        </dr.DynField:dr.DynField>
+                    </mz:param>
+                    <mz:param name="Web_Service_Provider/http_address" storable-id="dr.WSCollData.httpAddress">
+                        <dr.WSCollData.httpAddress:dr.WSCollData.httpAddress extref_key="SVC0002_PROC_HTTP_ADDRESS_STUB" ver="9.0">
+                            <Value/>
+                        </dr.WSCollData.httpAddress:dr.WSCollData.httpAddress>
+                    </mz:param>
+                </mz:wf-instance>
+            </mz:wf-instances>
+            <documentation value=""/>
+            <parameters value=""/>
+            <Current_Comment/>
+        </dr.Configuration:dr.Configuration>
+    </mz:data>
+    <mz:referenced-data>
+        <layout>
+            <dr.WfNode>
+                <dr.WfRoute--.StorablePoint:Web---.Service---.Provider..XYposition X_position="130" Y_position="170" ver="1.0"/>
+                <dr.WfRoute--.StorablePoint:Analysis..XYposition X_position="450" Y_position="170" ver="1.0"/>
+                <dr.WfRoute--.StorablePoint:SAP---.RFC---.Stub..XYposition X_position="780" Y_position="170" ver="1.0"/>
+            </dr.WfNode>
+            <dr.WfRoute>
+                <request..Stroke_points>
+                    <dr.WfRoute--.StorablePoint:value X_position="157" Y_position="158" ver="1.0"/>
+                    <dr.WfRoute--.StorablePoint:value X_position="247" Y_position="141" ver="1.0"/>
+                    <dr.WfRoute--.StorablePoint:value X_position="334" Y_position="142" ver="1.0"/>
+                    <dr.WfRoute--.StorablePoint:value X_position="424" Y_position="158" ver="1.0"/>
+                </request..Stroke_points>
+                <request1..Stroke_points>
+                    <dr.WfRoute--.StorablePoint:value X_position="477" Y_position="156" ver="1.0"/>
+                    <dr.WfRoute--.StorablePoint:value X_position="567" Y_position="132" ver="1.0"/>
+                    <dr.WfRoute--.StorablePoint:value X_position="664" Y_position="135" ver="1.0"/>
+                    <dr.WfRoute--.StorablePoint:value X_position="754" Y_position="157" ver="1.0"/>
+                </request1..Stroke_points>
+                <response..Stroke_points>
+                    <dr.WfRoute--.StorablePoint:value X_position="754" Y_position="168" ver="1.0"/>
+                    <dr.WfRoute--.StorablePoint:value X_position="662" Y_position="186" ver="1.0"/>
+                    <dr.WfRoute--.StorablePoint:value X_position="569" Y_position="186" ver="1.0"/>
+                    <dr.WfRoute--.StorablePoint:value X_position="477" Y_position="168" ver="1.0"/>
+                </response..Stroke_points>
+                <response1..Stroke_points>
+                    <dr.WfRoute--.StorablePoint:value X_position="424" Y_position="168" ver="1.0"/>
+                    <dr.WfRoute--.StorablePoint:value X_position="334" Y_position="185" ver="1.0"/>
+                    <dr.WfRoute--.StorablePoint:value X_position="247" Y_position="184" ver="1.0"/>
+                    <dr.WfRoute--.StorablePoint:value X_position="157" Y_position="168" ver="1.0"/>
+                </response1..Stroke_points>
+            </dr.WfRoute>
+        </layout>
+        <identity>
+            <dr.WfNode>
+                <Web---.Service---.Provider..ID value="-1217972649"/>
+                <Analysis..ID value="-540133671"/>
+                <SAP---.RFC---.Stub..ID value="190809790"/>
+            </dr.WfNode>
+            <dr.WfRoute>
+                <request..ID value="-2"/>
+                <request..Source_ID value="-1217972649"/>
+                <request..Destination_ID value="-540133671"/>
+                <request1..ID value="-3"/>
+                <request1..Source_ID value="-540133671"/>
+                <request1..Destination_ID value="190809790"/>
+                <response..ID value="-4"/>
+                <response..Source_ID value="190809790"/>
+                <response..Destination_ID value="-540133671"/>
+                <response1..ID value="-5"/>
+                <response1..Source_ID value="-540133671"/>
+                <response1..Destination_ID value="-1217972649"/>
+            </dr.WfRoute>
+        </identity>
+    </mz:referenced-data>
+</mz:configuration>
