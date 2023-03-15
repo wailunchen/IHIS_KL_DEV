@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<mz:configuration format-version="1.0">
+    <mz:data>
+        <dr.Configuration:dr.Configuration Folder="ZZR_SVC0001" Key="DZ11652844768833" Name="PRF_WS_External" Owner="A_KAMALPRIT" Type="WS Profile" encrypted="false" ver="6.0">
+            <STRING:Access_Groups_-----.read_-----.write_-----.execute>
+                <value value="All"/>
+                <value value="All"/>
+                <value value="All"/>
+            </STRING:Access_Groups_-----.read_-----.write_-----.execute>
+            <null:Auxiliary_Data/>
+            <dr.WSProfileConfig:Data ver="17.0">
+                <wsdl---.file value="C:\accenture-onboarding\SVC_LIST\IDS_0002\SVC_0003\v1.009\wsdl_stubtesting"/>
+                <unique---.name value="com.digitalroute.ws.ws1617079110896"/>
+                <helper---.class value="ws.DZ11652844768833.PRF_WS_External.WSHelperImpl"/>
+                <transport value="HTTP"/>
+                <wsdlFileName value="nefr_BT.wsdl"/>
+                <wsdlFileContent><![CDATA[<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://www.nefr.com/nefr/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://www.nefr.com/nefr/">
+	<wsp:Policy xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" wsu:Id="servicePolicy">
+		<wsp:ExactlyOne>
+			<wsp:All>
+				<wsam:Addressing xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" wsp:Optional="true">
+					<wsp:Policy>
+						<wsam:AnonymousResponses/>
+					</wsp:Policy>
+				</wsam:Addressing>
+			</wsp:All>
+		</wsp:ExactlyOne>
+	</wsp:Policy>
+	<wsdl:types>
+		<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsp200409="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsp200607="http://www.w3.org/2006/07/ws-policy" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:ns0="http://www.nefr.com/nefr/" xmlns:soap11="http://schemas.xmlsoap.org/wsdl/soap/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://www.nefr.com/nefr/">
+			<xsd:include schemaLocation="NeFR_BT.xsd"/>
+			<xsd:element name="CheckConsentFault">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="payload" type="xs:string"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="ARCalculatorFault">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="payload" type="xs:string"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:schema>
+	</wsdl:types>
+
+	<wsdl:message name="CheckConsentRequest">
+		<wsdl:part name="parameters" element="ns1:CheckConsent"/>
+	</wsdl:message>
+	<wsdl:message name="CheckConsentResponse">
+		<wsdl:part name="parameters" element="ns1:CheckConsentResponse"/>
+	</wsdl:message>
+	<wsdl:message name="CheckConsentFault">
+		<wsdl:part name="parameters" element="ns1:CheckConsentFault"/>
+	</wsdl:message>
+	<wsdl:message name="ARCalculatorRequest">
+		<wsdl:part name="parameters" element="ns1:ARCalculator"/>
+	</wsdl:message>
+	<wsdl:message name="ARCalculatorResponse">
+		<wsdl:part name="parameters" element="ns1:ARCalculatorResponse"/>
+	</wsdl:message>
+	<wsdl:message name="ARCalculatorFault">
+		<wsdl:part name="parameters" element="ns1:ARCalculatorFault"/>
+	</wsdl:message>
+	
+	<wsdl:portType xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" name="nefrPortType" wsp:PolicyURIs="#servicePolicy">
+		<wsdl:operation name="CheckConsent">
+			<wsdl:input message="ns1:CheckConsentRequest" wsaw:Action="http://www.nefr.com/nefr/CheckConsent"/>
+			<wsdl:output message="ns1:CheckConsentResponse" wsaw:Action="http://www.nefr.com/nefr/nefrSoap/CheckConsentResponse"/>
+			<wsdl:fault message="ns1:CheckConsentFault" name="CheckConsentFault" wsaw:Action="http://www.nefr.com/nefr//nefrPortType/CheckConsentFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="ARCalculator">
+			<wsdl:input message="ns1:ARCalculatorRequest" wsaw:Action="http://www.nefr.com/nefr/ARCalculator"/>
+			<wsdl:output message="ns1:ARCalculatorResponse" wsaw:Action="http://www.nefr.com/nefr/nefrSoap/ARCalculatorResponse"/>
+			<wsdl:fault message="ns1:ARCalculatorFault" name="ARCalculatorFault" wsaw:Action="http://www.nefr.com/nefr//nefrPortType/ARCalculatorFault"/>
+		</wsdl:operation>
+	</wsdl:portType>
+	
+	<wsdl:binding name="nefrSoap11Binding" type="ns1:nefrPortType">
+		<soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+		<wsaw:UsingAddressing wsdl:required="false"/>
+		<wsdl:operation name="CheckConsent">
+			<soap:operation soapAction="http://www.nefr.com/nefr/CheckConsent" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="CheckConsentFault">
+				<soap:fault use="literal" name="CheckConsentFault"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="ARCalculator">
+			<soap:operation soapAction="http://www.nefr.com/nefr/ARCalculator" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="ARCalculatorFault">
+				<soap:fault use="literal" name="ARCalculatorFault"/>
+			</wsdl:fault>
+		</wsdl:operation>
+	</wsdl:binding>
+	
+	<wsdl:service name="nefr">
+		<wsdl:port name="nefrHttpSoap11Endpoint" binding="ns1:nefrSoap11Binding">
+			<soap:address location="https://MOHNEHRVSAPP07.healthgrp.com.sg:7447/BT/NEFR"/>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>]]></wsdlFileContent>
+                <includeFiles type="java.util.LinkedList">
+                    <dr.WSDLIncludeFileStoreable:value ver="2.1">
+                        <filePathSequence value="NeFR_BT.xsd"/>
+                        <fileContent><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<s:schema xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.nefr.com/nefr/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" elementFormDefault="qualified" targetNamespace="http://www.nefr.com/nefr/">
+	<s:element name="CheckConsent">
+		<s:complexType>
+			<s:sequence>
+				<s:element minOccurs="1" maxOccurs="1" name="Institution" type="s:string"/>
+				<s:element minOccurs="1" maxOccurs="1" name="SystemID" type="s:string"/>
+				<s:element minOccurs="1" maxOccurs="1" name="UserID" type="s:string"/>
+				<s:element minOccurs="1" maxOccurs="1" name="UniqueTransactionID" type="s:string"/>
+				<s:element minOccurs="1" maxOccurs="1" name="IDNumber" type="s:string"/>
+			</s:sequence>
+		</s:complexType>
+	</s:element>
+	<s:element name="CheckConsentResponse">
+		<s:complexType>
+			<s:sequence>
+				<s:element minOccurs="0" maxOccurs="1" name="ConsentLevel" type="s:string"/>
+				<s:element minOccurs="0" maxOccurs="1" name="ReasonForNoConsent" type="s:string"/>
+				<s:element minOccurs="0" maxOccurs="1" name="StartDate" type="s:date"/>
+				<s:element minOccurs="0" maxOccurs="1" name="EndDate" type="s:date"/>
+				<s:element minOccurs="0" maxOccurs="1" name="InstitutionLastChange" type="s:string"/>
+				<s:element minOccurs="0" maxOccurs="1" name="IDNumber" type="s:string"/>
+				<s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string"/>
+				<s:element minOccurs="0" maxOccurs="1" name="OBF_IDNumber" type="s:string"/>
+				<s:element minOccurs="0" maxOccurs="1" name="OBF_Name" type="s:string"/>
+				<s:element minOccurs="1" maxOccurs="1" name="Status">
+					<s:complexType>
+						<s:sequence>
+							<s:element minOccurs="1" maxOccurs="1" name="UniqueTransactionID" type="s:string"/>
+							<s:element minOccurs="1" maxOccurs="1" name="StatusCode" type="s:string"/>
+							<s:element minOccurs="1" maxOccurs="1" name="StatusDescription" type="s:string"/>
+						</s:sequence>
+					</s:complexType>
+				</s:element>
+			</s:sequence>
+		</s:complexType>
+	</s:element>
+
+	<s:element name="ARCalculator">
+		<s:complexType>
+			<s:sequence>
+				<s:element minOccurs="1" maxOccurs="1" name="Institution" type="s:string"/>
+				<s:element minOccurs="1" maxOccurs="1" name="SystemID" type="s:string"/>
+				<s:element minOccurs="1" maxOccurs="1" name="UserID" type="s:string"/>
+				<s:element minOccurs="1" maxOccurs="1" name="UniqueTransactionID" type="s:string"/>
+				<s:element minOccurs="1" maxOccurs="1" name="QueryDate" type="s:dateTime"/>
+				<s:element minOccurs="1" maxOccurs="1" name="Familymembers" type="s:string"/>
+				<s:element minOccurs="0" maxOccurs="1" name="InstitutionalBillID" type="s:string"/>
+				<s:element minOccurs="1" maxOccurs="1" name="Nationality" type="s:string"/>
+				<s:element minOccurs="1" maxOccurs="1" name="ServiceType" type="s:string"/>
+				<s:element minOccurs="0" maxOccurs="1" name="PsychiatricIndicator" type="s:boolean"/>
+				<s:element minOccurs="1" maxOccurs="1" name="AdmissionDate" type="s:dateTime"/>
+				<s:element minOccurs="1" maxOccurs="1" name="DischargeWardClass" type="s:string"/>
+				<s:element minOccurs="1" maxOccurs="1" name="TotalCharges" type="s:decimal"/>
+				<s:element minOccurs="0" maxOccurs="1" name="LengthOfStayNormalWard" type="s:decimal"/>
+				<s:element minOccurs="1" maxOccurs="1" name="ActualWardCharges" type="s:decimal"/>
+				<s:element minOccurs="0" maxOccurs="1" name="LengthOfStayICU" type="s:decimal"/>
+				<s:element minOccurs="0" maxOccurs="1" name="LengthOfStayPsyWard" type="s:decimal"/>
+				<s:element minOccurs="0" maxOccurs="1" name="Implants" type="s:decimal"/>
+				<s:element minOccurs="0" maxOccurs="1" name="AntenatalClaimAmount" type="s:decimal"/>
+				<s:element minOccurs="1" maxOccurs="1" name="Surgery" type="s:string"/>
+				<s:element minOccurs="0" maxOccurs="1" name="OutpatientCharges" type="s:string"/>
+				<s:element minOccurs="0" maxOccurs="1" name="InsCashRiderPayout" type="s:decimal"/>
+				<s:element minOccurs="1" maxOccurs="1" name="PatInfoForMT" type="s:string"/>
+				<!-- Added List of Stay parameter, following latest NEFR interface specs on 25 Jan 2022 by Vanessa -->
+				<s:element minOccurs="0" maxOccurs="1" name="ListOfStays" type="s:string"/>
+			</s:sequence>
+		</s:complexType>
+	</s:element>
+	<s:element name="ARCalculatorResponse">
+		<s:complexType>
+			<s:sequence>
+				<s:element minOccurs="0" maxOccurs="1" name="AtRiskResult" type="s:string"/>
+				<s:element minOccurs="0" maxOccurs="1" name="InsufficientMediSaveBalance" type="s:boolean"/>
+				<s:element minOccurs="0" maxOccurs="1" name="MediSaveWithdrawalLimitReached" type="s:boolean"/>
+				<s:element minOccurs="0" maxOccurs="1" name="Exclusion" type="s:boolean"/>
+				<s:element minOccurs="0" maxOccurs="1" name="Insurer" type="s:string"/>
+				<s:element minOccurs="0" maxOccurs="1" name="PlanType" type="s:string"/>
+				<s:element minOccurs="0" maxOccurs="1" name="StatusOfMediShieldLifeCover" type="s:string"/>
+				<s:element minOccurs="0" maxOccurs="1" name="AnnualInsuranceClaimLimitReached" type="s:boolean"/>
+				<s:element minOccurs="0" maxOccurs="1" name="LifetimeInsuranceClaimLimitReached" type="s:boolean"/>
+				<s:element minOccurs="0" maxOccurs="1" name="RecommendedMSVPayout" type="s:decimal"/>
+				<s:element minOccurs="0" maxOccurs="1" name="EstimatedMSHPayout" type="s:decimal"/>
+				<s:element minOccurs="0" maxOccurs="1" name="PolicyRenewalDate" type="s:date"/>
+				<s:element minOccurs="0" maxOccurs="1" name="EstimatedIPPayout" type="s:decimal"/>
+				<s:element minOccurs="0" maxOccurs="1" name="OOP" type="s:decimal"/>
+				<s:element minOccurs="0" maxOccurs="1" name="TypeOfElderShield" type="s:string"/>
+				<s:element minOccurs="0" maxOccurs="1" name="ElderShieldBasicSupplementInsurer" type="s:string"/>
+				<s:element minOccurs="0" maxOccurs="1" name="ElderShieldSupplementIndicator" type="s:boolean"/>
+				<s:element minOccurs="0" maxOccurs="1" name="HHAnualOOPHealthcareExpenses" type="s:decimal"/>
+				<s:element minOccurs="0" maxOccurs="1" name="NumberOfHHMembers" type="s:int"/>
+				<s:element minOccurs="0" maxOccurs="1" name="AtRiskResultForGeneralExclusion" type="s:string"/>
+				<s:element minOccurs="0" maxOccurs="1" name="OOPForGeneralExclusion" type="s:decimal"/>
+				<s:element minOccurs="0" maxOccurs="1" name="OtherAssistanceSchemes">
+					<s:complexType>
+						<s:sequence>
+							<s:element minOccurs="1" maxOccurs="10" name="OtherAssistanceScheme">
+								<s:complexType>
+									<s:sequence>
+										<s:element minOccurs="1" maxOccurs="1" name="Scheme" type="s:string"/>
+										<s:element minOccurs="0" maxOccurs="1" name="SchemeAdministrator" type="s:string"/>
+										<s:element minOccurs="1" maxOccurs="1" name="StartDate" type="s:date"/>
+										<s:element minOccurs="0" maxOccurs="1" name="EndDate" type="s:date"/>
+										<s:element minOccurs="0" maxOccurs="1" name="CardNumber" type="s:string"/>
+									</s:sequence>
+								</s:complexType>
+							</s:element>
+						</s:sequence>
+					</s:complexType>
+				</s:element>
+				<s:element minOccurs="0" maxOccurs="1" name="MSVMSHBalances">
+					<s:complexType>
+						<s:sequence>
+							<s:element minOccurs="1" maxOccurs="30" name="MSVMSHBalance">
+								<s:complexType>
+									<s:sequence>
+										<s:element minOccurs="1" maxOccurs="1" name="EnquiryType" type="s:string"/>
+										<s:element minOccurs="0" maxOccurs="1" name="UtilisedAmount" type="s:decimal"/>
+										<s:element minOccurs="0" maxOccurs="1" name="UnutilisedAmount" type="s:decimal"/>
+										<s:element minOccurs="0" maxOccurs="1" name="AppealStatus" type="s:string"/>
+									</s:sequence>
+								</s:complexType>
+							</s:element>
+						</s:sequence>
+					</s:complexType>
+				</s:element>
+				<s:element minOccurs="0" maxOccurs="1" name="SubsidyDeviations">
+					<s:complexType>
+						<s:sequence>
+							<s:element minOccurs="1" maxOccurs="20" name="SubsidyDeviation">
+								<s:complexType>
+									<s:sequence>
+										<s:element minOccurs="1" maxOccurs="1" name="Setting" type="s:string"/>
+										<s:element minOccurs="1" maxOccurs="1" name="Institution" type="s:string"/>
+										<s:element minOccurs="1" maxOccurs="1" name="DeviationCriteria" type="s:string"/>
+										<s:element minOccurs="1" maxOccurs="1" name="StartDate" type="s:date"/>
+										<s:element minOccurs="1" maxOccurs="1" name="EndDate" type="s:date"/>
+									</s:sequence>
+								</s:complexType>
+							</s:element>
+						</s:sequence>
+					</s:complexType>
+				</s:element>
+				<s:element minOccurs="0" maxOccurs="1" name="PatientFamilyMembers">
+					<s:complexType>
+						<s:sequence>
+							<s:element minOccurs="1" maxOccurs="25" name="PatientFamilyMember">
+								<s:complexType>
+									<s:sequence>
+										<s:element minOccurs="1" maxOccurs="1" name="IdentificationNumber" type="s:string"/>
+										<s:element minOccurs="1" maxOccurs="1" name="IdentificationType" type="s:string"/>
+										<s:element minOccurs="1" maxOccurs="1" name="Name" type="s:string"/>
+										<s:element minOccurs="0" maxOccurs="1" name="DateOfBirth" type="s:date"/>
+										<s:element minOccurs="1" maxOccurs="1" name="RelationshipToPatient" type="s:string"/>
+										<s:element minOccurs="0" maxOccurs="1" name="MediSaveBalance" type="s:decimal"/>
+										<s:element minOccurs="0" maxOccurs="1" name="RecommendedMediSaveBalanceUsable" type="s:decimal"/>
+										<s:element minOccurs="0" maxOccurs="1" name="EstimatedMedisavePayoutforCurrentBill" type="s:decimal"/>
+										<s:element minOccurs="0" maxOccurs="1" name="ReasonForNoConsent" type="s:string"/>
+									</s:sequence>
+								</s:complexType>
+							</s:element>
+						</s:sequence>
+					</s:complexType>
+				</s:element>
+				<s:element minOccurs="1" maxOccurs="1" name="Status">
+					<s:complexType>
+						<s:sequence>
+							<s:element minOccurs="1" maxOccurs="1" name="UniqueTransactionID" type="s:string"/>
+							<s:element minOccurs="1" maxOccurs="1" name="StatusCode" type="s:string"/>
+							<s:element minOccurs="1" maxOccurs="1" name="StatusDescription" type="s:string"/>
+						</s:sequence>
+					</s:complexType>
+				</s:element>
+			</s:sequence>
+		</s:complexType>
+	</s:element>
+</s:schema>]]></fileContent>
+                    </dr.WSDLIncludeFileStoreable:value>
+                </includeFiles>
+                <typeNamespaceToPrefixMap keyType="STRING" valueType="STRING">
+                    <entry key="http://www.nefr.com/nefr/" value="ns1"/>
+                </typeNamespaceToPrefixMap>
+                <singleWSDLFile value="true"/>
+                <concatenationFilePathList type="java.util.LinkedList"/>
+                <inputAndOutputTypeName value="ws.DZ11652844768833.PRF_WS_External.udr.AbstractNefrPortTypeWSCycle"/>
+                <Security_Enabled value="false"/>
+                <null:Security_Settings/>
+                <Binding_name value="nefrSoap11Binding"/>
+                <Port_type value="nefrPortType"/>
+                <Service_Port_name value="nefrHttpSoap11Endpoint"/>
+                <TLS_keystore_file_content/>
+                <TLS_keystore_password/>
+                <TLS_keystore_file/>
+                <Simple_Mode_Enabled value="false"/>
+                <Process_Implicit_SOAP_Headers value="false"/>
+                <Disable_Wrapper_Style value="true"/>
+                <Enable_Username_Token value="false"/>
+                <Username_Token_Username value=""/>
+                <Username_Token_Password value="DR_8.1_KEY-1-017BB0B8FB061C1876D43DD75468AA40"/>
+                <Enable_WS_Addressing value="false"/>
+                <Disable_Underscore_Binding_Mode value="false"/>
+                <properties><![CDATA[# Advanced XML binding options can be customized here. If the properties are commented out, default values are used.
+
+#Enable JAXB Simple Binding Mode
+# When true, XSD Schemas of loaded WSDL files are compiled into Java code using the experimental "Simple and better binding mode". This is necessary for some complex types, for instance when duplicate element names are used within the same complex type.
+enable_JAXB_simple_binding false
+
+#Disable JAXWS Wrapper style Mode
+# When true, the cycle UDR will contain request and response parameters that wrap all the arguments in request and response UDRs.
+disable_JAXWS_wrapper_mode true
+
+#Enable Processing Of Implicit Soap Header
+# When true, any SOAP headers defined in the binding section of WSDL files are compiled into Java code. This is necessary in order to manipulate the SOAP headers in outgoing Web Service requests. 
+enable_processing_of_implicit_SOAP_header false
+
+#Disable Underscore Binding Mode
+# When false, underscore binding mode is true, JAXB will not strip underscore from the element names when converting a WSDL file to Java.
+disable_under_score_binding false
+
+#Populate originaldata field
+# When true the OriginalData field in the WSCycleUDR will be populated with the content of the SOAP request
+populate_originaldata_field true
+
+#Max enum members
+# Sets the value for the typesafeEnumMaxMembers jaxb global variable which controls the maximum number of allowed enum members
+max_enum_members 256
+
+#Schema level bindings
+# Sets the jaxb schema level bindings per xsd file. The format is [filename.xsd]:package=[packageSuffix],[transformationType]-prefix=prefix,suffix=suffix;
+schema_level_bindings 
+
+#Global bindings
+# Sets the jaxb global bindings per xsd file. The format is property=value;
+global_bindings localScoping=nested
+
+#Enable fault stack trace in response
+# When true stack trace information will be available in error responses
+fault_stack_trace_enabled false
+
+#Allow HEAD
+# When true HTTP method HEAD is allowed
+allow_head false
+
+#Jetty Accept Queue Size
+# Size of the Jetty ServerConnector request queue, set to 0 to disable queue
+jetty_accept_queue_size 0
+
+#Enable Big Decimal
+# Enable the use of BigDecimal as internal type for decimal
+enable_big_decimal true
+
+]]></properties>
+                <Populate_OriginalData_Field value="true"/>
+                <Max_Enum_Members value="256"/>
+                <Schema_Bindings value=""/>
+                <Enable_JAAS value="false"/>
+                <JAAS_Module value=""/>
+                <JAAS_Properties value=""/>
+                <RM_Store value="In Memory"/>
+                <Enforce_RM value="false"/>
+                <Enable_Big_Decimal value="true"/>
+                <Schema_Validation value="false"/>
+            </dr.WSProfileConfig:Data>
+            <documentation value=""/>
+            <parameters value=""/>
+            <Current_Comment/>
+        </dr.Configuration:dr.Configuration>
+    </mz:data>
+    <mz:referenced-data/>
+</mz:configuration>

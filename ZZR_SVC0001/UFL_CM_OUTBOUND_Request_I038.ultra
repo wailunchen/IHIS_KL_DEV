@@ -1,0 +1,569 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<mz:configuration format-version="1.0">
+    <mz:data>
+        <dr.Configuration:dr.Configuration Folder="ZZR_SVC0001" Key="DZ11640760418893" Name="UFL_CM_OUTBOUND_Request_I038" Owner="D_LIEW" Type="Ultra Format" encrypted="false" ver="6.0">
+            <STRING:Access_Groups_-----.read_-----.write_-----.execute>
+                <value value="All"/>
+                <value value="All"/>
+                <value value="All"/>
+            </STRING:Access_Groups_-----.read_-----.write_-----.execute>
+            <null:Auxiliary_Data/>
+            <dr.UltraFormatConfig:Data ver="1.0">
+                <Definition><![CDATA[xml_schema
+{
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="request">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="request_itm" maxOccurs="unbounded" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="bill_head">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="action"/>
+                    <xs:element type="xs:string" name="institution"/>
+                    <xs:element type="xs:string" name="inst_bill_id"/>
+                    <xs:element type="xs:byte" name="bill_date"/>
+                    <xs:element type="xs:string" name="uniq_txn_id"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="pat_bio_data">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="patient_name"/>
+                    <xs:element type="xs:string" name="patient_id_no"/>
+                    <xs:element type="xs:string" name="patient_id_type"/>
+                    <xs:element type="xs:byte" name="date_of_birth"/>
+                    <xs:element type="xs:string" name="nationality"/>
+                    <xs:element type="xs:string" name="race"/>
+                    <xs:element type="xs:string" name="gender"/>
+                    <xs:element type="xs:string" name="tel_number"/>
+                    <xs:element type="xs:string" name="email"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="pat_res_addr">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="block"/>
+                    <xs:element type="xs:string" name="floor"/>
+                    <xs:element type="xs:string" name="unit"/>
+                    <xs:element type="xs:string" name="building"/>
+                    <xs:element type="xs:string" name="street"/>
+                    <xs:element type="xs:string" name="postal_code"/>
+                    <xs:element type="xs:string" name="country"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="bill_char">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="visit_info">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:string" name="service_type"/>
+                          <xs:element type="xs:string" name="bill_type_ind"/>
+                          <xs:element type="xs:string" name="mother_id_no"/>
+                          <xs:element type="xs:string" name="pri_diag_code"/>
+                          <xs:element type="xs:string" name="sec_diag_code"/>
+                          <xs:element type="xs:string" name="operation_code"/>
+                          <xs:element type="xs:string" name="ref_source_type"/>
+                          <xs:element type="xs:string" name="ref_source_inst"/>
+                          <xs:element type="xs:byte" name="visit_date"/>
+                          <xs:element type="xs:byte" name="visit_time"/>
+                          <xs:element type="xs:byte" name="discharge_date"/>
+                          <xs:element type="xs:byte" name="discharge_time"/>
+                          <xs:element type="xs:string" name="discharge_des_type"/>
+                          <xs:element type="xs:string" name="discharge_des_inst"/>
+                          <xs:element type="xs:string" name="pat_class_admission"/>
+                          <xs:element type="xs:string" name="pat_class_discharge"/>
+                          <xs:element type="xs:string" name="discharge_ward_type"/>
+                          <xs:element type="xs:string" name="mt_sub_band"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="mt_subs_info">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="mt_subs_info_itm" maxOccurs="unbounded" minOccurs="0">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element type="xs:string" name="mt_scheme"/>
+                                <xs:element type="xs:string" name="mt_band"/>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="bill_breakdown">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="tot_charge_subs">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:float" name="tot_charge"/>
+                          <xs:element type="xs:float" name="trans_charges"/>
+                          <xs:element type="xs:float" name="ae"/>
+                          <xs:element type="xs:float" name="packages"/>
+                          <xs:element type="xs:float" name="room_charges"/>
+                          <xs:element type="xs:float" name="treat_proced"/>
+                          <xs:element type="xs:float" name="prof_fees"/>
+                          <xs:element type="xs:float" name="alied_health_serv"/>
+                          <xs:element type="xs:float" name="surgeon_fee"/>
+                          <xs:element type="xs:float" name="surgery_facility"/>
+                          <xs:element type="xs:float" name="anaesthtic_fee"/>
+                          <xs:element type="xs:float" name="implants"/>
+                          <xs:element type="xs:float" name="devices"/>
+                          <xs:element type="xs:float" name="drugs_sdl"/>
+                          <xs:element type="xs:float" name="drugs_maf"/>
+                          <xs:element type="xs:float" name="drugs_ons"/>
+                          <xs:element type="xs:float" name="invest_radiology"/>
+                          <xs:element type="xs:float" name="invest_laboratory"/>
+                          <xs:element type="xs:float" name="invest_specialised"/>
+                          <xs:element type="xs:float" name="other_consumables"/>
+                          <xs:element type="xs:float" name="transport"/>
+                          <xs:element type="xs:float" name="others"/>
+                          <xs:element type="xs:float" name="vaccines"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="gov_subs">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:float" name="tot_charge"/>
+                          <xs:element type="xs:float" name="trans_charges"/>
+                          <xs:element type="xs:float" name="ae"/>
+                          <xs:element type="xs:float" name="packages"/>
+                          <xs:element type="xs:float" name="room_charges"/>
+                          <xs:element type="xs:float" name="treat_proced"/>
+                          <xs:element type="xs:float" name="prof_fees"/>
+                          <xs:element type="xs:float" name="alied_health_serv"/>
+                          <xs:element type="xs:float" name="surgeon_fee"/>
+                          <xs:element type="xs:float" name="surgery_facility"/>
+                          <xs:element type="xs:float" name="anaesthtic_fee"/>
+                          <xs:element type="xs:float" name="implants"/>
+                          <xs:element type="xs:float" name="devices"/>
+                          <xs:element type="xs:float" name="drugs_sdl"/>
+                          <xs:element type="xs:float" name="drugs_maf"/>
+                          <xs:element type="xs:float" name="drugs_ons"/>
+                          <xs:element type="xs:float" name="invest_radiology"/>
+                          <xs:element type="xs:float" name="invest_laboratory"/>
+                          <xs:element type="xs:float" name="invest_specialised"/>
+                          <xs:element type="xs:float" name="other_consumables"/>
+                          <xs:element type="xs:float" name="transport"/>
+                          <xs:element type="xs:float" name="others"/>
+                          <xs:element type="xs:float" name="vaccines"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="gst_amount">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:float" name="amount_charged"/>
+                          <xs:element type="xs:float" name="amount_absorbed"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="nongov_subs_scheme">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="nongov_subs_scheme_itm" maxOccurs="unbounded" minOccurs="0">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element type="xs:string" name="type"/>
+                                <xs:element type="xs:float" name="amount"/>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="gov_subs_scheme">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="gov_subs_scheme_itm" maxOccurs="unbounded" minOccurs="0">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element type="xs:string" name="type"/>
+                                <xs:element type="xs:float" name="amount"/>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="third_party_payor">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="third_party_payor_itm" maxOccurs="unbounded" minOccurs="0">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element type="xs:string" name="type"/>
+                                <xs:element type="xs:float" name="amount"/>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="insurance">
+                      <xs:complexType>
+                        <xs:choice maxOccurs="unbounded" minOccurs="0">
+                          <xs:element name="insurance_itm">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element type="xs:string" name="type"/>
+                                <xs:element type="xs:float" name="amount"/>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:choice>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="medisave">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="medisave_itm" maxOccurs="unbounded" minOccurs="0">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element type="xs:string" name="nric"/>
+                                <xs:element type="xs:string" name="relationship"/>
+                                <xs:element type="xs:float" name="claim_amount"/>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="nongov_fin_ass">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="nongov_fin_ass_itm" maxOccurs="unbounded" minOccurs="0">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element type="xs:string" name="type"/>
+                                <xs:element type="xs:float" name="amount"/>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="gov_fin_ass">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="gov_fin_ass_itm" maxOccurs="unbounded" minOccurs="0">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element type="xs:string" name="type"/>
+                                <xs:element type="xs:float" name="amount"/>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="self_payer">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:string" name="others"/>
+                          <xs:element type="xs:float" name="paid_amount"/>
+                          <xs:element type="xs:string" name="outstanding"/>
+                          <xs:element type="xs:string" name="bad_debt"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="other_bill_pay_info">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:string" name="install_ind"/>
+                          <xs:element type="xs:string" name="install_quantum"/>
+                          <xs:element type="xs:string" name="install_frequency"/>
+                          <xs:element type="xs:string" name="install_start_date"/>
+                          <xs:element type="xs:string" name="install_end_date"/>
+                          <xs:element type="xs:string" name="deposit_collected"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+};
+
+internal PayloadI038 {
+    list <Request_Itm> request_itm;
+};
+
+
+
+internal Request_Itm {
+   Bill_Head        bill_head;
+   Pat_Bio_Data     pat_bio_data;
+   Pat_Res_Addr     pat_res_addr;
+   Bill_Char        bill_char;
+   Bill_Breakdown   bill_breakdown;
+};
+
+internal Bill_Head {
+    
+    string action;
+    string institution;
+    string inst_bill_id;
+    string bill_date;
+    string uniq_txn_id;
+};
+
+internal Pat_Bio_Data {
+    
+    string patient_name;
+    string patient_id_no;
+    string patient_id_type;
+    string date_of_birth;
+    string nationality;
+    string race;
+    string gender;
+    string tel_number;
+    string email;      
+};
+
+internal Pat_Res_Addr {
+    
+	string block;
+	string floor;
+	string unit;
+	string building;
+	string street;
+	string postal_code;
+	string country;       
+};
+
+internal Bill_Char {
+    
+    Visit_Info visit_info;    
+    Mt_Subs_Info mt_subs_info;
+};
+
+internal Visit_Info {
+
+	string service_type;
+	string bill_type_ind;
+	string mother_id_no;
+	string pri_diag_code;
+	string sec_diag_code;
+	string operation_code;
+	string ref_source_type;
+	string ref_source_inst;
+	string visit_date;
+	string visit_time;
+	string discharge_date;
+	string discharge_time;
+	string discharge_des_type;
+	string discharge_des_inst;
+	string pat_class_admission;
+	string pat_class_discharge;
+	string discharge_ward_type;
+	string mt_sub_band;         
+};
+
+internal Mt_Subs_Info {
+    
+    list<Mt_Subs_Info_Itm> mt_subs_info_itm;    
+};
+
+internal Mt_Subs_Info_Itm {
+    string mt_scheme;
+    string mt_band;   
+};
+
+internal Bill_Breakdown {
+    Tot_Charge_Subs tot_charge_subs;    
+    Gov_Subs gov_subs;
+    Gst_Amount gst_amount;
+    Nongov_Subs_Scheme nongov_subs_scheme;
+    Gov_Subs_Scheme gov_subs_scheme;
+    Third_Party_Payor third_party_payor;
+    Insurance insurance;
+    Medisave medisave;
+    Nongov_Fin_Ass nongov_fin_ass;
+    Gov_Fin_Ass gov_fin_ass;
+    Self_Payer self_payer;
+    Other_Bill_Pay_Info other_bill_pay_info;
+};
+
+internal Tot_Charge_Subs {
+	bigdec tot_charge;
+	bigdec trans_charges;
+	bigdec ae;
+	bigdec packages;
+	bigdec room_charges;
+	bigdec treat_proced;
+	bigdec prof_fees;
+	bigdec alied_health_serv;
+	bigdec surgeon_fee;
+	bigdec surgery_facility;
+	bigdec anaesthtic_fee;
+	bigdec implants;
+	bigdec devices;
+	bigdec drugs_sdl;
+	bigdec drugs_maf;
+	bigdec drugs_ons;
+	bigdec invest_radiology;
+	bigdec invest_laboratory;
+	bigdec invest_specialised;
+	bigdec other_consumables;
+	bigdec transport;
+	bigdec others;
+	bigdec vaccines;
+};
+
+internal Gov_Subs {
+	bigdec tot_charge;
+	bigdec trans_charges;
+	bigdec ae;
+	bigdec packages;
+	bigdec room_charges;
+	bigdec treat_proced;
+	bigdec prof_fees;
+	bigdec alied_health_serv;
+	bigdec surgeon_fee;
+	bigdec surgery_facility;
+	bigdec anaesthtic_fee;
+	bigdec implants;
+	bigdec devices;
+	bigdec drugs_sdl;
+	bigdec drugs_maf;
+	bigdec drugs_ons;
+	bigdec invest_radiology;
+	bigdec invest_laboratory;
+	bigdec invest_specialised;
+	bigdec other_consumables;
+	bigdec transport;
+	bigdec others;
+	bigdec vaccines;    
+};
+
+internal Gst_Amount {
+    bigdec amount_charged;
+    bigdec amount_absorbed;   
+};
+
+internal Nongov_Subs_Scheme {
+    list<Nongov_Subs_Scheme_Itm> nongov_subs_scheme_itm;    
+};
+
+internal Nongov_Subs_Scheme_Itm {
+    string type;
+    bigdec amount;    
+};
+
+internal Gov_Subs_Scheme {
+    list<Gov_Subs_Scheme_Itm> gov_subs_scheme_itm;    
+};
+
+internal Gov_Subs_Scheme_Itm {
+    string type;
+    bigdec amount;    
+};
+
+internal Third_Party_Payor {
+    list<Third_Party_Payor_Itm> third_party_payor_itm;   
+
+};
+
+internal Third_Party_Payor_Itm {
+    string type;
+    bigdec amount;   
+};
+
+internal Insurance {
+    Insurance_Itm insurance_itm;     
+};
+
+internal Insurance_Itm {
+    string type;
+    bigdec amount;    
+};
+
+internal Medisave {
+    list<Medisave_Itm> medisave_itm;
+    
+};
+
+internal Medisave_Itm {
+    string nric;
+    string relationship;
+    bigdec claim_amount;    
+};
+
+internal Nongov_Fin_Ass {
+    list<Nongov_Fin_Ass_Itm> nongov_fin_ass_itm;   
+
+};
+
+internal Nongov_Fin_Ass_Itm {
+    string type;
+    bigdec amount;       
+};
+
+internal Gov_Fin_Ass {
+    list<Gov_Fin_Ass_Itm> gov_fin_ass_itm;     
+};
+
+internal Gov_Fin_Ass_Itm {
+    string type;
+    bigdec amount;       
+};
+
+internal Self_Payer {
+    string others;
+    bigdec paid_amount;
+    string outstanding;
+    string bad_debt;        
+};
+
+internal Other_Bill_Pay_Info {
+    string install_ind;
+    string install_quantum;
+    string install_frequency;
+    string install_start_date;
+    string install_end_date;
+    string deposit_collected;    
+};
+
+external WhiteSpace: identified_by(
+value == 0x20 || value == 0xA || value == 0xD ) {
+    int value: static_size(1);
+};
+in_map WS_map: external(WhiteSpace), discard_output {automatic;};
+in_map in_Request: external(request), internal(PayloadI038) { automatic; };
+
+out_map outMap_request: external(request), internal(PayloadI038) { automatic; };
+
+
+
+//in_map in_Request : external(request), internal(inmap_Request) {automatic;};
+decoder SVC0001_Request_Decoder: in_map(WS_map), in_map(in_Request);
+
+encoder SVC0001_Request_Encoder: out_map(outMap_request);]]></Definition>
+                <IsValid value="true"/>
+            </dr.UltraFormatConfig:Data>
+            <documentation value=""/>
+            <parameters value=""/>
+            <Current_Comment/>
+        </dr.Configuration:dr.Configuration>
+    </mz:data>
+    <mz:referenced-data/>
+</mz:configuration>
