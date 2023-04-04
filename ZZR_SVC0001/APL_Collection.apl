@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <mz:configuration format-version="1.0">
     <mz:data>
-        <dr.Configuration:dr.Configuration Folder="ZZR_SVC0261" Key="DZ11651740300052" Name="APL_Collection" Owner="D_WONG" Type="APL Code" encrypted="false" ver="6.0">
+        <dr.Configuration:dr.Configuration Folder="ZZR_SVC0001" Key="DZ11640760826346" Name="APL_Collection" Owner="D_LIEW" Type="APL Code" encrypted="false" ver="6.0">
             <STRING:Access_Groups_-----.read_-----.write_-----.execute>
                 <value value="All"/>
                 <value value="All"/>
@@ -15,7 +15,7 @@ import ultra.wfb;
 import ultra.ZZR_CA_UFL.UFL_CCU_Data;
 
 // import 2 S4 decoder
-import ultra.ZZR_SVC0261.UFL_CM_OUTBOUND_Request_SVC0261;
+import ultra.ZZR_SVC0001.UFL_CM_OUTBOUND_Request_I038;
 
 
 import apl.ZZC_CA_APL.APL_Common_Functions;
@@ -24,23 +24,28 @@ import apl.ZZR_CA_APL.APL_Common_Constants;
 import apl.ZZR_CA_APL.APL_Audit_Constants;
 
 import apl.ZZR_CA_APL.APL_Common_Variables;
-import apl.ZZR_SVC0261.APL_Common;
+import apl.ZZR_SVC0001.APL_Common;
+//import apl.ZZR_SVC0238.APL_Processing_Ext;
 import apl.ZZR_CA_APL.APL_Common_Functions;
 import apl.ZZC_CA_APL.APL_Common_Constants;
 import apl.ZZC_CA_APL.APL_Error_Functions;
 													   
+
 // for debug
 import apl.ZZ_CA_APL.APL_Common_Functions;
 
 // for audit
 import apl.ZZ_CA_APL.APL_Audit_Functions;
 
-//TODO: Mapping based on S4 Request sysId
+// payload logging for cmoutbound fault details in xml
+import apl.ZZC_CA_APL.APL_Logging_Functions;
 
-void setSysIdWsc2(WSCycle_cmoutbound request) {
-    sysId = request.param.HEADER.BATCH_ID;
+//TODO: Mapping based on S4 Request sysId
+/*
+void setSysIdWsc(Request request) {
+    sysId = request.sysId;
     setGlobalOrigFn(sysId); // to batch wfl
-}
+}*/
 void setSysIdWsc( WSCycle_cmoutbound wsc) {
     sysId = wsc.param.HEADER.BATCH_ID;
     setGlobalOrigFn(sysId); // to batch wfl
@@ -91,11 +96,12 @@ void createCCUData(ConsumeCycleUDR ccu, WSCycle_cmoutbound wsc) {
     /*TODO: After S4 Mapping
     ccud.udrInfo = createUdrInfo(req);*/
     //Request rfcRequest = extractOutboundS4Request(wsc.param.REQUEST);
-
-        PayloadI625 rfcRequest = extractOutboundS4Request(wsc.param.REQUEST);
+    if (wsc.param.HEADER.S4INTFID == "I038") {
+        PayloadI038 rfcRequest = extractOutboundS4Request_I038(wsc.param.REQUEST);
         ccud.rfcReq = rfcRequest;
-
-
+    } else { 
+         ccud.rfcReq = null;
+    }
     ccud.udrInfo = createUdrInfo(wsc);
     ccud.wscType = wsc.operation;
     ccud.wsc = wsc;
@@ -116,11 +122,10 @@ WSCycle_cmoutbound createWscRespond(ConsumeCycleUDR ccu) {
     CCUData ccud = (CCUData) ccu.Data;
     WSCycle_cmoutbound wsc = (WSCycle_cmoutbound) ccud.wsc;
     
-    debug("createWscRespond.Output: wsc = " + wsc);  
-    
     //response payload
     wsc.context = ccu;
-       
+    
+    debug("createWscRespond.Output: wsc = " + wsc);     
     return wsc;    
 }
 
@@ -158,12 +163,24 @@ bytearray getWscParamResp(ConsumeCycleUDR ccu, string type) {
     WSCycle_cmoutbound wsc = (WSCycle_cmoutbound) ccud.wsc;
     bytearray msgContent;
     
-     if (type == LOGFILE_TYPE_REQ) {
-        //strToBA(msgContent,udrToString(wsc.param));    
-        msgContent = wsc.OriginalData;
+    /*if (type == LOGFILE_TYPE_REQ) {
+        strToBA(msgContent,udrToString(wsc.param));    
     } else if (type == LOGFILE_TYPE_RESP) {
         if (udrIsPresent(wsc.fault_FaultDetail)) {
             strToBA(msgContent,udrToString(wsc.fault_FaultDetail));
+        } else {			
+            strToBA(msgContent,udrToString(wsc.response));
+        }
+    }*/
+    
+    if (type == LOGFILE_TYPE_REQ) {
+        //strToBA(msgContent,udrToString(wsc.param)); 
+        msgContent = wsc.OriginalData;  // added for ws logging for payload request--24032022
+
+    } else if (type == LOGFILE_TYPE_RESP) {
+        if (udrIsPresent(wsc.fault_FaultDetail)) {
+            //strToBA(msgContent,udrToString(wsc.fault_FaultDetail));
+            msgContent = createOutboundFaultDetailXML(wsc.fault_FaultDetail);
         } else {			
             strToBA(msgContent,udrToString(wsc.response));
         }
@@ -171,6 +188,43 @@ bytearray getWscParamResp(ConsumeCycleUDR ccu, string type) {
     
     debug("getWscParamResp.Output: msgContent = " + baToHexString(msgContent)); 
     return msgContent;  
+}
+
+boolean validateRequest(ConsumeCycleUDR ccu) {
+    debug("-------------------------");
+    debug("Function Name: validateRequest()");
+    debug("validateRequest.System Id:" + sysId);
+    debug("validateRequest.Input: ccu = " + ccu);
+        
+    boolean valid = true;
+    FaultDetail fault;   
+    CCUData ccud = (CCUData) ccu.Data;
+    WSCycle_cmoutbound wsc = (WSCycle_cmoutbound) ccud.wsc;
+    
+    if (wsc.param.REQUEST == null || wsc.param.REQUEST == "") {
+//Begin-Common error handling            
+        list<string> pvalist = null;
+        pvalist = listCreate(string);
+        listAdd(pvalist, "Request");
+        //listAdd(pvalist, "value2");
+        ccud.errorCode = ERROR_CODE_1E013;
+        ccud.errorDesc = getErrorDesc(ccud.errorCode, pvalist);
+        fault = createErrorDetail(ccud.errorCode, ccud.errorDesc, wsc);
+//End-Common error handling    
+        wsc.fault_FaultDetail = fault;
+        valid = false;
+    } else if(ccud.rfcReq == null) {
+        list<string> pvalist = null;
+        pvalist = listCreate(string);
+        listAdd(pvalist, "instId");
+        ccud.errorCode = ERROR_CODE_1E999;
+        ccud.errorDesc = getErrorDesc(ccud.errorCode, null);
+        wsc.fault_FaultDetail = createErrorDetail(ccud.errorCode, ccud.errorDesc, wsc); 
+        valid = false;
+    }
+     
+    debug("validateRequest.Output: valid = " + valid);         
+    return valid;
 }
 
 ]]></Definition>

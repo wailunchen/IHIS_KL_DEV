@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<mz:configuration format-version="1.0">
+    <mz:data>
+        <dr.Configuration:dr.Configuration Folder="ZZR_SVC0001" Key="DZ11653447033161" Name="WFL_Processing_Sequencing" Owner="D_LIEW" Type="Workflow" encrypted="false" ver="6.0">
+            <STRING:Access_Groups_-----.read_-----.write_-----.execute>
+                <value value="All"/>
+                <value value="All"/>
+                <value value="All"/>
+            </STRING:Access_Groups_-----.read_-----.write_-----.execute>
+            <dr.ConfigAuxData:Auxiliary_Data ver="2.0">
+                <Entries keyType="STRING" type="java.util.LinkedHashMap" valueType="STRING">
+                    <Autostart value="false"/>
+                    <Count value="1"/>
+                    <Standalone value="false"/>
+                    <Type value="Realtime"/>
+                </Entries>
+            </dr.ConfigAuxData:Auxiliary_Data>
+            <mz:workflow-template>
+                <dr.WorkflowRealtimeData:Data Flow_Counters_Interval="0" Template_Valid="true" Workflow_ID_Counter="2" ver="7.0">
+                    <Nodes>
+                        <dr.WfNode:value Classname="com.digitalroute.workflowbridge.rt.coll.WfbRTCollInsp" ID="${identity@dr.WfNode#Workflow_Bridge..ID}" Name="Workflow_Bridge" XYposition="${layout@dr.WfNode#Workflow_Bridge..XYposition}" ver="2.0">
+                            <dr.WfNodeConfig:Configuration>
+                                <dr.WfNodeConfig:value Classname="com.digitalroute.workflowbridge.rt.coll.WfbRTCollInsp" Type="1" ver="1.0">
+                                    <dr.WfBridgeCollData:Data ver="7.0">
+                                        <dr.WfBridgeCollData.profile:Profile_Key active="true" fit="FINAL" ver="1.0">
+                                            <dr.DRConfiguration:Value Folder="ZZR_SVC0001" Key="DZ11653448544293" Name="PRF_WFB_SeqNum" Type="Workflow Bridge Profile" ver="1.0"/>
+                                        </dr.WfBridgeCollData.profile:Profile_Key>
+                                        <dr.WfBridgeCollData.port:Port active="true" fit="FINAL" ver="1.0">
+                                            <Value value="12901"/>
+                                        </dr.WfBridgeCollData.port:Port>
+                                        <dr.WfBridgeCollData.loadID:loadID active="true" fit="FINAL" ver="1.0">
+                                            <Value value="1"/>
+                                        </dr.WfBridgeCollData.loadID:loadID>
+                                    </dr.WfBridgeCollData:Data>
+                                </dr.WfNodeConfig:value>
+                            </dr.WfNodeConfig:Configuration>
+                        </dr.WfNode:value>
+                        <dr.WfNode:value Classname="com.digitalroute.wfc.analysis.AnalysisRealtimeInsp" ID="${identity@dr.WfNode#Analysis..ID}" Name="Analysis" XYposition="${layout@dr.WfNode#Analysis..XYposition}" ver="2.0">
+                            <dr.WfNodeConfig:Configuration>
+                                <dr.WfNodeConfig:value Classname="com.digitalroute.wfc.analysis.AnalysisRealtimeInsp" Type="1" ver="1.0">
+                                    <dr.StuffyMapperData:Data ver="1.0">
+                                        <dr.StuffyMapperData.sourceCode:Source_code active="true" fit="FINAL" ver="1.0">
+                                            <Value><![CDATA[import ultra.ZZR_CA_UFL.UFL_CCU_Data;
+
+consume {
+    if (instanceOf(input, ConsumeCycleUDR)) {
+        ConsumeCycleUDR ccu = (ConsumeCycleUDR) input;
+        
+        if (getCcudOutFileList(ccu) == null) {
+            debug("sending to seq_request");
+            udrRoute(ccu, "seq_request");
+        } else {
+            // list is populated
+            udrRoute(ccu, "wfb_response");
+            debug("ccu query done, returning: " + ccu);
+        }
+    }
+}
+
+// to be in ZZR_CA_APL.APL_Processing_Functions
+list<string> getCcudOutFileList (ConsumeCycleUDR  ccu ) {
+    debug("-------------------------");
+    debug("Function Name: getCcudOutFileList()");
+    CCUData ccud = (CCUData) ccu.Data;
+    
+    if (udrIsPresent(ccud.outFilenameList) && listSize(ccud.outFilenameList) > 0 ){    
+        debug("getCcudOutFileList.Output: ccud.outFilenameList = " + ccud.outFilenameList);
+        return ccud.outFilenameList;
+    } else {
+        debug("getCcudOutFileList.Output: ccud.errorDesc = null");
+        return null;
+    }
+    
+};]]></Value>
+                                        </dr.StuffyMapperData.sourceCode:Source_code>
+                                        <dr.StuffyMapperData.udrTypes:UDR_types active="true" fit="FINAL" ver="1.0">
+                                            <dr.DRTypeInfo:Value>
+                                                <dr.DRTypeInfo:value TypeName="wfb.ConsumeCycleUDR" ver="1.0"/>
+                                                <dr.DRTypeInfo:value TypeName="DRUDR" ver="1.0"/>
+                                                <dr.DRTypeInfo:value TypeName="wfb.WorkflowStateUDR" ver="1.0"/>
+                                            </dr.DRTypeInfo:Value>
+                                        </dr.StuffyMapperData.udrTypes:UDR_types>
+                                    </dr.StuffyMapperData:Data>
+                                </dr.WfNodeConfig:value>
+                            </dr.WfNodeConfig:Configuration>
+                        </dr.WfNode:value>
+                        <dr.WfNode:value Classname="com.digitalroute.wfc.aggregation.AggregationRealtimeInsp" ID="${identity@dr.WfNode#Sequencing..ID}" Name="Sequencing" XYposition="${layout@dr.WfNode#Sequencing..XYposition}" ver="2.0">
+                            <dr.WfNodeConfig:Configuration>
+                                <dr.WfNodeConfig:value Classname="com.digitalroute.wfc.aggregation.AggregationRealtimeInsp" Type="1" ver="1.0">
+                                    <dr.AggregationConfig:Data ver="10.6">
+                                        <dr.AggregationConfig.profile:Profile_Key active="true" fit="FINAL" ver="1.0">
+                                            <dr.DRConfiguration:Value Folder="ZZR_SVC0001" Key="DZ11653446180456" Name="PRF_Aggr" Type="Aggregation Profile" ver="1.0"/>
+                                        </dr.AggregationConfig.profile:Profile_Key>
+                                        <dr.AggregationConfig.readonly:Read_Only active="true" fit="FINAL" ver="1.0">
+                                            <Value value="false"/>
+                                        </dr.AggregationConfig.readonly:Read_Only>
+                                        <dr.AggregationConfig.timeoutDisable:Disable_Timeout active="true" fit="FINAL" ver="1.0">
+                                            <Value value="false"/>
+                                        </dr.AggregationConfig.timeoutDisable:Disable_Timeout>
+                                        <dr.AggregationConfig.defragTrigger:Defragmentation active="false" fit="FINAL" ver="1.0">
+                                            <dr.DefragType:Value value="NONE"/>
+                                        </dr.AggregationConfig.defragTrigger:Defragmentation>
+                                        <dr.AggregationConfig.defragEachBatchTimeLimit:Defragmentation_After_Each_Batch_Time_Limit active="false" fit="FINAL" ver="1.0">
+                                            <Value value="5"/>
+                                        </dr.AggregationConfig.defragEachBatchTimeLimit:Defragmentation_After_Each_Batch_Time_Limit>
+                                        <dr.AggregationConfig.defragAfterNumberOfBatches:Defragmentation_After_Number_of_Batches active="false" fit="FINAL" ver="1.0">
+                                            <Value value="1"/>
+                                        </dr.AggregationConfig.defragAfterNumberOfBatches:Defragmentation_After_Number_of_Batches>
+                                        <dr.AggregationConfig.defragFileAgeLimit:Defragmentation_File_Age_Limit active="false" fit="FINAL" ver="1.0">
+                                            <Value value="5"/>
+                                        </dr.AggregationConfig.defragFileAgeLimit:Defragmentation_File_Age_Limit>
+                                        <dr.AggregationConfig.defragFileAgeLimit---.TimeUnit:Defragmentation_File_Age_Limit_Time_Unit active="false" fit="FINAL" ver="1.0">
+                                            <Value value="MINUTES"/>
+                                        </dr.AggregationConfig.defragFileAgeLimit---.TimeUnit:Defragmentation_File_Age_Limit_Time_Unit>
+                                        <dr.AggregationConfig.nullTimeoutBehaviour:Null_Timeout active="true" fit="FINAL" ver="1.0">
+                                            <Value value="2"/>
+                                        </dr.AggregationConfig.nullTimeoutBehaviour:Null_Timeout>
+                                        <dr.AggregationConfig.defaultTimeout:Default_Timeout active="true" fit="FINAL" ver="1.0">
+                                            <Value value="86400"/>
+                                        </dr.AggregationConfig.defaultTimeout:Default_Timeout>
+                                        <dr.AggregationConfig.noMatchBehaviour:No_Match active="true" fit="FINAL" ver="1.0">
+                                            <Value value="0"/>
+                                        </dr.AggregationConfig.noMatchBehaviour:No_Match>
+                                        <dr.AggregationConfig.noMatchRouter:No_Match_Router active="true" fit="FINAL" ver="1.0">
+                                            <Value value="seq_reply"/>
+                                        </dr.AggregationConfig.noMatchRouter:No_Match_Router>
+                                        <dr.AggregationConfig.noStorageBehaviour:No_Storage_Behaviour active="true" fit="FINAL" ver="1.0">
+                                            <Value value="0"/>
+                                        </dr.AggregationConfig.noStorageBehaviour:No_Storage_Behaviour>
+                                        <dr.AggregationConfig.noStorageRouter:No_Storage_Router active="true" fit="FINAL" ver="1.0">
+                                            <Value/>
+                                        </dr.AggregationConfig.noStorageRouter:No_Storage_Router>
+                                        <dr.AggregationConfig.mainScript:Main_script active="true" fit="FINAL" ver="1.0">
+                                            <Value><![CDATA[import ultra.ZZR_CA_UFL.UFL_CCU_Data;
+// import 2 S4 decoder
+import ultra.ZZR_SVC0001.UFL_CM_OUTBOUND_Request_I038;
+import ultra.ZZR_SVC0001.UFL_Session;
+
+int batchSize;
+boolean flagBatch;
+sessionInit {
+    session.sequences = mapCreateSync(string,int);
+    session.lastDate = dateCreateNow();
+}
+
+consume {
+    debug("consume");
+    setBatchSize((int)dynamicFieldGet("Batch", "Size"));
+    debug("Batch Size = " + batchSize);
+    setBatchFlag((boolean)dynamicFieldGet("Batch", "Batch_Output"));
+    
+    if (isCrossDate(session.lastDate, dateCreateNow()))
+        resetSequences(session);
+    
+    
+    ////////////
+    // Usage one if this processing is meant for file/batches sequencing
+    // flagBatch == true
+    //////
+    if (instanceOf(input, ConsumeCycleUDR) && flagBatch ) {
+        
+        ConsumeCycleUDR ccu = (ConsumeCycleUDR) input;
+        CCUData ccud = (CCUData) ccu.Data;
+        
+        PayloadI038 pl = (PayloadI038) ccud.rfcReq;
+        list<Request_Itm> request_itmList = pl.request_itm;
+        listSort(request_itmList, bill_head.institution, ascending);
+        
+        
+        ccud.outFilenameList = listCreate(string);
+        
+        string  curInstitution;
+        string  lastInstitution;
+        int     curCount;
+        int     sequence;
+        for (int i = 0 ;i < listSize(request_itmList); i++) {
+            Request_Itm itm = listGet(request_itmList, i);            
+            
+            if (i == 0 ) {
+                curInstitution = itm.bill_head.institution;
+                lastInstitution= curInstitution;
+                // register the Institution
+                sequence = sessionSeqRegister(session, curInstitution);
+                
+                listAdd(ccud.outFilenameList, (string)sequence);
+            }
+            
+            curInstitution = itm.bill_head.institution;
+            
+            // change of facility need a new sequence 
+            if (curInstitution != lastInstitution) {
+                sequence = sessionSeqRegister(session, curInstitution);
+                listAdd(ccud.outFilenameList, (string)sequence);
+                
+                lastInstitution = curInstitution;
+                curCount = 0;
+            } else if (batchSize <= curCount) { // counter full
+                sequence = sessionSeqRegister(session, curInstitution);
+                listAdd(ccud.outFilenameList, (string)sequence);
+                
+                curCount = 0;
+            }            
+            
+            curCount++;
+            debug("curInstitution | sequence |  curCount: " +curInstitution + "|" +sequence + "|" + curCount);
+        } // end of figuring the files sequences
+        // only  return file sequences corresponded to the sorted facility/key 
+        
+        
+        debug("Aggregation ConsumeCycleUDR.Data.outFilenameList = " + ccud.outFilenameList);
+        udrRoute(ccu);
+        
+    }
+    ////////////
+    // Usage one if this processing is meant for file/batches sequencing
+    // flagBatch == false, simple running Number
+    //////
+    if (instanceOf(input, ConsumeCycleUDR) && !flagBatch ) {
+        ConsumeCycleUDR ccu = (ConsumeCycleUDR) input;
+        CCUData ccud = (CCUData) ccu.Data;
+        
+        ccud.outFilenameList = listCreate(string); // single element list for solely running number query
+        
+        int     sequence;
+        sequence = sessionSeqRegister(session, "ALL");
+                
+        listAdd(ccud.outFilenameList, (string)sequence);
+        
+        debug("Aggregation ConsumeCycleUDR.Data.outFilenameList = " + ccud.outFilenameList);
+        udrRoute(ccu);
+    }
+    
+}
+
+synchronized void setBatchSize(int size ) {
+    batchSize = size;
+};
+
+synchronized void setBatchFlag(boolean flag ) {
+    flagBatch = flag;
+};
+
+
+void resetSequences (seqNumber_session session) {
+    list<string> keys = mapKeys(session.sequences);
+    for (string key : keys) {
+        mapSet(session.sequences, key,  0);
+    }
+    session.lastDate = dateCreateNow();
+}
+
+int sessionSeqRegister( seqNumber_session session, string key) {
+    date dateNow =dateCreateNow();
+    
+    // Crossing date logic here
+    // within same day
+    if (mapContains(session.sequences, key)) {
+        mapSet(session.sequences, key, mapGet(session.sequences, key) +1 );
+        return  mapGet(session.sequences, key);
+    } else {
+        mapSet(session.sequences, key,  1);
+        // new sequence
+        return 1;
+    }
+};
+
+boolean isCrossDate (date dateRegister, date dateNow) {
+    string strDateNow;
+    dateToString(strDateNow,dateNow , "yyyyMMdd");
+    string strDateRegister;
+    dateToString(strDateRegister,dateRegister , "yyyyMMdd");
+    
+    if (strDateNow != strDateRegister) { // not same date, doesnt matter the exact date
+        return true;   
+    }
+    
+    return false;
+};]]></Value>
+                                        </dr.AggregationConfig.mainScript:Main_script>
+                                        <dr.AggregationConfig.intervalTimeout:Interval_Timeout active="true" fit="FINAL" ver="1.0">
+                                            <Value value="86400"/>
+                                        </dr.AggregationConfig.intervalTimeout:Interval_Timeout>
+                                        <dr.AggregationConfig.commitTimeout:Commit_Timeout active="true" fit="FINAL" ver="1.0">
+                                            <Value value="3600"/>
+                                        </dr.AggregationConfig.commitTimeout:Commit_Timeout>
+                                        <dr.AggregationConfig.commitCount:Commit_Count active="true" fit="FINAL" ver="1.0">
+                                            <Value value="100"/>
+                                        </dr.AggregationConfig.commitCount:Commit_Count>
+                                    </dr.AggregationConfig:Data>
+                                </dr.WfNodeConfig:value>
+                            </dr.WfNodeConfig:Configuration>
+                        </dr.WfNode:value>
+                    </Nodes>
+                    <Routes>
+                        <dr.WfRoute:value Destination_ID="${identity@dr.WfRoute#wfb_request..Destination ID}" ID="${identity@dr.WfRoute#wfb_request..ID}" Name="wfb_request" Realtime_mode="0" Route_type="1" Source_ID="${identity@dr.WfRoute#wfb_request..Source ID}" Stroke_points="${layout@dr.WfRoute#wfb_request..Stroke points}" ver="2.0"/>
+                        <dr.WfRoute:value Destination_ID="${identity@dr.WfRoute#wfb_response..Destination ID}" ID="${identity@dr.WfRoute#wfb_response..ID}" Name="wfb_response" Realtime_mode="0" Route_type="1" Source_ID="${identity@dr.WfRoute#wfb_response..Source ID}" Stroke_points="${layout@dr.WfRoute#wfb_response..Stroke points}" ver="2.0"/>
+                        <dr.WfRoute:value Destination_ID="${identity@dr.WfRoute#seq_request..Destination ID}" ID="${identity@dr.WfRoute#seq_request..ID}" Name="seq_request" Realtime_mode="0" Route_type="1" Source_ID="${identity@dr.WfRoute#seq_request..Source ID}" Stroke_points="${layout@dr.WfRoute#seq_request..Stroke points}" ver="2.0"/>
+                        <dr.WfRoute:value Destination_ID="${identity@dr.WfRoute#seq_reply..Destination ID}" ID="${identity@dr.WfRoute#seq_reply..ID}" Name="seq_reply" Realtime_mode="0" Route_type="1" Source_ID="${identity@dr.WfRoute#seq_reply..Source ID}" Stroke_points="${layout@dr.WfRoute#seq_reply..Stroke points}" ver="2.0"/>
+                    </Routes>
+                    <Service/>
+                    <Logged_error_MIM/>
+                    <dr.WorkflowExecutionConfig:Execution_Config ver="8.0">
+                        <dr.WorkflowExecutionConfig.executionSettings:Execution_Settings extref_key="" ver="1.0">
+                            <dr.ExecutionSettings:Value ver="3.0">
+                                <enabled value="true"/>
+                                <ecList type="java.util.LinkedList">
+                                    <dr.PicoInstanceEntity:value ver="1.0">
+                                        <Name value="ec1"/>
+                                        <Type value="2"/>
+                                    </dr.PicoInstanceEntity:value>
+                                </ecList>
+                                <dr.WorkflowDistType:dist value="ROUND_ROBIN"/>
+                                <groupList type="java.util.LinkedList"/>
+                                <dr.AutoStartSettings:autostart ver="1.0">
+                                    <enabled value="false"/>
+                                    <instances value="0"/>
+                                    <null:abort_behaviour/>
+                                </dr.AutoStartSettings:autostart>
+                            </dr.ExecutionSettings:Value>
+                        </dr.WorkflowExecutionConfig.executionSettings:Execution_Settings>
+                        <dr.WorkflowExecutionConfig.throughputMIM:Throughput_MIM extref_key="" ver="1.0">
+                            <Value/>
+                        </dr.WorkflowExecutionConfig.throughputMIM:Throughput_MIM>
+                        <dr.WorkflowExecutionConfig.debugType:Debug_Type extref_key="" ver="1.0">
+                            <dr.DebugType:Value value="EVENT"/>
+                        </dr.WorkflowExecutionConfig.debugType:Debug_Type>
+                        <dr.WorkflowExecutionConfig.noOfFilesToKeep:Number_of_Files_to_Keep extref_key="" ver="1.0">
+                            <Value value="0"/>
+                        </dr.WorkflowExecutionConfig.noOfFilesToKeep:Number_of_Files_to_Keep>
+                        <dr.WorkflowExecutionConfig.txnHandler:Transaction_Handler extref_key="" ver="1.0">
+                            <Value/>
+                        </dr.WorkflowExecutionConfig.txnHandler:Transaction_Handler>
+                    </dr.WorkflowExecutionConfig:Execution_Config>
+                    <dr.DynamicConfigStorableDefinition:dyn ver="1.0">
+                        <fields>
+                            <dr.FieldDescriptorStorable:value ver="1.0">
+                                <name value="Size"/>
+                                <title value="Size"/>
+                                <section value="Batch"/>
+                                <description value="Size of each sequence file"/>
+                                <dynStorableKey value="Size"/>
+                                <type value="Integer"/>
+                                <defaultValue value="5"/>
+                            </dr.FieldDescriptorStorable:value>
+                            <dr.FieldDescriptorStorable:value ver="1.0">
+                                <name value="Batch_Output"/>
+                                <title value="Batch_Output"/>
+                                <section value="Batch"/>
+                                <description value="Flag if files output"/>
+                                <dynStorableKey value="Batch_Output"/>
+                                <type value="Boolean"/>
+                                <defaultValue value="true"/>
+                            </dr.FieldDescriptorStorable:value>
+                        </fields>
+                    </dr.DynamicConfigStorableDefinition:dyn>
+                    <dr.DRConfiguration:External_Reference_Profile Folder="ZZR_SVC0001" Key="DZ11640842534619" Name="PRF_EXR" Type="External Reference Profile" ver="1.0"/>
+                    <External_Reference_Values type="java.util.Hashtable"/>
+                    <External_Reference_Lists type="java.util.Hashtable"/>
+                    <External_Reference_Maps type="java.util.Hashtable"/>
+                    <null:Timer_Trigger/>
+                    <dr.WorkflowExecutionRealtimeConfig:Thread_data ver="8.0">
+                        <dr.WorkflowExecutionRealtimeConfig.threads:Threads extref_key="" ver="1.0">
+                            <Value value="8"/>
+                        </dr.WorkflowExecutionRealtimeConfig.threads:Threads>
+                        <dr.WorkflowExecutionRealtimeConfig.queueSize:Queue_Size extref_key="" ver="1.0">
+                            <Value value="1000"/>
+                        </dr.WorkflowExecutionRealtimeConfig.queueSize:Queue_Size>
+                        <dr.WorkflowExecutionRealtimeConfig.standalone:Stand-----.alone extref_key="" ver="1.0">
+                            <Value value="false"/>
+                        </dr.WorkflowExecutionRealtimeConfig.standalone:Stand-----.alone>
+                        <dr.WorkflowExecutionRealtimeConfig.queueStrategy:Queue_strategies extref_key="" ver="1.0">
+                            <Value value="Blocking queue"/>
+                        </dr.WorkflowExecutionRealtimeConfig.queueStrategy:Queue_strategies>
+                        <dr.WorkflowExecutionRealtimeConfig.queueWorkerStrategy:Queue_worker_strategies extref_key="" ver="1.0">
+                            <Value value="RoundRobin"/>
+                        </dr.WorkflowExecutionRealtimeConfig.queueWorkerStrategy:Queue_worker_strategies>
+                        <dr.WorkflowExecutionRealtimeConfig.countInterval:Processed_UDRs_count_interval extref_key="" ver="1.0">
+                            <Value value="1"/>
+                        </dr.WorkflowExecutionRealtimeConfig.countInterval:Processed_UDRs_count_interval>
+                    </dr.WorkflowExecutionRealtimeConfig:Thread_data>
+                    <dr.WorkflowPersistentConfig:Persistent ver="7.0">
+                        <dr.WorkflowPersistentConfig.PersistentInspector:Persistent_Inspector extref_key="" ver="1.0">
+                            <Value/>
+                        </dr.WorkflowPersistentConfig.PersistentInspector:Persistent_Inspector>
+                        <dr.WorkflowPersistentConfig.PersistentTimeoutHandler:Persistent_Timeout_Handler extref_key="" ver="1.0">
+                            <Value/>
+                        </dr.WorkflowPersistentConfig.PersistentTimeoutHandler:Persistent_Timeout_Handler>
+                        <dr.WorkflowPersistentConfig.PersistentStorageConfig:Persistent_Storage_Config extref_key="" ver="1.0">
+                            <Value/>
+                        </dr.WorkflowPersistentConfig.PersistentStorageConfig:Persistent_Storage_Config>
+                    </dr.WorkflowPersistentConfig:Persistent>
+                </dr.WorkflowRealtimeData:Data>
+            </mz:workflow-template>
+            <mz:wf-parameters>
+                <mz:param-def label="Batch - Size" name="Size" nodeId="1158651032" nodeName="Batch" type="DEFAULT"/>
+                <mz:param-def label="Batch - Batch_Output" name="Batch_Output" nodeId="1158651032" nodeName="Batch" type="DEFAULT"/>
+            </mz:wf-parameters>
+            <mz:wf-instances>
+                <mz:wf-instance instanceId="1" name="workflow_1" state="VALID" validationError="">
+                    <mz:param name="Batch/Size" storable-id="dr.DynField">
+                        <dr.DynField:dr.DynField extref_key="SVC0001_BATCH_SIZE" ver="1.0">
+                            <Value/>
+                        </dr.DynField:dr.DynField>
+                    </mz:param>
+                    <mz:param name="Batch/Batch_Output" storable-id="dr.DynField"/>
+                </mz:wf-instance>
+            </mz:wf-instances>
+            <documentation value=""/>
+            <parameters value=""/>
+            <Current_Comment/>
+        </dr.Configuration:dr.Configuration>
+    </mz:data>
+    <mz:referenced-data>
+        <layout>
+            <dr.WfNode>
+                <dr.WfRoute--.StorablePoint:Workflow---.Bridge..XYposition X_position="110" Y_position="250" ver="1.0"/>
+                <dr.WfRoute--.StorablePoint:Analysis..XYposition X_position="340" Y_position="250" ver="1.0"/>
+                <dr.WfRoute--.StorablePoint:Sequencing..XYposition X_position="590" Y_position="250" ver="1.0"/>
+            </dr.WfNode>
+            <dr.WfRoute>
+                <wfb---.request..Stroke_points>
+                    <dr.WfRoute--.StorablePoint:value X_position="137" Y_position="235" ver="1.0"/>
+                    <dr.WfRoute--.StorablePoint:value X_position="195" Y_position="217" ver="1.0"/>
+                    <dr.WfRoute--.StorablePoint:value X_position="257" Y_position="220" ver="1.0"/>
+                    <dr.WfRoute--.StorablePoint:value X_position="314" Y_position="237" ver="1.0"/>
+                </wfb---.request..Stroke_points>
+                <wfb---.response..Stroke_points>
+                    <dr.WfRoute--.StorablePoint:value X_position="314" Y_position="250" ver="1.0"/>
+                    <dr.WfRoute--.StorablePoint:value X_position="257" Y_position="268" ver="1.0"/>
+                    <dr.WfRoute--.StorablePoint:value X_position="194" Y_position="270" ver="1.0"/>
+                    <dr.WfRoute--.StorablePoint:value X_position="137" Y_position="252" ver="1.0"/>
+                </wfb---.response..Stroke_points>
+                <seq---.request..Stroke_points>
+                    <dr.WfRoute--.StorablePoint:value X_position="367" Y_position="237" ver="1.0"/>
+                    <dr.WfRoute--.StorablePoint:value X_position="432" Y_position="219" ver="1.0"/>
+                    <dr.WfRoute--.StorablePoint:value X_position="499" Y_position="224" ver="1.0"/>
+                    <dr.WfRoute--.StorablePoint:value X_position="564" Y_position="239" ver="1.0"/>
+                </seq---.request..Stroke_points>
+                <seq---.reply..Stroke_points>
+                    <dr.WfRoute--.StorablePoint:value X_position="564" Y_position="252" ver="1.0"/>
+                    <dr.WfRoute--.StorablePoint:value X_position="500" Y_position="271" ver="1.0"/>
+                    <dr.WfRoute--.StorablePoint:value X_position="433" Y_position="278" ver="1.0"/>
+                    <dr.WfRoute--.StorablePoint:value X_position="367" Y_position="254" ver="1.0"/>
+                </seq---.reply..Stroke_points>
+            </dr.WfRoute>
+        </layout>
+        <identity>
+            <dr.WfNode>
+                <Workflow---.Bridge..ID value="1766570084"/>
+                <Analysis..ID value="-540133671"/>
+                <Sequencing..ID value="1811779486"/>
+            </dr.WfNode>
+            <dr.WfRoute>
+                <wfb---.request..ID value="-2"/>
+                <wfb---.request..Source_ID value="1766570084"/>
+                <wfb---.request..Destination_ID value="-540133671"/>
+                <wfb---.response..ID value="-3"/>
+                <wfb---.response..Source_ID value="-540133671"/>
+                <wfb---.response..Destination_ID value="1766570084"/>
+                <seq---.request..ID value="-4"/>
+                <seq---.request..Source_ID value="-540133671"/>
+                <seq---.request..Destination_ID value="1811779486"/>
+                <seq---.reply..ID value="-6"/>
+                <seq---.reply..Source_ID value="1811779486"/>
+                <seq---.reply..Destination_ID value="-540133671"/>
+            </dr.WfRoute>
+        </identity>
+    </mz:referenced-data>
+</mz:configuration>

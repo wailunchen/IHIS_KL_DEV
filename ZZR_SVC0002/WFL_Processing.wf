@@ -1,0 +1,1267 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<mz:configuration format-version="1.0">
+    <mz:data>
+        <dr.Configuration:dr.Configuration Folder="ZZR_SVC0002" Key="DZ11636447429949" Name="WFL_Processing" Owner="A_SHIDI" Type="Workflow" encrypted="false" ver="6.0">
+            <STRING:Access_Groups_-----.read_-----.write_-----.execute>
+                <value value="All"/>
+                <value value="All"/>
+                <value value="All"/>
+            </STRING:Access_Groups_-----.read_-----.write_-----.execute>
+            <dr.ConfigAuxData:Auxiliary_Data ver="2.0">
+                <Entries keyType="STRING" type="java.util.LinkedHashMap" valueType="STRING">
+                    <Autostart value="false"/>
+                    <Count value="6"/>
+                    <Standalone value="false"/>
+                    <Type value="Realtime"/>
+                </Entries>
+            </dr.ConfigAuxData:Auxiliary_Data>
+            <mz:workflow-template>
+                <dr.WorkflowRealtimeData:Data Flow_Counters_Interval="0" Template_Valid="true" Workflow_ID_Counter="11" ver="7.0">
+                    <Nodes>
+                        <dr.WfNode:value Classname="com.digitalroute.workflowbridge.rt.coll.WfbRTCollInsp" ID="${identity@dr.WfNode#Wfl_Collection..ID}" Name="Wfl_Collection" XYposition="${layout@dr.WfNode#Wfl_Collection..XYposition}" ver="2.0">
+                            <dr.WfNodeConfig:Configuration>
+                                <dr.WfNodeConfig:value Classname="com.digitalroute.workflowbridge.rt.coll.WfbRTCollInsp" Type="1" ver="1.0">
+                                    <dr.WfBridgeCollData:Data ver="7.0">
+                                        <dr.WfBridgeCollData.profile:Profile_Key active="true" fit="DEFAULT" ver="1.0">
+                                            <dr.DRConfiguration:Value Folder="ZZR_SVC0002" Key="DZ11636097956024" Name="PRF_WFB_Static" Type="Workflow Bridge Profile" ver="1.0"/>
+                                        </dr.WfBridgeCollData.profile:Profile_Key>
+                                        <dr.WfBridgeCollData.port:Port active="true" fit="DEFAULT" ver="1.0">
+                                            <Value value="3299"/>
+                                        </dr.WfBridgeCollData.port:Port>
+                                        <dr.WfBridgeCollData.loadID:loadID active="true" fit="DEFAULT" ver="1.0">
+                                            <Value value="1"/>
+                                        </dr.WfBridgeCollData.loadID:loadID>
+                                    </dr.WfBridgeCollData:Data>
+                                </dr.WfNodeConfig:value>
+                            </dr.WfNodeConfig:Configuration>
+                        </dr.WfNode:value>
+                        <dr.WfNode:value Classname="com.digitalroute.wfc.analysis.AnalysisRealtimeInsp" ID="${identity@dr.WfNode#Transform_Record_Post_Process..ID}" Name="Transform_Record_Post_Process" XYposition="${layout@dr.WfNode#Transform_Record_Post_Process..XYposition}" ver="2.0">
+                            <dr.WfNodeConfig:Configuration>
+                                <dr.WfNodeConfig:value Classname="com.digitalroute.wfc.analysis.AnalysisRealtimeInsp" Type="1" ver="1.0">
+                                    <dr.StuffyMapperData:Data ver="1.0">
+                                        <dr.StuffyMapperData.sourceCode:Source_code active="true" fit="FINAL" ver="1.0">
+                                            <Value><![CDATA[import ultra.ws.ZZC_RFC.PRF_WS_CM_OUTBOUND.cycles;
+import ultra.ws.ZZC_RFC.PRF_WS_CM_OUTBOUND.x1;
+import ultra.ZZR_CA_UFL.UFL_CCU_Data;
+
+import apl.ZZR_CA_APL.APL_Audit_Constants;
+import apl.ZZR_CA_APL.APL_Common_Constants;
+import apl.ZZR_CA_APL.APL_Common_Variables;
+
+import apl.ZZR_CA_APL.APL_Audit_Functions;
+import apl.ZZR_SVC0002.APL_Common;
+import apl.ZZR_SVC0002.APL_Processing_Ext;
+import apl.ZZR_SVC0002.APL_Processing;
+
+import apl.ZZR_CA_APL.APL_Common_Functions;
+import apl.ZZR_CA_APL.APL_Audit_Functions;
+
+//Error-handling
+import apl.ZZC_CA_APL.APL_Common_Variables;
+import apl.ZZC_CA_APL.APL_Common_Constants;
+import apl.ZZC_CA_APL.APL_Error_Functions;
+
+// new audit
+import ultra.ZZ_CA_UFL.UFL_Audit;
+import apl.ZZ_CA_APL.APL_Audit_Functions;
+import apl.ZZ_CA_APL.APL_Common_Functions;
+import apl.ZZR_CA_APL.APL_Processing_Functions;
+
+//Code table requirement
+import apl.ZZC_CA_APL.APL_Common_Functions;
+//import apl.ZZ_CA_APL.APL_Constants;
+
+string INIT_AUDT_DESTINATION;
+bigint messageRunningNum;
+
+mimPublish(global, "INTF_TXN_ID", string);
+mimPublish(global, "SVC_ID", string);
+mimPublish(global, "INTF_ID", string);
+mimPublish(global, "INST_ID", string);
+mimPublish(global, "SOURCE_SYS", string);
+mimPublish(global, "SOURCE_TXN_ID", string);
+mimPublish(global, "PREV_RECORD_TXN_ID", string);
+mimPublish(global, "IN_RECORD_COUNT", int);
+// new audit end
+
+initialize {
+    debug("Testing 21/04/2022");
+    intfId = (string) dynamicFieldGet("Interface", "Id");
+    isCsvDb = externalReferenceGet(PRF_EXR_ZCC_COMMON, "TABLE_SHARED_DB_CSV_FLG");
+    
+    if (!isNull(isCsvDb) && strToLower(isCsvDb) == "true") {
+        //----Initialize Share Table ---- CSV LOOKUP TABLE
+        ErrorTable = tableCreateShared(PRF_ST_ZMC_CACM_COMMON_CSV);
+        ErrorClassTable = tableCreateShared(PRF_ST_ZTB_CAZZ_APPLPRT_CSV);
+        ZTB_CAZZ_DATAMAP = tableCreateShared(PRF_ST_ZTB_CAZZ_DATAMAP_CSV);	
+        /*ZTB_CACM_INTF_ID = tableCreateShared(PRF_ST_ZTB_CACM_INTF_ID_CSV);
+        ZTB_CADM_I_SM_MD = tableCreateShared(PRF_ST_ZTB_CADM_I_SM_MD_CSV);
+        ZCAZZ_C_DATAMAPPING = tableCreateShared(PRF_ST_ZCAZZ_C_DATAMAPPING);*/
+        
+    } else { 
+        ErrorTable = tableCreateShared(PRF_ST_COMMON_ERROR);
+        ErrorClassTable = tableCreateShared(PRF_ST_COMMON_ERROR_CLASS);
+        ZTB_CAZZ_DATAMAP = tableCreateShared(PRF_ST_ZTB_CAZZ_DATAMAP);
+    }
+    //Begin-Inbound outbound retry mechanism
+    confResendCount = (int) dynamicFieldGet("Web_Service_Request_Ext", "ResendCount");
+    confResendInterval = (int) dynamicFieldGet("Web_Service_Request_Ext", "ResendInterval");
+    debug("Web_Service_Request_Ext: confResendCount=" + confResendCount+ " confResendInterval="+confResendInterval);
+    //End-Inbound outbound retry mechanism
+    
+    //messageRunningNum = 99999999999999999999999999999999999999999999999998;
+    messageRunningNum = 0;
+    
+    // new audit 
+    // for audit, all variable stored in ZZ_CA_APL.APL_Audit_Functions
+    AUDT_WFNAME = (string) mimGet("Workflow", "Workflow Name");
+    AUDT_PICO = (string) mimGet("Workflow", "Execution Context");
+    AUDALL_CREATED_CHANGED_BY = getMZUser(); 
+    INIT_AUDT_DESTINATION = externalReferenceGet(PRF_EXR_SVC0002, "SVC0002_PROC_HTTP_ADDRESS"); 
+    // new audit end
+}
+
+consume {
+    if (instanceOf(input, WorkflowStateUDR)) {
+        WorkflowStateUDR wsu = (WorkflowStateUDR) input;
+
+        // always response for wsu
+        udrRoute(wsu, "wfb_response");
+
+    } else if (instanceOf(input, ErrorCycleUDR)) {
+        ErrorCycleUDR ecu = (ErrorCycleUDR) input;
+
+        // response from complex processing wfb or audit wfb if error
+        debug("ErrorCycleUDR:" + ecu);
+
+        ConsumeCycleUDR ccu = handleECUProc(ecu);
+        string route = getRoute(ccu);
+
+        if (route == ROUTE_ECS) {
+            // new audit
+            AuditTask_TI audTask = udrCreate(AuditTask_TI);
+            list <AuditRecord_TI> audRecList = listCreate(AuditRecord_TI);
+            
+            string AUDR_RECORD_TXN_ID = setAudEcu(ccu, audTask, audRecList);
+                        
+            /*udrRoute(setAudit(ccu, null, null, null, null, audTask, audRecList),
+                "audit_log"); */
+            udrRoute(setAuditV2(ccu, null, null, null, null, audTask, audRecList),
+                "audit_log"); 
+            updatePrevRecTxnId(ccu, AUDR_RECORD_TXN_ID); 
+            setMim(ccu); 
+            // new audit end
+            
+            debug("ecs:" + ccu);            
+            udrRoute(udrEncode(MZ_TAGGED_ENC, ccu), "ecs");
+        }
+
+    } else if (instanceOf(input, ConsumeCycleUDR)) {
+        ConsumeCycleUDR ccu = (ConsumeCycleUDR) input;
+        setSysIdCcud(ccu); // modifed for debug
+        // request from collection wfl
+        //debug("ConsumeCycleUDR:" + ccu);
+        
+        int AUDR_IN_RECORD_COUNT = getInRecCount(ccu); // new audit
+        
+        // check whether if it cs response from CP processing wfl
+        if (isCpResponse(ccu)) {
+            // log to audit and discard
+            debug("isCpResponse true");
+            
+            // new audit
+            AuditTask_TI audTask = udrCreate(AuditTask_TI);
+            list <AuditRecord_TI> audRecList = listCreate(AuditRecord_TI);
+            
+            setAudCcuCpResp(ccu, AUDR_IN_RECORD_COUNT, audTask, audRecList);
+            
+            udrRoute(setAudit(ccu, null, AUD_SQL_CMD_UPDATE_STATUS, AUD_STATUS_COMPLETED, null, audTask, audRecList),
+                "audit_log");                                
+            // new audit end
+        } else {
+
+            // check the re-processing flag
+            // only for inbound processing
+            /*if (isReprocessExt(ccu)) {
+
+                // this ccu  coming from ECS workflow
+                debug("isReprocessExt true");
+                setExtUdrContext(ccu);
+                udrRoute(extractExtUdr(ccu), "ws_request");
+
+                // since the fwd is batch wfl, just fwd back the ccu
+                udrRoute(ccu, "wfb_response");
+
+            } else*/ if (isReprocessCp(ccu)) {
+
+                // this ccu  coming from ECS workflow
+                debug("isReprocessCp true");
+                // since the fwd is batch wfl, just fwd back the ccu
+                ////logInformation("wfb_response" + ccu);
+                debug("wfb_response" + ccu);
+                udrRoute(ccu, "wfb_response");
+                
+                setReprocessCp(ccu);
+                
+                // new audit
+                AuditTask_TI audTask = udrCreate(AuditTask_TI);
+                list <AuditRecord_TI> audRecList = listCreate(AuditRecord_TI);
+                AuditTask_TI audTaskCp = udrCreate(AuditTask_TI);
+                list <AuditRecord_TI> audRecListCp = listCreate(AuditRecord_TI);
+                
+                string AUDR_RECORD_TXN_ID = setAudCcuReproCp(ccu, AUDR_IN_RECORD_COUNT, audTask, audRecList,
+                    audTaskCp, audRecListCp);
+                 
+                udrRoute(setAudit(ccu, null, null, null, null, audTask, audRecList), // current task
+                    "audit_log");
+          
+                udrRoute(setAudit(ccu, null, null, null, null, audTaskCp, audRecListCp), // new task
+                    "audit_log");
+                     
+                updatePrevRecTxnId(ccu, AUDR_RECORD_TXN_ID);                                                
+                // new audit end
+                               
+                //udrRoute(ccu, "cp_request");
+
+
+            } else {
+                // new audit
+                AuditTask_TI audTask = udrCreate(AuditTask_TI);
+                AuditRecord_TI audRecTrans = udrCreate(AuditRecord_TI);
+                list <AuditRecord_TI> audRecList = listCreate(AuditRecord_TI);
+                
+                string PREV_AUDR_RECORD_TXN_ID = setAudCcuProcReq(ccu, AUDR_IN_RECORD_COUNT, audTask, audRecTrans);
+                // new audit end
+    
+                // for outbound processing check the ccud.isCpResponse flag
+                if (isCpResponse(ccu)) {
+                    // new audit
+                    string AUDR_RECORD_TXN_ID = setAudCcuAsycReq(ccu, AUDR_IN_RECORD_COUNT, audTask, audRecList);
+                    updatePrevRecTxnId(ccu, AUDR_RECORD_TXN_ID);
+                    // new audit end
+                    
+                    // modifed for audit
+                    ////logInformation("wfb_response: " + ccu);
+                    debug("wfb_response" + ccu);
+                    udrRoute(ccu, "wfb_response");
+                                       
+                }
+                
+                // try to map
+                incrementRunningNum();              
+                if (mapWscToExtUdr(ccu, messageRunningNum)) {
+                    // new audit - Enable rawXML
+                    /*setAudCcuMapWsc(ccu, PREV_AUDR_RECORD_TXN_ID, AUDR_IN_RECORD_COUNT, INIT_AUDT_DESTINATION, AUDR_REC_FUNC_WSREQ_REQUEST,
+                        audTask, audRecTrans, audRecList);
+                    
+                    udrRoute(setAudit(ccu, null, null, null, null, audTask, audRecList),
+                        "audit_log");                         */                                            
+                    // new audit end
+                    
+                    // forward to ws request if can be mapped
+                    debug("mapWscToExtUdr.ccu:" + ccu);
+                    ////logInformation("mapWscToExtUdr ccu:" + ccu);
+                    udrRoute(extractExtUdr(ccu, PREV_AUDR_RECORD_TXN_ID, confResendCount), "ws_request");
+
+
+                } else {
+                    ////logInformation("Validation Failed in Mapping");
+                    // handle the error
+                    string route = setCCUError(ccu);
+                    
+                    // new audit
+                    string AUDR_RECORD_TXN_ID = setAudCcuError(ccu, AUDR_IN_RECORD_COUNT, getFaultMessage(ccu), audTask, audRecTrans, audRecList);                                                                             
+                    // new audit end
+                                                          
+                    if (route == ROUTE_WFB_RESPONSE) {                        
+                        // new audit
+                        if (audTask.DESTINATION == null)
+                            audTask.DESTINATION = AUDT_SRC_DEST_WFL_COLL;
+                        
+                        /*udrRoute(setAudit(ccu, null, null, null, null, audTask, audRecList),  
+                            "audit_log");*/
+                        
+                        udrRoute(setAuditV2(ccu, null, null, null, null, audTask, audRecList),  
+                            "audit_log");
+                            
+                        updatePrevRecTxnId(ccu, AUDR_RECORD_TXN_ID);                                                                    
+                        // new audit end                        
+                                                                    
+                        debug("wfb_response:" + ccu);
+                        ////logInformation("wfb_response:" + ccu);
+                        udrRoute(ccu, "wfb_response");
+                        
+                    } else {
+                        // new audit
+                        if (audTask.DESTINATION == null)
+                            audTask.DESTINATION = AUDT_SRC_DEST_WFL_COLL + " " + AUDT_SRC_DEST_WFL_ECS;
+                        else
+                            audTask.DESTINATION = audTask.DESTINATION + " " + AUDT_SRC_DEST_WFL_ECS;
+                        
+                        string AUDR_RECORD_TXN_ID_ECS = setAudCcuErrorEcs(ccu, AUDR_IN_RECORD_COUNT, audRecList); 
+                                               
+                        /*udrRoute(setAudit(ccu, null, null, null, null, audTask, audRecList),  
+                            "audit_log");*/
+                        udrRoute(setAuditV2(ccu, null, null, null, null, audTask, audRecList),  
+                            "audit_log");
+                          
+                        updatePrevRecTxnId(ccu, AUDR_RECORD_TXN_ID);                                                                                                                                             
+                        // new audit end
+                                                
+                        debug("wfb_response ecs:" + ccu);    
+                        // in case for outbound processing route back also to wfb
+                        udrRoute(ccu, "wfb_response");
+                        
+                        updatePrevRecTxnId(ccu, AUDR_RECORD_TXN_ID_ECS);  // new audit
+                        setMim(ccu); // new audit
+                                               
+                        udrRoute(udrEncode(MZ_TAGGED_ENC, ccu), "ecs");
+                    }
+
+                }
+            }
+        }
+
+
+    } else if (instanceOf(input, WSCycle_checkConsent)) {
+        ////logInformation("Response from Response Stub");
+        WSCycle_checkConsent extUdr = (WSCycle_checkConsent) input;
+
+        // response from ws request
+        debug("WSCycle_checkConsent:" + extUdr);
+        //logInformation("WSCycle_checkConsent:" + extUdr);
+        
+        //Resend the request due to connectivity error.
+        if (confResendCount>0 && enterResendLoop(extUdr)) {
+            if (confResendInterval>0) {
+                debug("Waiting "+confResendInterval+" secs before resend.");
+                sleep(confResendInterval*1000);            
+            }
+            debug("Resend the request..." + extUdr);
+            //logInformation("Resend the request..." + extUdr);
+            udrRoute(extUdr, "ws_request");
+            return;
+        }
+        
+        ConsumeCycleUDR ccu = setCCUResponse(extUdr);
+        string route = getRoute(ccu);
+
+        // route the response to appropriate consumer
+        debug("ccu:" + ccu);
+        //logInformation("ccu:" + ccu);
+        // new audit       
+        AuditTask_TI audTask = udrCreate(AuditTask_TI);
+        AuditRecord_TI audRecWsrResp = udrCreate(AuditRecord_TI);
+        AuditRecord_TI audRecWfbResp = udrCreate(AuditRecord_TI);
+        list <AuditRecord_TI> audRecList = listCreate(AuditRecord_TI); 
+        
+        int AUDR_IN_RECORD_COUNT = setAudWsrResp(ccu, INIT_AUDT_DESTINATION, audTask, audRecWsrResp, audRecWfbResp,
+            audRecList);  
+        // new audit end
+              
+        if (route == ROUTE_WFB_RESPONSE) {
+            // new audit
+            string AUDR_RECORD_TXN_ID = setAudWsrRespWfbResp(ccu, AUDR_IN_RECORD_COUNT, getFaultMessage(ccu), audTask, audRecWsrResp, 
+                audRecWfbResp, audRecList);
+            
+            udrRoute(setAudit(ccu, null, null, null, null, audTask, audRecList),  
+                "audit_log");
+                         
+            updatePrevRecTxnId(ccu, AUDR_RECORD_TXN_ID);            
+            // new audit end
+            
+            //logInformation("wfb_response: " + ccu);
+            debug("wfb_response" + ccu);
+            udrRoute(ccu, "wfb_response");           
+
+        } else if (route == ROUTE_CP_REQUEST) {
+            // new audit
+            // current task
+            AuditTask_TI audTaskCp = udrCreate(AuditTask_TI);
+            list <AuditRecord_TI> audRecListCp = listCreate(AuditRecord_TI);
+                        
+            string AUDR_RECORD_TXN_ID = setAudWsrRespCpReq(ccu, AUDR_IN_RECORD_COUNT, audTask, audRecWsrResp, 
+                audRecWfbResp, audRecList, audTaskCp, audRecListCp);
+    
+
+            udrRoute(setAudit(ccu, null, null, null, null, audTask, audRecList), // current task
+                "audit_log");          
+            udrRoute(setAudit(ccu, null, null, null, null, audTaskCp, audRecListCp), // new task
+                    "audit_log");
+                    
+            updatePrevRecTxnId(ccu, audRecWfbResp.RECORD_TXN_ID);       
+            // new audit end
+            
+            // in case for outbound processing route back also to wfb 
+            //logInformation("wfb_response: " + ccu);
+            debug("wfb_response" + ccu);
+            udrRoute(ccu, "wfb_response");
+            
+            updatePrevRecTxnId(ccu, AUDR_RECORD_TXN_ID); // new audit
+      
+            //udrRoute(ccu, "cp_request");
+
+        } else if (route == ROUTE_ECS) {
+            // new audit 
+                                   
+            string AUDR_RECORD_TXN_ID = setAudWsrRespEcs(ccu, AUDR_IN_RECORD_COUNT, getFaultMessage(ccu), audTask, 
+                audRecWsrResp, audRecWfbResp, audRecList);
+                                          
+            /*udrRoute(setAudit(ccu, null, null, null, null, audTask, audRecList),  
+                "audit_log"); */
+            
+            udrRoute(setAuditV2(ccu, null, null, null, null, audTask, audRecList),  
+                "audit_log");
+                      
+            updatePrevRecTxnId(ccu, audRecWfbResp.RECORD_TXN_ID);                                                                                                                                          
+            // new audit end
+                                                 
+            // in case for outbound processing route back also to wfb
+            //logInformation("wfb_response: " + ccu);
+            debug("wfb_response" + ccu);
+            udrRoute(ccu, "wfb_response");
+             
+            updatePrevRecTxnId(ccu, AUDR_RECORD_TXN_ID); // new audit   
+            setMim(ccu); // new audit
+                                
+            udrRoute(udrEncode(MZ_TAGGED_ENC, ccu), "ecs");
+
+        } else {
+            // just log the audit for success async/async complex response            
+            // in case for outbound processing route back also to wfb
+            // for complex processing, no need to response         
+            if (isCpResponse(ccu)) { // new audit
+                // new audit
+                audTask.DESTINATION = AUDT_SRC_DEST_CURRENT_WFL;
+                
+                listAdd(audRecList, audRecWsrResp);
+                
+                udrRoute(setAudit(ccu, null, null, null, null, audTask, audRecList),  
+                    "audit_log"); 
+                // new audit end                             
+                 
+            } else {
+                // new audit
+                audTask.DESTINATION = AUDT_SRC_DEST_WFL_COLL;
+                
+                listAdd(audRecList, audRecWsrResp);
+                listAdd(audRecList, audRecWfbResp);
+            
+                udrRoute(setAudit(ccu, null, null, null, null, audTask, audRecList),  
+                    "audit_log");
+                         
+                updatePrevRecTxnId(ccu, audRecWfbResp.RECORD_TXN_ID);            
+                // new audit end 
+                
+                //logInformation("wfb_response: " + ccu);
+                debug("wfb_response" + ccu);
+                udrRoute(ccu, "wfb_response");
+            }  // new audit
+        }
+    }
+}
+
+void setMim(ConsumeCycleUDR ccu) {
+    debug("-------------------------");
+    debug("Function Name: setMim()");
+    debug("setMim.System Id:" + sysId);
+    debug("setMim.Input: ccu = " + ccu);
+    
+    CCUData ccud = (CCUData) ccu.Data;
+    UdrInfo udrInfo = ccud.udrInfo;
+    mimSet("INTF_TXN_ID", udrInfo.INTF_TXN_ID);
+    mimSet("SVC_ID", udrInfo.SVC_ID);
+    mimSet("INTF_ID", udrInfo.INTF_ID);
+    mimSet("INST_ID", udrInfo.INST_ID);
+    mimSet("SOURCE_SYS", udrInfo.SOURCE_SYS);
+    mimSet("SOURCE_TXN_ID", udrInfo.SOURCE_TXN_ID);
+    mimSet("PREV_RECORD_TXN_ID", udrInfo.PREV_RECORD_TXN_ID);
+    mimSet("IN_RECORD_COUNT", udrInfo.IN_RECORD_COUNT);
+    
+    debug("setMim.Output: void");    
+        
+}
+
+/*synchronized date getNextResetTime(){
+    date nextResetTime = dateCreateNow();
+    dateAddDays(nextResetTime, 1);
+    dateSetTime(nextResetTime, 0, 0, 0);
+    
+    return nextResetTime;
+}*/
+
+synchronized bigint incrementRunningNum(){
+    //no reset mechanism
+    try {
+        messageRunningNum = messageRunningNum + 1;
+    }
+    catch (ExceptionDetails exception){
+        throw runningNumLimit();
+    }
+    finally{
+        debug("Runnng Number reachs maximum " + messageRunningNum);
+    }
+    return messageRunningNum;
+}
+
+synchronized ExceptionDetails runningNumLimit() {
+    ExceptionDetails ed = udrCreate(ExceptionDetails);
+    ed.message = "Runnng Number reachs maximum";
+    return ed;
+}]]></Value>
+                                        </dr.StuffyMapperData.sourceCode:Source_code>
+                                        <dr.StuffyMapperData.udrTypes:UDR_types active="true" fit="FINAL" ver="1.0">
+                                            <dr.DRTypeInfo:Value>
+                                                <dr.DRTypeInfo:value TypeName="ws.ZZR_SVC0002.PRF_WS_External.cycles.AbstractNefrPortTypeWSCycle" ver="1.0"/>
+                                                <dr.DRTypeInfo:value TypeName="wfb.ConsumeCycleUDR" ver="1.0"/>
+                                                <dr.DRTypeInfo:value TypeName="wfb.ErrorCycleUDR" ver="1.0"/>
+                                                <dr.DRTypeInfo:value TypeName="wfb.WorkflowStateUDR" ver="1.0"/>
+                                            </dr.DRTypeInfo:Value>
+                                        </dr.StuffyMapperData.udrTypes:UDR_types>
+                                    </dr.StuffyMapperData:Data>
+                                </dr.WfNodeConfig:value>
+                            </dr.WfNodeConfig:Configuration>
+                        </dr.WfNode:value>
+                        <dr.WfNode:value Classname="com.digitalroute.wfc.ws.WSForwarderInsp" ID="${identity@dr.WfNode#Web_Service_Request..ID}" Name="Web_Service_Request" XYposition="${layout@dr.WfNode#Web_Service_Request..XYposition}" ver="2.0">
+                            <dr.WfNodeConfig:Configuration>
+                                <dr.WfNodeConfig:value Classname="com.digitalroute.wfc.ws.WSForwarderInsp" Type="1" ver="1.0">
+                                    <dr.WSForwarderData:Data ver="9.0">
+                                        <dr.WSForwarderData.httpAddress:http---.address active="true" fit="DEFAULT" ver="1.0">
+                                            <Value value="http://hisnbtvdapp05.devhealthgrp.com.sg:9111/webservice/getGlobalConsent"/>
+                                        </dr.WSForwarderData.httpAddress:http---.address>
+                                        <dr.WSForwarderData.profile:profile active="true" fit="FINAL" ver="1.0">
+                                            <dr.DRConfiguration:Value Folder="ZZR_SVC0002" Key="DZ11650526616715" Name="PRF_WS_External" Type="WS Profile" ver="1.0"/>
+                                        </dr.WSForwarderData.profile:profile>
+                                        <dr.WSForwarderData.serverTimeout:serverTimeout active="true" fit="DEFAULT" ver="1.0">
+                                            <Value value="3000"/>
+                                        </dr.WSForwarderData.serverTimeout:serverTimeout>
+                                        <dr.WSForwarderData.cdataSupport:cdataSupport active="true" fit="FINAL" ver="1.0">
+                                            <Value value="false"/>
+                                        </dr.WSForwarderData.cdataSupport:cdataSupport>
+                                        <dr.WSForwarderData.enableBasicAuthentication:enableBasicAuthentication active="true" fit="FINAL" ver="1.0">
+                                            <Value value="true"/>
+                                        </dr.WSForwarderData.enableBasicAuthentication:enableBasicAuthentication>
+                                        <dr.WSForwarderData.httpUsername:httpUsername active="true" fit="FINAL" ver="1.0">
+                                            <Value value="BTSITUSER"/>
+                                        </dr.WSForwarderData.httpUsername:httpUsername>
+                                        <dr.WSForwarderData.httpPassword:httpPassword active="true" fit="FINAL" ver="1.0">
+                                            <Value value="DR_8.1_KEY-1-9959FD5F4CCA3A18803E27917275BF138CBAE4209A86C6529F281CAC7A215C84"/>
+                                        </dr.WSForwarderData.httpPassword:httpPassword>
+                                        <dr.WSForwarderData.enableRouteRawXML:enableRouteRawXML active="true" fit="FINAL" ver="1.0">
+                                            <Value value="true"/>
+                                        </dr.WSForwarderData.enableRouteRawXML:enableRouteRawXML>
+                                        <dr.WSForwarderData.routeRawXMLTo:routeRawXMLTo active="true" fit="FINAL" ver="1.0">
+                                            <Value value="rawXML"/>
+                                        </dr.WSForwarderData.routeRawXMLTo:routeRawXMLTo>
+                                    </dr.WSForwarderData:Data>
+                                </dr.WfNodeConfig:value>
+                            </dr.WfNodeConfig:Configuration>
+                        </dr.WfNode:value>
+                        <dr.WfNode:value Classname="com.digitalroute.workflowbridge.rt.fwd.WfbRTFwdInsp" ID="${identity@dr.WfNode#Audit..ID}" Name="Audit" XYposition="${layout@dr.WfNode#Audit..XYposition}" ver="2.0">
+                            <dr.WfNodeConfig:Configuration>
+                                <dr.WfNodeConfig:value Classname="com.digitalroute.workflowbridge.rt.fwd.WfbRTFwdInsp" Type="1" ver="1.0">
+                                    <dr.WfBridgeFwdData:Data ver="6.0">
+                                        <dr.WfBridgeFwdData.profile:Profile_Key active="true" fit="DEFAULT" ver="1.0">
+                                            <dr.DRConfiguration:Value Folder="ZZR_CA_PRF" Key="MZ81711617938826351" Name="PRF_WFB_Audit" Type="Workflow Bridge Profile" ver="1.0"/>
+                                        </dr.WfBridgeFwdData.profile:Profile_Key>
+                                    </dr.WfBridgeFwdData:Data>
+                                </dr.WfNodeConfig:value>
+                            </dr.WfNodeConfig:Configuration>
+                        </dr.WfNode:value>
+                        <dr.WfNode:value Classname="com.digitalroute.wfc.interwf.InterWFOutputRTInsp" ID="${identity@dr.WfNode#Wfl_ECS..ID}" Name="Wfl_ECS" XYposition="${layout@dr.WfNode#Wfl_ECS..XYposition}" ver="2.0">
+                            <dr.WfNodeConfig:Configuration>
+                                <dr.WfNodeConfig:value Classname="com.digitalroute.wfc.interwf.InterWFOutputRTInsp" Type="1" ver="1.0">
+                                    <dr.InterWFOutputRTData:Data ver="7.0">
+                                        <dr.InterWFOutputRTData.profile:Profile_key active="true" fit="DEFAULT" ver="1.0">
+                                            <dr.DRConfiguration:Value Folder="ZZR_SVC0002" Key="DZ11636549835993" Name="PRF_IWF_ECS" Type="Inter Workflow Profile" ver="1.0"/>
+                                        </dr.InterWFOutputRTData.profile:Profile_key>
+                                        <dr.InterWFOutputRTData.myMIMs:MIM_Map active="true" fit="FINAL" ver="1.0">
+                                            <dr.DRNameValue:Value>
+                                                <dr.DRNameValue:value ver="1.0">
+                                                    <Name value="INTF_TXN_ID"/>
+                                                    <Value value="Transform_Record_Post_Process.INTF_TXN_ID"/>
+                                                </dr.DRNameValue:value>
+                                                <dr.DRNameValue:value ver="1.0">
+                                                    <Name value="SVC_ID"/>
+                                                    <Value value="Transform_Record_Post_Process.SVC_ID"/>
+                                                </dr.DRNameValue:value>
+                                                <dr.DRNameValue:value ver="1.0">
+                                                    <Name value="INTF_ID"/>
+                                                    <Value value="Transform_Record_Post_Process.INTF_ID"/>
+                                                </dr.DRNameValue:value>
+                                                <dr.DRNameValue:value ver="1.0">
+                                                    <Name value="INST_ID"/>
+                                                    <Value value="Transform_Record_Post_Process.INST_ID"/>
+                                                </dr.DRNameValue:value>
+                                                <dr.DRNameValue:value ver="1.0">
+                                                    <Name value="SOURCE_SYS"/>
+                                                    <Value value="Transform_Record_Post_Process.SOURCE_SYS"/>
+                                                </dr.DRNameValue:value>
+                                                <dr.DRNameValue:value ver="1.0">
+                                                    <Name value="SOURCE_TXN_ID"/>
+                                                    <Value value="Transform_Record_Post_Process.SOURCE_TXN_ID"/>
+                                                </dr.DRNameValue:value>
+                                                <dr.DRNameValue:value ver="1.0">
+                                                    <Name value="PREV_RECORD_TXN_ID"/>
+                                                    <Value value="Transform_Record_Post_Process.PREV_RECORD_TXN_ID"/>
+                                                </dr.DRNameValue:value>
+                                                <dr.DRNameValue:value ver="1.0">
+                                                    <Name value="IN_RECORD_COUNT"/>
+                                                    <Value value="Transform_Record_Post_Process.IN_RECORD_COUNT"/>
+                                                </dr.DRNameValue:value>
+                                            </dr.DRNameValue:Value>
+                                        </dr.InterWFOutputRTData.myMIMs:MIM_Map>
+                                        <dr.InterWFOutputRTData.byteCount:ByteCount active="true" fit="FINAL" ver="1.0">
+                                            <Value value="-1"/>
+                                        </dr.InterWFOutputRTData.byteCount:ByteCount>
+                                        <dr.InterWFOutputRTData.udrCount:UDRCount active="true" fit="FINAL" ver="1.0">
+                                            <Value value="1"/>
+                                        </dr.InterWFOutputRTData.udrCount:UDRCount>
+                                        <dr.InterWFOutputRTData.timeout:Timeout active="true" fit="FINAL" ver="1.0">
+                                            <Value value="-1"/>
+                                        </dr.InterWFOutputRTData.timeout:Timeout>
+                                        <dr.InterWFOutputRTData.enableWorkerThread:EnableWorkerthread active="true" fit="FINAL" ver="1.0">
+                                            <Value value="true"/>
+                                        </dr.InterWFOutputRTData.enableWorkerThread:EnableWorkerthread>
+                                        <dr.InterWFOutputRTData.queueSize:QueueSize_ active="true" fit="FINAL" ver="1.0">
+                                            <Value value="10000"/>
+                                        </dr.InterWFOutputRTData.queueSize:QueueSize_>
+                                    </dr.InterWFOutputRTData:Data>
+                                </dr.WfNodeConfig:value>
+                            </dr.WfNodeConfig:Configuration>
+                        </dr.WfNode:value>
+                        <dr.WfNode:value Classname="com.digitalroute.wfc.analysis.AnalysisRealtimeInsp" ID="${identity@dr.WfNode#Enable_RawXML..ID}" Name="Enable_RawXML" XYposition="${layout@dr.WfNode#Enable_RawXML..XYposition}" ver="2.0">
+                            <dr.WfNodeConfig:Configuration>
+                                <dr.WfNodeConfig:value Classname="com.digitalroute.wfc.analysis.AnalysisRealtimeInsp" Type="1" ver="1.0">
+                                    <dr.StuffyMapperData:Data ver="1.0">
+                                        <dr.StuffyMapperData.sourceCode:Source_code active="true" fit="FINAL" ver="1.0">
+                                            <Value><![CDATA[import ultra.ws.ZZC_RFC.PRF_WS_CM_OUTBOUND.cycles;
+import ultra.ws.ZZC_RFC.PRF_WS_CM_OUTBOUND.x1;
+import ultra.ZZR_CA_UFL.UFL_CCU_Data;
+import ultra.ZZR_CA_UFL.UFL_Audit;
+import apl.ZZR_CA_APL.APL_Audit_Constants;
+import apl.ZZR_CA_APL.APL_Common_Constants;
+import apl.ZZR_CA_APL.APL_Common_Variables;
+import apl.ZZR_CA_APL.APL_Audit_Functions;
+import apl.ZZR_CA_APL.APL_Common_Functions;
+import apl.ZZR_SVC0002.APL_Processing_Ext;
+import apl.ZZR_SVC0002.APL_Processing;
+import apl.ZZR_SVC0002.APL_Common;
+import apl.ZZR_CA_APL.APL_Audit_Functions;
+
+
+// new audit
+import ultra.ZZ_CA_UFL.UFL_Audit;
+import apl.ZZ_CA_APL.APL_Audit_Functions;
+import apl.ZZ_CA_APL.APL_Common_Functions;
+import apl.ZZR_CA_APL.APL_Processing_Functions;
+
+//20211207 - Code table requirement
+import apl.ZZC_CA_APL.APL_Common_Functions;
+import apl.ZZC_CA_APL.APL_Common_Constants;
+
+import apl.ZZC_CA_APL.APL_Common_Constants;
+import apl.ZZC_CA_APL.APL_Common_Variables;
+
+import ultra.ws.ZZR_SVC0002.PRF_WS_External.cycles;
+import ultra.ws.ZZR_SVC0002.PRF_WS_External.ns1;
+
+string rawXML_Enable;
+string INIT_AUDT_DESTINATION;
+initialize {
+   
+    rawXML_Enable = externalReferenceGet(PRF_EXR_SVC0002,"SVC0002_RAWXML_ENABLE");
+    // new audit 
+    // for audit, all variable stored in ZZ_CA_APL.APL_Audit_Functions
+    AUDT_WFNAME = (string) mimGet("Workflow", "Workflow Name");
+    AUDT_PICO = (string) mimGet("Workflow", "Execution Context");
+    AUDALL_CREATED_CHANGED_BY = getMZUser(); 
+    INIT_AUDT_DESTINATION = externalReferenceGet(PRF_EXR_SVC0002,"SVC0002_PROC_HTTP_ADDRESS"); 
+    // new audit end 
+    
+}
+
+consume {
+   
+    debug("rawXML: " + input);
+    if(rawXML_Enable != "FALSE"||rawXML_Enable !="false") {
+        
+        if (instanceOf(input, SoapXMLTrace)) {
+            SoapXMLTrace xml = (SoapXMLTrace) input;
+            WSCycle_checkConsent wsudr = (WSCycle_checkConsent)xml.CyclicWSUDR;
+            
+            ConsumeCycleUDR xmlCCU = (ConsumeCycleUDR)wsudr.context;
+            debug("Test xmlCCU: " +xmlCCU);
+            // xmlCCU = wsudr.context;
+            //setXMLCCUResponse(wsudr);
+            //string route = getRoute(ccu);
+            int AUDR_IN_RECORD_COUNT = getInRecCount(xmlCCU); // new audit 
+            // new audit
+            AuditTask_TI audTask = udrCreate(AuditTask_TI);
+            AuditRecord_TI audRecTrans = udrCreate(AuditRecord_TI);
+            list <AuditRecord_TI> audRecList = listCreate(AuditRecord_TI);
+            AuditRecord_TI audRecWfbResp = udrCreate(AuditRecord_TI);
+            AuditRecord_TI audRecWspResp = udrCreate(AuditRecord_TI);
+                
+            string PREV_AUDR_RECORD_TXN_ID = setAudCcuProcReq(xmlCCU, AUDR_IN_RECORD_COUNT, audTask, audRecTrans);
+            // new audit end
+            list <LogFile_TI> logFileList = listCreate(LogFile_TI);
+                                
+            // setAudCcuMapWsc(ccu, PREV_AUDR_RECORD_TXN_ID, AUDR_IN_RECORD_COUNT, INIT_AUDT_DESTINATION, AUDR_REC_FUNC_WSREQ_REQUEST,
+            //    audTask, audRecTrans, audRecList);
+                    
+            setAudCcuMapWscEnhance(xmlCCU, PREV_AUDR_RECORD_TXN_ID, AUDR_IN_RECORD_COUNT, INIT_AUDT_DESTINATION, AUDR_REC_FUNC_WSREQ_REQUEST,
+                        audTask, audRecTrans, audRecList, getWscParamRespEnhanceXML(xml, LOGFILE_TYPE_REQ_EXT), logFileList);
+            
+            if (!isNull(xml.ResponseXML)) {                        
+                AUDR_IN_RECORD_COUNT = setAudCCUEnhance(xmlCCU, null, null, getWscParamRespEnhanceXML(xml, LOGFILE_TYPE_RESP_EXT),
+                logFileList, audTask, audRecWfbResp, audRecWspResp, audRecList);
+            }
+            udrRoute(setAudit(xmlCCU, logFileList, null, null, null, audTask, audRecList),
+                        "audit");           
+        }    
+
+    }
+}]]></Value>
+                                        </dr.StuffyMapperData.sourceCode:Source_code>
+                                        <dr.StuffyMapperData.udrTypes:UDR_types active="true" fit="FINAL" ver="1.0">
+                                            <dr.DRTypeInfo:Value>
+                                                <dr.DRTypeInfo:value TypeName="ws.ZZR_CA_PRF.PRF_WS_External.cycles.AbstractChargerWSCycle" ver="1.0"/>
+                                                <dr.DRTypeInfo:value TypeName="wfb.ConsumeCycleUDR" ver="1.0"/>
+                                                <dr.DRTypeInfo:value TypeName="ws.SoapXMLTrace" ver="1.0"/>
+                                            </dr.DRTypeInfo:Value>
+                                        </dr.StuffyMapperData.udrTypes:UDR_types>
+                                    </dr.StuffyMapperData:Data>
+                                </dr.WfNodeConfig:value>
+                            </dr.WfNodeConfig:Configuration>
+                        </dr.WfNode:value>
+                    </Nodes>
+                    <Routes>
+                        <dr.WfRoute:value Destination_ID="${identity@dr.WfRoute#wfb_request..Destination ID}" ID="${identity@dr.WfRoute#wfb_request..ID}" Name="wfb_request" Realtime_mode="0" Route_type="1" Source_ID="${identity@dr.WfRoute#wfb_request..Source ID}" Stroke_points="${layout@dr.WfRoute#wfb_request..Stroke points}" ver="2.0"/>
+                        <dr.WfRoute:value Destination_ID="${identity@dr.WfRoute#wfb_response..Destination ID}" ID="${identity@dr.WfRoute#wfb_response..ID}" Name="wfb_response" Realtime_mode="0" Route_type="1" Source_ID="${identity@dr.WfRoute#wfb_response..Source ID}" Stroke_points="${layout@dr.WfRoute#wfb_response..Stroke points}" ver="2.0"/>
+                        <dr.WfRoute:value Destination_ID="${identity@dr.WfRoute#ecs..Destination ID}" ID="${identity@dr.WfRoute#ecs..ID}" Name="ecs" Realtime_mode="0" Route_type="1" Source_ID="${identity@dr.WfRoute#ecs..Source ID}" Stroke_points="${layout@dr.WfRoute#ecs..Stroke points}" ver="2.0"/>
+                        <dr.WfRoute:value Destination_ID="${identity@dr.WfRoute#ws_request..Destination ID}" ID="${identity@dr.WfRoute#ws_request..ID}" Name="ws_request" Realtime_mode="0" Route_type="1" Source_ID="${identity@dr.WfRoute#ws_request..Source ID}" Stroke_points="${layout@dr.WfRoute#ws_request..Stroke points}" ver="2.0"/>
+                        <dr.WfRoute:value Destination_ID="${identity@dr.WfRoute#ws_response..Destination ID}" ID="${identity@dr.WfRoute#ws_response..ID}" Name="ws_response" Realtime_mode="0" Route_type="1" Source_ID="${identity@dr.WfRoute#ws_response..Source ID}" Stroke_points="${layout@dr.WfRoute#ws_response..Stroke points}" ver="2.0"/>
+                        <dr.WfRoute:value Destination_ID="${identity@dr.WfRoute#audit_log..Destination ID}" ID="${identity@dr.WfRoute#audit_log..ID}" Name="audit_log" Realtime_mode="0" Route_type="1" Source_ID="${identity@dr.WfRoute#audit_log..Source ID}" Stroke_points="${layout@dr.WfRoute#audit_log..Stroke points}" ver="2.0"/>
+                        <dr.WfRoute:value Destination_ID="${identity@dr.WfRoute#wfb_state..Destination ID}" ID="${identity@dr.WfRoute#wfb_state..ID}" Name="wfb_state" Realtime_mode="0" Route_type="1" Source_ID="${identity@dr.WfRoute#wfb_state..Source ID}" Stroke_points="${layout@dr.WfRoute#wfb_state..Stroke points}" ver="2.0"/>
+                        <dr.WfRoute:value Destination_ID="${identity@dr.WfRoute#rawXML..Destination ID}" ID="${identity@dr.WfRoute#rawXML..ID}" Name="rawXML" Realtime_mode="0" Route_type="1" Source_ID="${identity@dr.WfRoute#rawXML..Source ID}" Stroke_points="${layout@dr.WfRoute#rawXML..Stroke points}" ver="2.0"/>
+                        <dr.WfRoute:value Destination_ID="${identity@dr.WfRoute#audit..Destination ID}" ID="${identity@dr.WfRoute#audit..ID}" Name="audit" Realtime_mode="0" Route_type="1" Source_ID="${identity@dr.WfRoute#audit..Source ID}" Stroke_points="${layout@dr.WfRoute#audit..Stroke points}" ver="2.0"/>
+                    </Routes>
+                    <Service/>
+                    <Logged_error_MIM/>
+                    <dr.WorkflowExecutionConfig:Execution_Config ver="8.0">
+                        <dr.WorkflowExecutionConfig.executionSettings:Execution_Settings extref_key="" ver="1.0">
+                            <dr.ExecutionSettings:Value ver="3.0">
+                                <enabled value="true"/>
+                                <ecList type="java.util.LinkedList">
+                                    <dr.PicoInstanceEntity:value ver="1.0">
+                                        <Name value="ec1"/>
+                                        <Type value="2"/>
+                                    </dr.PicoInstanceEntity:value>
+                                </ecList>
+                                <dr.WorkflowDistType:dist value="ROUND_ROBIN"/>
+                                <groupList type="java.util.LinkedList"/>
+                                <dr.AutoStartSettings:autostart ver="1.0">
+                                    <enabled value="false"/>
+                                    <instances value="0"/>
+                                    <null:abort_behaviour/>
+                                </dr.AutoStartSettings:autostart>
+                            </dr.ExecutionSettings:Value>
+                        </dr.WorkflowExecutionConfig.executionSettings:Execution_Settings>
+                        <dr.WorkflowExecutionConfig.throughputMIM:Throughput_MIM extref_key="" ver="1.0">
+                            <Value/>
+                        </dr.WorkflowExecutionConfig.throughputMIM:Throughput_MIM>
+                        <dr.WorkflowExecutionConfig.debugType:Debug_Type extref_key="" ver="1.0">
+                            <dr.DebugType:Value value="FILE"/>
+                        </dr.WorkflowExecutionConfig.debugType:Debug_Type>
+                        <dr.WorkflowExecutionConfig.noOfFilesToKeep:Number_of_Files_to_Keep extref_key="" ver="1.0">
+                            <Value value="0"/>
+                        </dr.WorkflowExecutionConfig.noOfFilesToKeep:Number_of_Files_to_Keep>
+                        <dr.WorkflowExecutionConfig.txnHandler:Transaction_Handler extref_key="" ver="1.0">
+                            <Value/>
+                        </dr.WorkflowExecutionConfig.txnHandler:Transaction_Handler>
+                    </dr.WorkflowExecutionConfig:Execution_Config>
+                    <dr.DynamicConfigStorableDefinition:dyn ver="1.0">
+                        <fields>
+                            <dr.FieldDescriptorStorable:value ver="1.0">
+                                <name value="Id"/>
+                                <title value="Id"/>
+                                <section value="Interface"/>
+                                <description value=""/>
+                                <dynStorableKey value="Id"/>
+                                <type value="String"/>
+                                <defaultValue value=""/>
+                            </dr.FieldDescriptorStorable:value>
+                            <dr.FieldDescriptorStorable:value ver="1.0">
+                                <name value="ResendCount"/>
+                                <title value="ResendCount"/>
+                                <section value="Web_Service_Request_Ext"/>
+                                <description value=""/>
+                                <dynStorableKey value="ResendCount"/>
+                                <type value="Integer"/>
+                                <defaultValue value="0"/>
+                            </dr.FieldDescriptorStorable:value>
+                            <dr.FieldDescriptorStorable:value ver="1.0">
+                                <name value="ResendInterval"/>
+                                <title value="ResendInterval"/>
+                                <section value="Web_Service_Request_Ext"/>
+                                <description value=""/>
+                                <dynStorableKey value="ResendInterval"/>
+                                <type value="Integer"/>
+                                <defaultValue value="0"/>
+                            </dr.FieldDescriptorStorable:value>
+                        </fields>
+                    </dr.DynamicConfigStorableDefinition:dyn>
+                    <dr.DRConfiguration:External_Reference_Profile Folder="ZZR_SVC0002" Key="DZ11635930281158" Name="PRF_EXR" Type="External Reference Profile" ver="1.0"/>
+                    <External_Reference_Values type="java.util.Hashtable"/>
+                    <External_Reference_Lists type="java.util.Hashtable"/>
+                    <External_Reference_Maps type="java.util.Hashtable"/>
+                    <null:Timer_Trigger/>
+                    <dr.WorkflowExecutionRealtimeConfig:Thread_data ver="8.0">
+                        <dr.WorkflowExecutionRealtimeConfig.threads:Threads extref_key="" ver="1.0">
+                            <Value value="8"/>
+                        </dr.WorkflowExecutionRealtimeConfig.threads:Threads>
+                        <dr.WorkflowExecutionRealtimeConfig.queueSize:Queue_Size extref_key="" ver="1.0">
+                            <Value value="1000"/>
+                        </dr.WorkflowExecutionRealtimeConfig.queueSize:Queue_Size>
+                        <dr.WorkflowExecutionRealtimeConfig.standalone:Stand-----.alone extref_key="" ver="1.0">
+                            <Value value="false"/>
+                        </dr.WorkflowExecutionRealtimeConfig.standalone:Stand-----.alone>
+                        <dr.WorkflowExecutionRealtimeConfig.queueStrategy:Queue_strategies extref_key="" ver="1.0">
+                            <Value value="Blocking queue"/>
+                        </dr.WorkflowExecutionRealtimeConfig.queueStrategy:Queue_strategies>
+                        <dr.WorkflowExecutionRealtimeConfig.queueWorkerStrategy:Queue_worker_strategies extref_key="" ver="1.0">
+                            <Value value="RoundRobin"/>
+                        </dr.WorkflowExecutionRealtimeConfig.queueWorkerStrategy:Queue_worker_strategies>
+                        <dr.WorkflowExecutionRealtimeConfig.countInterval:Processed_UDRs_count_interval extref_key="" ver="1.0">
+                            <Value value="1"/>
+                        </dr.WorkflowExecutionRealtimeConfig.countInterval:Processed_UDRs_count_interval>
+                    </dr.WorkflowExecutionRealtimeConfig:Thread_data>
+                    <dr.WorkflowPersistentConfig:Persistent ver="7.0">
+                        <dr.WorkflowPersistentConfig.PersistentInspector:Persistent_Inspector extref_key="" ver="1.0">
+                            <Value/>
+                        </dr.WorkflowPersistentConfig.PersistentInspector:Persistent_Inspector>
+                        <dr.WorkflowPersistentConfig.PersistentTimeoutHandler:Persistent_Timeout_Handler extref_key="" ver="1.0">
+                            <Value/>
+                        </dr.WorkflowPersistentConfig.PersistentTimeoutHandler:Persistent_Timeout_Handler>
+                        <dr.WorkflowPersistentConfig.PersistentStorageConfig:Persistent_Storage_Config extref_key="" ver="1.0">
+                            <Value/>
+                        </dr.WorkflowPersistentConfig.PersistentStorageConfig:Persistent_Storage_Config>
+                    </dr.WorkflowPersistentConfig:Persistent>
+                </dr.WorkflowRealtimeData:Data>
+            </mz:workflow-template>
+            <mz:wf-parameters>
+                <mz:param-def label="Interface - Id" name="Id" nodeId="-54759123" nodeName="Interface" type="DEFAULT"/>
+                <mz:param-def label="Web_Service_Request_Ext - ResendCount" name="ResendCount" nodeId="-1769903061" nodeName="Web_Service_Request_Ext" type="DEFAULT"/>
+                <mz:param-def label="Web_Service_Request_Ext - ResendInterval" name="ResendInterval" nodeId="-1769903061" nodeName="Web_Service_Request_Ext" type="DEFAULT"/>
+                <mz:param-def label="WFB_Collector - Profile" name="Profile Key" nodeId="1766570084" nodeName="Wfl_Collection" type="DEFAULT"/>
+                <mz:param-def label="WFB_Collector - Port" name="Port" nodeId="1766570084" nodeName="Wfl_Collection" type="DEFAULT"/>
+                <mz:param-def label="WFB_Collector - loadID" name="loadID" nodeId="1766570084" nodeName="Wfl_Collection" type="DEFAULT"/>
+                <mz:param-def label="Webservices - HTTP Address" name="http_address" nodeId="-322542984" nodeName="Web_Service_Request" type="DEFAULT"/>
+                <mz:param-def label="Webservices - Server Timeout" name="serverTimeout" nodeId="-322542984" nodeName="Web_Service_Request" type="DEFAULT"/>
+                <mz:param-def label="WFB_Forwarding - Profile" name="Profile Key" nodeId="-582001612" nodeName="Audit" type="DEFAULT"/>
+                <mz:param-def label="Inter Workflow - Profile" name="Profile key" nodeId="-1921796007" nodeName="Wfl_ECS" type="DEFAULT"/>
+            </mz:wf-parameters>
+            <mz:wf-instances>
+                <mz:wf-instance instanceId="1" name="SVC0002_Static" state="VALID" validationError="">
+                    <mz:param name="Interface/Id" storable-id="dr.DynField">
+                        <dr.DynField:dr.DynField extref_key="SVC0002_INTF_ID" ver="1.0">
+                            <Value/>
+                        </dr.DynField:dr.DynField>
+                    </mz:param>
+                    <mz:param name="Web_Service_Request_Ext/ResendCount" storable-id="dr.DynField">
+                        <dr.DynField:dr.DynField extref_key="SVC0002_PROC_WFL_RESEND_COUNT" ver="1.0">
+                            <Value/>
+                        </dr.DynField:dr.DynField>
+                    </mz:param>
+                    <mz:param name="Web_Service_Request_Ext/ResendInterval" storable-id="dr.DynField">
+                        <dr.DynField:dr.DynField extref_key="SVC0002_PROC_WFL_RESEND_INTERVAL" ver="1.0">
+                            <Value/>
+                        </dr.DynField:dr.DynField>
+                    </mz:param>
+                    <mz:param name="Wfl_Collection/Profile Key" storable-id="dr.WfBridgeCollData.profile">
+                        <dr.WfBridgeCollData.profile:dr.WfBridgeCollData.profile extref_key="" ver="7.0">
+                            <dr.DRConfiguration:Value Folder="ZZR_SVC0002" Key="DZ11636097956024" Name="PRF_WFB_Static" Type="Workflow Bridge Profile" ver="1.0"/>
+                        </dr.WfBridgeCollData.profile:dr.WfBridgeCollData.profile>
+                    </mz:param>
+                    <mz:param name="Wfl_Collection/Port" storable-id="dr.WfBridgeCollData.port">
+                        <dr.WfBridgeCollData.port:dr.WfBridgeCollData.port extref_key="SVC0002_WFB_STATIC_PORT" ver="7.0">
+                            <Value/>
+                        </dr.WfBridgeCollData.port:dr.WfBridgeCollData.port>
+                    </mz:param>
+                    <mz:param name="Wfl_Collection/loadID" storable-id="dr.WfBridgeCollData.loadID">
+                        <dr.WfBridgeCollData.loadID:dr.WfBridgeCollData.loadID extref_key="SVC0002_WFB_STATIC_LOAD_ID" ver="7.0">
+                            <Value/>
+                        </dr.WfBridgeCollData.loadID:dr.WfBridgeCollData.loadID>
+                    </mz:param>
+                    <mz:param name="Web_Service_Request/http_address" storable-id="dr.WSForwarderData.httpAddress">
+                        <dr.WSForwarderData.httpAddress:dr.WSForwarderData.httpAddress extref_key="SVC0002_PROC_HTTP_ADDRESS" ver="9.0">
+                            <Value/>
+                        </dr.WSForwarderData.httpAddress:dr.WSForwarderData.httpAddress>
+                    </mz:param>
+                    <mz:param name="Web_Service_Request/serverTimeout" storable-id="dr.WSForwarderData.serverTimeout">
+                        <dr.WSForwarderData.serverTimeout:dr.WSForwarderData.serverTimeout extref_key="SVC0002_PROC_WFL_RESP_TIMEOUT" ver="9.0">
+                            <Value/>
+                        </dr.WSForwarderData.serverTimeout:dr.WSForwarderData.serverTimeout>
+                    </mz:param>
+                    <mz:param name="Audit/Profile Key" storable-id="dr.WfBridgeFwdData.profile"/>
+                    <mz:param name="Wfl_ECS/Profile key" storable-id="dr.InterWFOutputRTData.profile">
+                        <dr.InterWFOutputRTData.profile:dr.InterWFOutputRTData.profile extref_key="" ver="7.0">
+                            <dr.DRConfiguration:Value Folder="ZZR_SVC0002" Key="DZ11636549835993" Name="PRF_IWF_ECS" Type="Inter Workflow Profile" ver="1.0"/>
+                        </dr.InterWFOutputRTData.profile:dr.InterWFOutputRTData.profile>
+                    </mz:param>
+                </mz:wf-instance>
+                <mz:wf-instance instanceId="3" name="SVC0002_Dynamic_1" state="VALID" validationError="">
+                    <mz:param name="Interface/Id" storable-id="dr.DynField">
+                        <dr.DynField:dr.DynField extref_key="SVC0002_INTF_ID" ver="1.0">
+                            <Value/>
+                        </dr.DynField:dr.DynField>
+                    </mz:param>
+                    <mz:param name="Web_Service_Request_Ext/ResendCount" storable-id="dr.DynField">
+                        <dr.DynField:dr.DynField extref_key="SVC0002_PROC_WFL_RESEND_COUNT" ver="1.0">
+                            <Value/>
+                        </dr.DynField:dr.DynField>
+                    </mz:param>
+                    <mz:param name="Web_Service_Request_Ext/ResendInterval" storable-id="dr.DynField">
+                        <dr.DynField:dr.DynField extref_key="SVC0002_PROC_WFL_RESEND_INTERVAL" ver="1.0">
+                            <Value/>
+                        </dr.DynField:dr.DynField>
+                    </mz:param>
+                    <mz:param name="Wfl_Collection/Profile Key" storable-id="dr.WfBridgeCollData.profile">
+                        <dr.WfBridgeCollData.profile:dr.WfBridgeCollData.profile extref_key="" ver="7.0">
+                            <dr.DRConfiguration:Value Folder="ZZR_SVC0002" Key="DZ11636098046611" Name="PRF_WFB_Dynamic" Type="Workflow Bridge Profile" ver="1.0"/>
+                        </dr.WfBridgeCollData.profile:dr.WfBridgeCollData.profile>
+                    </mz:param>
+                    <mz:param name="Wfl_Collection/Port" storable-id="dr.WfBridgeCollData.port">
+                        <dr.WfBridgeCollData.port:dr.WfBridgeCollData.port extref_key="SVC0002_WFB_DYNAMIC_1_PORT" ver="7.0">
+                            <Value/>
+                        </dr.WfBridgeCollData.port:dr.WfBridgeCollData.port>
+                    </mz:param>
+                    <mz:param name="Wfl_Collection/loadID" storable-id="dr.WfBridgeCollData.loadID">
+                        <dr.WfBridgeCollData.loadID:dr.WfBridgeCollData.loadID extref_key="SVC0002_WFB_DYNAMIC_1_LOAD_ID" ver="7.0">
+                            <Value/>
+                        </dr.WfBridgeCollData.loadID:dr.WfBridgeCollData.loadID>
+                    </mz:param>
+                    <mz:param name="Web_Service_Request/http_address" storable-id="dr.WSForwarderData.httpAddress">
+                        <dr.WSForwarderData.httpAddress:dr.WSForwarderData.httpAddress extref_key="SVC0002_PROC_HTTP_ADDRESS" ver="9.0">
+                            <Value/>
+                        </dr.WSForwarderData.httpAddress:dr.WSForwarderData.httpAddress>
+                    </mz:param>
+                    <mz:param name="Web_Service_Request/serverTimeout" storable-id="dr.WSForwarderData.serverTimeout">
+                        <dr.WSForwarderData.serverTimeout:dr.WSForwarderData.serverTimeout extref_key="SVC0002_PROC_WFL_RESP_TIMEOUT" ver="9.0">
+                            <Value/>
+                        </dr.WSForwarderData.serverTimeout:dr.WSForwarderData.serverTimeout>
+                    </mz:param>
+                    <mz:param name="Audit/Profile Key" storable-id="dr.WfBridgeFwdData.profile"/>
+                    <mz:param name="Wfl_ECS/Profile key" storable-id="dr.InterWFOutputRTData.profile">
+                        <dr.InterWFOutputRTData.profile:dr.InterWFOutputRTData.profile extref_key="" ver="7.0">
+                            <dr.DRConfiguration:Value Folder="ZZR_SVC0002" Key="DZ11636549835993" Name="PRF_IWF_ECS" Type="Inter Workflow Profile" ver="1.0"/>
+                        </dr.InterWFOutputRTData.profile:dr.InterWFOutputRTData.profile>
+                    </mz:param>
+                </mz:wf-instance>
+                <mz:wf-instance instanceId="4" name="SVC0002_Dynamic_2" state="VALID" validationError="">
+                    <mz:param name="Interface/Id" storable-id="dr.DynField">
+                        <dr.DynField:dr.DynField extref_key="SVC0002_INTF_ID" ver="1.0">
+                            <Value/>
+                        </dr.DynField:dr.DynField>
+                    </mz:param>
+                    <mz:param name="Web_Service_Request_Ext/ResendCount" storable-id="dr.DynField">
+                        <dr.DynField:dr.DynField extref_key="SVC0002_PROC_WFL_RESEND_COUNT" ver="1.0">
+                            <Value/>
+                        </dr.DynField:dr.DynField>
+                    </mz:param>
+                    <mz:param name="Web_Service_Request_Ext/ResendInterval" storable-id="dr.DynField">
+                        <dr.DynField:dr.DynField extref_key="SVC0002_PROC_WFL_RESEND_INTERVAL" ver="1.0">
+                            <Value/>
+                        </dr.DynField:dr.DynField>
+                    </mz:param>
+                    <mz:param name="Wfl_Collection/Profile Key" storable-id="dr.WfBridgeCollData.profile">
+                        <dr.WfBridgeCollData.profile:dr.WfBridgeCollData.profile extref_key="" ver="7.0">
+                            <dr.DRConfiguration:Value Folder="ZZR_SVC0002" Key="DZ11636098046611" Name="PRF_WFB_Dynamic" Type="Workflow Bridge Profile" ver="1.0"/>
+                        </dr.WfBridgeCollData.profile:dr.WfBridgeCollData.profile>
+                    </mz:param>
+                    <mz:param name="Wfl_Collection/Port" storable-id="dr.WfBridgeCollData.port">
+                        <dr.WfBridgeCollData.port:dr.WfBridgeCollData.port extref_key="SVC0002_WFB_DYNAMIC_2_PORT" ver="7.0">
+                            <Value/>
+                        </dr.WfBridgeCollData.port:dr.WfBridgeCollData.port>
+                    </mz:param>
+                    <mz:param name="Wfl_Collection/loadID" storable-id="dr.WfBridgeCollData.loadID">
+                        <dr.WfBridgeCollData.loadID:dr.WfBridgeCollData.loadID extref_key="SVC0002_WFB_DYNAMIC_2_LOAD_ID" ver="7.0">
+                            <Value/>
+                        </dr.WfBridgeCollData.loadID:dr.WfBridgeCollData.loadID>
+                    </mz:param>
+                    <mz:param name="Web_Service_Request/http_address" storable-id="dr.WSForwarderData.httpAddress">
+                        <dr.WSForwarderData.httpAddress:dr.WSForwarderData.httpAddress extref_key="SVC0002_PROC_HTTP_ADDRESS" ver="9.0">
+                            <Value/>
+                        </dr.WSForwarderData.httpAddress:dr.WSForwarderData.httpAddress>
+                    </mz:param>
+                    <mz:param name="Web_Service_Request/serverTimeout" storable-id="dr.WSForwarderData.serverTimeout">
+                        <dr.WSForwarderData.serverTimeout:dr.WSForwarderData.serverTimeout extref_key="SVC0002_PROC_WFL_RESP_TIMEOUT" ver="9.0">
+                            <Value/>
+                        </dr.WSForwarderData.serverTimeout:dr.WSForwarderData.serverTimeout>
+                    </mz:param>
+                    <mz:param name="Audit/Profile Key" storable-id="dr.WfBridgeFwdData.profile"/>
+                    <mz:param name="Wfl_ECS/Profile key" storable-id="dr.InterWFOutputRTData.profile">
+                        <dr.InterWFOutputRTData.profile:dr.InterWFOutputRTData.profile extref_key="" ver="7.0">
+                            <dr.DRConfiguration:Value Folder="ZZR_SVC0002" Key="DZ11636549835993" Name="PRF_IWF_ECS" Type="Inter Workflow Profile" ver="1.0"/>
+                        </dr.InterWFOutputRTData.profile:dr.InterWFOutputRTData.profile>
+                    </mz:param>
+                </mz:wf-instance>
+                <mz:wf-instance instanceId="9" name="SVC0002_Static_Stub" state="VALID" validationError="">
+                    <mz:param name="Interface/Id" storable-id="dr.DynField">
+                        <dr.DynField:dr.DynField extref_key="SVC0002_INTF_ID" ver="1.0">
+                            <Value/>
+                        </dr.DynField:dr.DynField>
+                    </mz:param>
+                    <mz:param name="Web_Service_Request_Ext/ResendCount" storable-id="dr.DynField">
+                        <dr.DynField:dr.DynField extref_key="SVC0002_PROC_WFL_RESEND_COUNT" ver="1.0">
+                            <Value/>
+                        </dr.DynField:dr.DynField>
+                    </mz:param>
+                    <mz:param name="Web_Service_Request_Ext/ResendInterval" storable-id="dr.DynField">
+                        <dr.DynField:dr.DynField extref_key="SVC0002_PROC_WFL_RESEND_INTERVAL" ver="1.0">
+                            <Value/>
+                        </dr.DynField:dr.DynField>
+                    </mz:param>
+                    <mz:param name="Wfl_Collection/Profile Key" storable-id="dr.WfBridgeCollData.profile">
+                        <dr.WfBridgeCollData.profile:dr.WfBridgeCollData.profile extref_key="" ver="7.0">
+                            <dr.DRConfiguration:Value Folder="ZZR_SVC0002" Key="DZ11651215456584" Name="PRF_WFB_Static_STUB" Type="Workflow Bridge Profile" ver="1.0"/>
+                        </dr.WfBridgeCollData.profile:dr.WfBridgeCollData.profile>
+                    </mz:param>
+                    <mz:param name="Wfl_Collection/Port" storable-id="dr.WfBridgeCollData.port">
+                        <dr.WfBridgeCollData.port:dr.WfBridgeCollData.port extref_key="SVC0002_WFB_STATIC_PORT_STUB" ver="7.0">
+                            <Value/>
+                        </dr.WfBridgeCollData.port:dr.WfBridgeCollData.port>
+                    </mz:param>
+                    <mz:param name="Wfl_Collection/loadID" storable-id="dr.WfBridgeCollData.loadID">
+                        <dr.WfBridgeCollData.loadID:dr.WfBridgeCollData.loadID extref_key="SVC0002_WFB_STATIC_LOAD_ID_STUB" ver="7.0">
+                            <Value/>
+                        </dr.WfBridgeCollData.loadID:dr.WfBridgeCollData.loadID>
+                    </mz:param>
+                    <mz:param name="Web_Service_Request/http_address" storable-id="dr.WSForwarderData.httpAddress">
+                        <dr.WSForwarderData.httpAddress:dr.WSForwarderData.httpAddress extref_key="SVC0002_PROC_HTTP_ADDRESS_STUB" ver="9.0">
+                            <Value/>
+                        </dr.WSForwarderData.httpAddress:dr.WSForwarderData.httpAddress>
+                    </mz:param>
+                    <mz:param name="Web_Service_Request/serverTimeout" storable-id="dr.WSForwarderData.serverTimeout">
+                        <dr.WSForwarderData.serverTimeout:dr.WSForwarderData.serverTimeout extref_key="SVC0002_PROC_WFL_RESP_TIMEOUT" ver="9.0">
+                            <Value/>
+                        </dr.WSForwarderData.serverTimeout:dr.WSForwarderData.serverTimeout>
+                    </mz:param>
+                    <mz:param name="Audit/Profile Key" storable-id="dr.WfBridgeFwdData.profile"/>
+                    <mz:param name="Wfl_ECS/Profile key" storable-id="dr.InterWFOutputRTData.profile">
+                        <dr.InterWFOutputRTData.profile:dr.InterWFOutputRTData.profile extref_key="" ver="7.0">
+                            <dr.DRConfiguration:Value Folder="ZZR_SVC0002" Key="DZ11636549835993" Name="PRF_IWF_ECS" Type="Inter Workflow Profile" ver="1.0"/>
+                        </dr.InterWFOutputRTData.profile:dr.InterWFOutputRTData.profile>
+                    </mz:param>
+                </mz:wf-instance>
+                <mz:wf-instance instanceId="10" name="SVC0002_Dynamic_1_Stub" state="VALID" validationError="">
+                    <mz:param name="Interface/Id" storable-id="dr.DynField">
+                        <dr.DynField:dr.DynField extref_key="SVC0002_INTF_ID" ver="1.0">
+                            <Value/>
+                        </dr.DynField:dr.DynField>
+                    </mz:param>
+                    <mz:param name="Web_Service_Request_Ext/ResendCount" storable-id="dr.DynField">
+                        <dr.DynField:dr.DynField extref_key="SVC0002_PROC_WFL_RESEND_COUNT" ver="1.0">
+                            <Value/>
+                        </dr.DynField:dr.DynField>
+                    </mz:param>
+                    <mz:param name="Web_Service_Request_Ext/ResendInterval" storable-id="dr.DynField">
+                        <dr.DynField:dr.DynField extref_key="SVC0002_PROC_WFL_RESEND_INTERVAL" ver="1.0">
+                            <Value/>
+                        </dr.DynField:dr.DynField>
+                    </mz:param>
+                    <mz:param name="Wfl_Collection/Profile Key" storable-id="dr.WfBridgeCollData.profile">
+                        <dr.WfBridgeCollData.profile:dr.WfBridgeCollData.profile extref_key="" ver="7.0">
+                            <dr.DRConfiguration:Value Folder="ZZR_SVC0002" Key="DZ11651215550552" Name="PRF_WFB_Dynamic_STUB" Type="Workflow Bridge Profile" ver="1.0"/>
+                        </dr.WfBridgeCollData.profile:dr.WfBridgeCollData.profile>
+                    </mz:param>
+                    <mz:param name="Wfl_Collection/Port" storable-id="dr.WfBridgeCollData.port">
+                        <dr.WfBridgeCollData.port:dr.WfBridgeCollData.port extref_key="SVC0002_WFB_DYNAMIC_1_PORT_STUB" ver="7.0">
+                            <Value/>
+                        </dr.WfBridgeCollData.port:dr.WfBridgeCollData.port>
+                    </mz:param>
+                    <mz:param name="Wfl_Collection/loadID" storable-id="dr.WfBridgeCollData.loadID">
+                        <dr.WfBridgeCollData.loadID:dr.WfBridgeCollData.loadID extref_key="SVC0002_WFB_DYNAMIC_1_LOAD_ID_STUB" ver="7.0">
+                            <Value/>
+                        </dr.WfBridgeCollData.loadID:dr.WfBridgeCollData.loadID>
+                    </mz:param>
+                    <mz:param name="Web_Service_Request/http_address" storable-id="dr.WSForwarderData.httpAddress">
+                        <dr.WSForwarderData.httpAddress:dr.WSForwarderData.httpAddress extref_key="SVC0002_PROC_HTTP_ADDRESS_STUB" ver="9.0">
+                            <Value/>
+                        </dr.WSForwarderData.httpAddress:dr.WSForwarderData.httpAddress>
+                    </mz:param>
+                    <mz:param name="Web_Service_Request/serverTimeout" storable-id="dr.WSForwarderData.serverTimeout">
+                        <dr.WSForwarderData.serverTimeout:dr.WSForwarderData.serverTimeout extref_key="SVC0002_PROC_WFL_RESP_TIMEOUT" ver="9.0">
+                            <Value/>
+                        </dr.WSForwarderData.serverTimeout:dr.WSForwarderData.serverTimeout>
+                    </mz:param>
+                    <mz:param name="Audit/Profile Key" storable-id="dr.WfBridgeFwdData.profile"/>
+                    <mz:param name="Wfl_ECS/Profile key" storable-id="dr.InterWFOutputRTData.profile">
+                        <dr.InterWFOutputRTData.profile:dr.InterWFOutputRTData.profile extref_key="" ver="7.0">
+                            <dr.DRConfiguration:Value Folder="ZZR_SVC0002" Key="DZ11636549835993" Name="PRF_IWF_ECS" Type="Inter Workflow Profile" ver="1.0"/>
+                        </dr.InterWFOutputRTData.profile:dr.InterWFOutputRTData.profile>
+                    </mz:param>
+                </mz:wf-instance>
+                <mz:wf-instance instanceId="11" name="SVC0002_Dynamic_2_Stub" state="VALID" validationError="">
+                    <mz:param name="Interface/Id" storable-id="dr.DynField">
+                        <dr.DynField:dr.DynField extref_key="SVC0002_INTF_ID" ver="1.0">
+                            <Value/>
+                        </dr.DynField:dr.DynField>
+                    </mz:param>
+                    <mz:param name="Web_Service_Request_Ext/ResendCount" storable-id="dr.DynField">
+                        <dr.DynField:dr.DynField extref_key="SVC0002_PROC_WFL_RESEND_COUNT" ver="1.0">
+                            <Value/>
+                        </dr.DynField:dr.DynField>
+                    </mz:param>
+                    <mz:param name="Web_Service_Request_Ext/ResendInterval" storable-id="dr.DynField">
+                        <dr.DynField:dr.DynField extref_key="SVC0002_PROC_WFL_RESEND_INTERVAL" ver="1.0">
+                            <Value/>
+                        </dr.DynField:dr.DynField>
+                    </mz:param>
+                    <mz:param name="Wfl_Collection/Profile Key" storable-id="dr.WfBridgeCollData.profile">
+                        <dr.WfBridgeCollData.profile:dr.WfBridgeCollData.profile extref_key="" ver="7.0">
+                            <dr.DRConfiguration:Value Folder="ZZR_SVC0002" Key="DZ11651215550552" Name="PRF_WFB_Dynamic_STUB" Type="Workflow Bridge Profile" ver="1.0"/>
+                        </dr.WfBridgeCollData.profile:dr.WfBridgeCollData.profile>
+                    </mz:param>
+                    <mz:param name="Wfl_Collection/Port" storable-id="dr.WfBridgeCollData.port">
+                        <dr.WfBridgeCollData.port:dr.WfBridgeCollData.port extref_key="SVC0002_WFB_DYNAMIC_2_PORT_STUB" ver="7.0">
+                            <Value/>
+                        </dr.WfBridgeCollData.port:dr.WfBridgeCollData.port>
+                    </mz:param>
+                    <mz:param name="Wfl_Collection/loadID" storable-id="dr.WfBridgeCollData.loadID">
+                        <dr.WfBridgeCollData.loadID:dr.WfBridgeCollData.loadID extref_key="SVC0002_WFB_DYNAMIC_2_LOAD_ID_STUB" ver="7.0">
+                            <Value/>
+                        </dr.WfBridgeCollData.loadID:dr.WfBridgeCollData.loadID>
+                    </mz:param>
+                    <mz:param name="Web_Service_Request/http_address" storable-id="dr.WSForwarderData.httpAddress">
+                        <dr.WSForwarderData.httpAddress:dr.WSForwarderData.httpAddress extref_key="SVC0002_PROC_HTTP_ADDRESS_STUB" ver="9.0">
+                            <Value/>
+                        </dr.WSForwarderData.httpAddress:dr.WSForwarderData.httpAddress>
+                    </mz:param>
+                    <mz:param name="Web_Service_Request/serverTimeout" storable-id="dr.WSForwarderData.serverTimeout">
+                        <dr.WSForwarderData.serverTimeout:dr.WSForwarderData.serverTimeout extref_key="SVC0002_PROC_WFL_RESP_TIMEOUT" ver="9.0">
+                            <Value/>
+                        </dr.WSForwarderData.serverTimeout:dr.WSForwarderData.serverTimeout>
+                    </mz:param>
+                    <mz:param name="Audit/Profile Key" storable-id="dr.WfBridgeFwdData.profile"/>
+                    <mz:param name="Wfl_ECS/Profile key" storable-id="dr.InterWFOutputRTData.profile">
+                        <dr.InterWFOutputRTData.profile:dr.InterWFOutputRTData.profile extref_key="" ver="7.0">
+                            <dr.DRConfiguration:Value Folder="ZZR_SVC0002" Key="DZ11636549835993" Name="PRF_IWF_ECS" Type="Inter Workflow Profile" ver="1.0"/>
+                        </dr.InterWFOutputRTData.profile:dr.InterWFOutputRTData.profile>
+                    </mz:param>
+                </mz:wf-instance>
+            </mz:wf-instances>
+            <documentation value=""/>
+            <parameters value=""/>
+            <Current_Comment/>
+        </dr.Configuration:dr.Configuration>
+    </mz:data>
+    <mz:referenced-data>
+        <layout>
+            <dr.WfNode>
+                <dr.WfRoute--.StorablePoint:Wfl---.Collection..XYposition X_position="100" Y_position="160" ver="1.0"/>
+                <dr.WfRoute--.StorablePoint:Transform---.Record---.Post---.Process..XYposition X_position="340" Y_position="160" ver="1.0"/>
+                <dr.WfRoute--.StorablePoint:Web---.Service---.Request..XYposition X_position="580" Y_position="20" ver="1.0"/>
+                <dr.WfRoute--.StorablePoint:Audit..XYposition X_position="580" Y_position="160" ver="1.0"/>
+                <dr.WfRoute--.StorablePoint:Wfl---.ECS..XYposition X_position="580" Y_position="300" ver="1.0"/>
+                <dr.WfRoute--.StorablePoint:Enable---.RawXML..XYposition X_position="760" Y_position="30" ver="1.0"/>
+            </dr.WfNode>
+            <dr.WfRoute>
+                <wfb---.request..Stroke_points>
+                    <dr.WfRoute--.StorablePoint:value X_position="127" Y_position="145" ver="1.0"/>
+                    <dr.WfRoute--.StorablePoint:value X_position="190" Y_position="127" ver="1.0"/>
+                    <dr.WfRoute--.StorablePoint:value X_position="252" Y_position="127" ver="1.0"/>
+                    <dr.WfRoute--.StorablePoint:value X_position="314" Y_position="145" ver="1.0"/>
+                </wfb---.request..Stroke_points>
+                <wfb---.response..Stroke_points>
+                    <dr.WfRoute--.StorablePoint:value X_position="314" Y_position="159" ver="1.0"/>
+                    <dr.WfRoute--.StorablePoint:value X_position="254" Y_position="175" ver="1.0"/>
+                    <dr.WfRoute--.StorablePoint:value X_position="190" Y_position="178" ver="1.0"/>
+                    <dr.WfRoute--.StorablePoint:value X_position="127" Y_position="160" ver="1.0"/>
+                </wfb---.response..Stroke_points>
+                <ecs..Stroke_points>
+                    <dr.WfRoute--.StorablePoint:value X_position="367" Y_position="161" ver="1.0"/>
+                    <dr.WfRoute--.StorablePoint:value X_position="442" Y_position="184" ver="1.0"/>
+                    <dr.WfRoute--.StorablePoint:value X_position="504" Y_position="219" ver="1.0"/>
+                    <dr.WfRoute--.StorablePoint:value X_position="554" Y_position="268" ver="1.0"/>
+                </ecs..Stroke_points>
+                <ws---.request..Stroke_points>
+                    <dr.WfRoute--.StorablePoint:value X_position="366" Y_position="127" ver="1.0"/>
+                    <dr.WfRoute--.StorablePoint:value X_position="421" Y_position="77" ver="1.0"/>
+                    <dr.WfRoute--.StorablePoint:value X_position="484" Y_position="37" ver="1.0"/>
+                    <dr.WfRoute--.StorablePoint:value X_position="554" Y_position="19" ver="1.0"/>
+                </ws---.request..Stroke_points>
+                <ws---.response..Stroke_points>
+                    <dr.WfRoute--.StorablePoint:value X_position="554" Y_position="38" ver="1.0"/>
+                    <dr.WfRoute--.StorablePoint:value X_position="501" Y_position="91" ver="1.0"/>
+                    <dr.WfRoute--.StorablePoint:value X_position="437" Y_position="128" ver="1.0"/>
+                    <dr.WfRoute--.StorablePoint:value X_position="367" Y_position="146" ver="1.0"/>
+                </ws---.response..Stroke_points>
+                <audit---.log..Stroke_points>
+                    <dr.WfRoute--.StorablePoint:value X_position="367" Y_position="141" ver="1.0"/>
+                    <dr.WfRoute--.StorablePoint:value X_position="430" Y_position="114" ver="1.0"/>
+                    <dr.WfRoute--.StorablePoint:value X_position="494" Y_position="114" ver="1.0"/>
+                    <dr.WfRoute--.StorablePoint:value X_position="554" Y_position="141" ver="1.0"/>
+                </audit---.log..Stroke_points>
+                <wfb---.state..Stroke_points>
+                    <dr.WfRoute--.StorablePoint:value X_position="554" Y_position="161" ver="1.0"/>
+                    <dr.WfRoute--.StorablePoint:value X_position="492" Y_position="179" ver="1.0"/>
+                    <dr.WfRoute--.StorablePoint:value X_position="429" Y_position="177" ver="1.0"/>
+                    <dr.WfRoute--.StorablePoint:value X_position="367" Y_position="160" ver="1.0"/>
+                </wfb---.state..Stroke_points>
+                <rawXML..Stroke_points>
+                    <dr.WfRoute--.StorablePoint:value X_position="607" Y_position="5" ver="1.0"/>
+                    <dr.WfRoute--.StorablePoint:value X_position="651" Y_position="-8" ver="1.0"/>
+                    <dr.WfRoute--.StorablePoint:value X_position="693" Y_position="-6" ver="1.0"/>
+                    <dr.WfRoute--.StorablePoint:value X_position="734" Y_position="12" ver="1.0"/>
+                </rawXML..Stroke_points>
+                <audit..Stroke_points>
+                    <dr.WfRoute--.StorablePoint:value X_position="739" Y_position="50" ver="1.0"/>
+                    <dr.WfRoute--.StorablePoint:value X_position="706" Y_position="93" ver="1.0"/>
+                    <dr.WfRoute--.StorablePoint:value X_position="664" Y_position="124" ver="1.0"/>
+                    <dr.WfRoute--.StorablePoint:value X_position="607" Y_position="144" ver="1.0"/>
+                </audit..Stroke_points>
+            </dr.WfRoute>
+        </layout>
+        <identity>
+            <dr.WfNode>
+                <Wfl---.Collection..ID value="1766570084"/>
+                <Transform---.Record---.Post---.Process..ID value="-540133671"/>
+                <Web---.Service---.Request..ID value="-322542984"/>
+                <Audit..ID value="-582001612"/>
+                <Wfl---.ECS..ID value="-1921796007"/>
+                <Enable---.RawXML..ID value="-1954492645"/>
+            </dr.WfNode>
+            <dr.WfRoute>
+                <wfb---.request..ID value="-2"/>
+                <wfb---.request..Source_ID value="1766570084"/>
+                <wfb---.request..Destination_ID value="-540133671"/>
+                <wfb---.response..ID value="-16"/>
+                <wfb---.response..Source_ID value="-540133671"/>
+                <wfb---.response..Destination_ID value="1766570084"/>
+                <ecs..ID value="-17"/>
+                <ecs..Source_ID value="-540133671"/>
+                <ecs..Destination_ID value="-1921796007"/>
+                <ws---.request..ID value="-18"/>
+                <ws---.request..Source_ID value="-540133671"/>
+                <ws---.request..Destination_ID value="-322542984"/>
+                <ws---.response..ID value="-19"/>
+                <ws---.response..Source_ID value="-322542984"/>
+                <ws---.response..Destination_ID value="-540133671"/>
+                <audit---.log..ID value="-23"/>
+                <audit---.log..Source_ID value="-540133671"/>
+                <audit---.log..Destination_ID value="-582001612"/>
+                <wfb---.state..ID value="-24"/>
+                <wfb---.state..Source_ID value="-582001612"/>
+                <wfb---.state..Destination_ID value="-540133671"/>
+                <rawXML..ID value="-26"/>
+                <rawXML..Source_ID value="-322542984"/>
+                <rawXML..Destination_ID value="-1954492645"/>
+                <audit..ID value="-27"/>
+                <audit..Source_ID value="-1954492645"/>
+                <audit..Destination_ID value="-582001612"/>
+            </dr.WfRoute>
+        </identity>
+    </mz:referenced-data>
+</mz:configuration>

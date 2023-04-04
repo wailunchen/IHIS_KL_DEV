@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<mz:schema xmlns:mz="http://www.w3.org/2001/XMLSchema">
+    <mz:include schemaLocation="mz_simpleTypes.xsd"/>
+    <mz:element name="config_data">
+        <mz:complexType>
+            <mz:sequence>
+                <mz:element name="dr.Configuration" type="storable"/>
+            </mz:sequence>
+        </mz:complexType>
+    </mz:element>
+    <mz:complexType name="dr.Configuration">
+        <mz:complexContent>
+            <mz:extension base="storable">
+                <mz:sequence>
+                    <mz:element name="Access_Groups_-----.read_-----.write_-----.execute">
+                        <mz:complexType>
+                            <mz:complexContent>
+                                <mz:extension base="array">
+                                    <mz:sequence maxOccurs="unbounded">
+                                        <mz:element name="value" type="string"/>
+                                    </mz:sequence>
+                                </mz:extension>
+                            </mz:complexContent>
+                        </mz:complexType>
+                    </mz:element>
+                    <mz:element name="Auxiliary_Data" type="storable"/>
+                    <mz:element name="Data" type="storable"/>
+                    <mz:element name="documentation" type="string"/>
+                    <mz:element name="parameters" type="string"/>
+                    <mz:element name="Current_Comment" type="string"/>
+                </mz:sequence>
+                <mz:attribute name="Key" type="string"/>
+                <mz:attribute name="Name" type="string"/>
+                <mz:attribute name="Type" type="string"/>
+                <mz:attribute name="Folder" type="string"/>
+                <mz:attribute name="Owner" type="string"/>
+                <mz:attribute name="encrypted" type="boolean"/>
+            </mz:extension>
+        </mz:complexContent>
+    </mz:complexType>
+    <mz:complexType name="dr.WSProfileConfig">
+        <mz:complexContent>
+            <mz:extension base="storable">
+                <mz:sequence>
+                    <mz:element name="wsdl---.file" type="string"/>
+                    <mz:element name="unique---.name" type="string"/>
+                    <mz:element name="helper---.class" type="string"/>
+                    <mz:element name="transport" type="string"/>
+                    <mz:element name="wsdlFileName" type="string"/>
+                    <mz:element name="wsdlFileContent" type="string"/>
+                    <mz:element name="includeFiles">
+                        <mz:complexType>
+                            <mz:complexContent>
+                                <mz:extension base="list">
+                                    <mz:sequence maxOccurs="unbounded">
+                                        <mz:element name="value" type="storable"/>
+                                    </mz:sequence>
+                                </mz:extension>
+                            </mz:complexContent>
+                        </mz:complexType>
+                    </mz:element>
+                    <mz:element name="typeNamespaceToPrefixMap" type="map"/>
+                    <mz:element name="singleWSDLFile" type="boolean"/>
+                    <mz:element name="concatenationFilePathList">
+                        <mz:complexType>
+                            <mz:complexContent>
+                                <mz:extension base="list">
+                                    <mz:sequence maxOccurs="unbounded"/>
+                                </mz:extension>
+                            </mz:complexContent>
+                        </mz:complexType>
+                    </mz:element>
+                    <mz:element name="inputAndOutputTypeName" type="string"/>
+                    <mz:element name="Security_Enabled" type="boolean"/>
+                    <mz:element name="Security_Settings" type="storable"/>
+                    <mz:element name="Binding_name" type="string"/>
+                    <mz:element name="Port_type" type="string"/>
+                    <mz:element name="Service_Port_name" type="string"/>
+                    <mz:element name="TLS_keystore_file_content" type="bytearray"/>
+                    <mz:element name="TLS_keystore_password" type="password"/>
+                    <mz:element name="TLS_keystore_file" type="string"/>
+                    <mz:element name="Simple_Mode_Enabled" type="boolean"/>
+                    <mz:element name="Process_Implicit_SOAP_Headers" type="boolean"/>
+                    <mz:element name="Disable_Wrapper_Style" type="boolean"/>
+                    <mz:element name="Enable_Username_Token" type="boolean"/>
+                    <mz:element name="Username_Token_Username" type="string"/>
+                    <mz:element name="Username_Token_Password" type="password"/>
+                    <mz:element name="Enable_WS_Addressing" type="boolean"/>
+                    <mz:element name="Disable_Underscore_Binding_Mode" type="boolean"/>
+                    <mz:element name="properties" type="string"/>
+                    <mz:element name="Populate_OriginalData_Field" type="boolean"/>
+                    <mz:element name="Max_Enum_Members" type="string"/>
+                    <mz:element name="Schema_Bindings" type="string"/>
+                    <mz:element name="Enable_JAAS" type="boolean"/>
+                    <mz:element name="JAAS_Module" type="string"/>
+                    <mz:element name="JAAS_Properties" type="string"/>
+                    <mz:element name="RM_Store" type="string"/>
+                    <mz:element name="Enforce_RM" type="boolean"/>
+                    <mz:element name="Enable_Big_Decimal" type="boolean"/>
+                    <mz:element name="Schema_Validation" type="boolean"/>
+                </mz:sequence>
+            </mz:extension>
+        </mz:complexContent>
+    </mz:complexType>
+    <mz:complexType name="dr.WSDLIncludeFileStoreable">
+        <mz:complexContent>
+            <mz:extension base="storable">
+                <mz:sequence>
+                    <mz:element name="filePathSequence" type="string"/>
+                    <mz:element name="fileContent" type="string"/>
+                </mz:sequence>
+            </mz:extension>
+        </mz:complexContent>
+    </mz:complexType>
+</mz:schema>

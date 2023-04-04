@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<mz:schema xmlns:mz="http://www.w3.org/2001/XMLSchema">
+	<mz:attribute name="ver" type="mz:float"/>
+	<mz:simpleType name="password">
+		<mz:restriction base="mz:string">
+			<mz:pattern value="[a-zA-Z]"/>
+		</mz:restriction>
+	</mz:simpleType>
+	<!-- "This is the complex representation on anonymous types" -->
+	<mz:element name="map" type="map"/>
+	<mz:complexType name="map">
+		<mz:sequence maxOccurs="unbounded">
+			<mz:any processContents="lax"/>
+		</mz:sequence>
+	</mz:complexType>
+	<mz:element name="field" type="field"/>
+	<mz:complexType name="field">
+		<mz:sequence maxOccurs="unbounded">
+		</mz:sequence>
+		<mz:anyAttribute processContents="lax"/>
+	</mz:complexType>
+	<mz:complexType name="object">
+		<mz:sequence maxOccurs="unbounded">
+			<mz:any processContents="strict"/>
+		</mz:sequence>
+	</mz:complexType>
+	<!-- ######################################################################################### -->
+	<!-- Following types uses as extensions to indicate that an element is of collection types -->
+	<mz:complexType name="list">
+		<mz:sequence maxOccurs="unbounded"/>
+	</mz:complexType>
+	<mz:complexType name="array">
+		<mz:sequence maxOccurs="unbounded"/>
+	</mz:complexType>
+	<mz:complexType name="set">
+		<mz:sequence maxOccurs="unbounded"/>
+	</mz:complexType>
+	<mz:complexType name="bytearray">
+		<mz:sequence maxOccurs="unbounded"/>
+	</mz:complexType>
+	<mz:complexType name="parray">
+		<mz:sequence maxOccurs="unbounded"/>
+	</mz:complexType>
+	<!-- ######################################################################################### -->
+	<mz:element name="storable" type="storable"/>
+	<mz:complexType name="storable">
+		<mz:sequence maxOccurs="unbounded">
+		</mz:sequence>
+		<mz:anyAttribute processContents="lax"/>
+	</mz:complexType>
+	<mz:element name="udr" type="udr" substitutionGroup="storable"/>
+	<mz:complexType name="udr">
+		<mz:complexContent>
+			<mz:extension base="storable"/>
+		</mz:complexContent>
+	</mz:complexType>
+	<mz:element name="udrUltra" type="udrUltra" substitutionGroup="storable"/>
+	<mz:complexType name="udrUltra">
+		<mz:complexContent>
+			<mz:extension base="storable"/>
+		</mz:complexContent>
+	</mz:complexType>
+	<mz:complexType name="enum">
+		<mz:sequence maxOccurs="unbounded">
+			<mz:any processContents="lax" maxOccurs="unbounded"/>
+		</mz:sequence>
+	</mz:complexType>
+	<!-- "This is the attributes used for fields" -->
+	<mz:attributeGroup name="fieldsAtrribute">
+		<mz:attribute name="pres" type="mz:boolean" use="optional"/>
+		<mz:attribute name="mod" type="mz:boolean" use="optional"/>
+		<mz:attribute name="active" type="mz:boolean" use="optional"/>
+		<mz:attribute name="exref" type="mz:string" use="optional"/>
+		<mz:attribute name="fit" type="fit" use="optional"/>
+	</mz:attributeGroup>
+	<mz:simpleType name="fit">
+		<mz:restriction base="mz:string">
+			<mz:enumeration value="FINAL"/>
+			<mz:enumeration value="INSTANCE"/>
+			<mz:enumeration value="DEFAULT"/>
+		</mz:restriction>
+	</mz:simpleType>
+	<!-- ######################################################################################### -->
+	<mz:attributeGroup name="xy_Cordinates">
+		<mz:attribute name="X_position" type="mz:int"/>
+		<mz:attribute name="Y_position" type="mz:int"/>
+	</mz:attributeGroup>
+	<!-- "This is the "simple" types  representation" -->
+	<mz:complexType name="boolean">
+		<mz:sequence>
+			<mz:element  name="value" type="mz:boolean" maxOccurs="1" minOccurs="0"/>
+		</mz:sequence>
+		<mz:attribute name="value" type="mz:boolean" use="optional"/>
+	</mz:complexType>
+	<mz:complexType name="string">
+		<mz:sequence>
+			<mz:element  name="value" type="mz:string" maxOccurs="1" minOccurs="0"/>
+		</mz:sequence>
+		<mz:attribute name="value" type="mz:string" use="optional"/>
+	</mz:complexType>
+	<mz:complexType name="int">
+		<mz:sequence>
+			<mz:element  name="value" type="mz:int" maxOccurs="1" minOccurs="0"/>
+		</mz:sequence>
+		<mz:attribute name="value" type="mz:int" use="optional"/>
+	</mz:complexType>
+	<mz:complexType name="long">
+		<mz:sequence>
+			<mz:element  name="value" type="mz:long" maxOccurs="1" minOccurs="0"/>
+		</mz:sequence>
+		<mz:attribute name="value" type="mz:long" use="optional"/>
+	</mz:complexType>
+	<mz:complexType name="byte">
+		<mz:sequence>
+			<mz:element  name="value" type="mz:byte" maxOccurs="1" minOccurs="0"/>
+		</mz:sequence>
+		<mz:attribute name="value" type="mz:byte" use="optional"/>
+	</mz:complexType>
+	<mz:complexType name="float">
+		<mz:sequence>
+			<mz:element  name="value" type="mz:float" maxOccurs="1" minOccurs="0"/>
+		</mz:sequence>
+		<mz:attribute name="value" type="mz:float" use="optional"/>
+	</mz:complexType>
+	<mz:complexType name="double">
+		<mz:sequence>
+			<mz:element  name="value" type="mz:double" maxOccurs="1" minOccurs="0"/>
+		</mz:sequence>
+		<mz:attribute name="value" type="mz:double" use="optional"/>
+	</mz:complexType>
+	<mz:complexType name="date">
+		<mz:sequence>
+			<mz:element  name="value" type="mz:date" maxOccurs="1" minOccurs="0"/>
+		</mz:sequence>
+		<mz:attribute name="value" type="mz:date" use="optional"/>
+	</mz:complexType>
+	<mz:complexType name="null">
+		<mz:sequence>
+			<mz:element  name="value" type="mz:string" maxOccurs="1" minOccurs="0"/>
+		</mz:sequence>
+		<mz:attribute name="value" type="mz:string" use="optional"/>
+	</mz:complexType>
+	<!-- ######################################################################################### -->
+	<!-- "This is the attributes used for InstanceTable" -->
+	<mz:attributeGroup name="instanceAttribute">
+		<mz:attribute name="id" type="mz:int" use="optional"/>
+		<mz:attribute name="name" type="mz:string" use="optional"/>
+		<mz:attribute name="valid" type="mz:boolean" use="optional"/>
+		<mz:attribute name="ValidationError" type="mz:string" use="optional"/>
+		<mz:attribute name="ValidEnum" type="ValidType" use="optional"/>
+	</mz:attributeGroup>
+	<mz:simpleType name="ValidType">
+		<mz:restriction base="mz:string">
+			<mz:enumeration value="NOTVALIDATED"/>
+			<mz:enumeration value="VALID"/>
+			<mz:enumeration value="CLIENTERROR"/>
+			<mz:enumeration value="SERVERERROR"/>
+		</mz:restriction>
+	</mz:simpleType>
+	<!-- ######################################################################################### 
+	<mz:complexType name="InstanceTable">
+		<mz:sequence>
+			<mz:element name="Node_">
+				<mz:complexType>
+					<mz:sequence maxOccurs="unbounded">
+						<mz:element name="Node_Name" type="string"/>
+						<mz:element name="Node_ID" type="int"/>
+					</mz:sequence>
+				</mz:complexType>
+			</mz:element>
+			<mz:element name="instances">
+				<mz:complexType>
+					<mz:sequence maxOccurs="unbounded">
+						<mz:element name="instance" type="field"/>
+					</mz:sequence>
+				</mz:complexType>
+			</mz:element>
+		</mz:sequence>
+	</mz:complexType>
+-->
+</mz:schema>

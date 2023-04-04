@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<mz:configuration format-version="1.0">
+    <mz:data>
+        <dr.Configuration:dr.Configuration Folder="ZZR_SVC0001" Key="DZ11671696310184" Name="WFG_BatchTransferOutbound_IF0193" Owner="A_SOUMYA" Type="Workflow Group" encrypted="false" ver="6.0">
+            <STRING:Access_Groups_-----.read_-----.write_-----.execute>
+                <value value="All"/>
+                <value value="All"/>
+                <value value="All"/>
+            </STRING:Access_Groups_-----.read_-----.write_-----.execute>
+            <dr.ConfigAuxData:Auxiliary_Data ver="2.0">
+                <Entries keyType="STRING" type="java.util.LinkedHashMap" valueType="STRING">
+                    <Type value="Batch"/>
+                </Entries>
+            </dr.ConfigAuxData:Auxiliary_Data>
+            <dr.GroupData:Data ver="3.0">
+                <member_list>
+                    <dr.MemberData:value ver="1.0">
+                        <dr.MemberData--.MemberType:type value="BATCHWFINSTANCE"/>
+                        <dr.DRConfiguration:config Folder="ZZ_CA_WFL" Key="DZ11624523147754" Name="WFL_BatchTransferOutbound" Type="Workflow" ver="1.0"/>
+                        <dr.DRWfIdentity:wf---.instance---.id System_name="" Template_name="ZZ_CA_WFL.WFL_BatchTransferOutbound" Version="0" Workflow_name="IF0193" dynamic="0" ver="1.0">
+                            <dr.DRWfKey:Workflow_key INSTANCE---.ID="32" TEMPLATE---.KEY="DZ11624523147754" ver="1.0"/>
+                        </dr.DRWfIdentity:wf---.instance---.id>
+                        <prereq_list/>
+                        <dr.ValidType:valid_type value="NOTVALIDATED"/>
+                    </dr.MemberData:value>
+                </member_list>
+                <dr.ExecutionPlan:group_sched ver="1.0">
+                    <dr.DayPlan:dayplans.run/>
+                    <dr.DayPlan:dayplans-----.notrun/>
+                    <null:Triggers/>
+                </dr.ExecutionPlan:group_sched>
+                <max_running value="0"/>
+                <delay value="0"/>
+                <dr.WorkflowType:primary_type value="BATCH"/>
+                <dr.ExecutionSettings:exeSetting ver="3.0">
+                    <enabled value="false"/>
+                </dr.ExecutionSettings:exeSetting>
+                <null:AbortOnMemberAbort/>
+                <continuous_exec value="true"/>
+            </dr.GroupData:Data>
+            <documentation value=""/>
+            <parameters value=""/>
+            <Current_Comment/>
+        </dr.Configuration:dr.Configuration>
+    </mz:data>
+    <mz:referenced-data/>
+</mz:configuration>

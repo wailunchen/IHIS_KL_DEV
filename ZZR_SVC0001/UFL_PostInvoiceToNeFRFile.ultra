@@ -1,0 +1,556 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<mz:configuration format-version="1.0">
+    <mz:data>
+        <dr.Configuration:dr.Configuration Folder="ZZR_SVC0001" Key="DZ11640333086418" Name="UFL_PostInvoiceToNeFRFile" Owner="D_LIEW" Type="Ultra Format" encrypted="false" ver="6.0">
+            <STRING:Access_Groups_-----.read_-----.write_-----.execute>
+                <value value="All"/>
+                <value value="All"/>
+                <value value="All"/>
+            </STRING:Access_Groups_-----.read_-----.write_-----.execute>
+            <null:Auxiliary_Data/>
+            <dr.UltraFormatConfig:Data ver="1.0">
+                <Definition><![CDATA[xml_schema
+{
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="PatientBillData">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="1" maxOccurs="100" name="Bill">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element minOccurs="1" maxOccurs="1" name="Action" type="xs:string"/>
+							<xs:element minOccurs="1" maxOccurs="1" name="Institution" type="xs:string"/>
+							<xs:element minOccurs="1" maxOccurs="1" name="InstitutionBillID" type="xs:string"/>
+							<xs:element minOccurs="1" maxOccurs="1" name="BillDate" type="xs:string"/>
+							<xs:element minOccurs="1" maxOccurs="1" name="UniqueTransactionID" type="xs:string"/>
+							<xs:element minOccurs="0" maxOccurs="1" name="PatientBioData">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element minOccurs="1" maxOccurs="1" name="PatientName" type="xs:string"/>
+										<xs:element minOccurs="1" maxOccurs="1" name="IDNumber" type="xs:string"/>
+										<xs:element minOccurs="1" maxOccurs="1" name="IDType" type="xs:string"/>
+										<xs:element minOccurs="1" maxOccurs="1" name="DateOfBirth" type="xs:string"/>
+										<xs:element minOccurs="1" maxOccurs="1" name="Nationality" type="xs:string"/>
+										<xs:element minOccurs="1" maxOccurs="1" name="Race" type="xs:string"/>
+										<xs:element minOccurs="1" maxOccurs="1" name="Gender" type="xs:string"/>
+										<xs:element minOccurs="0" maxOccurs="1" name="Telephone" type="xs:string"/>
+										<xs:element minOccurs="0" maxOccurs="1" name="Email" type="xs:string"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element minOccurs="0" maxOccurs="1" name="ResidentialAddress">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element minOccurs="0" maxOccurs="1" name="BlockNumber" type="xs:string"/>
+										<xs:element minOccurs="0" maxOccurs="1" name="FloorNumber" type="xs:string"/>
+										<xs:element minOccurs="0" maxOccurs="1" name="UnitNumber" type="xs:string"/>
+										<xs:element minOccurs="0" maxOccurs="1" name="BuildingName" type="xs:string"/>
+										<xs:element minOccurs="0" maxOccurs="1" name="StreetName" type="xs:string"/>
+										<xs:element minOccurs="0" maxOccurs="1" name="PostalCode" type="xs:string"/>
+										<xs:element minOccurs="0" maxOccurs="1" name="CountryCode" type="xs:string"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element minOccurs="0" maxOccurs="1" name="BillCharacteristics">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element minOccurs="1" maxOccurs="1" name="ServiceType" type="xs:string"/>
+										<xs:element minOccurs="1" maxOccurs="1" name="BillTypeIndicator" type="xs:string"/>
+										<xs:element minOccurs="0" maxOccurs="1" name="NeonateMotherIDNumber" type="xs:string"/>
+										<xs:element minOccurs="0" maxOccurs="1" name="PrimaryDiagnosisCode" type="xs:string"/>
+										<xs:element minOccurs="0" maxOccurs="1" name="SecondaryDiagnosisCodes">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element minOccurs="1" maxOccurs="20" name="SecondaryDiagnosisCode" type="xs:string"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element minOccurs="0" maxOccurs="1" name="OperationCodes">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element minOccurs="1" maxOccurs="20" name="OperationCode" type="xs:string"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element minOccurs="1" maxOccurs="1" name="ReferralSourceType" type="xs:string"/>
+										<xs:element minOccurs="0" maxOccurs="1" name="ReferringSourceInstitution" type="xs:string"/>
+										<xs:element minOccurs="1" maxOccurs="1" name="AdmissionVisitDate" type="xs:string"/>
+										<xs:element minOccurs="1" maxOccurs="1" name="AdmissionVisitTime" type="xs:string"/>
+										<xs:element minOccurs="0" maxOccurs="1" name="DischargeDate" type="xs:string"/>
+										<xs:element minOccurs="0" maxOccurs="1" name="DischargeTime" type="xs:string"/>
+										<xs:element minOccurs="0" maxOccurs="1" name="DischargeDestinationType" type="xs:string"/>
+										<xs:element minOccurs="0" maxOccurs="1" name="DischargeDestinationInstitution" type="xs:string"/>
+										<xs:element minOccurs="0" maxOccurs="1" name="PatientClassAdmission" type="xs:string"/>
+										<xs:element minOccurs="0" maxOccurs="1" name="PatientClassDischarge" type="xs:string"/>
+										<xs:element minOccurs="0" maxOccurs="1" name="DischargeWardType" type="xs:string"/>
+										<xs:element minOccurs="0" maxOccurs="1" name="MTSubsidyRate" type="xs:string"/>
+										<xs:element minOccurs="0" maxOccurs="1" name="MTSubsidies">
+											<xs:complexType>
+												<xs:sequence>
+                                                    <xs:element minOccurs="1" maxOccurs="10" name="MTSubsidy">
+                                                        <xs:complexType>
+												           <xs:sequence>
+													           <xs:element minOccurs="1" maxOccurs="1" name="MTScheme" type="xs:string"/>
+													           <xs:element minOccurs="1" maxOccurs="1" name="MTBand" type="xs:string"/>
+                                                            </xs:sequence>
+											            </xs:complexType>
+                                                    </xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element minOccurs="0" maxOccurs="1" name="BillBreakdown">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element minOccurs="1" maxOccurs="1" name="TotalChargeBeforeSubsidy">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element minOccurs="1" maxOccurs="1" name="Total" type="xs:decimal"/>
+													<xs:element minOccurs="0" maxOccurs="1" name="TransferredCharges" type="xs:decimal"/>
+													<xs:element minOccurs="0" maxOccurs="1" name="AE" type="xs:decimal"/>
+													<xs:element minOccurs="0" maxOccurs="1" name="Packages" type="xs:decimal"/>
+													<xs:element minOccurs="0" maxOccurs="1" name="RoomCharges" type="xs:decimal"/>
+													<xs:element minOccurs="0" maxOccurs="1" name="TreatmentProcedures" type="xs:decimal"/>
+													<xs:element minOccurs="0" maxOccurs="1" name="ConsultProfessionalFee" type="xs:decimal"/>
+													<xs:element minOccurs="0" maxOccurs="1" name="AlliedHealthServices" type="xs:decimal"/>
+													<xs:element minOccurs="0" maxOccurs="1" name="SurgeonFee" type="xs:decimal"/>
+													<xs:element minOccurs="0" maxOccurs="1" name="SurgeryFacility" type="xs:decimal"/>
+													<xs:element minOccurs="0" maxOccurs="1" name="AnaesthetistFee" type="xs:decimal"/>
+													<xs:element minOccurs="0" maxOccurs="1" name="Implants" type="xs:decimal"/>
+													<xs:element minOccurs="0" maxOccurs="1" name="Devices" type="xs:decimal"/>
+													<xs:element minOccurs="0" maxOccurs="1" name="DrugsSDL" type="xs:decimal"/>
+													<xs:element minOccurs="0" maxOccurs="1" name="DrugsSDL2" type="xs:decimal"/>
+													<xs:element minOccurs="0" maxOccurs="1" name="DrugsMAF" type="xs:decimal"/>
+													<xs:element minOccurs="0" maxOccurs="1" name="DrugsOtherNS" type="xs:decimal"/>
+													<xs:element minOccurs="0" maxOccurs="1" name="InvestigationsRadiology" type="xs:decimal"/>
+													<xs:element minOccurs="0" maxOccurs="1" name="InvestigationsLaboratory" type="xs:decimal"/>
+													<xs:element minOccurs="0" maxOccurs="1" name="InvestigationsSpecialised" type="xs:decimal"/>
+													<xs:element minOccurs="0" maxOccurs="1" name="Consumables" type="xs:decimal"/>
+													<xs:element minOccurs="0" maxOccurs="1" name="Transport" type="xs:decimal"/>
+													<xs:element minOccurs="0" maxOccurs="1" name="Others" type="xs:decimal"/>
+													<xs:element minOccurs="0" maxOccurs="1" name="Vaccines" type="xs:decimal"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element minOccurs="1" maxOccurs="1" name="GovernmentSubsidy">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element minOccurs="1" maxOccurs="1" name="Total" type="xs:decimal"/>
+													<xs:element minOccurs="0" maxOccurs="1" name="AE" type="xs:decimal"/>
+													<xs:element minOccurs="0" maxOccurs="1" name="Packages" type="xs:decimal"/>
+													<xs:element minOccurs="0" maxOccurs="1" name="RoomCharges" type="xs:decimal"/>
+													<xs:element minOccurs="0" maxOccurs="1" name="TreatmentProcedures" type="xs:decimal"/>
+													<xs:element minOccurs="0" maxOccurs="1" name="ConsultProfessionalFee" type="xs:decimal"/>
+													<xs:element minOccurs="0" maxOccurs="1" name="AlliedHealthServices" type="xs:decimal"/>
+													<xs:element minOccurs="0" maxOccurs="1" name="SurgeonFee" type="xs:decimal"/>
+													<xs:element minOccurs="0" maxOccurs="1" name="SurgeryFacility" type="xs:decimal"/>
+													<xs:element minOccurs="0" maxOccurs="1" name="AnaesthetistFee" type="xs:decimal"/>
+													<xs:element minOccurs="0" maxOccurs="1" name="Implants" type="xs:decimal"/>
+													<xs:element minOccurs="0" maxOccurs="1" name="Devices" type="xs:decimal"/>
+													<xs:element minOccurs="0" maxOccurs="1" name="DrugsSDL" type="xs:decimal"/>
+													<xs:element minOccurs="0" maxOccurs="1" name="DrugsSDL2" type="xs:decimal"/>
+													<xs:element minOccurs="0" maxOccurs="1" name="DrugsMAF" type="xs:decimal"/>
+													<xs:element minOccurs="0" maxOccurs="1" name="DrugsOtherNS" type="xs:decimal"/>
+													<xs:element minOccurs="0" maxOccurs="1" name="InvestigationsRadiology" type="xs:decimal"/>
+													<xs:element minOccurs="0" maxOccurs="1" name="InvestigationsLaboratory" type="xs:decimal"/>
+													<xs:element minOccurs="0" maxOccurs="1" name="InvestigationsSpecialised" type="xs:decimal"/>
+													<xs:element minOccurs="0" maxOccurs="1" name="Consumables" type="xs:decimal"/>
+													<xs:element minOccurs="0" maxOccurs="1" name="Transport" type="xs:decimal"/>
+													<xs:element minOccurs="0" maxOccurs="1" name="Others" type="xs:decimal"/>
+													<xs:element minOccurs="0" maxOccurs="1" name="Vaccines" type="xs:decimal"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element minOccurs="1" maxOccurs="1" name="GST">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element minOccurs="1" maxOccurs="1" name="AmountCharged" type="xs:decimal"/>
+													<xs:element minOccurs="1" maxOccurs="1" name="AmountAbsorbed" type="xs:decimal"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element minOccurs="0" maxOccurs="1" name="SpecificSubsidySchemesNonGovs">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element minOccurs="1" maxOccurs="10" name="SpecificSubsidySchemeNonGov">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element minOccurs="1" maxOccurs="1" name="SpecificSubsidySchemeNonGovType" type="xs:string"/>
+																<xs:element minOccurs="1" maxOccurs="1" name="SpecificSubsidySchemeNonGovAmount" type="xs:decimal"/>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element minOccurs="0" maxOccurs="1" name="SpecificSubsidySchemesGovs">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element minOccurs="1" maxOccurs="10" name="SpecificSubsidySchemeGov">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element minOccurs="1" maxOccurs="1" name="SpecificSubsidySchemeGovType" type="xs:string"/>
+																<xs:element minOccurs="1" maxOccurs="1" name="SpecificSubsidySchemeGovAmount" type="xs:decimal"/>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element minOccurs="0" maxOccurs="1" name="ThirdPartyPayers">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element minOccurs="1" maxOccurs="10" name="ThirdPartyPayer">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element minOccurs="1" maxOccurs="1" name="ThirdPartyPayerType" type="xs:string"/>
+																<xs:element minOccurs="1" maxOccurs="1" name="ThirdPartyPayerAmount" type="xs:decimal"/>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element minOccurs="0" maxOccurs="1" name="Insurances">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element minOccurs="1" maxOccurs="10" name="Insurance">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element minOccurs="1" maxOccurs="1" name="InsuranceType" type="xs:string"/>
+																<xs:element minOccurs="1" maxOccurs="1" name="InsuranceAmount" type="xs:decimal"/>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element minOccurs="0" maxOccurs="1" name="Medisaves">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element minOccurs="1" maxOccurs="10" name="Medisave">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element minOccurs="1" maxOccurs="1" name="MedisaveNRIC" type="xs:string"/>
+																<xs:element minOccurs="1" maxOccurs="1" name="MedisaveRelationship" type="xs:string"/>
+																<xs:element minOccurs="1" maxOccurs="1" name="MedisaveClaimableAmount" type="xs:decimal"/>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element minOccurs="0" maxOccurs="1" name="DiscretionaryFANonGovernments">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element minOccurs="1" maxOccurs="10" name="DiscretionaryFANonGovernment">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element minOccurs="1" maxOccurs="1" name="DiscretionaryFANonGovernmentType" type="xs:string"/>
+																<xs:element minOccurs="1" maxOccurs="1" name="DiscretionaryFANonGovernmentAmount" type="xs:decimal"/>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element minOccurs="0" maxOccurs="1" name="DiscretionaryFAGovernments">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element minOccurs="1" maxOccurs="10" name="DiscretionaryFAGovernment">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element minOccurs="1" maxOccurs="1" name="DiscretionaryFAGovernmentType" type="xs:string"/>
+																<xs:element minOccurs="1" maxOccurs="1" name="DiscretionaryFAGovernmentAmount" type="xs:decimal"/>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element minOccurs="1" maxOccurs="1" name="Others" type="xs:decimal"/>
+										<xs:element minOccurs="1" maxOccurs="1" name="SelfPayerPaidIncDeposit" type="xs:decimal"/>
+										<xs:element minOccurs="1" maxOccurs="1" name="SelfPayerOutstanding" type="xs:decimal"/>
+										<xs:element minOccurs="1" maxOccurs="1" name="SelfPayerBadDebtWriteoff" type="xs:decimal"/>
+										<xs:element minOccurs="0" maxOccurs="1" name="OtherBillPaymentInformation">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element minOccurs="1" maxOccurs="1" name="InstalmentIndicator" type="xs:string"/>
+													<xs:element minOccurs="0" maxOccurs="1" name="InstalmentQuantum" type="xs:decimal"/>
+													<xs:element minOccurs="0" maxOccurs="1" name="InstalmentFrequency" type="xs:string"/>
+													<xs:element minOccurs="0" maxOccurs="1" name="InstalmentStartDate" type="xs:string"/>
+													<xs:element minOccurs="0" maxOccurs="1" name="InstalmentEndDate" type=" xs:string"/>
+													<xs:element minOccurs="1" maxOccurs="1" name="DepositCollected" type="xs:decimal"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
+};
+
+internal I_PatientBillData {
+    list <I_Bill> Bill;
+};
+
+
+
+internal I_Bill {
+   string                   Action;
+   string                   Institution;
+   string                   InstitutionBillID;
+   string                     BillDate;
+   string                   UniqueTransactionID;
+   I_PatientBioData         PatientBioData :optional;
+   I_ResidentialAddress     ResidentialAddress :optional;
+   I_BillCharacteristics    BillCharacteristics :optional;
+   I_BillBreakdown          BillBreakdown :optional;
+};
+
+internal I_PatientBioData {
+	string PatientName;
+	string IDNumber;
+	string IDType;
+	string DateOfBirth;
+	string Nationality;
+	string Race;
+	string Gender;
+	string Telephone :optional;
+	string Email :optional;   
+};
+
+internal I_ResidentialAddress {
+	string BlockNumber :optional;
+	string FloorNumber :optional;
+	string UnitNumber :optional;
+	string BuildingName :optional;
+	string StreetName :optional;
+	string PostalCode :optional;
+	string CountryCode :optional;    
+};
+
+internal I_BillCharacteristics {
+    string ServiceType;
+	string BillTypeIndicator;
+	string NeonateMotherIDNumber :optional;
+	string PrimaryDiagnosisCode :optional;
+    I_SecondaryDiagnosisCodes SecondaryDiagnosisCodes :optional;
+    I_OperationCodes OperationCodes :optional;
+    string ReferralSourceType;
+	string ReferringSourceInstitution :optional;
+	string AdmissionVisitDate;
+	string AdmissionVisitTime;
+	string DischargeDate :optional;
+	string DischargeTime :optional;
+	string DischargeDestinationType :optional;
+	string DischargeDestinationInstitution :optional;
+	string PatientClassAdmission :optional;
+	string PatientClassDischarge :optional;
+	string DischargeWardType :optional;
+	string MTSubsidyRate :optional;
+    I_MTSubsidies MTSubsidies :optional;
+};
+
+internal I_SecondaryDiagnosisCodes {
+    list<string> SecondaryDiagnosisCode;    
+};
+
+internal I_OperationCodes {
+    list<string> OperationCode;    
+};
+
+internal I_MTSubsidies {
+    list<I_MTSubsidy> MTSubsidy ;
+};
+
+internal I_MTSubsidy {
+	string MTScheme;
+	string MTBand;       
+};
+
+internal I_BillBreakdown {
+    I_TotalChargeBeforeSubsidy TotalChargeBeforeSubsidy;    
+    I_GovernmentSubsidy GovernmentSubsidy;
+    I_GST GST;
+    I_SpecificSubsidySchemesNonGovs SpecificSubsidySchemesNonGovs :optional;
+    I_SpecificSubsidySchemesGovs SpecificSubsidySchemesGovs :optional;
+    I_ThirdPartyPayers ThirdPartyPayers :optional;
+    I_Insurances Insurances :optional;
+    I_Medisaves Medisaves :optional;
+    I_DiscretionaryFANonGovernments DiscretionaryFANonGovernments :optional;
+    I_DiscretionaryFAGovernments DiscretionaryFAGovernments :optional;
+    bigdec Others;
+	bigdec SelfPayerPaidIncDeposit;
+	bigdec SelfPayerOutstanding;
+	bigdec SelfPayerBadDebtWriteoff;
+    I_OtherBillPaymentInformation OtherBillPaymentInformation :optional;
+};
+
+internal I_TotalChargeBeforeSubsidy {
+	bigdec Total;
+	bigdec TransferredCharges :optional;
+	bigdec AE :optional;
+	bigdec Packages :optional;
+	bigdec RoomCharges :optional;
+	bigdec TreatmentProcedures :optional;
+	bigdec ConsultProfessionalFee :optional;
+	bigdec AlliedHealthServices :optional;
+	bigdec SurgeonFee :optional;
+	bigdec SurgeryFacility :optional;
+	bigdec AnaesthetistFee :optional;
+	bigdec Implants :optional;
+	bigdec Devices :optional;
+	bigdec DrugsSDL :optional;
+	bigdec DrugsSDL2 :optional;
+	bigdec DrugsMAF :optional;
+	bigdec DrugsOtherNS :optional;
+	bigdec InvestigationsRadiology :optional;
+	bigdec InvestigationsLaboratory :optional;
+	bigdec InvestigationsSpecialised :optional;
+	bigdec Consumables :optional;
+	bigdec Transport :optional;
+	bigdec Others :optional;
+	bigdec Vaccines :optional;
+};
+
+internal I_GovernmentSubsidy {
+	bigdec Total ;
+	bigdec AE  :optional;
+	bigdec Packages  :optional;
+	bigdec RoomCharges  :optional;
+	bigdec TreatmentProcedures  :optional;
+	bigdec ConsultProfessionalFee  :optional;
+	bigdec AlliedHealthServices  :optional;
+	bigdec SurgeonFee  :optional;
+	bigdec SurgeryFacility  :optional;
+	bigdec AnaesthetistFee  :optional;
+	bigdec Implants  :optional;
+	bigdec Devices  :optional;
+	bigdec DrugsSDL  :optional;
+	bigdec DrugsSDL2  :optional;
+	bigdec DrugsMAF  :optional;
+	bigdec DrugsOtherNS  :optional;
+	bigdec InvestigationsRadiology  :optional;
+	bigdec InvestigationsLaboratory  :optional;
+	bigdec InvestigationsSpecialised  :optional;
+	bigdec Consumables  :optional;
+	bigdec Transport  :optional;
+	bigdec Others  :optional;
+	bigdec Vaccines  :optional;
+};
+
+internal I_GST {
+    string AmountCharged ;
+	string AmountAbsorbed ;
+};
+
+internal I_SpecificSubsidySchemesNonGovs {
+   list<I_SpecificSubsidySchemeNonGov> SpecificSubsidySchemeNonGov ; 
+};
+
+internal I_SpecificSubsidySchemeNonGov {
+    string SpecificSubsidySchemeNonGovType ;
+    bigdec SpecificSubsidySchemeNonGovAmount ;    
+};
+
+internal I_SpecificSubsidySchemesGovs {
+   list<I_SpecificSubsidySchemeGov> SpecificSubsidySchemeGov ; 
+};
+
+internal I_SpecificSubsidySchemeGov {
+    string SpecificSubsidySchemeGovType ;
+    bigdec SpecificSubsidySchemeGovAmount ;    
+};
+
+
+internal I_ThirdPartyPayers {
+   list<I_ThirdPartyPayer> ThirdPartyPayer ;
+};
+
+internal I_ThirdPartyPayer {
+    string ThirdPartyPayerType ;
+    bigdec ThirdPartyPayerAmount ;    
+};
+
+internal I_Insurances {
+   list<I_Insurance> Insurance ;
+};
+
+internal I_Insurance {
+    string InsuranceType ;
+    bigdec InsuranceAmount ;    
+};
+
+internal I_Medisaves {
+   list<I_Medisave> Medisave ; 
+};
+
+internal I_Medisave {
+    string MedisaveNRIC ;
+    string MedisaveRelationship ;
+    bigdec MedisaveClaimableAmount ;   
+};
+
+internal I_DiscretionaryFANonGovernments {
+   list<I_DiscretionaryFANonGovernment> DiscretionaryFANonGovernment ;
+};
+
+internal I_DiscretionaryFANonGovernment {
+    string DiscretionaryFANonGovernmentType ;
+    bigdec DiscretionaryFANonGovernmentAmount ;
+};
+
+internal I_DiscretionaryFAGovernments {
+   list<I_DiscretionaryFAGovernment> DiscretionaryFAGovernment ; 
+};
+
+internal I_DiscretionaryFAGovernment {
+    string DiscretionaryFAGovernmentType ;
+    bigdec DiscretionaryFAGovernmentAmount ; 
+};
+
+internal I_OtherBillPaymentInformation {
+    string InstalmentIndicator ;
+    string InstalmentQuantum :optional;
+	string InstalmentFrequency :optional;
+	string InstalmentStartDate :optional;
+	string InstalmentEndDate :optional;
+	string DepositCollected ;
+};
+
+external WhiteSpace: identified_by(
+value == 0x20 || value == 0xA || value == 0xD ) {
+    int value: static_size(1);
+};
+in_map WS_map: external(WhiteSpace), discard_output {automatic;};
+in_map in_Request: external(PatientBillData), internal(I_PatientBillData) { automatic; };
+
+out_map outMap_request: external(PatientBillData), internal(I_PatientBillData) { automatic; };
+out_map outMap_request_Bill: external(Bill), internal(I_Bill) { automatic; };
+
+
+//in_map in_Request : external(request), internal(inmap_Request) {automatic;};
+decoder PostInvoiceToNeFR_Decoder: in_map(WS_map), in_map(in_Request);
+
+encoder PostInvoiceToNeFR_Encoder: out_map(outMap_request);
+
+encoder PostInvoiceToNeFR_Bill_Encoder: out_map(outMap_request_Bill);]]></Definition>
+                <IsValid value="true"/>
+            </dr.UltraFormatConfig:Data>
+            <documentation value=""/>
+            <parameters value=""/>
+            <Current_Comment/>
+        </dr.Configuration:dr.Configuration>
+    </mz:data>
+    <mz:referenced-data/>
+</mz:configuration>

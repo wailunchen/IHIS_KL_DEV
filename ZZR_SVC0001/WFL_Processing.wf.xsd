@@ -1,0 +1,1022 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<mz:schema xmlns:mz="http://www.w3.org/2001/XMLSchema">
+    <mz:include schemaLocation="mz_simpleTypes.xsd"/>
+    <mz:element name="config_data">
+        <mz:complexType>
+            <mz:sequence>
+                <mz:element name="dr.Configuration" type="storable"/>
+            </mz:sequence>
+        </mz:complexType>
+    </mz:element>
+    <mz:complexType name="dr.Configuration">
+        <mz:complexContent>
+            <mz:extension base="storable">
+                <mz:sequence>
+                    <mz:element name="Access_Groups_-----.read_-----.write_-----.execute">
+                        <mz:complexType>
+                            <mz:complexContent>
+                                <mz:extension base="array">
+                                    <mz:sequence maxOccurs="unbounded">
+                                        <mz:element name="value" type="string"/>
+                                    </mz:sequence>
+                                </mz:extension>
+                            </mz:complexContent>
+                        </mz:complexType>
+                    </mz:element>
+                    <mz:element name="Auxiliary_Data" type="storable"/>
+                    <mz:element name="Data" type="storable"/>
+                    <mz:element name="documentation" type="string"/>
+                    <mz:element name="parameters" type="string"/>
+                    <mz:element name="Current_Comment" type="string"/>
+                </mz:sequence>
+                <mz:attribute name="Key" type="string"/>
+                <mz:attribute name="Name" type="string"/>
+                <mz:attribute name="Type" type="string"/>
+                <mz:attribute name="Folder" type="string"/>
+                <mz:attribute name="Owner" type="string"/>
+                <mz:attribute name="encrypted" type="boolean"/>
+            </mz:extension>
+        </mz:complexContent>
+    </mz:complexType>
+    <mz:complexType name="dr.ConfigAuxData">
+        <mz:complexContent>
+            <mz:extension base="storable">
+                <mz:sequence>
+                    <mz:element name="Entries" type="map"/>
+                </mz:sequence>
+            </mz:extension>
+        </mz:complexContent>
+    </mz:complexType>
+    <mz:complexType name="dr.WorkflowRealtimeData">
+        <mz:complexContent>
+            <mz:extension base="storable">
+                <mz:sequence>
+                    <mz:element name="Nodes">
+                        <mz:complexType>
+                            <mz:complexContent>
+                                <mz:extension base="list">
+                                    <mz:sequence maxOccurs="unbounded">
+                                        <mz:element name="value" type="storable"/>
+                                    </mz:sequence>
+                                </mz:extension>
+                            </mz:complexContent>
+                        </mz:complexType>
+                    </mz:element>
+                    <mz:element name="Routes">
+                        <mz:complexType>
+                            <mz:complexContent>
+                                <mz:extension base="list">
+                                    <mz:sequence maxOccurs="unbounded">
+                                        <mz:element name="value" type="storable"/>
+                                    </mz:sequence>
+                                </mz:extension>
+                            </mz:complexContent>
+                        </mz:complexType>
+                    </mz:element>
+                    <mz:element name="Service">
+                        <mz:complexType>
+                            <mz:complexContent>
+                                <mz:extension base="list">
+                                    <mz:sequence maxOccurs="unbounded"/>
+                                </mz:extension>
+                            </mz:complexContent>
+                        </mz:complexType>
+                    </mz:element>
+                    <mz:element name="Logged_error_MIM">
+                        <mz:complexType>
+                            <mz:complexContent>
+                                <mz:extension base="list">
+                                    <mz:sequence maxOccurs="unbounded"/>
+                                </mz:extension>
+                            </mz:complexContent>
+                        </mz:complexType>
+                    </mz:element>
+                    <mz:element name="Execution_Config" type="storable"/>
+                    <mz:element name="dyn" type="storable"/>
+                    <mz:element name="External_Reference_Profile" type="storable"/>
+                    <mz:element name="External_Reference_Values" type="map"/>
+                    <mz:element name="External_Reference_Lists" type="map"/>
+                    <mz:element name="External_Reference_Maps" type="map"/>
+                    <mz:element name="Timer_Trigger" type="storable"/>
+                    <mz:element name="Thread_data" type="storable"/>
+                    <mz:element name="Persistent" type="storable"/>
+                </mz:sequence>
+                <mz:attribute name="Workflow_ID_Counter" type="long"/>
+                <mz:attribute name="Template_Valid" type="boolean"/>
+                <mz:attribute name="Flow_Counters_Interval" type="int"/>
+            </mz:extension>
+        </mz:complexContent>
+    </mz:complexType>
+    <mz:complexType name="dr.WfNode">
+        <mz:complexContent>
+            <mz:extension base="storable">
+                <mz:sequence>
+                    <mz:element name="ID" type="int"/>
+                    <mz:element name="Configuration">
+                        <mz:complexType>
+                            <mz:complexContent>
+                                <mz:extension base="array">
+                                    <mz:sequence maxOccurs="unbounded">
+                                        <mz:element name="value" type="storable"/>
+                                    </mz:sequence>
+                                </mz:extension>
+                            </mz:complexContent>
+                        </mz:complexType>
+                    </mz:element>
+                    <mz:element name="XYposition" type="storable"/>
+                </mz:sequence>
+                <mz:attribute name="Name" type="string"/>
+                <mz:attribute name="Classname" type="string"/>
+            </mz:extension>
+        </mz:complexContent>
+    </mz:complexType>
+    <mz:complexType name="dr.WfNodeConfig">
+        <mz:complexContent>
+            <mz:extension base="storable">
+                <mz:sequence>
+                    <mz:element name="Data" type="storable"/>
+                </mz:sequence>
+                <mz:attribute name="Type" type="int"/>
+                <mz:attribute name="Classname" type="string"/>
+            </mz:extension>
+        </mz:complexContent>
+    </mz:complexType>
+    <mz:complexType name="dr.WfBridgeCollData">
+        <mz:complexContent>
+            <mz:extension base="storable">
+                <mz:sequence>
+                    <mz:element name="Profile_Key" type="contractfield"/>
+                    <mz:element name="Port" type="contractfield"/>
+                    <mz:element name="loadID" type="contractfield"/>
+                </mz:sequence>
+            </mz:extension>
+        </mz:complexContent>
+    </mz:complexType>
+    <mz:complexType name="dr.WfBridgeCollData.profile">
+        <mz:complexContent>
+            <mz:extension base="contractfield">
+                <mz:sequence>
+                    <mz:element name="Value" type="storable"/>
+                </mz:sequence>
+                <mz:attribute name="pres" type="boolean"/>
+                <mz:attribute name="mod" type="boolean"/>
+                <mz:attribute name="active" type="boolean"/>
+                <mz:attribute name="fit" type="enum"/>
+                <mz:attribute name="extref_key" type="string"/>
+            </mz:extension>
+        </mz:complexContent>
+    </mz:complexType>
+    <mz:complexType name="dr.DRConfiguration">
+        <mz:complexContent>
+            <mz:extension base="storable">
+                <mz:sequence/>
+                <mz:attribute name="Key" type="string"/>
+                <mz:attribute name="Type" type="string"/>
+                <mz:attribute name="Folder" type="string"/>
+                <mz:attribute name="Name" type="string"/>
+            </mz:extension>
+        </mz:complexContent>
+    </mz:complexType>
+    <mz:complexType name="dr.WfBridgeCollData.port">
+        <mz:complexContent>
+            <mz:extension base="contractfield">
+                <mz:sequence>
+                    <mz:element name="Value" type="int"/>
+                </mz:sequence>
+                <mz:attribute name="pres" type="boolean"/>
+                <mz:attribute name="mod" type="boolean"/>
+                <mz:attribute name="active" type="boolean"/>
+                <mz:attribute name="fit" type="enum"/>
+                <mz:attribute name="extref_key" type="string"/>
+            </mz:extension>
+        </mz:complexContent>
+    </mz:complexType>
+    <mz:complexType name="dr.WfBridgeCollData.loadID">
+        <mz:complexContent>
+            <mz:extension base="contractfield">
+                <mz:sequence>
+                    <mz:element name="Value" type="int"/>
+                </mz:sequence>
+                <mz:attribute name="pres" type="boolean"/>
+                <mz:attribute name="mod" type="boolean"/>
+                <mz:attribute name="active" type="boolean"/>
+                <mz:attribute name="fit" type="enum"/>
+                <mz:attribute name="extref_key" type="string"/>
+            </mz:extension>
+        </mz:complexContent>
+    </mz:complexType>
+    <mz:complexType name="dr.WfRoute--.StorablePoint">
+        <mz:complexContent>
+            <mz:extension base="storable">
+                <mz:sequence/>
+                <mz:attribute name="X_position" type="int"/>
+                <mz:attribute name="Y_position" type="int"/>
+            </mz:extension>
+        </mz:complexContent>
+    </mz:complexType>
+    <mz:complexType name="dr.StuffyMapperData">
+        <mz:complexContent>
+            <mz:extension base="storable">
+                <mz:sequence>
+                    <mz:element name="Source_code" type="contractfield"/>
+                    <mz:element name="UDR_types" type="contractfield"/>
+                </mz:sequence>
+            </mz:extension>
+        </mz:complexContent>
+    </mz:complexType>
+    <mz:complexType name="dr.StuffyMapperData.sourceCode">
+        <mz:complexContent>
+            <mz:extension base="contractfield">
+                <mz:sequence>
+                    <mz:element name="Value" type="string"/>
+                </mz:sequence>
+                <mz:attribute name="pres" type="boolean"/>
+                <mz:attribute name="mod" type="boolean"/>
+                <mz:attribute name="active" type="boolean"/>
+                <mz:attribute name="fit" type="enum"/>
+                <mz:attribute name="extref_key" type="string"/>
+            </mz:extension>
+        </mz:complexContent>
+    </mz:complexType>
+    <mz:complexType name="dr.StuffyMapperData.udrTypes">
+        <mz:complexContent>
+            <mz:extension base="contractfield">
+                <mz:sequence>
+                    <mz:element name="Value">
+                        <mz:complexType>
+                            <mz:complexContent>
+                                <mz:extension base="array">
+                                    <mz:sequence maxOccurs="unbounded">
+                                        <mz:element name="value" type="storable"/>
+                                    </mz:sequence>
+                                </mz:extension>
+                            </mz:complexContent>
+                        </mz:complexType>
+                    </mz:element>
+                </mz:sequence>
+                <mz:attribute name="pres" type="boolean"/>
+                <mz:attribute name="mod" type="boolean"/>
+                <mz:attribute name="active" type="boolean"/>
+                <mz:attribute name="fit" type="enum"/>
+                <mz:attribute name="extref_key" type="string"/>
+            </mz:extension>
+        </mz:complexContent>
+    </mz:complexType>
+    <mz:complexType name="dr.DRTypeInfo">
+        <mz:complexContent>
+            <mz:extension base="storable">
+                <mz:sequence/>
+                <mz:attribute name="TypeName" type="string"/>
+            </mz:extension>
+        </mz:complexContent>
+    </mz:complexType>
+    <mz:complexType name="dr.WfBridgeFwdData">
+        <mz:complexContent>
+            <mz:extension base="storable">
+                <mz:sequence>
+                    <mz:element name="Profile_Key" type="contractfield"/>
+                </mz:sequence>
+            </mz:extension>
+        </mz:complexContent>
+    </mz:complexType>
+    <mz:complexType name="dr.WfBridgeFwdData.profile">
+        <mz:complexContent>
+            <mz:extension base="contractfield">
+                <mz:sequence>
+                    <mz:element name="Value" type="storable"/>
+                </mz:sequence>
+                <mz:attribute name="pres" type="boolean"/>
+                <mz:attribute name="mod" type="boolean"/>
+                <mz:attribute name="active" type="boolean"/>
+                <mz:attribute name="fit" type="enum"/>
+                <mz:attribute name="extref_key" type="string"/>
+            </mz:extension>
+        </mz:complexContent>
+    </mz:complexType>
+    <mz:complexType name="dr.InterWFOutputRTData">
+        <mz:complexContent>
+            <mz:extension base="storable">
+                <mz:sequence>
+                    <mz:element name="Profile_key" type="contractfield"/>
+                    <mz:element name="MIM_Map" type="contractfield"/>
+                    <mz:element name="ByteCount" type="contractfield"/>
+                    <mz:element name="UDRCount" type="contractfield"/>
+                    <mz:element name="Timeout" type="contractfield"/>
+                    <mz:element name="EnableWorkerthread" type="contractfield"/>
+                    <mz:element name="QueueSize_" type="contractfield"/>
+                </mz:sequence>
+            </mz:extension>
+        </mz:complexContent>
+    </mz:complexType>
+    <mz:complexType name="dr.InterWFOutputRTData.profile">
+        <mz:complexContent>
+            <mz:extension base="contractfield">
+                <mz:sequence>
+                    <mz:element name="Value" type="storable"/>
+                </mz:sequence>
+                <mz:attribute name="pres" type="boolean"/>
+                <mz:attribute name="mod" type="boolean"/>
+                <mz:attribute name="active" type="boolean"/>
+                <mz:attribute name="fit" type="enum"/>
+                <mz:attribute name="extref_key" type="string"/>
+            </mz:extension>
+        </mz:complexContent>
+    </mz:complexType>
+    <mz:complexType name="dr.InterWFOutputRTData.myMIMs">
+        <mz:complexContent>
+            <mz:extension base="contractfield">
+                <mz:sequence>
+                    <mz:element name="Value">
+                        <mz:complexType>
+                            <mz:complexContent>
+                                <mz:extension base="array">
+                                    <mz:sequence maxOccurs="unbounded">
+                                        <mz:element name="value" type="storable"/>
+                                    </mz:sequence>
+                                </mz:extension>
+                            </mz:complexContent>
+                        </mz:complexType>
+                    </mz:element>
+                </mz:sequence>
+                <mz:attribute name="pres" type="boolean"/>
+                <mz:attribute name="mod" type="boolean"/>
+                <mz:attribute name="active" type="boolean"/>
+                <mz:attribute name="fit" type="enum"/>
+                <mz:attribute name="extref_key" type="string"/>
+            </mz:extension>
+        </mz:complexContent>
+    </mz:complexType>
+    <mz:complexType name="dr.DRNameValue">
+        <mz:complexContent>
+            <mz:extension base="storable">
+                <mz:sequence>
+                    <mz:element name="Name" type="string"/>
+                    <mz:element name="Value" type="string"/>
+                </mz:sequence>
+            </mz:extension>
+        </mz:complexContent>
+    </mz:complexType>
+    <mz:complexType name="dr.InterWFOutputRTData.byteCount">
+        <mz:complexContent>
+            <mz:extension base="contractfield">
+                <mz:sequence>
+                    <mz:element name="Value" type="int"/>
+                </mz:sequence>
+                <mz:attribute name="pres" type="boolean"/>
+                <mz:attribute name="mod" type="boolean"/>
+                <mz:attribute name="active" type="boolean"/>
+                <mz:attribute name="fit" type="enum"/>
+                <mz:attribute name="extref_key" type="string"/>
+            </mz:extension>
+        </mz:complexContent>
+    </mz:complexType>
+    <mz:complexType name="dr.InterWFOutputRTData.udrCount">
+        <mz:complexContent>
+            <mz:extension base="contractfield">
+                <mz:sequence>
+                    <mz:element name="Value" type="int"/>
+                </mz:sequence>
+                <mz:attribute name="pres" type="boolean"/>
+                <mz:attribute name="mod" type="boolean"/>
+                <mz:attribute name="active" type="boolean"/>
+                <mz:attribute name="fit" type="enum"/>
+                <mz:attribute name="extref_key" type="string"/>
+            </mz:extension>
+        </mz:complexContent>
+    </mz:complexType>
+    <mz:complexType name="dr.InterWFOutputRTData.timeout">
+        <mz:complexContent>
+            <mz:extension base="contractfield">
+                <mz:sequence>
+                    <mz:element name="Value" type="int"/>
+                </mz:sequence>
+                <mz:attribute name="pres" type="boolean"/>
+                <mz:attribute name="mod" type="boolean"/>
+                <mz:attribute name="active" type="boolean"/>
+                <mz:attribute name="fit" type="enum"/>
+                <mz:attribute name="extref_key" type="string"/>
+            </mz:extension>
+        </mz:complexContent>
+    </mz:complexType>
+    <mz:complexType name="dr.InterWFOutputRTData.enableWorkerThread">
+        <mz:complexContent>
+            <mz:extension base="contractfield">
+                <mz:sequence>
+                    <mz:element name="Value" type="boolean"/>
+                </mz:sequence>
+                <mz:attribute name="pres" type="boolean"/>
+                <mz:attribute name="mod" type="boolean"/>
+                <mz:attribute name="active" type="boolean"/>
+                <mz:attribute name="fit" type="enum"/>
+                <mz:attribute name="extref_key" type="string"/>
+            </mz:extension>
+        </mz:complexContent>
+    </mz:complexType>
+    <mz:complexType name="dr.InterWFOutputRTData.queueSize">
+        <mz:complexContent>
+            <mz:extension base="contractfield">
+                <mz:sequence>
+                    <mz:element name="Value" type="int"/>
+                </mz:sequence>
+                <mz:attribute name="pres" type="boolean"/>
+                <mz:attribute name="mod" type="boolean"/>
+                <mz:attribute name="active" type="boolean"/>
+                <mz:attribute name="fit" type="enum"/>
+                <mz:attribute name="extref_key" type="string"/>
+            </mz:extension>
+        </mz:complexContent>
+    </mz:complexType>
+    <mz:complexType name="dr.batchforwrt.BatchForwRtBaseData">
+        <mz:complexContent>
+            <mz:extension base="storable">
+                <mz:sequence>
+                    <mz:element name="ByteCountBatch" type="contractfield"/>
+                    <mz:element name="UDRCountBatch" type="contractfield"/>
+                    <mz:element name="ClosingCriteriaDuration" type="contractfield"/>
+                    <mz:element name="Batch_Config" type="contractfield"/>
+                </mz:sequence>
+            </mz:extension>
+        </mz:complexContent>
+    </mz:complexType>
+    <mz:complexType name="dr.batchforwrt.BatchForwRtBaseData.closingCriteriaByteCount">
+        <mz:complexContent>
+            <mz:extension base="contractfield">
+                <mz:sequence>
+                    <mz:element name="Value" type="int"/>
+                </mz:sequence>
+                <mz:attribute name="pres" type="boolean"/>
+                <mz:attribute name="mod" type="boolean"/>
+                <mz:attribute name="active" type="boolean"/>
+                <mz:attribute name="fit" type="enum"/>
+                <mz:attribute name="extref_key" type="string"/>
+            </mz:extension>
+        </mz:complexContent>
+    </mz:complexType>
+    <mz:complexType name="dr.batchforwrt.BatchForwRtBaseData.closingCriteriaUdrCount">
+        <mz:complexContent>
+            <mz:extension base="contractfield">
+                <mz:sequence>
+                    <mz:element name="Value" type="int"/>
+                </mz:sequence>
+                <mz:attribute name="pres" type="boolean"/>
+                <mz:attribute name="mod" type="boolean"/>
+                <mz:attribute name="active" type="boolean"/>
+                <mz:attribute name="fit" type="enum"/>
+                <mz:attribute name="extref_key" type="string"/>
+            </mz:extension>
+        </mz:complexContent>
+    </mz:complexType>
+    <mz:complexType name="dr.batchforwrt.BatchForwRtBaseData.closingCriteriaDuration">
+        <mz:complexContent>
+            <mz:extension base="contractfield">
+                <mz:sequence>
+                    <mz:element name="Value" type="int"/>
+                </mz:sequence>
+                <mz:attribute name="pres" type="boolean"/>
+                <mz:attribute name="mod" type="boolean"/>
+                <mz:attribute name="active" type="boolean"/>
+                <mz:attribute name="fit" type="enum"/>
+                <mz:attribute name="extref_key" type="string"/>
+            </mz:extension>
+        </mz:complexContent>
+    </mz:complexType>
+    <mz:complexType name="dr.batchforwrt.BatchForwRtBaseData.agentData">
+        <mz:complexContent>
+            <mz:extension base="contractfield">
+                <mz:sequence>
+                    <mz:element name="Value" type="storable"/>
+                </mz:sequence>
+                <mz:attribute name="pres" type="boolean"/>
+                <mz:attribute name="mod" type="boolean"/>
+                <mz:attribute name="active" type="boolean"/>
+                <mz:attribute name="fit" type="enum"/>
+                <mz:attribute name="extref_key" type="string"/>
+            </mz:extension>
+        </mz:complexContent>
+    </mz:complexType>
+    <mz:complexType name="dr.DiskOutputData">
+        <mz:complexContent>
+            <mz:extension base="storable">
+                <mz:sequence>
+                    <mz:element name="Distribution_directory" type="contractfield"/>
+                    <mz:element name="Compression" type="contractfield"/>
+                    <mz:element name="Command" type="contractfield"/>
+                    <mz:element name="Arguments" type="contractfield"/>
+                    <mz:element name="Create_empty_files" type="contractfield"/>
+                    <mz:element name="Create_Non-----.Existing_Base_Directory" type="contractfield"/>
+                    <mz:element name="Input_type" type="contractfield"/>
+                </mz:sequence>
+            </mz:extension>
+        </mz:complexContent>
+    </mz:complexType>
+    <mz:complexType name="dr.DiskOutputData.directory">
+        <mz:complexContent>
+            <mz:extension base="contractfield">
+                <mz:sequence>
+                    <mz:element name="Value" type="string"/>
+                </mz:sequence>
+                <mz:attribute name="pres" type="boolean"/>
+                <mz:attribute name="mod" type="boolean"/>
+                <mz:attribute name="active" type="boolean"/>
+                <mz:attribute name="fit" type="enum"/>
+                <mz:attribute name="extref_key" type="string"/>
+            </mz:extension>
+        </mz:complexContent>
+    </mz:complexType>
+    <mz:complexType name="dr.DiskOutputData.compType">
+        <mz:complexContent>
+            <mz:extension base="contractfield">
+                <mz:sequence>
+                    <mz:element name="Value" type="enum"/>
+                </mz:sequence>
+                <mz:attribute name="pres" type="boolean"/>
+                <mz:attribute name="mod" type="boolean"/>
+                <mz:attribute name="active" type="boolean"/>
+                <mz:attribute name="fit" type="enum"/>
+                <mz:attribute name="extref_key" type="string"/>
+            </mz:extension>
+        </mz:complexContent>
+    </mz:complexType>
+    <mz:complexType name="dr.DiskOutputData.command">
+        <mz:complexContent>
+            <mz:extension base="contractfield">
+                <mz:sequence>
+                    <mz:element name="Value" type="string"/>
+                </mz:sequence>
+                <mz:attribute name="pres" type="boolean"/>
+                <mz:attribute name="mod" type="boolean"/>
+                <mz:attribute name="active" type="boolean"/>
+                <mz:attribute name="fit" type="enum"/>
+                <mz:attribute name="extref_key" type="string"/>
+            </mz:extension>
+        </mz:complexContent>
+    </mz:complexType>
+    <mz:complexType name="dr.DiskOutputData.arguments">
+        <mz:complexContent>
+            <mz:extension base="contractfield">
+                <mz:sequence>
+                    <mz:element name="Value" type="string"/>
+                </mz:sequence>
+                <mz:attribute name="pres" type="boolean"/>
+                <mz:attribute name="mod" type="boolean"/>
+                <mz:attribute name="active" type="boolean"/>
+                <mz:attribute name="fit" type="enum"/>
+                <mz:attribute name="extref_key" type="string"/>
+            </mz:extension>
+        </mz:complexContent>
+    </mz:complexType>
+    <mz:complexType name="dr.DiskOutputData.createEmpty">
+        <mz:complexContent>
+            <mz:extension base="contractfield">
+                <mz:sequence>
+                    <mz:element name="Value" type="boolean"/>
+                </mz:sequence>
+                <mz:attribute name="pres" type="boolean"/>
+                <mz:attribute name="mod" type="boolean"/>
+                <mz:attribute name="active" type="boolean"/>
+                <mz:attribute name="fit" type="enum"/>
+                <mz:attribute name="extref_key" type="string"/>
+            </mz:extension>
+        </mz:complexContent>
+    </mz:complexType>
+    <mz:complexType name="dr.DiskOutputData.createNonExistingBaseDir">
+        <mz:complexContent>
+            <mz:extension base="contractfield">
+                <mz:sequence>
+                    <mz:element name="Value" type="boolean"/>
+                </mz:sequence>
+                <mz:attribute name="pres" type="boolean"/>
+                <mz:attribute name="mod" type="boolean"/>
+                <mz:attribute name="active" type="boolean"/>
+                <mz:attribute name="fit" type="enum"/>
+                <mz:attribute name="extref_key" type="string"/>
+            </mz:extension>
+        </mz:complexContent>
+    </mz:complexType>
+    <mz:complexType name="dr.DiskOutputData.inputType">
+        <mz:complexContent>
+            <mz:extension base="contractfield">
+                <mz:sequence>
+                    <mz:element name="Value" type="enum"/>
+                </mz:sequence>
+                <mz:attribute name="pres" type="boolean"/>
+                <mz:attribute name="mod" type="boolean"/>
+                <mz:attribute name="active" type="boolean"/>
+                <mz:attribute name="fit" type="enum"/>
+                <mz:attribute name="extref_key" type="string"/>
+            </mz:extension>
+        </mz:complexContent>
+    </mz:complexType>
+    <mz:complexType name="dr.DRFNTServiceConfig">
+        <mz:complexContent>
+            <mz:extension base="storable">
+                <mz:sequence>
+                    <mz:element name="FNT_Entries" type="contractfield"/>
+                    <mz:element name="FNT---.CREATE---.DIRS" type="contractfield"/>
+                    <mz:element name="FNT_list_enabled" type="contractfield"/>
+                </mz:sequence>
+            </mz:extension>
+        </mz:complexContent>
+    </mz:complexType>
+    <mz:complexType name="dr.DRFNTServiceConfig.entries">
+        <mz:complexContent>
+            <mz:extension base="contractfield">
+                <mz:sequence>
+                    <mz:element name="Value">
+                        <mz:complexType>
+                            <mz:complexContent>
+                                <mz:extension base="array">
+                                    <mz:sequence maxOccurs="unbounded">
+                                        <mz:element name="value" type="storable"/>
+                                    </mz:sequence>
+                                </mz:extension>
+                            </mz:complexContent>
+                        </mz:complexType>
+                    </mz:element>
+                </mz:sequence>
+                <mz:attribute name="pres" type="boolean"/>
+                <mz:attribute name="mod" type="boolean"/>
+                <mz:attribute name="active" type="boolean"/>
+                <mz:attribute name="fit" type="enum"/>
+                <mz:attribute name="extref_key" type="string"/>
+            </mz:extension>
+        </mz:complexContent>
+    </mz:complexType>
+    <mz:complexType name="dr.DRFNTServiceConfig.createNonExistDirectories">
+        <mz:complexContent>
+            <mz:extension base="contractfield">
+                <mz:sequence>
+                    <mz:element name="Value" type="boolean"/>
+                </mz:sequence>
+                <mz:attribute name="pres" type="boolean"/>
+                <mz:attribute name="mod" type="boolean"/>
+                <mz:attribute name="active" type="boolean"/>
+                <mz:attribute name="fit" type="enum"/>
+                <mz:attribute name="extref_key" type="string"/>
+            </mz:extension>
+        </mz:complexContent>
+    </mz:complexType>
+    <mz:complexType name="dr.DRFNTServiceConfig.---.FNTListEnabled">
+        <mz:complexContent>
+            <mz:extension base="contractfield">
+                <mz:sequence>
+                    <mz:element name="Value" type="boolean"/>
+                </mz:sequence>
+                <mz:attribute name="pres" type="boolean"/>
+                <mz:attribute name="mod" type="boolean"/>
+                <mz:attribute name="active" type="boolean"/>
+                <mz:attribute name="fit" type="enum"/>
+                <mz:attribute name="extref_key" type="string"/>
+            </mz:extension>
+        </mz:complexContent>
+    </mz:complexType>
+    <mz:complexType name="dr.WfRoute">
+        <mz:complexContent>
+            <mz:extension base="storable">
+                <mz:sequence>
+                    <mz:element name="ID" type="int"/>
+                    <mz:element name="Source_ID" type="int"/>
+                    <mz:element name="Destination_ID" type="int"/>
+                    <mz:element name="Stroke_points">
+                        <mz:complexType>
+                            <mz:complexContent>
+                                <mz:extension base="list">
+                                    <mz:sequence maxOccurs="unbounded">
+                                        <mz:element name="value" type="storable"/>
+                                    </mz:sequence>
+                                </mz:extension>
+                            </mz:complexContent>
+                        </mz:complexType>
+                    </mz:element>
+                </mz:sequence>
+                <mz:attribute name="Name" type="string"/>
+                <mz:attribute name="Route_type" type="int"/>
+                <mz:attribute name="Realtime_mode" type="int"/>
+            </mz:extension>
+        </mz:complexContent>
+    </mz:complexType>
+    <mz:complexType name="dr.WorkflowExecutionConfig">
+        <mz:complexContent>
+            <mz:extension base="storable">
+                <mz:sequence>
+                    <mz:element name="Execution_Settings" type="contractfield"/>
+                    <mz:element name="Throughput_MIM" type="contractfield"/>
+                    <mz:element name="Debug_Type" type="contractfield"/>
+                    <mz:element name="Number_of_Files_to_Keep" type="contractfield"/>
+                    <mz:element name="Transaction_Handler" type="contractfield"/>
+                </mz:sequence>
+            </mz:extension>
+        </mz:complexContent>
+    </mz:complexType>
+    <mz:complexType name="dr.WorkflowExecutionConfig.executionSettings">
+        <mz:complexContent>
+            <mz:extension base="contractfield">
+                <mz:sequence>
+                    <mz:element name="Value" type="storable"/>
+                </mz:sequence>
+                <mz:attribute name="pres" type="boolean"/>
+                <mz:attribute name="mod" type="boolean"/>
+                <mz:attribute name="active" type="boolean"/>
+                <mz:attribute name="fit" type="enum"/>
+                <mz:attribute name="extref_key" type="string"/>
+            </mz:extension>
+        </mz:complexContent>
+    </mz:complexType>
+    <mz:complexType name="dr.ExecutionSettings">
+        <mz:complexContent>
+            <mz:extension base="storable">
+                <mz:sequence>
+                    <mz:element name="enabled" type="boolean"/>
+                    <mz:element name="ecList">
+                        <mz:complexType>
+                            <mz:complexContent>
+                                <mz:extension base="list">
+                                    <mz:sequence maxOccurs="unbounded">
+                                        <mz:element name="value" type="storable"/>
+                                    </mz:sequence>
+                                </mz:extension>
+                            </mz:complexContent>
+                        </mz:complexType>
+                    </mz:element>
+                    <mz:element name="dist" type="enum"/>
+                    <mz:element name="groupList">
+                        <mz:complexType>
+                            <mz:complexContent>
+                                <mz:extension base="list">
+                                    <mz:sequence maxOccurs="unbounded"/>
+                                </mz:extension>
+                            </mz:complexContent>
+                        </mz:complexType>
+                    </mz:element>
+                    <mz:element name="autostart" type="storable"/>
+                </mz:sequence>
+            </mz:extension>
+        </mz:complexContent>
+    </mz:complexType>
+    <mz:complexType name="dr.PicoInstanceEntity">
+        <mz:complexContent>
+            <mz:extension base="storable">
+                <mz:sequence>
+                    <mz:element name="Name" type="string"/>
+                    <mz:element name="Type" type="int"/>
+                </mz:sequence>
+            </mz:extension>
+        </mz:complexContent>
+    </mz:complexType>
+    <mz:complexType name="dr.AutoStartSettings">
+        <mz:complexContent>
+            <mz:extension base="storable">
+                <mz:sequence>
+                    <mz:element name="enabled" type="boolean"/>
+                    <mz:element name="instances" type="int"/>
+                    <mz:element name="abort_behaviour" type="enum"/>
+                </mz:sequence>
+            </mz:extension>
+        </mz:complexContent>
+    </mz:complexType>
+    <mz:complexType name="dr.WorkflowExecutionConfig.throughputMIM">
+        <mz:complexContent>
+            <mz:extension base="contractfield">
+                <mz:sequence/>
+                <mz:attribute name="pres" type="boolean"/>
+                <mz:attribute name="mod" type="boolean"/>
+                <mz:attribute name="active" type="boolean"/>
+                <mz:attribute name="fit" type="enum"/>
+                <mz:attribute name="extref_key" type="string"/>
+            </mz:extension>
+        </mz:complexContent>
+    </mz:complexType>
+    <mz:complexType name="dr.WorkflowExecutionConfig.debugType">
+        <mz:complexContent>
+            <mz:extension base="contractfield">
+                <mz:sequence>
+                    <mz:element name="Value" type="enum"/>
+                </mz:sequence>
+                <mz:attribute name="pres" type="boolean"/>
+                <mz:attribute name="mod" type="boolean"/>
+                <mz:attribute name="active" type="boolean"/>
+                <mz:attribute name="fit" type="enum"/>
+                <mz:attribute name="extref_key" type="string"/>
+            </mz:extension>
+        </mz:complexContent>
+    </mz:complexType>
+    <mz:complexType name="dr.WorkflowExecutionConfig.noOfFilesToKeep">
+        <mz:complexContent>
+            <mz:extension base="contractfield">
+                <mz:sequence>
+                    <mz:element name="Value" type="int"/>
+                </mz:sequence>
+                <mz:attribute name="pres" type="boolean"/>
+                <mz:attribute name="mod" type="boolean"/>
+                <mz:attribute name="active" type="boolean"/>
+                <mz:attribute name="fit" type="enum"/>
+                <mz:attribute name="extref_key" type="string"/>
+            </mz:extension>
+        </mz:complexContent>
+    </mz:complexType>
+    <mz:complexType name="dr.WorkflowExecutionConfig.txnHandler">
+        <mz:complexContent>
+            <mz:extension base="contractfield">
+                <mz:sequence/>
+                <mz:attribute name="pres" type="boolean"/>
+                <mz:attribute name="mod" type="boolean"/>
+                <mz:attribute name="active" type="boolean"/>
+                <mz:attribute name="fit" type="enum"/>
+                <mz:attribute name="extref_key" type="string"/>
+            </mz:extension>
+        </mz:complexContent>
+    </mz:complexType>
+    <mz:complexType name="dr.DynamicConfigStorableDefinition">
+        <mz:complexContent>
+            <mz:extension base="storable">
+                <mz:sequence>
+                    <mz:element name="fields">
+                        <mz:complexType>
+                            <mz:complexContent>
+                                <mz:extension base="list">
+                                    <mz:sequence maxOccurs="unbounded">
+                                        <mz:element name="value" type="storable"/>
+                                    </mz:sequence>
+                                </mz:extension>
+                            </mz:complexContent>
+                        </mz:complexType>
+                    </mz:element>
+                </mz:sequence>
+            </mz:extension>
+        </mz:complexContent>
+    </mz:complexType>
+    <mz:complexType name="dr.FieldDescriptorStorable">
+        <mz:complexContent>
+            <mz:extension base="storable">
+                <mz:sequence>
+                    <mz:element name="name" type="string"/>
+                    <mz:element name="title" type="string"/>
+                    <mz:element name="section" type="string"/>
+                    <mz:element name="description" type="string"/>
+                    <mz:element name="dynStorableKey" type="string"/>
+                    <mz:element name="type" type="string"/>
+                    <mz:element name="defaultValue" type="string"/>
+                </mz:sequence>
+            </mz:extension>
+        </mz:complexContent>
+    </mz:complexType>
+    <mz:complexType name="dr.WorkflowExecutionRealtimeConfig">
+        <mz:complexContent>
+            <mz:extension base="storable">
+                <mz:sequence>
+                    <mz:element name="Threads" type="contractfield"/>
+                    <mz:element name="Queue_Size" type="contractfield"/>
+                    <mz:element name="Stand-----.alone" type="contractfield"/>
+                    <mz:element name="Queue_strategies" type="contractfield"/>
+                    <mz:element name="Queue_worker_strategies" type="contractfield"/>
+                    <mz:element name="Processed_UDRs_count_interval" type="contractfield"/>
+                </mz:sequence>
+            </mz:extension>
+        </mz:complexContent>
+    </mz:complexType>
+    <mz:complexType name="dr.WorkflowExecutionRealtimeConfig.threads">
+        <mz:complexContent>
+            <mz:extension base="contractfield">
+                <mz:sequence>
+                    <mz:element name="Value" type="int"/>
+                </mz:sequence>
+                <mz:attribute name="pres" type="boolean"/>
+                <mz:attribute name="mod" type="boolean"/>
+                <mz:attribute name="active" type="boolean"/>
+                <mz:attribute name="fit" type="enum"/>
+                <mz:attribute name="extref_key" type="string"/>
+            </mz:extension>
+        </mz:complexContent>
+    </mz:complexType>
+    <mz:complexType name="dr.WorkflowExecutionRealtimeConfig.queueSize">
+        <mz:complexContent>
+            <mz:extension base="contractfield">
+                <mz:sequence>
+                    <mz:element name="Value" type="int"/>
+                </mz:sequence>
+                <mz:attribute name="pres" type="boolean"/>
+                <mz:attribute name="mod" type="boolean"/>
+                <mz:attribute name="active" type="boolean"/>
+                <mz:attribute name="fit" type="enum"/>
+                <mz:attribute name="extref_key" type="string"/>
+            </mz:extension>
+        </mz:complexContent>
+    </mz:complexType>
+    <mz:complexType name="dr.WorkflowExecutionRealtimeConfig.standalone">
+        <mz:complexContent>
+            <mz:extension base="contractfield">
+                <mz:sequence>
+                    <mz:element name="Value" type="boolean"/>
+                </mz:sequence>
+                <mz:attribute name="pres" type="boolean"/>
+                <mz:attribute name="mod" type="boolean"/>
+                <mz:attribute name="active" type="boolean"/>
+                <mz:attribute name="fit" type="enum"/>
+                <mz:attribute name="extref_key" type="string"/>
+            </mz:extension>
+        </mz:complexContent>
+    </mz:complexType>
+    <mz:complexType name="dr.WorkflowExecutionRealtimeConfig.queueStrategy">
+        <mz:complexContent>
+            <mz:extension base="contractfield">
+                <mz:sequence>
+                    <mz:element name="Value" type="string"/>
+                </mz:sequence>
+                <mz:attribute name="pres" type="boolean"/>
+                <mz:attribute name="mod" type="boolean"/>
+                <mz:attribute name="active" type="boolean"/>
+                <mz:attribute name="fit" type="enum"/>
+                <mz:attribute name="extref_key" type="string"/>
+            </mz:extension>
+        </mz:complexContent>
+    </mz:complexType>
+    <mz:complexType name="dr.WorkflowExecutionRealtimeConfig.queueWorkerStrategy">
+        <mz:complexContent>
+            <mz:extension base="contractfield">
+                <mz:sequence>
+                    <mz:element name="Value" type="string"/>
+                </mz:sequence>
+                <mz:attribute name="pres" type="boolean"/>
+                <mz:attribute name="mod" type="boolean"/>
+                <mz:attribute name="active" type="boolean"/>
+                <mz:attribute name="fit" type="enum"/>
+                <mz:attribute name="extref_key" type="string"/>
+            </mz:extension>
+        </mz:complexContent>
+    </mz:complexType>
+    <mz:complexType name="dr.WorkflowExecutionRealtimeConfig.countInterval">
+        <mz:complexContent>
+            <mz:extension base="contractfield">
+                <mz:sequence>
+                    <mz:element name="Value" type="int"/>
+                </mz:sequence>
+                <mz:attribute name="pres" type="boolean"/>
+                <mz:attribute name="mod" type="boolean"/>
+                <mz:attribute name="active" type="boolean"/>
+                <mz:attribute name="fit" type="enum"/>
+                <mz:attribute name="extref_key" type="string"/>
+            </mz:extension>
+        </mz:complexContent>
+    </mz:complexType>
+    <mz:complexType name="dr.WorkflowPersistentConfig">
+        <mz:complexContent>
+            <mz:extension base="storable">
+                <mz:sequence>
+                    <mz:element name="Persistent_Inspector" type="contractfield"/>
+                    <mz:element name="Persistent_Timeout_Handler" type="contractfield"/>
+                    <mz:element name="Persistent_Storage_Config" type="contractfield"/>
+                </mz:sequence>
+            </mz:extension>
+        </mz:complexContent>
+    </mz:complexType>
+    <mz:complexType name="dr.WorkflowPersistentConfig.PersistentInspector">
+        <mz:complexContent>
+            <mz:extension base="contractfield">
+                <mz:sequence/>
+                <mz:attribute name="pres" type="boolean"/>
+                <mz:attribute name="mod" type="boolean"/>
+                <mz:attribute name="active" type="boolean"/>
+                <mz:attribute name="fit" type="enum"/>
+                <mz:attribute name="extref_key" type="string"/>
+            </mz:extension>
+        </mz:complexContent>
+    </mz:complexType>
+    <mz:complexType name="dr.WorkflowPersistentConfig.PersistentTimeoutHandler">
+        <mz:complexContent>
+            <mz:extension base="contractfield">
+                <mz:sequence/>
+                <mz:attribute name="pres" type="boolean"/>
+                <mz:attribute name="mod" type="boolean"/>
+                <mz:attribute name="active" type="boolean"/>
+                <mz:attribute name="fit" type="enum"/>
+                <mz:attribute name="extref_key" type="string"/>
+            </mz:extension>
+        </mz:complexContent>
+    </mz:complexType>
+    <mz:complexType name="dr.WorkflowPersistentConfig.PersistentStorageConfig">
+        <mz:complexContent>
+            <mz:extension base="contractfield">
+                <mz:sequence/>
+                <mz:attribute name="pres" type="boolean"/>
+                <mz:attribute name="mod" type="boolean"/>
+                <mz:attribute name="active" type="boolean"/>
+                <mz:attribute name="fit" type="enum"/>
+                <mz:attribute name="extref_key" type="string"/>
+            </mz:extension>
+        </mz:complexContent>
+    </mz:complexType>
+    <mz:complexType name="dr.DynField">
+        <mz:complexContent>
+            <mz:extension base="contractfield">
+                <mz:sequence>
+                    <mz:element name="Id_pres" type="boolean"/>
+                    <mz:element name="Id_mod" type="boolean"/>
+                    <mz:element name="Id_active" type="boolean"/>
+                    <mz:element name="Id_fit" type="enum"/>
+                    <mz:element name="Id_extref_key" type="string"/>
+                    <mz:element name="Value" type="string"/>
+                </mz:sequence>
+            </mz:extension>
+        </mz:complexContent>
+    </mz:complexType>
+</mz:schema>

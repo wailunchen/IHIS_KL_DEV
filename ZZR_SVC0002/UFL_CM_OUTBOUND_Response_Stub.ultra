@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<mz:configuration format-version="1.0">
+    <mz:data>
+        <dr.Configuration:dr.Configuration Folder="ZZR_SVC0002" Key="DZ11651652820050" Name="UFL_CM_OUTBOUND_Response_Stub" Owner="D_LIM" Type="Ultra Format" encrypted="false" ver="6.0">
+            <STRING:Access_Groups_-----.read_-----.write_-----.execute>
+                <value value="All"/>
+                <value value="All"/>
+                <value value="All"/>
+            </STRING:Access_Groups_-----.read_-----.write_-----.execute>
+            <null:Auxiliary_Data/>
+            <dr.UltraFormatConfig:Data ver="1.0">
+                <Definition><![CDATA[xml_schema {
+<?xml version="1.0" encoding="UTF-8"?>
+<s:schema xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.nefr.com/nefr/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" elementFormDefault="qualified" targetNamespace="http://www.nefr.com/nefr/">
+	<s:element name="CheckConsentResponse">
+		<s:complexType>
+			<s:sequence>
+				<s:element minOccurs="0" maxOccurs="1" name="ConsentLevel" type="s:string"/>
+				<s:element minOccurs="0" maxOccurs="1" name="ReasonForNoConsent" type="s:string"/>
+                <s:element minOccurs="0" maxOccurs="1" name="StartDate" type="s:date"/>
+                <s:element minOccurs="0" maxOccurs="1" name="EndDate" type="s:date"/>
+                <s:element minOccurs="0" maxOccurs="1" name="InstitutionLastChange" type="s:string"/>
+                <s:element minOccurs="0" maxOccurs="1" name="IDNumber" type="s:string"/>
+                <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string"/>
+                <s:element minOccurs="0" maxOccurs="1" name="OBF_IDNumber" type="s:string"/>
+                <s:element minOccurs="0" maxOccurs="1" name="OBF_Name" type="s:string"/>
+                <s:element minOccurs="1" maxOccurs="1" name="Status">
+					<s:complexType>
+						<s:sequence>
+                            <s:element minOccurs="1" maxOccurs="1" name="UniqueTransactionID" type="s:string"/>
+                            <s:element minOccurs="1" maxOccurs="1" name="StatusCode" type="s:string"/>
+							<s:element minOccurs="1" maxOccurs="1" name="StatusDescription" type="s:string"/>
+                        </s:sequence>
+                    </s:complexType>
+                </s:element>
+            </s:sequence>
+        </s:complexType>
+    </s:element>
+</s:schema>
+};
+
+in_map in_Request : external(CheckConsentResponse), target_internal(Response_Stub) { automatic:use_external_names; };
+out_map out_Response : external(CheckConsentResponse), internal(Response_Stub) {automatic;};
+
+decoder SVC0002_Response_Decoder : in_map(in_Request);
+encoder SVC0002_Response_Encoder : out_map(out_Response);
+]]></Definition>
+                <IsValid value="true"/>
+            </dr.UltraFormatConfig:Data>
+            <documentation value=""/>
+            <parameters value=""/>
+            <Current_Comment/>
+        </dr.Configuration:dr.Configuration>
+    </mz:data>
+    <mz:referenced-data/>
+</mz:configuration>
