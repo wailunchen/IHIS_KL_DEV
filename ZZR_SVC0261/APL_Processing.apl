@@ -25,7 +25,9 @@ import apl.ZZ_CA_APL.APL_Constants;
 import apl.ZZC_CA_APL.APL_Common_Constants;
 import apl.ZZC_CA_APL.APL_Error_Functions;
 
-
+void func1 () {
+    debug("HERE");
+}
 string setCCUError(ConsumeCycleUDR ccu) {
     debug("-------------------------");
     debug("Function Name: setCCUError()");
