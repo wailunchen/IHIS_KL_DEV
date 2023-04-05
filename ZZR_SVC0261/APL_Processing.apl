@@ -29,6 +29,10 @@ void func1 () {
     debug("HERE");
 }
 
+void func2 () {
+    debug("HERE");
+}
+
 string setCCUError(ConsumeCycleUDR ccu) {
     debug("-------------------------");
     debug("Function Name: setCCUError()");
