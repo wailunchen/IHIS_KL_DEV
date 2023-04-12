@@ -37,10 +37,6 @@ import apl.ZZ_CA_APL.APL_Audit_Functions;
 
 //TODO: Mapping based on S4 Request sysId
 
-void setSysIdWsc2(WSCycle_cmoutbound request) {
-    sysId = request.param.HEADER.BATCH_ID;
-    setGlobalOrigFn(sysId); // to batch wfl
-}
 void setSysIdWsc( WSCycle_cmoutbound wsc) {
     sysId = wsc.param.HEADER.BATCH_ID;
     setGlobalOrigFn(sysId); // to batch wfl
